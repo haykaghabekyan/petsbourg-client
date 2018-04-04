@@ -1,0 +1,46 @@
+.text-center {
+  text-align: center;
+}
+
+.display-block {
+  display: block !important;
+}
+
+.font-weight-bold {
+  font-weight: 700;
+}
+
+.font-weight-semi-bold {
+  font-weight: 600;
+}
+
+.font-weight-medium {
+  font-weight: 500;
+}
+
+.font-weight-regular {
+  font-weight: 400;
+}
+
+.font-weight-light {
+  font-weight: 300;
+}
+
+.gray-light {
+  color: $gray-light;
+}
+
+.gray {
+  color: $gray;
+}
+
+.gray-dark {
+  color: $gray-dark;
+}
+
+.submission-error {
+  margin-top: 5px;
+  margin-bottom: 18px;
+  display: block;
+  color: $red;
+}

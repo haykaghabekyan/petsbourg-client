@@ -1,0 +1,130 @@
+.input-container {
+  margin-bottom: 20px;
+
+  &.input-container-error {
+
+    .input-item {
+      border-bottom: 1px solid $red;
+    }
+
+    .input-error {
+      margin-top: 5px;
+      display: block;
+      color: $red;
+      font-size: 12px;
+    }
+  }
+
+  .input-item {
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    line-height: 50px;
+    border: none;
+    border-bottom: 1px solid $gray-light;
+    color: $gray;
+    padding: 0;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: $gray;
+      opacity: 1;
+    }
+
+  }
+
+  .select-item {
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    line-height: 50px;
+    border: none;
+    border-bottom: 1px solid $gray-light;
+    color: $gray;
+    background: $white;
+    -webkit-appearance: button;
+    -webkit-border-radius: 0;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    //-webkit-user-select: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-shadow: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .input-error {
+    display: none;
+  }
+
+}
+
+button, .btn {
+  display: inline-block;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 40px;
+  padding: 0 40px;
+  cursor: pointer;
+  border-radius: 25px;
+  text-decoration: none;
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    border: none;
+  }
+
+  &.btn-transparent {
+    color: $gray;
+    border: 1px solid $gray-light;
+  }
+
+  &.btn-green {
+    background: $green;
+    color: $white;
+  }
+
+  &.btn-gray {
+    background: $gray-dark;
+    color: $white;
+  }
+
+  .btn-icon-left {
+    margin-right: 10px;
+  }
+
+  &.btn-square {
+    color: $white;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 60px;
+    font-size: 24px;
+  }
+
+  &.btn-facebook {
+    background-color: #3B5998;
+  }
+
+  &.btn-twitter {
+    background-color: #1DA1F2;
+  }
+
+  &.btn-google {
+    background-color: #DB4437;
+  }
+
+}

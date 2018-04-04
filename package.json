@@ -1,0 +1,44 @@
+{
+  "name": "petsbourg.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "start:prod": "webpack --progress",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hayk Aghabekyan",
+  "license": "ISC",
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.3.1",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "source-map-loader": "^0.2.3",
+    "ts-loader": "^3.5.0",
+    "typescript": "^2.6.1",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1"
+  },
+  "dependencies": {
+    "@types/react": "^16.0.29",
+    "@types/react-dom": "^16.0.3",
+    "@types/react-redux": "^5.0.14",
+    "@types/react-router-dom": "^4.2.3",
+    "axios": "^0.17.1",
+    "jsonwebtoken": "^8.2.0",
+    "lodash": "^4.17.4",
+    "path": "^0.12.7",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-redux": "^5.0.6",
+    "react-router-config": "^1.0.0-beta.4",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-form": "^7.2.3",
+    "redux-thunk": "^2.2.0"
+  }
+}

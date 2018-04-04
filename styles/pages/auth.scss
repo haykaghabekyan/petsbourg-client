@@ -1,0 +1,80 @@
+.auth-layout {
+
+}
+
+.index-page {
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - 78px);
+}
+
+.get-started-container {
+  flex: 1;
+  display: none;
+}
+
+.auth-form-container {
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+
+  .action-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .social-auth-container {
+    text-align: center;
+
+    .btn {
+      margin: 40px 25px 0;
+    }
+  }
+
+  .auth-form {
+    margin-top: 36px;
+  }
+}
+
+@media screen and (min-width: $tablet) {
+
+  .index-page {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .get-started-container {
+    display: block;
+  }
+
+  .auth-form-container {
+    width: 400px;
+    flex: initial;
+  }
+}
+
+.auth-header {
+  padding: 18px 0;
+  border-bottom: 1px solid $gray-light;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand-container {
+
+    .brand {
+      text-decoration: none;
+    }
+
+  }
+
+  .get-started {
+    .btn {
+      margin-left: 30px;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+.profile-card {
+
+  background: $white;
+
+  .profile-card-header {
+    min-height: 100px;
+  }
+
+  .profile-card-content {
+    min-height: 50px;
+    padding: 0 10px;
+  }
+
+  .profile-card-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid $white;
+    margin: -40px 0 0;
+  }
+
+  .profile-card-user {
+    margin: 10px 0 0 10px;
+  }
+
+  .profile-card-name {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+
+    a {
+      color: $black;
+    }
+  }
+
+}

@@ -1,0 +1,64 @@
+.pets-list-container {
+  background: $white;
+}
+
+.pets-types-list {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .pet-type-item {
+    background-color: #fff;
+    border: 1px solid #484848;
+    width: 25%;
+    margin: 10px;
+    height: 260px;
+    position: relative;
+    overflow: hidden;
+
+    &.show {
+      .pet-type-facade, .pet-type-form {
+        margin-top: -260px;
+      }
+    }
+
+    .pet-type-icon-container {
+      margin-top: 70px;
+    }
+
+    .pet-type-facade, .pet-type-form {
+      position: absolute;
+      left: 0;
+      right: 0;
+
+      height: 260px;
+
+      -webkit-transition: margin-top .5s linear;
+      -moz-transition: margin-top .5s linear;
+      -ms-transition: margin-top .5s linear;
+      -o-transition: margin-top .5s linear;
+      transition: margin-top .5s linear;
+    }
+
+    .pet-type-facade {
+      top: 0;
+      bottom: 0;
+      background: #484848;
+      cursor: pointer;
+
+      &:hover {
+        background: #484848;
+      }
+    }
+
+    .pet-type-form {
+      top: 100%;
+    }
+
+    .pet-type-icon {
+      width: 100px;
+    }
+
+  }
+}

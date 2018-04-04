@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i");
+
+@import "variables";
+@import "helpers";
+@import "form";
+@import "typography";
+@import "pages/auth";
+@import "pages/pets";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*, :after, :before {
+  box-sizing: border-box;
+}
+
+body {
+  //font: 14px "Montserrat", sans-serif;
+  font: 14px "Roboto", sans-serif;
+  color: $gray-dark;
+}
+
+.container {
+  max-width: 1170px;
+  width: 100%;
+  margin: auto;
+  padding: 0 15px;
+}
+
+#page-content {
+  margin: 20px;
+}
+
+.hr-text {
+  text-align: center;
+  position: relative;
+  outline: 0;
+  border: 0;
+  margin-top: 20px;
+  overflow: hidden;
+
+  &:before, &:after {
+    background-color: $gray-light;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+  }
+
+  &:before {
+    right: 20px;
+    margin-left: -50%;
+  }
+
+  &:after {
+    left: 20px;
+    margin-right: -50%;
+  }
+}
