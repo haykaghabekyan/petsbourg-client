@@ -15,8 +15,7 @@ import NotFound from "./components/error/not-found";
 import Settings from "./components/settings";
 import GeneralSettingsContainer from "./containers/settings/general-settings-container";
 import SecuritySettingsContainer from "./containers/settings/security-settings-container";
-import PetsListMain from "./components/pets/pets-list-main";
-import AddPet from "./components/pets/add-pet";
+import AddPetContainer from "./components/pets/add-pet-container";
 import PostsListContainer from "./containers/posts/posts-list-container";
 
 const protectedRoutes = [{
@@ -35,14 +34,14 @@ const protectedRoutes = [{
         component: Home,
         routes: [{
             path: "/pets",
-            component: PetsListMain
+            component: () => (<div>/pets/</div>)
         }]
     }, {
         path: "/pets/add",
-        component: AddPet,
+        component: AddPetContainer,
         routes: [{
             path: "/pets/add",
-            component: AddPet
+            component: AddPetContainer
         }]
     }, {
         path: "/about",

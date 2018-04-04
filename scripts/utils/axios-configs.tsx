@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const setAxoisConfigs = (): void => {
-    axios.defaults.baseURL = 'http://localhost:8080';
+    axios.defaults.baseURL = 'http://localhost:3000';
 };
 
 export const setAuth = (token?: String): void => {
