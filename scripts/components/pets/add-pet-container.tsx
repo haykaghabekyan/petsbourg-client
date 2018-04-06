@@ -1,9 +1,22 @@
 import * as React from "react";
+import {connect} from "react-redux";
+import AddPetForm from "./add-pet-form";
+import {getPetTypes} from "../../redux/actions/pets";
 
 class AddPetContainer extends React.Component<any, any> {
 
-    constructor (props) {
+    constructor(props) {
         super (props);
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.getPetTypes();
+    }
+
+    handleSubmit(data): void {
+        console.log(data);
     }
 
     render () {
@@ -13,11 +26,24 @@ class AddPetContainer extends React.Component<any, any> {
 
                 </div>
                 <div className="add-pet-form-container">
-                    <h2>Add pet</h2>
+
+                    <AddPetForm onSubmit={this.handleSubmit} />
+
                 </div>
             </div>
         );
     }
 }
 
-export default AddPetContainer;
+const mapStateToProps = state => {
+    return {
+        petTypes: state.pets.petTypes,
+        petBreeds: state.pets.petBreeds
+    };
+};
+
+const actionCreators = {
+    getPetTypes
+};
+
+export default connect(mapStateToProps, actionCreators)(AddPetContainer);
