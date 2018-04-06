@@ -12,7 +12,9 @@ export const getPetTypes = () => {
 
             dispatch({
                 type: SET_PET_TYPES,
-                payload: petTypes
+                payload: {
+                    petTypes
+                }
             });
 
         }).catch (error => {
