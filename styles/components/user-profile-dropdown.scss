@@ -1,0 +1,48 @@
+.user-profile-dropdown {
+
+  .dropdown-content {
+    top: 40px;
+
+    .dropdown-list-container {
+
+      .dropdown-list-title {
+        padding: 12px 16px;
+        color: $gray;
+      }
+
+      .dropdown-list {
+        list-style: none;
+
+        .dropdown-list-item {
+          padding: 0 16px;
+
+          transition: all 0.3s;
+
+          a {
+            color: $gray-dark;
+            display: block;
+            line-height: 40px;
+          }
+
+          &:hover {
+            background: $green;
+
+            a {
+              color: $white;
+            }
+          }
+
+
+        }
+
+      }
+
+      + .dropdown-list-container {
+        border-top: 1px solid $gray-light;
+      }
+
+    }
+
+  }
+
+}

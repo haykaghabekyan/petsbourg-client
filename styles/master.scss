@@ -3,10 +3,23 @@
 
 @import "variables";
 @import "helpers";
-@import "form";
 @import "typography";
+
+@import "form/input";
+@import "form/select";
+@import "form/button";
+
+@import "layouts/main";
+@import "layouts/auth";
+
 @import "pages/auth";
 @import "pages/pets";
+@import "pages/home";
+
+@import "components/header";
+@import "components/dropdown";
+@import "components/user-profile-card";
+@import "components/user-profile-dropdown";
 
 * {
   margin: 0;
@@ -18,20 +31,19 @@
 }
 
 body {
-  //font: 14px "Montserrat", sans-serif;
   font: 14px "Roboto", sans-serif;
   color: $gray-dark;
 }
 
+main {
+  padding: 40px 0;
+}
+
 .container {
-  max-width: 1170px;
+  max-width: 1276px;
   width: 100%;
   margin: auto;
   padding: 0 15px;
-}
-
-#page-content {
-  margin: 20px;
 }
 
 .hr-text {

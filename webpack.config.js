@@ -14,7 +14,7 @@ const copyImages = new CopyWebpackPlugin([{
 });
 
 const browserConfigs = {
-    entry: __dirname + "/scripts/index.tsx",
+    entry: __dirname + "/scripts/index.js",
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "js/bundle.js"
@@ -28,28 +28,27 @@ const browserConfigs = {
     },
 
     module: {
-        rules: [
-            // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-            {
-                test: /\.tsx?$/,
-                loader: "ts-loader"
-            },
-
-            // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-            {
-                enforce: "pre",
-                test: /\.js$/,
-                loader: "source-map-loader"
-            },
-            {
-                test: /\.scss$/,
-                use: extractSass.extract([{
-                    loader: "css-loader" // translates CSS into CommonJS
-                }, {
-                    loader: "sass-loader" // compiles Sass to CSS
-                }])
-            }
-        ]
+        rules: [{
+            test: /\.(js|jsx)$/,
+            use: [{
+                loader: "babel-loader",
+                options: {
+                    presets: ["es2015", "react", "babel-preset-stage-3", "babel-preset-stage-2"],
+                    plugins: []
+                }
+            }]
+        }, {
+            enforce: "pre",
+            test: /\.js$/,
+            loader: "source-map-loader"
+        }, {
+            test: /\.scss$/,
+            use: extractSass.extract([{
+                loader: "css-loader" // translates CSS into CommonJS
+            }, {
+                loader: "sass-loader" // compiles Sass to CSS
+            }])
+        }]
     },
     plugins: [
         extractSass,

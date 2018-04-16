@@ -1,0 +1,43 @@
+.main-layout {
+  background-color: #F5F7FA;
+  min-height: 100vh;
+
+  .header-actions {
+
+    display: flex;
+    align-items: center;
+
+    .search-container {
+      color: #282828;
+      font-weight: bold;
+    }
+
+    .user-profile {
+      margin-left: 30px;
+    }
+
+  }
+
+}
+
+.main-layout-page {
+  display: flex;
+  min-height: calc(100vh - 69px - 80px);
+
+  .main-left-sidebar {
+    width: 196px;
+    background-color: $white;
+  }
+
+  .main-content {
+    flex: 1;
+    background: $white;
+    margin: 0 20px;
+  }
+
+  .main-right-sidebar {
+    width: 300px;
+    min-height: 300px;
+    background: #E0E0E0;
+  }
+}

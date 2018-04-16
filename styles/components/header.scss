@@ -1,0 +1,25 @@
+.main-header {
+  padding: 18px 0;
+  background-color: $white;
+  border-bottom: 1px solid $gray-light;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand-container {
+
+    .brand {
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+  }
+
+  .header-actions {
+
+  }
+}

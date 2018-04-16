@@ -1,11 +1,7 @@
-.auth-layout {
-
-}
-
 .index-page {
   display: flex;
   align-items: center;
-  min-height: calc(100vh - 78px);
+  min-height: calc(100vh - 78px - 80px);
 }
 
 .get-started-container {
@@ -51,30 +47,5 @@
   .auth-form-container {
     width: 400px;
     flex: initial;
-  }
-}
-
-.auth-header {
-  padding: 18px 0;
-  border-bottom: 1px solid $gray-light;
-
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .brand-container {
-
-    .brand {
-      text-decoration: none;
-    }
-
-  }
-
-  .get-started {
-    .btn {
-      margin-left: 30px;
-    }
   }
 }

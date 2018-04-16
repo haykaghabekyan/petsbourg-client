@@ -1,11 +1,47 @@
-.add-pet-container {
-  display: flex;
+.pets-container {
+  .pet-types-list {
+    list-style: none;
 
-  .pet-types-container {
-    width: 300px;
+    .pet-type-item {
+      line-height: 70px;
+      background: $white;
+      border-left: 5px solid $white;
+      border-bottom: 1px solid $gray-light;
+      cursor: pointer;
+
+      transition: all 0.5s;
+
+      display: flex;
+
+      .pet-icon {
+        width: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .pet-name {
+        flex: 1;
+      }
+
+      &:hover {
+        background: rgba($green-light, 0.04);
+        border-left: 5px solid rgba($green-light, 0.04);
+      }
+
+      &.selected {
+        background: rgba($green-light, 0.08);
+        border-left: 5px solid $green;
+      }
+    }
+
   }
 
   .add-pet-form-container {
-    flex: 1;
+    padding: 0 20px;
+
+    .add-pet-title {
+      margin: 45px 0;
+    }
   }
 }

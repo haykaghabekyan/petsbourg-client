@@ -1,0 +1,58 @@
+.home-container {
+
+  .pet-types-list-container {
+    padding: 0 20px;
+
+    .add-pet-title {
+      margin: 45px 0 0;
+    }
+  }
+
+  .pet-types-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    .pet-type-item {
+      margin: 50px 0;
+      width: 25%;
+      align-content: center;
+      color: $green-light;
+
+
+      .pet-type-icon {
+        display: flex;
+        justify-content: center;
+        width: 120px;
+        height: 120px;
+        margin: auto;
+        border-radius: 50%;
+        background: rgba($green-light, 0.08);
+      }
+
+      .pet-type-name {
+        text-align: center;
+        color: $gray-dark;
+        line-height: 16px;
+        margin-top: 18px;
+      }
+
+      &:hover {
+
+        .pet-type-icon {
+          background: $green;
+
+          transition: all 0.5s;
+        }
+
+        svg {
+          fill: $white;
+
+          transition: all 0.5s;
+        }
+      }
+
+    }
+
+  }
+
+}
