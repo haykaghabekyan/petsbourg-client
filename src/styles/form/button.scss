@@ -1,0 +1,113 @@
+button, .btn {
+  display: inline-block;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 40px;
+  padding: 0 40px;
+  cursor: pointer;
+  border-radius: 25px;
+  text-decoration: none;
+  border: none;
+
+  transition: all 0.3s;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    border: none;
+  }
+
+  svg {
+    transition: all 0.3s;
+  }
+
+  &.btn-transparent {
+    color: $gray;
+    border: 1px solid $gray-light;
+  }
+
+  &.btn-green {
+    background: $green;
+    color: $white;
+
+    &:active {
+      background-color: $green-dark;
+    }
+
+    &:hover {
+      background-color: $green-light;
+    }
+  }
+
+  &.btn-gray {
+    background: $gray-dark;
+    color: $white;
+  }
+
+  .btn-icon-left {
+    margin-right: 10px;
+  }
+
+  &.btn-circle {
+    color: $white;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 60px;
+    font-size: 24px;
+  }
+
+  &.btn-facebook {
+    border: 1px solid #BDBDBD;
+
+    &:hover {
+      border: 1px solid #3B5998;
+
+      svg {
+        fill: #3B5998;
+      }
+    }
+  }
+
+  &.btn-twitter {
+    border: 1px solid #BDBDBD;
+
+    &:hover {
+      border: 1px solid #1DA1F2;
+
+      svg {
+        fill: #1DA1F2;
+      }
+    }
+  }
+
+  &.btn-google {
+    border: 1px solid #BDBDBD;
+
+    &:hover {
+      border: 1px solid #DB4437;
+
+      #GoogleIconOrangeVector {
+        fill: #FBBB00;
+      }
+
+      #GoogleIconBlueVector {
+        fill: #518EF8;
+      }
+
+      #GoogleIconGreenVector {
+        fill: #28B446;
+      }
+
+      #GoogleIconRedVector {
+        fill: #F14336;
+      }
+    }
+  }
+
+}
