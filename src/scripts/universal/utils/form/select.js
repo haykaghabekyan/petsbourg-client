@@ -25,16 +25,6 @@ class Select extends React.Component {
         this.close = this.close.bind(this);
     }
 
-    // componentWillReceiveProps(nextProps) {
-    //     if (nextProps.input.value === this.props.input.value) {
-    //         this.props.input.onChange("");
-    //
-    //         this.setState({
-    //             placeholder: nextProps.placeholder,
-    //         });
-    //     }
-    // }
-
     close () {
         this.setState({
             open: false

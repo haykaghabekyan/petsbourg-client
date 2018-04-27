@@ -28,7 +28,6 @@ class AddPetForm extends React.Component {
                 <h3 className="add-pet-title">Please, add your pet details</h3>
 
                 <form onSubmit={handleSubmit}>
-
                     <Field name="breed" id="addPetBreed" placeholder="Select breed" options={ breedsOptions } component={ Select } validate={ [required] } />
 
                     <Field name="name" id="addPetName" placeholder="Name" component={ Input } validate={ [required] } />
@@ -46,4 +45,7 @@ class AddPetForm extends React.Component {
 
 const formName = "addPetForm";
 
-export default reduxForm({ form: formName })(AddPetForm);
+export default reduxForm({
+    form: formName,
+    destroyOnUnmount: false,
+})(AddPetForm);
