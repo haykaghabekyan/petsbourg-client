@@ -9,7 +9,7 @@ const config = {
     mode: "development",
     entry: path.join(__dirname, "/src/scripts/browser/index.js"),
     output: {
-        path: path.join(__dirname, "/dist"),
+        path: path.join(__dirname, "/dist/public"),
         filename: "js/bundle.js"
     },
     // Enable sourcemaps for debugging webpack's output.
@@ -20,7 +20,7 @@ const config = {
             use: [{
                 loader: "babel-loader",
                 options: {
-                    presets: ["es2015", "react", "stage-2", "stage-3"],
+                    presets: ["es2015", "react", "stage-0"],
                     plugins: []
                 }
             }]
