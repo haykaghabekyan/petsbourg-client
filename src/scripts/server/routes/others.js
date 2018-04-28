@@ -1,3 +1,5 @@
+import "babel-polyfill";
+
 import React from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
@@ -16,26 +18,43 @@ import reducer from "../../universal/redux/reducers/index";
 
 import view from "../view";
 
-const otherRoutes = (req, res) => {
+const otherRoutes = async (req, res) => {
     let context = {
         url: null
     };
     const preloadedState = {
+        auth: {
+            isAuthenticated: false,
+            user: null,
+        },
         pets: {
             petTypes: [],
-            userPets: []
+            userPets: [],
         },
     };
     const hydrate = true;
 
-    const { cookies } = new UniversalCookies(req.headers.cookie);
+    const cookies = new UniversalCookies(req.headers.cookie);
+
+    const jwtToken = cookies.get("jwtToken");
 
     try {
-        const decoded = jwt.verify(cookies.jwtToken, JWT_PUBLIC_KEY);
-        preloadedState["auth"] = {
+        const decoded = jwt.verify(jwtToken, JWT_PUBLIC_KEY);
+        preloadedState.auth = {
             isAuthenticated: true,
             user: decoded.user
         };
+
+        axios.defaults.headers.common['Authorization'] = `Bearer ${ jwtToken }`;
+
+        try {
+            const result = await axios.get("http://localhost:3000/api/pets");
+
+            preloadedState.pets.userPets = result.data;
+        } catch (error) {
+
+        }
+
     } catch(err) {
         //...
     }

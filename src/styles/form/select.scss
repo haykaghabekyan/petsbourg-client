@@ -5,6 +5,12 @@
     .select {
       .select-text {
         border: 1px solid $red;
+
+        &.no-border {
+          border-top: none;
+          border-left: none;
+          border-right: none;
+        }
       }
     }
 
@@ -33,6 +39,12 @@
       .select-text {
         border: 1px solid $green;
         border-bottom: none;
+
+        &.no-border {
+          border-top: none;
+          border-left: none;
+          border-right: none;
+        }
 
         &:after {
           transform: rotate(-180deg);
@@ -67,6 +79,12 @@
       border: 1px solid $gray-light;
       border-bottom: none;
       position: relative;
+
+      &.no-border {
+        border-top: none;
+        border-left: none;
+        border-right: none;
+      }
 
       &:hover {
         background: rgba($green, 0.02);

@@ -2,4 +2,4 @@ export const SET_CURRENT_USER = "SET_CURRENT_USER";
 export const REMOVE_CURRENT_USER = "REMOVE_CURRENT_USER";
 
 export const SET_POSTS = "SET_POSTS";
-export const SET_PETS = "SET_PETS";
+export const SET_USER_PETS = "SET_USER_PETS";

@@ -6,11 +6,13 @@ class Select extends React.Component {
 
     static propTypes = {
         placeholder: PropTypes.string.isRequired,
+        border: PropTypes.bool,
     };
 
     static defaultProps = {
         disabled: false,
         options: [],
+        border: true,
     };
 
     constructor (props) {
@@ -54,14 +56,14 @@ class Select extends React.Component {
     }
 
     render () {
-        const {options, input, meta: { touched, error }, disabled} = this.props;
+        const {options, input, meta: { touched, error }, disabled, border} = this.props;
         const {placeholder, open} = this.state;
 
         return (
             <ClickListener onClickOutside={this.close}>
                 <div className={`select-container ${ (touched && error) ? "select-error" : "" }`} disabled={ disabled }>
                     <ul className={`select ${ open ? "select-open" : "" }`}>
-                        <li className="select-text" onClick={this.toggle} onKeyPress={this.toggle}>
+                        <li className={`select-text ${ border ? "" : "no-border" }`} onClick={this.toggle} onKeyPress={this.toggle}>
                             <input type="hidden" value={input.value} />
                             {placeholder}
                         </li>

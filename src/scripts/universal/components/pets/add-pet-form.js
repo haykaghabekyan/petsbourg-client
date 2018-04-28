@@ -14,7 +14,7 @@ const genderOptions = [{
 
 class AddPetForm extends React.Component {
     render() {
-        const {handleSubmit, petType, breeds} = this.props;
+        const {handleSubmit, breeds} = this.props;
 
         const breedsOptions = breeds.map(breed => {
             return {

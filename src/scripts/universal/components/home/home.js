@@ -7,6 +7,12 @@ const Home = (props) => {
     if (!userPets.length) {
         return <AddPet />;
     }
+
+    return (
+        <div>
+            This user owns pet(s).
+        </div>
+    );
 };
 
 export default Home;

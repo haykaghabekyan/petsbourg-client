@@ -3,6 +3,8 @@ import * as jwt from "jsonwebtoken";
 import {REMOVE_CURRENT_USER, SET_CURRENT_USER} from "../types";
 import { setAuth, removeAuth } from "../../utils/auth";
 
+import { setUserPets } from "./pets";
+
 export const setCurrentUser = (user) => {
     return {
         type: SET_CURRENT_USER,
@@ -21,12 +23,13 @@ export const signIn = (data) => {
         const req = axios.post("/api/auth/sign-in", data);
 
         req.then(response => {
-            const { token } = response.data;
+            const { token, pets } = response.data;
 
             setAuth(token);
 
             const decodedToken = jwt.decode(token);
             dispatch(setCurrentUser(decodedToken.user));
+            dispatch(setUserPets(pets));
 
         }).catch(error => {
             console.log(error);

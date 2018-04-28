@@ -16,9 +16,9 @@ class SignInForm extends React.Component {
             <div className="auth-form-container">
                 <h3>Sign in to Petsbourg</h3>
                 <form className="auth-form" onSubmit={handleSubmit}>
-                    <Field name="email" type="text" id="signIpEmail" placeholder="Email" component={ Input } validate={ [required, email] } />
+                    <Field name="email" type="text" id="signIpEmail" placeholder="Email" component={ Input } validate={ [required, email] } border={false} />
 
-                    <Field name="password" type="password" id="signIpPassword" placeholder="Password" component={ Input } validate={ [required] } />
+                    <Field name="password" type="password" id="signIpPassword" placeholder="Password" component={ Input } validate={ [required] } border={false} />
 
                     <div className="action-buttons-container">
                         <Link to="/forgot-password">Forgot your password?</Link>

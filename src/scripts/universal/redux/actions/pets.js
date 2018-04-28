@@ -1,5 +1,12 @@
 import axios from "axios";
-import {SET_PETS} from "../types";
+import {SET_PETS, SET_USER_PETS} from "../types";
+
+export const setUserPets = pets => {
+    return {
+        type: SET_USER_PETS,
+        pets
+    };
+};
 
 export const getPetsByUserId = userId => {
 

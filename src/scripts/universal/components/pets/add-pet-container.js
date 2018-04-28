@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import AddPetForm from "./add-pet-form";
 import getPetIcon from "../../utils/icons/pets";
+import {addPet} from "../../redux/actions/pets";
 
 const PetTypeItem = ({ petType, selected }) => {
     const PetIcon = getPetIcon(petType);
@@ -32,7 +33,13 @@ class AddPetContainer extends React.Component {
     }
 
     handleSubmit(data) {
-        console.log(data);
+
+        const selectedPetType = this.props.match.params.petType || null;
+
+        this.props.addPet({
+            ...data,
+            type: selectedPetType,
+        });
     };
 
     render () {
@@ -41,20 +48,22 @@ class AddPetContainer extends React.Component {
 
         return (
             <div className="main-layout-page pets-container">
-                <div className="main-left-sidebar pet-types-container">
-                    <ul className="pet-types-list">
-                        {
-                            Object.keys(petTypes).map(petType => {
-                                return (
-                                    <PetTypeItem
-                                        key={petType}
-                                        petType={petType}
-                                        selected={ petType.toLowerCase() === selectedPetType }
-                                    />
-                                );
-                            })
-                        }
-                    </ul>
+                <div className="main-left-sidebar">
+                    <div className="pet-types-container">
+                        <ul className="pet-types-list">
+                            {
+                                Object.keys(petTypes).map(petType => {
+                                    return (
+                                        <PetTypeItem
+                                            key={petType}
+                                            petType={petType}
+                                            selected={ petType.toLowerCase() === selectedPetType }
+                                        />
+                                    );
+                                })
+                            }
+                        </ul>
+                    </div>
                 </div>
                 <div className="main-content">
                     { selectedPetType ? <AddPetForm key={selectedPetType} onSubmit={this.handleSubmit} petType={selectedPetType} breeds={petTypes[capitalize(selectedPetType)]} /> : 'Select pet type' }
@@ -71,4 +80,8 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(AddPetContainer);
+const actionCreators = {
+    addPet
+};
+
+export default connect(mapStateToProps, actionCreators)(AddPetContainer);

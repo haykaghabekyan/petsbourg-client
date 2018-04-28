@@ -1,20 +1,7 @@
 import {SET_CURRENT_USER, REMOVE_CURRENT_USER} from "../types";
 import {isEmpty} from "lodash";
 
-interface UserInterface {
-    id?: string;
-    firstName?: string;
-    lastName?: string;
-    username?: string;
-    email?: string;
-}
-
-interface InitialStateInterface {
-    isAuthenticated: Boolean;
-    user: UserInterface;
-}
-
-const initialState: InitialStateInterface = {
+const initialState = {
     isAuthenticated: false,
     user: {}
 };
