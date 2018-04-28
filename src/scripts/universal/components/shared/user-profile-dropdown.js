@@ -1,11 +1,12 @@
-import * as React from "react";
+import React from "react";
 import {Link} from "react-router-dom";
 import SignOutContainer from "../auth/sign-out-container";
+import UserIcon from "../../utils/icons/user";
 
 export const Header = () => {
     return (
         <div className="user-profile-avatar">
-
+            <UserIcon width={12} />
         </div>
     );
 };

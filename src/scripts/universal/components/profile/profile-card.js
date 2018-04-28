@@ -1,12 +1,14 @@
-import * as React from "react";
+import React from "react";
+import UserIcon from "../../utils/icons/user";
 
 const Card = ({ user }) => {
     return (
         <div className="profile-card-container">
             <div className="profile-card-content">
                 <div className="avatar-container">
-                    {/*<img src="" alt=""/>*/}
-                    <div className="profile-card-avatar" />
+                    <div className="profile-card-avatar">
+                        <UserIcon width={18} />
+                    </div>
                 </div>
                 <div className="profile-card-user">
                     <div className="profile-card-name">
