@@ -28,6 +28,13 @@ export const Content = () => {
             <div className="dropdown-list-container">
                 <ul className="dropdown-list">
                     <li className="dropdown-list-item">
+                        <Link to="/pets/add">Add pet</Link>
+                    </li>
+                </ul>
+            </div>
+            <div className="dropdown-list-container">
+                <ul className="dropdown-list">
+                    <li className="dropdown-list-item">
                         <Link to="">My Profile</Link>
                     </li>
                     <li className="dropdown-list-item">

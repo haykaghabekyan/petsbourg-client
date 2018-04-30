@@ -1,8 +1,19 @@
-import * as React from "react";
+import React from "react";
 import {renderRoutes} from "react-router-config";
 import {connect} from "react-redux";
-import ProfileCardContainer from "../profile/profile-card-container";
 import {Link} from "react-router-dom";
+import ProfileCardContainer from "../profile/profile-card-container";
+import getPetIcon from "../../utils/icons/pets";
+import capatalzie from "../../utils/helpers/capatalize";
+
+const getPicture = (pet, width=23) => {
+    if (pet.picture) {
+        return <img src={pet.picture} width={width} alt="" />;
+    }
+
+    const PetIcon = getPetIcon(capatalzie(pet.type));
+    return <PetIcon width={width} />;
+};
 
 const HomeContainer = ({ route, userPets }) => {
     return (
@@ -18,7 +29,7 @@ const HomeContainer = ({ route, userPets }) => {
                                     <li key={key}>
                                         <Link to={`/pets/`} className={`pet-type-item ${ false ? "selected" : "" }`}>
                                             <div className="pet-icon">
-
+                                                { getPicture(pet) }
                                             </div>
                                             <div className="pet-name">{ pet.name }</div>
                                         </Link>

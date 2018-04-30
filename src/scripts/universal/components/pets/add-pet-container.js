@@ -4,25 +4,7 @@ import {Link} from "react-router-dom";
 import AddPetForm from "./add-pet-form";
 import getPetIcon from "../../utils/icons/pets";
 import {addPet} from "../../redux/actions/pets";
-
-const PetTypeItem = ({ petType, selected }) => {
-    const PetIcon = getPetIcon(petType);
-
-    return (
-        <li>
-            <Link to={`/pets/add/${ petType.toLowerCase() }`} className={`pet-type-item ${ selected ? "selected" : "" }`}>
-                <div className="pet-icon">
-                    <PetIcon width={30} />
-                </div>
-                <div className="pet-name">{ petType }</div>
-            </Link>
-        </li>
-    );
-};
-
-const capitalize = str => {
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-};
+import capitalize from "../../utils/helpers/capatalize";
 
 class AddPetContainer extends React.Component {
 
@@ -52,13 +34,18 @@ class AddPetContainer extends React.Component {
                     <div className="pet-types-container">
                         <ul className="pet-types-list">
                             {
-                                Object.keys(petTypes).map(petType => {
+                                Object.keys(petTypes).map((petType, key) => {
+                                    const PetIcon = getPetIcon(petType);
+
                                     return (
-                                        <PetTypeItem
-                                            key={petType}
-                                            petType={petType}
-                                            selected={ petType.toLowerCase() === selectedPetType }
-                                        />
+                                        <li key={key}>
+                                            <Link to={`/pets/add/${ petType.toLowerCase() }`} className={`pet-type-item ${ petType.toLowerCase() === selectedPetType ? "selected" : "" }`}>
+                                                <div className="pet-icon">
+                                                    <PetIcon width={30} />
+                                                </div>
+                                                <div className="pet-name">{ petType }</div>
+                                            </Link>
+                                        </li>
                                     );
                                 })
                             }
@@ -66,7 +53,13 @@ class AddPetContainer extends React.Component {
                     </div>
                 </div>
                 <div className="main-content">
-                    { selectedPetType ? <AddPetForm key={selectedPetType} onSubmit={this.handleSubmit} petType={selectedPetType} breeds={petTypes[capitalize(selectedPetType)]} /> : 'Select pet type' }
+                    { selectedPetType ?
+                        <AddPetForm
+                            key={selectedPetType}
+                            onSubmit={this.handleSubmit}
+                            petType={selectedPetType}
+                            breeds={petTypes[capitalize(selectedPetType)]}
+                        /> : 'Select pet type' }
                 </div>
                 <div className="main-right-sidebar" />
             </div>

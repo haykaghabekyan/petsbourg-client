@@ -1,0 +1,39 @@
+.pets-list {
+  list-style: none;
+
+  .pets-list-item {
+    background: $white;
+    border-left: 5px solid $white;
+    border-bottom: 1px solid $gray-light;
+
+    transition: all 0.5s;
+
+    .pets-list-item-link {
+      display: flex;
+      align-items: center;
+      height: 70px;
+
+      .pets-list-item-icon {
+        width: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .pets-list-item-name {
+        flex: 1;
+      }
+    }
+
+    &:hover {
+      background: rgba($green-light, 0.04);
+      border-left: 5px solid rgba($green-light, 0.04);
+    }
+
+    &.selected {
+      background: rgba($green-light, 0.08);
+      border-left: 5px solid $green;
+    }
+  }
+
+}

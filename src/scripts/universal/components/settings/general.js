@@ -1,9 +1,9 @@
-import * as React from "react";
+import React from "react";
 import Input from "../../utils/form/input";
 import { Field, reduxForm, SubmissionError } from "redux-form";
 import { required } from "../../utils/form/validators";
 
-class GeneralSettings extends React.Component<any, any> {
+class GeneralSettings extends React.Component {
     constructor (props) {
         super (props);
         this.onSubmit = this.onSubmit.bind(this);
