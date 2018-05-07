@@ -2,6 +2,7 @@ import * as React from "react";
 import {connect} from "react-redux";
 import {signIn} from "../../redux/actions/auth";
 import SignInForm from "./sign-in-form";
+import {SubmissionError} from "redux-form";
 
 class SignIn extends React.Component {
 
@@ -12,7 +13,11 @@ class SignIn extends React.Component {
     }
 
     handleSubmit (data) {
-        this.props.signIn(data);
+        return this.props.signIn(data).catch(error => {
+            throw new SubmissionError({
+                ...error.response.data.errors
+            });
+        });
     }
 
     render () {

@@ -52,7 +52,7 @@ export const signUp = (data) => {
             dispatch(setCurrentUser(decodedToken.user));
 
         }).catch(error => {
-            console.log(error);
+
         });
 
         return req;

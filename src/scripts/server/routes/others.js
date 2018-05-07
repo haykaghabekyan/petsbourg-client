@@ -46,39 +46,37 @@ const otherRoutes = async (req, res) => {
         };
 
         axios.defaults.headers.common['Authorization'] = `Bearer ${ jwtToken }`;
-
-        try {
-            const result = await axios.get("http://localhost:3000/api/pets");
-
-            preloadedState.pets.userPets = result.data;
-        } catch (error) {
-
-        }
-
-    } catch(err) {
-        //...
+    } catch(error) {
+        console.log("error", error);
     }
 
-    axios.get("http://localhost:3000/api/pets/pet-types").then(response => {
+    try {
+        const result = await axios.get("http://localhost:3000/api/pets");
 
-        preloadedState.pets.petTypes = response.data.petTypes;
+        preloadedState.pets.userPets = result.data;
+    } catch (error) {
+        // console.log("error", error);
+    }
 
-        const store = createStore(reducer, preloadedState, compose(applyMiddleware(thunk)));
+    try {
+        const result = await axios.get("http://localhost:3000/api/pet-types");
 
-        const markup = renderToString(
-            <StaticRouter location={req.url} context={context}>
-                <Provider store={store}>
-                    <App />
-                </Provider>
-            </StaticRouter>
-        );
+        preloadedState.pets.petTypes = result.data;
+    } catch (error) {
+        // console.log("error", error);
+    }
 
-        res.send(view(markup, preloadedState, hydrate));
+    const store = createStore(reducer, preloadedState, compose(applyMiddleware(thunk)));
 
-    }).catch(error => {
-        console.log(error);
-    });
+    const markup = renderToString(
+        <StaticRouter location={req.url} context={context}>
+            <Provider store={store}>
+                <App />
+            </Provider>
+        </StaticRouter>
+    );
 
+    res.send(view(markup, preloadedState, hydrate));
 };
 
 export default otherRoutes;
