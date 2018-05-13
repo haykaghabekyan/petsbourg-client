@@ -15,7 +15,7 @@ const getPicture = (pet, width=23) => {
     return <PetIcon width={width} />;
 };
 
-const HomeContainer = ({ route, userPets }) => {
+const HomeContainer = ({ route, userPets = [] }) => {
     return (
         <div className="main-layout-page home-container">
             <div className="main-left-sidebar">

@@ -10,16 +10,16 @@ const HomeAddPet = ({ petTypes }) => {
 
             <div className="pet-types-list">
                 {
-                    Object.keys(petTypes).map(petType => {
+                    petTypes.map(petType => {
 
-                        const PetIcon = getPetIcon(petType);
+                        const PetIcon = getPetIcon(petType.name);
 
                         return (
-                            <Link key={petType} to={`/pets/add/${ petType.toLowerCase() }`} className="pet-type-item">
+                            <Link key={petType.id} to={`/pets/add/${ petType.name.toLowerCase() }`} className="pet-type-item">
                                 <div className="pet-type-icon">
                                     <PetIcon width={53} />
                                 </div>
-                                <p className="pet-type-name">{ petType }</p>
+                                <p className="pet-type-name">{ petType.name }</p>
                             </Link>
                         )
                     })

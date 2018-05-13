@@ -9,8 +9,8 @@ import thunk from "redux-thunk";
 
 import axios from "axios";
 
-import UniversalCookies from "universal-cookie";
-import jwt from "jsonwebtoken";
+import UniversalCookie from "universal-cookie";
+import * as jwt from "jsonwebtoken";
 import { JWT_PUBLIC_KEY } from "../configs/jwt";
 
 import App from "../../universal/app";
@@ -33,21 +33,21 @@ const otherRoutes = async (req, res) => {
         },
     };
     const hydrate = true;
-
-    const cookies = new UniversalCookies(req.headers.cookie);
-
+    const cookies = new UniversalCookie(req.headers.cookie);
     const jwtToken = cookies.get("jwtToken");
 
-    try {
-        const decoded = jwt.verify(jwtToken, JWT_PUBLIC_KEY);
-        preloadedState.auth = {
-            isAuthenticated: true,
-            user: decoded.user
-        };
+    if (jwtToken) {
+        try {
+            const decoded = jwt.verify(jwtToken, JWT_PUBLIC_KEY);
+            preloadedState.auth = {
+                isAuthenticated: true,
+                user: decoded.user
+            };
 
-        axios.defaults.headers.common['Authorization'] = `Bearer ${ jwtToken }`;
-    } catch(error) {
-        console.log("error", error);
+            axios.defaults.headers.common['Authorization'] = `Bearer ${ jwtToken }`;
+        } catch(error) {
+            console.log("error", error);
+        }
     }
 
     try {
@@ -59,11 +59,11 @@ const otherRoutes = async (req, res) => {
     }
 
     try {
-        const result = await axios.get("http://localhost:3000/api/pet-types");
+        const result = await axios.get("http://localhost:3000/api/pets/pet-types");
 
-        preloadedState.pets.petTypes = result.data;
+        preloadedState.pets.petTypes = result.data.petTypes;
     } catch (error) {
-        // console.log("error", error);
+        console.log("error", error);
     }
 
     const store = createStore(reducer, preloadedState, compose(applyMiddleware(thunk)));

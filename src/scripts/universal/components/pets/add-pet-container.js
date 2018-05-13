@@ -34,16 +34,16 @@ class AddPetContainer extends React.Component {
                     <div className="pet-types-container">
                         <ul className="pet-types-list">
                             {
-                                Object.keys(petTypes).map((petType, key) => {
-                                    const PetIcon = getPetIcon(petType);
+                                petTypes.map((petType, key) => {
+                                    const PetIcon = getPetIcon(petType.name);
 
                                     return (
                                         <li key={key}>
-                                            <Link to={`/pets/add/${ petType.toLowerCase() }`} className={`pet-type-item ${ petType.toLowerCase() === selectedPetType ? "selected" : "" }`}>
+                                            <Link to={`/pets/add/${ petType.name.toLowerCase() }`} className={`pet-type-item ${ petType.name.toLowerCase() === selectedPetType ? "selected" : "" }`}>
                                                 <div className="pet-icon">
                                                     <PetIcon width={30} />
                                                 </div>
-                                                <div className="pet-name">{ petType }</div>
+                                                <div className="pet-name">{ petType.name }</div>
                                             </Link>
                                         </li>
                                     );

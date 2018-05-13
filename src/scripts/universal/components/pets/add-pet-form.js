@@ -42,7 +42,6 @@ class AddPetForm extends React.Component {
 
 }
 
-
 const formName = "addPetForm";
 
 export default reduxForm({
