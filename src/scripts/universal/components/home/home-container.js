@@ -4,18 +4,18 @@ import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import ProfileCardContainer from "../profile/profile-card-container";
 import getPetIcon from "../../utils/icons/pets";
-import capatalzie from "../../utils/helpers/capatalize";
 
 const getPicture = (pet, width=23) => {
     if (pet.picture) {
         return <img src={pet.picture} width={width} alt="" />;
     }
 
-    const PetIcon = getPetIcon(capatalzie(pet.type));
+    const PetIcon = getPetIcon(pet.PetType.name);
+
     return <PetIcon width={width} />;
 };
 
-const HomeContainer = ({ route, userPets = [] }) => {
+const HomeContainer = ({ route, userPets }) => {
     return (
         <div className="main-layout-page home-container">
             <div className="main-left-sidebar">
@@ -24,10 +24,10 @@ const HomeContainer = ({ route, userPets = [] }) => {
                 <div className="pet-types-container">
                     <ul className="pet-types-list">
                         {
-                            userPets.map((pet, key) => {
+                            userPets && userPets.map((pet, key) => {
                                 return (
                                     <li key={key}>
-                                        <Link to={`/pets/`} className={`pet-type-item ${ false ? "selected" : "" }`}>
+                                        <Link to={`/pets/${ pet.id }`} className={`pet-type-item ${ false ? "selected" : "" }`}>
                                             <div className="pet-icon">
                                                 { getPicture(pet) }
                                             </div>

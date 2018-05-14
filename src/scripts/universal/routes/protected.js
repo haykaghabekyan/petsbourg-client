@@ -40,9 +40,6 @@ const protectedRoutes = [{
         exact: true,
         component: AddPetContainer
     }, {
-        path: "/pets/add/:petType",
-        component: AddPetContainer
-    }, {
         path: "/about",
         component: About
     }, {

@@ -5,7 +5,6 @@ import find from "lodash/find"
 import AddPetForm from "./add-pet-form";
 import getPetIcon from "../../utils/icons/pets";
 import {addPet} from "../../redux/actions/pets";
-import capitalize from "../../utils/helpers/capatalize";
 
 class AddPetContainer extends React.Component {
 
@@ -16,8 +15,7 @@ class AddPetContainer extends React.Component {
     }
 
     handleSubmit(data) {
-
-        const selectedPetType = this.props.match.params.petType || null;
+        const selectedPetType = this.props.location.petType || null;
 
         this.props.addPet({
             ...data,
@@ -26,11 +24,11 @@ class AddPetContainer extends React.Component {
     };
 
     render () {
-        const selectedPetType = this.props.match.params.petType || null;
+        const selectedPetType = this.props.location.petType || null;
         const { petTypes } = this.props;
 
         const breeds = find(petTypes, pT => {
-            return pT.name === capitalize(selectedPetType)
+            return pT.id === selectedPetType
         });
 
         return (
@@ -44,7 +42,10 @@ class AddPetContainer extends React.Component {
 
                                     return (
                                         <li key={key}>
-                                            <Link to={`/pets/add/${ petType.name.toLowerCase() }`} className={`pet-type-item ${ petType.name.toLowerCase() === selectedPetType ? "selected" : "" }`}>
+                                            <Link to={{
+                                                pathname: "/pets/add",
+                                                petType: petType.id
+                                            }} className={`pet-type-item ${ petType.id === selectedPetType ? "selected" : "" }`}>
                                                 <div className="pet-icon">
                                                     <PetIcon width={30} />
                                                 </div>

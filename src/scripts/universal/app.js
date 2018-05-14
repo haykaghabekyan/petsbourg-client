@@ -11,7 +11,7 @@ class App extends React.Component {
 
     render () {
         const { auth } = this.props;
-        const routesToRender = auth.isAuthenticated ? protectedRoutes : publicRoutes;
+        const routesToRender = auth.user ? protectedRoutes : publicRoutes;
 
         return renderRoutes(routesToRender);
     }

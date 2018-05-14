@@ -15,7 +15,10 @@ const HomeAddPet = ({ petTypes }) => {
                         const PetIcon = getPetIcon(petType.name);
 
                         return (
-                            <Link key={petType.id} to={`/pets/add/${ petType.name.toLowerCase() }`} className="pet-type-item">
+                            <Link key={petType.id} to={{
+                                pathname: "/pets/add",
+                                petType: petType.id
+                            }} className="pet-type-item">
                                 <div className="pet-type-icon">
                                     <PetIcon width={53} />
                                 </div>

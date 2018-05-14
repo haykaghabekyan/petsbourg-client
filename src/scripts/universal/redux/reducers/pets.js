@@ -9,8 +9,7 @@ export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case SET_USER_PETS:
             return {
-                ...state,
-                userPets: action.pets
+                ...state, userPets: action.pets
             };
         default:
             return state;

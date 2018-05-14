@@ -24,7 +24,6 @@ const otherRoutes = async (req, res) => {
     };
     const preloadedState = {
         auth: {
-            isAuthenticated: false,
             user: null,
         },
         pets: {
@@ -40,22 +39,22 @@ const otherRoutes = async (req, res) => {
         try {
             const decoded = jwt.verify(jwtToken, JWT_PUBLIC_KEY);
             preloadedState.auth = {
-                isAuthenticated: true,
                 user: decoded.user
             };
 
             axios.defaults.headers.common['Authorization'] = `Bearer ${ jwtToken }`;
+
         } catch(error) {
             console.log("error", error);
         }
     }
 
     try {
-        const result = await axios.get("http://localhost:3000/api/pets");
+        const result = await axios.get(`http://localhost:3000/api/users/1/pets`);
 
-        preloadedState.pets.userPets = result.data;
+        preloadedState.pets.userPets = result.data.userPets;
     } catch (error) {
-        // console.log("error", error);
+        console.log("error", error);
     }
 
     try {
