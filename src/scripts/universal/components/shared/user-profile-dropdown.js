@@ -12,7 +12,8 @@ export const Header = () => {
     );
 };
 
-const ContentComponent = ({ pets }) => {
+const ContentComponent = ({ me }) => {
+    const { profile, pets } = me;
     return (
         <div>
             <div className="dropdown-list-container">
@@ -22,7 +23,7 @@ const ContentComponent = ({ pets }) => {
                         pets && pets.map((pet, key) => {
                             return (
                                 <li className="dropdown-list-item" key={key}>
-                                    <Link to="">{ pet.name }</Link>
+                                    <Link to={`/${profile.username}/${pet.id}`}>{ pet.name }</Link>
                                 </li>
                             );
                         })
@@ -39,10 +40,10 @@ const ContentComponent = ({ pets }) => {
             <div className="dropdown-list-container">
                 <ul className="dropdown-list">
                     <li className="dropdown-list-item">
-                        <Link to="">My Profile</Link>
+                        <Link to={ `/${ profile.username }` }>My Profile</Link>
                     </li>
                     <li className="dropdown-list-item">
-                        <Link to="">Settings</Link>
+                        <Link to="/settings">Settings</Link>
                     </li>
                     <li className="dropdown-list-item">
                         <SignOutContainer />
@@ -55,7 +56,7 @@ const ContentComponent = ({ pets }) => {
 
 const mapStateToProps = state => {
     return {
-        pets: state.me.pets,
+        me: state.me,
     };
 };
 

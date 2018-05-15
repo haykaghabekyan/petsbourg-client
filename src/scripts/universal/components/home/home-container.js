@@ -30,7 +30,7 @@ const HomeContainer = ({ route, me }) => {
                             pets && pets.map((pet, key) => {
                                 return (
                                     <li key={key}>
-                                        <Link to={`/${ profile.username }/pets/${ pet.id }`} className={`pet-type-item ${ false ? "selected" : "" }`}>
+                                        <Link to={`/${ profile.username }/${ pet.id }`} className={`pet-type-item ${ false ? "selected" : "" }`}>
                                             <div className="pet-icon">
                                                 { getPicture(pet) }
                                             </div>

@@ -59,11 +59,21 @@ const protectedRoutes = [{
         component: () => <Redirect to="/" />
     }, {
         path: "/:username",
+        exact: true,
         component: (props) => {
-            console.log(props);
+            console.log(props.match.params);
 
             return (
-                <div>{ props.match.params.username }</div>
+                <div>profile</div>
+            );
+        }
+    }, {
+        path: "/:username/:petId",
+        component: (props) => {
+            console.log(props.match.params);
+
+            return (
+                <div>pet</div>
             );
         }
     }, {
