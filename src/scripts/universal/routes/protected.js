@@ -18,9 +18,6 @@ const protectedRoutes = [{
     component: MainLayout,
     routes: [{
         path: "/",
-        loadData: () => {
-            console.log("loadData");
-        },
         exact: true,
         component: HomeContainer,
         routes: [{

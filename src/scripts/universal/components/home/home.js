@@ -1,10 +1,9 @@
 import * as React from "react";
 import AddPet from "./add-pet";
 
-const Home = (props) => {
-    const { userPets } = props;
+const Home = ({ pets }) => {
 
-    if (!userPets.length) {
+    if (!pets) {
         return <AddPet />;
     }
 

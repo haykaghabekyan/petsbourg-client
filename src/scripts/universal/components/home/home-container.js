@@ -15,7 +15,10 @@ const getPicture = (pet, width=23) => {
     return <PetIcon width={width} />;
 };
 
-const HomeContainer = ({ route, userPets }) => {
+const HomeContainer = ({ route, me }) => {
+
+    const { profile, pets} = me;
+
     return (
         <div className="main-layout-page home-container">
             <div className="main-left-sidebar">
@@ -24,10 +27,10 @@ const HomeContainer = ({ route, userPets }) => {
                 <div className="pet-types-container">
                     <ul className="pet-types-list">
                         {
-                            userPets && userPets.map((pet, key) => {
+                            pets && pets.map((pet, key) => {
                                 return (
                                     <li key={key}>
-                                        <Link to={`/pets/${ pet.id }`} className={`pet-type-item ${ false ? "selected" : "" }`}>
+                                        <Link to={`/${ profile.username }/pets/${ pet.id }`} className={`pet-type-item ${ false ? "selected" : "" }`}>
                                             <div className="pet-icon">
                                                 { getPicture(pet) }
                                             </div>
@@ -42,7 +45,7 @@ const HomeContainer = ({ route, userPets }) => {
 
             </div>
             <div className="main-content">
-                {renderRoutes(route.routes, { userPets })}
+                {renderRoutes(route.routes, { pets: me.pets })}
             </div>
             <div className="main-right-sidebar" />
         </div>
@@ -51,7 +54,7 @@ const HomeContainer = ({ route, userPets }) => {
 
 const mapStateToProps = state => {
     return {
-        userPets: state.pets.userPets,
+        me: state.me,
     };
 };
 

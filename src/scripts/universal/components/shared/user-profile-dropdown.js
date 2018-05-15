@@ -1,4 +1,5 @@
 import React from "react";
+import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import SignOutContainer from "../auth/sign-out-container";
 import UserIcon from "../../utils/icons/user";
@@ -11,18 +12,21 @@ export const Header = () => {
     );
 };
 
-export const Content = () => {
+const ContentComponent = ({ pets }) => {
     return (
         <div>
             <div className="dropdown-list-container">
                 <h4 className="dropdown-list-title">Your pets</h4>
                 <ul className="dropdown-list">
-                    <li className="dropdown-list-item">
-                        <Link to="">Tom</Link>
-                    </li>
-                    <li className="dropdown-list-item">
-                        <Link to="">Jerry</Link>
-                    </li>
+                    {
+                        pets && pets.map((pet, key) => {
+                            return (
+                                <li className="dropdown-list-item" key={key}>
+                                    <Link to="">{ pet.name }</Link>
+                                </li>
+                            );
+                        })
+                    }
                 </ul>
             </div>
             <div className="dropdown-list-container">
@@ -48,3 +52,11 @@ export const Content = () => {
         </div>
     );
 };
+
+const mapStateToProps = state => {
+    return {
+        pets: state.me.pets,
+    };
+};
+
+export const Content = connect(mapStateToProps)(ContentComponent);

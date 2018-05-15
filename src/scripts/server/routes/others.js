@@ -23,12 +23,15 @@ const otherRoutes = async (req, res) => {
         url: null
     };
     const preloadedState = {
-        auth: {
-            user: null,
+        me: {
+            profile: null,
+            pets: null,
         },
-        pets: {
-            petTypes: [],
-            userPets: [],
+        user: {
+            profile: null,
+        },
+        pet: {
+            petTypes: null,
         },
     };
     const hydrate = true;
@@ -37,12 +40,24 @@ const otherRoutes = async (req, res) => {
 
     if (jwtToken) {
         try {
-            const decoded = jwt.verify(jwtToken, JWT_PUBLIC_KEY);
-            preloadedState.auth = {
-                user: decoded.user
-            };
-
             axios.defaults.headers.common['Authorization'] = `Bearer ${ jwtToken }`;
+
+            const decodedToken = jwt.verify(jwtToken, JWT_PUBLIC_KEY);
+
+            let pets = null;
+
+            try {
+                const result = await axios.get(`http://localhost:3000/api/users/${ decodedToken.profile.id }/pets`);
+
+                pets = result.data.pets;
+            } catch (error) {
+                console.log("error while getting user pets", error);
+            }
+
+            preloadedState.me = {
+                profile: decodedToken.profile,
+                pets: pets,
+            };
 
         } catch(error) {
             console.log("error", error);
@@ -50,17 +65,9 @@ const otherRoutes = async (req, res) => {
     }
 
     try {
-        const result = await axios.get(`http://localhost:3000/api/users/1/pets`);
-
-        preloadedState.pets.userPets = result.data.userPets;
-    } catch (error) {
-        console.log("error", error);
-    }
-
-    try {
         const result = await axios.get("http://localhost:3000/api/pets/pet-types");
 
-        preloadedState.pets.petTypes = result.data.petTypes;
+        preloadedState.pet.petTypes = result.data.petTypes;
     } catch (error) {
         console.log("error", error);
     }

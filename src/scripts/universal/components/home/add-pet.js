@@ -34,7 +34,7 @@ const HomeAddPet = ({ petTypes }) => {
 
 const mapStateToProps = state => {
     return {
-        petTypes: state.pets.petTypes
+        petTypes: state.pet.petTypes
     };
 };
 
