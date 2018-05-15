@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import UserIcon from "../../utils/icons/user";
 
 const Card = ({ profile }) => {
@@ -12,7 +13,7 @@ const Card = ({ profile }) => {
                 </div>
                 <div className="profile-card-user">
                     <div className="profile-card-name">
-                        <a href={"/"}>{profile.firstName + " " + profile.lastName}</a>
+                        <Link to={ `/${ profile.username }` }>{profile.firstName + " " + profile.lastName}</Link>
                     </div>
                 </div>
             </div>

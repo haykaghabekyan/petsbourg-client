@@ -58,6 +58,15 @@ const protectedRoutes = [{
         path: "/sign-up",
         component: () => <Redirect to="/" />
     }, {
+        path: "/:username",
+        component: (props) => {
+            console.log(props);
+
+            return (
+                <div>{ props.match.params.username }</div>
+            );
+        }
+    }, {
         path: "**",
         component: NotFound
     }]

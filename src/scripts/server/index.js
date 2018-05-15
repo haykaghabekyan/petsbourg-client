@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 
 import indexRoute from "./routes/index";
+import userRoute from "./routes/user";
 import otherRoutes from "./routes/others";
 
 const app = express();
@@ -9,6 +10,7 @@ app.use(express.static(path.join(__dirname, "../public")));
 
 const router = express.Router();
 // router.get('/', indexRoute);
+router.get('/:username', userRoute);
 router.get('*', otherRoutes);
 
 app.use('/', router);
