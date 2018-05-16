@@ -3,7 +3,7 @@ import AddPet from "./add-pet";
 
 const Home = ({ pets }) => {
 
-    if (!pets) {
+    if (!pets || !pets.length) {
         return <AddPet />;
     }
 

@@ -40,7 +40,7 @@ export const signUp = (data) => {
             setAuth(token);
 
             const decodedToken = jwt.decode(token);
-            dispatch(setMe(decodedToken.profile));
+            dispatch(setMe(decodedToken));
 
         }).catch(error => {
 

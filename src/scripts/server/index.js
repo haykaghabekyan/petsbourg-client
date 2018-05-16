@@ -10,6 +10,8 @@ app.use(express.static(path.join(__dirname, "../public")));
 
 const router = express.Router();
 // router.get('/', indexRoute);
+
+router.get('/sign-up', otherRoutes);
 router.get('/:username', userRoute);
 router.get('*', otherRoutes);
 

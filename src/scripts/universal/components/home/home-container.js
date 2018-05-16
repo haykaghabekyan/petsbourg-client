@@ -27,7 +27,7 @@ const HomeContainer = ({ route, me }) => {
                 <div className="pet-types-container">
                     <ul className="pet-types-list">
                         {
-                            pets && pets.map((pet, key) => {
+                            pets && pets.length > 0 && pets.map((pet, key) => {
                                 return (
                                     <li key={key}>
                                         <Link to={`/${ profile.username }/${ pet.id }`} className={`pet-type-item ${ false ? "selected" : "" }`}>
