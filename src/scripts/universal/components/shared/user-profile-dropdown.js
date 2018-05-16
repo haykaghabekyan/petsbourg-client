@@ -23,7 +23,7 @@ const ContentComponent = ({ me }) => {
                         pets && pets.map((pet, key) => {
                             return (
                                 <li className="dropdown-list-item" key={key}>
-                                    <Link to={`/${profile.username}/${pet.id}`}>{ pet.name }</Link>
+                                    <Link to={`/${profile.id}/${pet.id}`}>{ pet.name }</Link>
                                 </li>
                             );
                         })
@@ -40,7 +40,7 @@ const ContentComponent = ({ me }) => {
             <div className="dropdown-list-container">
                 <ul className="dropdown-list">
                     <li className="dropdown-list-item">
-                        <Link to={ `/${ profile.username }` }>My Profile</Link>
+                        <Link to={ `/${ profile.id }` }>My Profile</Link>
                     </li>
                     <li className="dropdown-list-item">
                         <Link to="/settings">Settings</Link>

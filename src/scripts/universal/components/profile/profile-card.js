@@ -13,7 +13,7 @@ const Card = ({ profile }) => {
                 </div>
                 <div className="profile-card-user">
                     <div className="profile-card-name">
-                        <Link to={ `/${ profile.username }` }>{profile.firstName + " " + profile.lastName}</Link>
+                        <Link to={ `/${ profile.id }` }>{profile.firstName + " " + profile.lastName}</Link>
                     </div>
                 </div>
             </div>

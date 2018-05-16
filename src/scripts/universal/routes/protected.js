@@ -2,6 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 
 import MainLayout from "../components/layouts/main";
+import ProfileLayout from "../components/layouts/profile";
 
 import HomeContainer from "../components/home/home-container";
 import Home from "../components/home/home";
@@ -58,17 +59,15 @@ const protectedRoutes = [{
         path: "/sign-up",
         component: () => <Redirect to="/" />
     }, {
-        path: "/:username",
+        path: "/:userId",
         exact: true,
-        component: (props) => {
-            console.log(props.match.params);
-
-            return (
-                <div>profile</div>
-            );
-        }
+        component: ProfileLayout,
+        // routes: [{
+        //     path: "/:username",
+        //     component: UserLayout
+        // }]
     }, {
-        path: "/:username/:petId",
+        path: "/:userId/:petId",
         component: (props) => {
             console.log(props.match.params);
 

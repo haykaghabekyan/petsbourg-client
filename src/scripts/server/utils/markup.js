@@ -1,4 +1,4 @@
-const view = (markup, preloadedState, hydrate) => {
+const markup = (markup, preloadedState, hydrate=false) => {
     return `
         <!DOCTYPE html>
         <html lang="en">
@@ -25,4 +25,4 @@ const view = (markup, preloadedState, hydrate) => {
     `;
 };
 
-export default view;
+export default markup;

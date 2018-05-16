@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import find from "lodash/find"
 import AddPetForm from "./add-pet-form";
+import AddPetChooseType from "./add-pet-choose-type";
 import getPetIcon from "../../utils/icons/pets";
 import {addPet} from "../../redux/actions/pet";
 
@@ -25,7 +26,6 @@ class AddPetContainer extends React.Component {
 
     render () {
         const selectedPetType = this.props.location.petType || null;
-        console.log(selectedPetType);
         const { petTypes } = this.props;
 
         const breeds = find(petTypes, pT => {
@@ -60,13 +60,7 @@ class AddPetContainer extends React.Component {
                     </div>
                 </div>
                 <div className="main-content">
-                    { selectedPetType ?
-                        <AddPetForm
-                            key={selectedPetType}
-                            onSubmit={this.handleSubmit}
-                            petType={selectedPetType}
-                            breeds={breeds.PetBreeds}
-                        /> : 'Select pet type' }
+                    { !selectedPetType ? <AddPetChooseType /> : <AddPetForm key={selectedPetType} onSubmit={this.handleSubmit} petType={selectedPetType} breeds={breeds.PetBreeds} /> }
                 </div>
                 <div className="main-right-sidebar" />
             </div>

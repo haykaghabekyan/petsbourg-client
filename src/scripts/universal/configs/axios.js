@@ -1,13 +1,12 @@
 import axios from "axios";
-import UniversalCookies from "universal-cookie";
+import UniversalCookie from "universal-cookie";
 
 export const setAxiosConfigs = () => {
     axios.defaults.baseURL = 'http://localhost:3000';
 
+    const universalCookie = new UniversalCookie();
 
-    const universalCookies = new UniversalCookies();
-
-    const jwtToken = universalCookies.get("jwtToken");
+    const jwtToken = universalCookie.get("jwtToken");
 
     if (jwtToken !== "undefined") {
         axios.defaults.headers.common['Authorization'] = `Bearer ${ jwtToken }`;

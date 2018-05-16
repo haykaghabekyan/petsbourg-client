@@ -1,6 +1,6 @@
 import React from "react";
 import { required } from "../../utils/form/validators";
-import { Field, reduxForm, SubmissionError } from "redux-form";
+import { Field, reduxForm } from "redux-form";
 import Input from "../../utils/form/input";
 import Select from "../../utils/form/select";
 
