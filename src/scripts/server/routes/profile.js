@@ -1,9 +1,8 @@
 import axios from "axios";
-import preloadedState from "../utils/preloaded-state";
 import renderer from "../utils/renderer";
 
 const profileRouter = async (req, res) => {
-    const { userId } = req.params;
+    const { preloadedState, params: { userId } }  = req;
 
     let user = null;
 
@@ -16,13 +15,7 @@ const profileRouter = async (req, res) => {
         console.error(error);
     }
 
-    try {
-        const result = await axios.get("http://localhost:3000/api/pets/pet-types");
-
-        preloadedState.pet.petTypes = result.data.petTypes;
-    } catch (error) {
-        console.error(error);
-    }
+    console.log(user);
 
     res.send(renderer(req.url, preloadedState, true));
 };

@@ -15,14 +15,19 @@ const verifyToken = async (req, res, next) => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${ jwtToken }`;
 
         try {
-            axios.defaults.headers.common['Authorization'] = `Bearer ${ jwtToken }`;
-
             const decodedToken = jwt.verify(jwtToken, JWT_PUBLIC_KEY);
 
-            preloadedState.me = {
-                profile: decodedToken.profile,
-                pets: null,
-            };
+            try {
+                const result = await axios.get(`/api/users/${ decodedToken.profile.id }/pets`);
+
+                preloadedState.me = {
+                    profile: decodedToken.profile,
+                    pets: result.data.pets,
+                };
+
+            } catch (error) {
+                console.error(error);
+            }
 
         } catch(error) {
             console.log("error", error);
