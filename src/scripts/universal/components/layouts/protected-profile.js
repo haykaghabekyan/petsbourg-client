@@ -1,23 +1,9 @@
-import * as React from "react";
+import React from "react";
 import { renderRoutes } from "react-router-config";
 import { Link } from "react-router-dom";
-import Dropdown from "../../utils/dropdown";
-import {Header, Content} from "../shared/user-profile-dropdown";
+import ProtectedHeader from "../header/protected-header";
 
-const drawHeader = () => {
-    return (
-        <div className="header-actions">
-            <div className="search-container">
-                Search..
-            </div>
-            <div className="user-profile">
-                <Dropdown Header={Header} Content={Content} className="user-profile-dropdown" />
-            </div>
-        </div>
-    );
-};
-
-const Layout = ({ route }) => {
+const ProtectedProfileLayout = ({ route }) => {
     return (
         <div className="main-layout">
             <header className="main-header">
@@ -25,7 +11,7 @@ const Layout = ({ route }) => {
                     <div className="brand-container">
                         <Link to="/" className="brand">Petsbourg</Link>
                     </div>
-                    { drawHeader() }
+                    <ProtectedHeader />
                 </div>
             </header>
             <main className="">
@@ -34,7 +20,8 @@ const Layout = ({ route }) => {
                 </div>
             </main>
         </div>
-    )
+    );
 };
 
-export default Layout;
+
+export default ProtectedProfileLayout;

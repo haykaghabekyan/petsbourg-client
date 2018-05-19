@@ -1,37 +1,36 @@
-import UniversalCookie from "universal-cookie";
 import axios from "axios/index";
 import * as jwt from "jsonwebtoken";
-import JWT_PUBLIC_KEY from "../configs/jwt";
-import preloadedState from "./preloaded-state";
+import JWT_PUBLIC_KEY from "../../universal/configs/jwt";
+import PRELOADED_STATE from "./preloaded-state";
 
 const verifyToken = async (req, res, next) => {
 
     axios.defaults.baseURL = 'http://localhost:3000';
 
-    const cookies = new UniversalCookie(req.headers.cookie);
-    const jwtToken = cookies.get("jwtToken");
+    const { jwtToken = null } = req.cookies;
+    const preloadedState = { ...PRELOADED_STATE };
 
-    if (jwtToken !== "undefined") {
+    try {
+        const decodedToken = jwt.verify(jwtToken, JWT_PUBLIC_KEY);
+
         axios.defaults.headers.common['Authorization'] = `Bearer ${ jwtToken }`;
 
         try {
-            const decodedToken = jwt.verify(jwtToken, JWT_PUBLIC_KEY);
+            const result = await axios.get(`/api/users/${ decodedToken.profile.id }/pets`);
 
-            try {
-                const result = await axios.get(`/api/users/${ decodedToken.profile.id }/pets`);
+            preloadedState.me = {
+                profile: decodedToken.profile,
+                pets: result.data.pets,
+            };
 
-                preloadedState.me = {
-                    profile: decodedToken.profile,
-                    pets: result.data.pets,
-                };
-
-            } catch (error) {
-                console.error(error);
-            }
-
-        } catch(error) {
-            console.log("error", error);
+        } catch (error) {
+            console.error(error);
         }
+
+    } catch(error) {
+        res.clearCookie("jwtToken");
+
+        console.error(error);
     }
 
     try {

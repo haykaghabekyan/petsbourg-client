@@ -1,8 +1,8 @@
 import React from "react";
-import {renderRoutes} from "react-router-config";
-import {connect} from "react-redux";
-import {Link} from "react-router-dom";
-import ProfileCardContainer from "../profile/profile-card-container";
+import { renderRoutes } from "react-router-config";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import ProfileCard from "../profile/profile-card";
 import getPetIcon from "../../utils/icons/pets";
 
 const getPicture = (pet, width=23) => {
@@ -17,17 +17,18 @@ const getPicture = (pet, width=23) => {
 
 const HomeContainer = ({ route, me }) => {
 
-    const { profile, pets} = me;
+    const { profile } = me;
+    const { Pets } = profile;
 
     return (
         <div className="main-layout-page home-container">
             <div className="main-left-sidebar">
-                <ProfileCardContainer />
+                <ProfileCard profile={ profile } />
 
                 <div className="pet-types-container">
                     <ul className="pet-types-list">
                         {
-                            pets && pets.length > 0 && pets.map((pet, key) => {
+                            Pets.length > 0 && Pets.map((pet, key) => {
                                 return (
                                     <li key={key}>
                                         <Link to={`/${ profile.id }/${ pet.id }`} className={`pet-type-item ${ false ? "selected" : "" }`}>
@@ -42,10 +43,9 @@ const HomeContainer = ({ route, me }) => {
                         }
                     </ul>
                 </div>
-
             </div>
             <div className="main-content">
-                {renderRoutes(route.routes, { pets: me.pets })}
+                {renderRoutes(route.routes, { pets: Pets })}
             </div>
             <div className="main-right-sidebar" />
         </div>

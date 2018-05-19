@@ -1,13 +1,14 @@
 const preloadedState = {
     me: {
         profile: null,
-        pets: null,
+        pets: [],
     },
     user: {
         profile: null,
+        pets: [],
     },
     pet: {
-        petTypes: null,
+        petTypes: [],
     },
 };
 

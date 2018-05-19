@@ -2,14 +2,25 @@ import "babel-polyfill";
 
 import express from "express";
 import path from "path";
+import cookieParser from "cookie-parser";
 
 const app = express();
+
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "../public")));
+
+app.use((req, res, next) => {
+    if (req.originalUrl && req.originalUrl.split("/").pop() === 'favicon.ico') {
+        return res.sendStatus(204);
+    }
+
+    return next();
+});
 
 import AppRouter from "./routes/router";
 
 const appRouter = new AppRouter();
-app.use("/", appRouter.router);
+app.use(appRouter.router);
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
