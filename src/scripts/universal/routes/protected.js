@@ -10,6 +10,8 @@ import ProfileContainer from "../components/profile/profile-container";
 
 import AddPetContainer from "../components/pets/add-pet-container";
 
+import SearchResultsContainer from "../components/search/search-results-container";
+
 import NotFound from "../components/error/not-found";
 
 const protectedRoutes = [{
@@ -39,6 +41,14 @@ const protectedRoutes = [{
     routes: [{
         path: "/settings",
         component: () => <div>Settings</div>,
+    }]
+}, {
+    path: "/search",
+    component: ProtectedProfileLayout,
+    exact: true,
+    routes: [{
+        path: "/search",
+        component: SearchResultsContainer
     }]
 }, {
     path: "/sign-up",

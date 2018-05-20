@@ -10,6 +10,7 @@ class ApiRouter {
         this.router = Router();
 
         this.router.get('/sign-up', indexRouter);
+        this.router.get('/search', verifyToken, indexRouter);
         this.router.get('/:userId', verifyToken, profileRouter);
         this.router.get('*', verifyToken, indexRouter);
     }

@@ -37,11 +37,16 @@ const publicRoutes = [{
         component: About
     }]
 }, {
-    path: "/pets",
-    component: () => <Redirect to="/" />
-}, {
     path: "/settings",
     component: () => <Redirect to="/" />
+}, {
+    path: "/search",
+    component: PublicProfileLayout,
+    exact: true,
+    routes: [{
+        path: "/search",
+        component: NotFound,
+    }]
 }, {
     path: "/:userId",
     exact: true,
@@ -61,7 +66,7 @@ const publicRoutes = [{
     }
 }, {
     path: "**",
-    component: NotFound
+    component: NotFound,
 }];
 
 export default publicRoutes;
