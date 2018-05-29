@@ -7,7 +7,7 @@ import cookieParser from "cookie-parser";
 const app = express();
 
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static("dist/public"));
 
 app.use((req, res, next) => {
     if (req.originalUrl && req.originalUrl.split("/").pop() === 'favicon.ico') {

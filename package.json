@@ -4,16 +4,15 @@
   "description": "",
   "main": "",
   "scripts": {
-    "start": "node ./dist/server/index.js",
-    "start:dev": "nodemon ./dist/server/index.js",
-    "build:server": "./node_modules/.bin/babel -w ./src/scripts --out-dir ./dist --presets=es2015,react,stage-0 --ignore ./src/scripts/browser",
-    "build:client": "webpack --watch --progress",
+    "start": "node ./dist/scripts/server/index.js",
+    "start:dev": "nodemon ./dist/scripts/server/index.js",
+    "build:server": "webpack --watch --progress --config webpack.config.server.js",
+    "build:client": "webpack --watch --progress --config webpack.config.client.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Hayk Aghabekyan",
   "license": "ISC",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
     "babel-polyfill": "^6.26.0",
@@ -23,12 +22,13 @@
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^4.0.0-alpha.0",
     "file-loader": "^1.1.11",
+    "glob": "^7.1.2",
     "node-sass": "^4.7.2",
     "nodemon": "^1.17.3",
     "sass-loader": "^6.0.6",
     "source-map-loader": "^0.2.3",
     "webpack": "^4.5.0",
-    "webpack-cli": "^2.0.14",
+    "webpack-cli": "^2.1.4",
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {

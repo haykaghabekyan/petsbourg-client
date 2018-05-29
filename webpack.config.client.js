@@ -31,7 +31,18 @@ const config = {
             }, {
                 loader: "sass-loader" // compiles Sass to CSS
             }])
-        }]
+        }, {
+            test: /\.(jpg|png|gif|svg|pdf|ico)$/,
+            use: [
+                {
+                    loader: "file-loader",
+                    options: {
+                        outputPath: "media/images/",
+                        name: "[name].[ext]"
+                    },
+                },
+            ]
+        },]
     },
     plugins: [
         extractSass,
