@@ -1,4 +1,4 @@
-import "../../styles/master.scss";
+import "../styles/master.scss";
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -7,9 +7,9 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 
-import { setAxiosConfigs } from "../universal/configs/axios";
-import reducer from "../universal/redux/reducers";
-import App from "../universal/app";
+import { setAxiosConfigs } from "../../universal/scripts/configs/axios";
+import reducer from "../../universal/scripts/redux/reducers";
+import App from "../../universal/scripts/app";
 
 // Grab the state from a global variable injected into the server-generated HTML
 const preloadedState = window["__PRELOADED_STATE__"];

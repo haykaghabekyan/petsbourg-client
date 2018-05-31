@@ -1,6 +1,6 @@
 import axios from "axios/index";
 import * as jwt from "jsonwebtoken";
-import JWT_PUBLIC_KEY from "../../universal/configs/jwt";
+import JWT_PUBLIC_KEY from "../../../universal/scripts/configs/jwt";
 import PRELOADED_STATE from "./preloaded-state";
 
 const verifyToken = async (req, res, next) => {

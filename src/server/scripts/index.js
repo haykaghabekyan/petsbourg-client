@@ -1,13 +1,12 @@
 import "babel-polyfill";
 
 import express from "express";
-import path from "path";
 import cookieParser from "cookie-parser";
 
 const app = express();
 
 app.use(cookieParser());
-app.use(express.static("dist/public"));
+app.use(express.static("dist/browser"));
 
 app.use((req, res, next) => {
     if (req.originalUrl && req.originalUrl.split("/").pop() === 'favicon.ico') {

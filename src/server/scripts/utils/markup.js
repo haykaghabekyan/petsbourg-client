@@ -7,7 +7,7 @@ const markup = (markup, preloadedState, hydrate=false) => {
                 <meta name="viewport" content="width=device-width,initial-scale=1" />
                 <title>Petsbourg</title>
             
-                <link rel="stylesheet" href="../../../css/main.css" />
+                <link rel="stylesheet" href="/styles/main.css" />
             </head>
             <body>
                 <div id="root">${ markup }</div>
@@ -19,7 +19,7 @@ const markup = (markup, preloadedState, hydrate=false) => {
                 window.__HYDRATE__ = ${hydrate};
                 </script>
             
-                <script defer src="../../../js/bundle.js"></script>
+                <script defer src="/scripts/bundle.js"></script>
             </body>
         </html>
     `;

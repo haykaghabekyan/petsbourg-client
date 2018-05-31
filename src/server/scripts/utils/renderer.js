@@ -5,8 +5,8 @@ import { Provider } from "react-redux";
 import { applyMiddleware, createStore, compose } from "redux";
 import thunk from "redux-thunk";
 
-import reducer from "../../universal/redux/reducers";
-import App from "../../universal/app";
+import reducer from "../../../universal/scripts/redux/reducers/index";
+import App from "../../../universal/scripts/app";
 import markup from "./markup";
 
 const renderer = (location, preloadedState, hydrate) => {
