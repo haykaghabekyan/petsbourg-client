@@ -11,6 +11,8 @@ import ProfileContainer from "../components/profile/profile-container";
 import About from "../components/about";
 import NotFound from "../components/error/not-found";
 
+import PetProfileContainer from "../components/pets/pet-profile/pet-profile-container";
+
 const publicRoutes = [{
     path: "/",
     exact: true,
@@ -57,13 +59,16 @@ const publicRoutes = [{
     }]
 }, {
     path: "/:userId/:petId",
-    component: (props) => {
-        console.log(props.match.params);
-
-        return (
-            <div>pet</div>
-        );
-    }
+    exact: true,
+    component: MainLayout,
+    routes: [{
+        path: "/:userId/:petId",
+        component: ProfileContainer,
+        routes: [{
+            path: "/:userId/:petId",
+            component: PetProfileContainer
+        }],
+    }]
 }, {
     path: "**",
     component: NotFound,

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import ProfileCard from "../profile/profile-card";
 import getPetIcon from "../../utils/icons/pets";
 
@@ -16,8 +17,9 @@ const getPicture = (pet, width=23) => {
 class ProfileLayout extends React.Component {
 
     render () {
-        const { children, user } = this.props;
+        const { children, user, match: { params } } = this.props;
         const { profile, pets } = user;
+        const { petId = null } = params;
 
         return (
             <div className="main-layout-page home-container">
@@ -31,7 +33,7 @@ class ProfileLayout extends React.Component {
                                 pets.map((pet, key) => {
                                     return (
                                         <li key={key}>
-                                            <Link to={`/${ profile.id }/${ pet.id }`} className={`pet-type-item ${ false ? "selected" : "" }`}>
+                                            <Link to={`/${ profile.id }/${ pet.id }`} className={`pet-type-item ${ pet.id === Number(petId) ? "selected" : "" }`}>
                                                 <div className="pet-icon">
                                                     { getPicture(pet) }
                                                 </div>
@@ -58,4 +60,4 @@ class ProfileLayout extends React.Component {
 
 }
 
-export default ProfileLayout;
+export default withRouter(ProfileLayout);
