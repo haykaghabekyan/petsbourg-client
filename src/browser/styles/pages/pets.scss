@@ -1,4 +1,13 @@
 .pet-types-container {
+  .pet-types-title {
+    font-size: 16px;
+    line-height: 45px;
+    padding-left: 13px;
+    border-bottom: 1px solid $gray-light;
+    color: $gray;
+    font-weight: 400;
+  }
+
   .pet-types-list {
     list-style: none;
 

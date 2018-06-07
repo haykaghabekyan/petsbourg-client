@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as jwt from "jsonwebtoken";
-import {SET_ME, REMOVE_ME} from "../types";
+import { SET_ME, REMOVE_ME } from "../types";
 import { setAuth, removeAuth } from "../../utils/auth";
 
 export const setMe = me => {

@@ -1,9 +1,11 @@
 import React from "react";
 import { renderRoutes } from "react-router-config";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import AuthHeader from "../header/auth-header";
 import ProtectedHeader from "../header/protected-header";
 
-const ProtectedProfileLayout = ({ route }) => {
+const MainLayout = ({ route, me }) => {
     return (
         <div className="main-layout">
             <header className="main-header">
@@ -11,7 +13,7 @@ const ProtectedProfileLayout = ({ route }) => {
                     <div className="brand-container">
                         <Link to="/" className="brand">Petsbourg</Link>
                     </div>
-                    <ProtectedHeader />
+                    { me.profile ? <ProtectedHeader /> : <AuthHeader showSignIn /> }
                 </div>
             </header>
             <main className="">
@@ -23,5 +25,10 @@ const ProtectedProfileLayout = ({ route }) => {
     );
 };
 
+const mapStateToProps = state => {
+    return {
+        me: state.me,
+    };
+};
 
-export default ProtectedProfileLayout;
+export default connect(mapStateToProps)(MainLayout);

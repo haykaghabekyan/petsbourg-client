@@ -7,5 +7,5 @@ export const setAuth = token => {
 
 export const removeAuth = () => {
     const cookies = new UniversalCookies();
-    cookies.remove("jwtToken");
+    cookies.remove("jwtToken", { path: "/" });
 };

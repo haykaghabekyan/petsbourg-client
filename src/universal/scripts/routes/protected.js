@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 
-import ProtectedProfileLayout from "../components/layouts/protected-profile";
+import MainLayout from "../components/layouts/main";
 
 import HomeContainer from "../components/home/home-container";
 import Home from "../components/home/home";
@@ -12,11 +12,13 @@ import AddPetContainer from "../components/pets/add-pet-container";
 
 import SearchResultsContainer from "../components/search/search-results-container";
 
+import PetProfileContainer from "../components/pets/pet-profile/pet-profile-container";
+
 import NotFound from "../components/error/not-found";
 
 const protectedRoutes = [{
     path: "/",
-    component: ProtectedProfileLayout,
+    component: MainLayout,
     exact: true,
     routes: [{
         path: "/",
@@ -28,7 +30,7 @@ const protectedRoutes = [{
     }]
 }, {
     path: "/pets/add",
-    component: ProtectedProfileLayout,
+    component: MainLayout,
     exact: true,
     routes: [{
         path: "/pets/add",
@@ -36,7 +38,7 @@ const protectedRoutes = [{
     }]
 }, {
     path: "/settings",
-    component: ProtectedProfileLayout,
+    component: MainLayout,
     exact: true,
     routes: [{
         path: "/settings",
@@ -44,7 +46,7 @@ const protectedRoutes = [{
     }]
 }, {
     path: "/search",
-    component: ProtectedProfileLayout,
+    component: MainLayout,
     exact: true,
     routes: [{
         path: "/search",
@@ -55,7 +57,7 @@ const protectedRoutes = [{
     component: () => <Redirect to="/" />
 }, {
     path: "/:userId",
-    component: ProtectedProfileLayout,
+    component: MainLayout,
     exact: true,
     routes: [{
         component: ProfileContainer,
@@ -63,14 +65,18 @@ const protectedRoutes = [{
 }, {
     path: "/:userId/:petId",
     exact: true,
-    component: ProtectedProfileLayout,
+    component: MainLayout,
     routes: [{
         path: "/:userId/:petId",
-        component: (props) => <div>/:userId/:petId</div>
+        component: ProfileContainer,
+        routes: [{
+            path: "/:userId/:petId",
+            component: PetProfileContainer
+        }],
     }]
 }, {
     path: "**",
-    component: ProtectedProfileLayout,
+    component: MainLayout,
     routes: [{
         path: "**",
         component: NotFound

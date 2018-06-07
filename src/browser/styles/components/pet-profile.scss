@@ -1,0 +1,54 @@
+.pet-profile-section {
+  padding: 35px;
+  background-color: $white;
+  margin-bottom: 20px;
+
+  .pet-profile-section-title {
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 400;
+    color: $gray;
+    margin-bottom: 35px;
+  }
+
+  .pet-profile-section-content {
+    //margin-top: 35px;
+  }
+
+  &.pets-story-container {
+
+    .pet-story {
+
+    }
+
+    .pet-info {
+      display: flex;
+
+      .pet-profile-picture {
+        color: red;
+        width: 300px;
+        height: 300px;
+        overflow: hidden;
+        position: relative;
+
+        img {
+          //width: 300px;
+
+          position: absolute;
+          margin: auto;
+          min-height: 100%;
+          min-width: 100%;
+
+          max-height: 300px;
+
+          /* For the following settings we set 100%, but it can be higher if needed
+          See the answer's update */
+          left: -100%;
+          right: -100%;
+          top: -100%;
+          bottom: -100%;
+        }
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 
 import AuthLayout from "../components/layouts/auth";
-import PublicProfileLayout from "../components/layouts/public-profile";
+import MainLayout from "../components/layouts/main";
 
 import SignIn from "../components/auth/sign-in-container";
 import SignUp from "../components/auth/sign-up-container";
@@ -41,7 +41,7 @@ const publicRoutes = [{
     component: () => <Redirect to="/" />
 }, {
     path: "/search",
-    component: PublicProfileLayout,
+    component: MainLayout,
     exact: true,
     routes: [{
         path: "/search",
@@ -50,7 +50,7 @@ const publicRoutes = [{
 }, {
     path: "/:userId",
     exact: true,
-    component: PublicProfileLayout,
+    component: MainLayout,
     routes: [{
         path: "/:userId",
         component: ProfileContainer,

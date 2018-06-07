@@ -47,7 +47,16 @@ const config = {
                     name: "[name].[ext]"
                 },
             }]
-        },]
+        }, {
+            test: /\.woff$|\.woff2?$|\.ttf$|\.eot$|\.otf$/,
+            use: [{
+                loader: 'file-loader',
+                options: {
+                    outputPath: 'fonts/',
+                    name: "[name].[ext]"
+                },
+            }],
+        }]
     },
     plugins: [
         extractSass,
