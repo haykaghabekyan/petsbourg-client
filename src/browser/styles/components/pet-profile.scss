@@ -20,9 +20,7 @@
 
 }
 
-
-.pet-info {
-
+.pet-facts {
   display: flex;
 
   &-picture {
@@ -73,6 +71,34 @@
 
   &-value {
     float: left;
+    font-weight: bold;
+    margin-top: 26px;
+  }
+}
+
+.pet-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 35px;
+
+  &-list {
+    flex-grow: 1;
+    flex-basis: 0;
+    margin-right: 15px;
+    padding: 30px 5px;
+    text-align: center;
+    border: 1px solid $gray-light;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &-label {
+
+  }
+
+  &-value {
     font-weight: bold;
     margin-top: 26px;
   }
