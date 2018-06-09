@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./dist/server/scripts/index.js",
     "start:dev": "nodemon ./dist/server/scripts/index.js",
-    "build:dev": "webpack --mode development --watch --progress & ./node_modules/.bin/babel -w src/server/scripts --out-dir dist/server/scripts --presets=es2015,react,stage-0 --source-maps & ./node_modules/.bin/babel -w src/universal/scripts --out-dir dist/universal/scripts --presets=es2015,react,stage-0 --source-maps",
+    "build:dev": "webpack --mode development --watch --progress & ./node_modules/.bin/babel -w ./src/server/scripts --out-dir ./dist/server/scripts --presets=es2015,react,stage-0 --source-maps & ./node_modules/.bin/babel -w ./src/universal/scripts --out-dir ./dist/universal/scripts --presets=es2015,react,stage-0 --source-maps",
     "build:prod": "",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
