@@ -20,8 +20,8 @@ const PetPhotos = () => {
     ];
 
     return (
-        <div className="pet-profile-section pets-story-container">
-            <h3 className="pet-profile-section-title">Pet Photos</h3>
+        <div className="pet-profile">
+            <h3 className="pet-profile-title">Pet Photos</h3>
 
             <div>
                 <ImageGallery items={ images } showPlayButton={ false } showFullscreenButton={ false } />

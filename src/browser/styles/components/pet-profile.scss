@@ -1,9 +1,9 @@
-.pet-profile-section {
+.pet-profile {
   padding: 35px;
   background-color: $white;
   margin-bottom: 20px;
 
-  .pet-profile-section-title {
+  &-title {
     font-size: 16px;
     line-height: 19px;
     font-weight: 400;
@@ -11,44 +11,69 @@
     margin-bottom: 35px;
   }
 
-  .pet-profile-section-content {
-    //margin-top: 35px;
+  &-content {
+
+  }
+}
+
+.pet-story {
+
+}
+
+
+.pet-info {
+
+  display: flex;
+
+  &-picture {
+    color: red;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
   }
 
-  &.pets-story-container {
+  &-img {
+    //width: 300px;
 
-    .pet-story {
+    position: absolute;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
 
-    }
+    max-height: 300px;
 
-    .pet-info {
-      display: flex;
+    /* For the following settings we set 100%, but it can be higher if needed
+    See the answer's update */
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+  }
 
-      .pet-profile-picture {
-        color: red;
-        width: 300px;
-        height: 300px;
-        overflow: hidden;
-        position: relative;
+  &-content {
+    padding-left: 35px;
+  }
 
-        img {
-          //width: 300px;
+  &-name {
+    font-size: 28px;
+    font-weight: bold;
+  }
 
-          position: absolute;
-          margin: auto;
-          min-height: 100%;
-          min-width: 100%;
+  &-list {
+    margin-top: 10px;
+  }
 
-          max-height: 300px;
+  &-label {
+    width: 85px;
+    float: left;
+    clear: left;
+    margin-top: 26px;
+  }
 
-          /* For the following settings we set 100%, but it can be higher if needed
-          See the answer's update */
-          left: -100%;
-          right: -100%;
-          top: -100%;
-          bottom: -100%;
-        }
-      }
-    }
+  &-value {
+    float: left;
+    font-weight: bold;
+    margin-top: 26px;
   }
 }

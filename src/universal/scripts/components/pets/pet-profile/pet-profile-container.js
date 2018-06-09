@@ -9,7 +9,7 @@ class PetProfileContainer extends React.Component {
             "Asperiores eligendi expedita explicabo iure non quaerat, sit! Enim iusto libero rerum? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa impedit libero necessitatibus porro! Accusamus iusto pariatur ratione voluptate. Asperiores eligendi expedita explicabo iure non quaerat, sit! Enim iusto libero rerum?"
 
         return (
-            <div className="pet-profile-container">
+            <div>
                 <PetInfo />
 
                 <PetStory story={story} />

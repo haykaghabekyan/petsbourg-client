@@ -2,19 +2,26 @@ import React from "react";
 
 const PetInfo = ({ pet }) => {
     return (
-        <div className="pet-profile-section pets-story-container">
-            <div className="pet-profile-section-content pet-info">
-                <div className="pet-profile-picture">
-                    <img src="/media/images/fake-dog/5.jpeg" />
-                </div>
-                <div>
-                    <h2>Bobik</h2>
+        <div className="pet-profile">
+            <div className="pet-profile-content">
+                <div className="pet-info">
+                    <div className="pet-info-picture">
+                        <img className="pet-info-img" src="/media/images/fake-dog/5.jpeg" />
+                    </div>
+                    <div className="pet-info-content">
+                        <h2 className="pet-info-name">Bobik</h2>
 
-                    <dl>
-                        <dt>First Name</dt><dd>Dominic</dd>
-                        <dt>Age</dt><dd>24</dd>
-                        <dt>E-mail</dt><dd>foo@bar.com</dd>
-                    </dl>
+                        <dl className="pet-info-list">
+                            <dt className="pet-info-label">Type</dt><dd className="pet-info-value">Dominic</dd>
+                            <dt className="pet-info-label">Breed</dt><dd className="pet-info-value">24</dd>
+                            <dt className="pet-info-label">Gender</dt><dd className="pet-info-value">foo@bar.com</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div className="pet-info">
+                <div>
+                    Color
                 </div>
             </div>
         </div>
