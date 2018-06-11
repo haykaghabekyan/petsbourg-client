@@ -1,21 +1,16 @@
-import {SET_USER, SET_USER_PETS, REMOVE_USER} from "../types";
+import { SET_USER_PROFILE, REMOVE_USER_PROFILE } from "../types";
 
 const INITIAL_STATE = {
     profile: null,
-    pets: null,
 };
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case SET_USER:
+        case SET_USER_PROFILE:
             return {
                 ...state, ...action.payload,
             };
-        case SET_USER_PETS:
-            return {
-                ...state, pets: action.pets
-            };
-        case REMOVE_USER:
+        case REMOVE_USER_PROFILE:
             return {
                 ...INITIAL_STATE
             };

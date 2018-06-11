@@ -18,7 +18,7 @@ const MainLayout = ({ route, me }) => {
             </header>
             <main className="">
                 <div className="container">
-                    {renderRoutes(route.routes)}
+                    { renderRoutes(route.routes) }
                 </div>
             </main>
         </div>

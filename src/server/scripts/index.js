@@ -1,7 +1,8 @@
 import "babel-polyfill";
-
 import express from "express";
 import cookieParser from "cookie-parser";
+import axios from "axios";
+import AppRouter from "./routes/router";
 
 const app = express();
 
@@ -16,7 +17,7 @@ app.use((req, res, next) => {
     return next();
 });
 
-import AppRouter from "./routes/router";
+axios.defaults.baseURL = 'http://localhost:3000';
 
 const appRouter = new AppRouter();
 app.use(appRouter.router);

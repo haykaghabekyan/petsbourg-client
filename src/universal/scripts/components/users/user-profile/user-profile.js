@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
-import ProfileCard from "../profile/profile-card";
-import getPetIcon from "../../utils/icons/pets";
+import ProfileCard from "./user-profile-card";
+import getPetIcon from "../../../utils/icons/pets/index";
 
 const getPicture = (pet, width=23) => {
     if (pet.picture) {
@@ -14,26 +14,25 @@ const getPicture = (pet, width=23) => {
     return <PetIcon width={width} />;
 };
 
-class ProfileLayout extends React.Component {
+class UserProfile extends React.Component {
 
     render () {
-        const { children, user, match: { params } } = this.props;
-        const { profile, pets } = user;
-        const { petId = null } = params;
+        const { user, match: { params: { petId } } } = this.props;
+        const { profile } = user;
 
         return (
             <div className="main-layout-page home-container">
                 <div className="main-left-sidebar">
                     <ProfileCard user={ user } />
 
-                    { pets.length > 0 && <div className="pet-types-container">
+                    { profile.Pets.length > 0 && <div className="pet-types-container">
                         <div className="pet-types-title">Pets</div>
                         <ul className="pet-types-list">
                             {
-                                pets.map((pet, key) => {
+                                profile.Pets.map((pet, key) => {
                                     return (
                                         <li key={key}>
-                                            <Link to={`/${ profile.id }/${ pet.id }`} className={`pet-type-item ${ pet.id === Number(petId) ? "selected" : "" }`}>
+                                            <Link to={`/pets/${ pet.id }`} className={`pet-type-item ${ pet.id === Number(petId) ? "selected" : "" }`}>
                                                 <div className="pet-icon">
                                                     { getPicture(pet) }
                                                 </div>
@@ -46,9 +45,9 @@ class ProfileLayout extends React.Component {
                         </ul>
                     </div>}
                 </div>
-                <div className="main-content">
-                    { children }
-                </div>
+
+                <div className="main-content" />
+
                 <div className="main-right-sidebar">
                     <div />
                     <div />
@@ -60,4 +59,4 @@ class ProfileLayout extends React.Component {
 
 }
 
-export default withRouter(ProfileLayout);
+export default withRouter(UserProfile);

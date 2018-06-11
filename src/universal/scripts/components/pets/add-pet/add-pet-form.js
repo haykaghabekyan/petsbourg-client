@@ -1,8 +1,8 @@
 import React from "react";
-import { required } from "../../utils/form/validators";
+import { required } from "../../../utils/form/validators";
 import { Field, reduxForm } from "redux-form";
-import Input from "../../utils/form/input";
-import Select from "../../utils/form/select";
+import Input from "../../../utils/form/input";
+import Select from "../../../utils/form/select";
 
 const genderOptions = [{
     name: "Male",
@@ -24,10 +24,10 @@ class AddPetForm extends React.Component {
         });
 
         return (
-            <div className="add-pet-form-container">
+            <div className="add-pet">
                 <h3 className="add-pet-title">Please, add your pet details</h3>
 
-                <form onSubmit={handleSubmit}>
+                <form className="add-pet-form" onSubmit={handleSubmit}>
                     <Field name="breed" id="addPetBreed" placeholder="Select breed" options={ breedsOptions } component={ Select } validate={ [required] } />
 
                     <Field name="name" id="addPetName" placeholder="Name" component={ Input } validate={ [required] } />

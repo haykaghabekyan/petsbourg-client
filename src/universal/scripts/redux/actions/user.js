@@ -1,36 +1,32 @@
 import axios from "axios";
-import { SET_USER, SET_USER_PETS } from "../types";
+import { REMOVE_USER_PROFILE, SET_USER_PROFILE } from "../types";
 
 export const getUserProfile = userId => {
-
     return dispatch => {
-
-        const request = axios.get(`./api/users/${userId}`);
+        const request = axios.get(`./api/users/${ userId }`);
 
         request.then(response => {
-
             const { user } = response.data;
 
             dispatch({
-                type: SET_USER,
+                type: SET_USER_PROFILE,
                 payload: {
                     profile: user,
-                    pets: user.Pets || [],
                 },
             });
 
         }).catch(error => {
-            dispatch({
-                type: SET_USER,
-                payload: {
-                    profile: "NOT_FOUND",
-                    pets: [],
-                }
-            });
+            console.error(error);
         });
 
         return request;
-
     };
+};
 
+export const removeUserProfile = () => {
+    return dispatch => {
+        dispatch({
+            type: REMOVE_USER_PROFILE,
+        });
+    };
 };

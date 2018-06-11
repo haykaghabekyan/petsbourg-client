@@ -13,17 +13,18 @@ export const Header = () => {
 };
 
 const ContentComponent = ({ me }) => {
-    const { profile, pets } = me;
+    const { profile } = me;
+
     return (
         <div>
             <div className="dropdown-list-container">
                 <h4 className="dropdown-list-title">Your pets</h4>
                 <ul className="dropdown-list">
                     {
-                        pets && pets.map((pet, key) => {
+                        profile.Pets.map((pet, key) => {
                             return (
                                 <li className="dropdown-list-item" key={key}>
-                                    <Link to={`/${profile.id}/${pet.id}`}>{ pet.name }</Link>
+                                    <Link to={`/pets/${ pet.id }`}>{ pet.name }</Link>
                                 </li>
                             );
                         })
@@ -33,17 +34,14 @@ const ContentComponent = ({ me }) => {
             <div className="dropdown-list-container">
                 <ul className="dropdown-list">
                     <li className="dropdown-list-item">
-                        <Link to="/pets/add">Add pet</Link>
+                        <Link to={ `/pets/add` }>Add pet</Link>
                     </li>
                 </ul>
             </div>
             <div className="dropdown-list-container">
                 <ul className="dropdown-list">
                     <li className="dropdown-list-item">
-                        <Link to={ `/${ profile.id }` }>My Profile</Link>
-                    </li>
-                    <li className="dropdown-list-item">
-                        <Link to="/settings">Settings</Link>
+                        <Link to={ `/users/${ profile.id }` }>My profile</Link>
                     </li>
                     <li className="dropdown-list-item">
                         <SignOutContainer />

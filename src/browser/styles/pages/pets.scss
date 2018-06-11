@@ -47,10 +47,15 @@
   }
 }
 
-.add-pet-form-container {
-  padding: 0 20px;
+.add-pet {
+  padding: 45px 20px;
+  background-color: $white;
 
-  .add-pet-title {
-    margin: 45px 0;
+  &-title {
+
+  }
+
+  &-form {
+    margin-top: 20px;
   }
 }

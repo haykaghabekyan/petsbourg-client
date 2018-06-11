@@ -9,21 +9,25 @@ const PetInfo = ({ pet }) => {
                         <img className="pet-facts-img" src="/media/images/fake-dog/5.jpeg" />
                     </div>
                     <div className="pet-facts-content">
-                        <h2 className="pet-facts-name">Bobik</h2>
+                        <h2 className="pet-facts-name">{ pet.name }</h2>
 
                         <dl className="pet-facts-list">
-                            <dt className="pet-facts-label">Type</dt><dd className="pet-facts-value">Dominic</dd>
-                            <dt className="pet-facts-label">Breed</dt><dd className="pet-facts-value">24</dd>
-                            <dt className="pet-facts-label">Gender</dt><dd className="pet-facts-value">foo@bar.com</dd>
+                            <dt className="pet-facts-label">Pet ID</dt>
+                            <dd className="pet-facts-value">{ pet.petID || "-" }</dd>
+
+                            <dt className="pet-facts-label">Type</dt>
+                            <dd className="pet-facts-value">{ pet.PetType.name || "-" }</dd>
+
+                            <dt className="pet-facts-label">Breed</dt>
+                            <dd className="pet-facts-value">{ pet.PetBreed.name || "-" }</dd>
+
+                            <dt className="pet-facts-label">Gender</dt>
+                            <dd className="pet-facts-value">{ pet.gender || "-" }</dd>
                         </dl>
                     </div>
                 </div>
             </div>
             <div className="pet-info">
-                <dl className="pet-info-list">
-                    <dt className="pet-info-label">Pet ID</dt>
-                    <dd className="pet-info-value">56134561</dd>
-                </dl>
                 <dl className="pet-info-list">
                     <dt className="pet-info-label">Color</dt>
                     <dd className="pet-info-value">Light brown</dd>

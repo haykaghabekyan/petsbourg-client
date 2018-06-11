@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import UserIcon from "../../utils/icons/common/user";
-import MessageIcon from "../../utils/icons/common/message";
-import PhoneIcon from "../../utils/icons/common/phone";
-import EnvelopeIcon from "../../utils/icons/common/envelope";
+import UserIcon from "../../../utils/icons/common/user";
+import MessageIcon from "../../../utils/icons/common/message";
+import PhoneIcon from "../../../utils/icons/common/phone";
+import EnvelopeIcon from "../../../utils/icons/common/envelope";
 
 const Card = ({ user, me }) => {
     return (
@@ -17,7 +17,7 @@ const Card = ({ user, me }) => {
                 </div>
                 <div className="profile-card-user">
                     <div className="profile-card-name">
-                        <Link to={ `/${ user.profile.id }` }>{user.profile.firstName + " " + user.profile.lastName}</Link>
+                        <Link to={ `/users/${ user.profile.id }` }>{user.profile.firstName + " " + user.profile.lastName}</Link>
                     </div>
                     <div className="profile-card-info">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores consequuntur dolor ipsa ipsam molestiae nemo nobis porro quia temporibus!

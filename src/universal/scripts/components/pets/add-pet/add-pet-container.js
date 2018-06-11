@@ -4,8 +4,8 @@ import {Link} from "react-router-dom";
 import find from "lodash/find"
 import AddPetForm from "./add-pet-form";
 import AddPetChooseType from "./add-pet-choose-type";
-import getPetIcon from "../../utils/icons/pets";
-import {addPet} from "../../redux/actions/pet";
+import getPetIcon from "../../../utils/icons/pets/index";
+import {addPet} from "../../../redux/actions/pet";
 
 class AddPetContainer extends React.Component {
 

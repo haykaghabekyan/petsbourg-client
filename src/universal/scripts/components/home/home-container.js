@@ -1,18 +1,10 @@
 import React from "react";
-import { renderRoutes } from "react-router-config";
 import { connect } from "react-redux";
 
-import ProfileLayout from "../layouts/profile";
+import UserProfile from "../users/user-profile/user-profile";
 
-const HomeContainer = ({ route, me }) => {
-
-    const { profile, pets } = me;
-
-    return (
-        <ProfileLayout user={me}>
-            {renderRoutes(route.routes, { pets })}
-        </ProfileLayout>
-    );
+const HomeContainer = ({ me }) => {
+    return <UserProfile user={ me } />;
 };
 
 const mapStateToProps = state => {
