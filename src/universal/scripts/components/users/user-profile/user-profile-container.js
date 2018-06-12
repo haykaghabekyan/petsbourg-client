@@ -1,26 +1,25 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getUserProfile, removeUserProfile } from "../../../redux/actions/user";
-
 import UserProfile from "./user-profile";
 
 class UserProfileContainer extends React.Component {
 
     componentDidMount() {
-        // const { match: { params: { userId } } } = this.props;
+        const { match: { params: { userId } } } = this.props;
 
-        // this.props.getUserProfile(userId);
+        this.props.getUserProfile(userId);
     }
 
     componentWillUnmount() {
-        // this.props.removeUserProfile();
+        this.props.removeUserProfile();
     }
 
     render () {
         const { user } = this.props;
-        const { profile } = user;
+        const { profile, isFetching } = user;
 
-        if (!profile) {
+        if (isFetching && !profile) {
             return <div>Loading...</div>;
         }
 

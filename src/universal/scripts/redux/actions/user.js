@@ -1,8 +1,13 @@
 import axios from "axios";
-import { REMOVE_USER_PROFILE, SET_USER_PROFILE } from "../types";
+import { GET_USER_PROFILE, REMOVE_USER_PROFILE, SET_USER_PROFILE } from "../types";
 
 export const getUserProfile = userId => {
     return dispatch => {
+
+        dispatch({
+            type: GET_USER_PROFILE,
+        });
+
         const request = axios.get(`./api/users/${ userId }`);
 
         request.then(response => {

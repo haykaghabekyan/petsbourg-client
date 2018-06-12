@@ -24,26 +24,27 @@ class UserProfile extends React.Component {
             <div className="main-layout-page home-container">
                 <div className="main-left-sidebar">
                     <ProfileCard user={ user } />
-
-                    { profile.Pets.length > 0 && <div className="pet-types-container">
-                        <div className="pet-types-title">Pets</div>
-                        <ul className="pet-types-list">
-                            {
-                                profile.Pets.map((pet, key) => {
-                                    return (
-                                        <li key={key}>
-                                            <Link to={`/pets/${ pet.id }`} className={`pet-type-item ${ pet.id === Number(petId) ? "selected" : "" }`}>
-                                                <div className="pet-icon">
-                                                    { getPicture(pet) }
-                                                </div>
-                                                <div className="pet-name">{ pet.name }</div>
-                                            </Link>
-                                        </li>
-                                    );
-                                })
-                            }
-                        </ul>
-                    </div>}
+                    {
+                        profile && profile.Pets && <div className="pet-types-container">
+                            <div className="pet-types-title">Pets</div>
+                            <ul className="pet-types-list">
+                                {
+                                    profile.Pets.map((pet, key) => {
+                                        return (
+                                            <li key={key}>
+                                                <Link to={`/pets/${ pet.id }`} className={`pet-type-item ${ pet.id === Number(petId) ? "selected" : "" }`}>
+                                                    <div className="pet-icon">
+                                                        { getPicture(pet) }
+                                                    </div>
+                                                    <div className="pet-name">{ pet.name }</div>
+                                                </Link>
+                                            </li>
+                                        );
+                                    })
+                                }
+                            </ul>
+                        </div>
+                    }
                 </div>
 
                 <div className="main-content" />
