@@ -17,14 +17,14 @@ export const addPet = data => {
     };
 };
 
-export const getPetWithUser = data => {
+export const getPetWithUser = petId => {
     return dispatch => {
 
         dispatch({
             type: GET_USER_PROFILE,
         });
 
-        const request = axios.get(`./api/users/${ userId }`);
+        const request = axios.get(`./api/pets/${ petId }`);
 
         request.then(response => {
             const { user } = response.data;

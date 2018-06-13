@@ -9,7 +9,9 @@ import { getPetWithUser } from "../../../redux/actions/pet";
 class PetProfileContainer extends React.Component {
 
     componentDidMount() {
-        this.props.getPetWithUser();
+        const { match: { params: { petId } } } = this.props;
+
+        this.props.getPetWithUser(petId);
     }
 
     render() {
@@ -41,4 +43,8 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(PetProfileContainer);
+const actionCreators = {
+    getPetWithUser,
+};
+
+export default connect(mapStateToProps, actionCreators)(PetProfileContainer);
