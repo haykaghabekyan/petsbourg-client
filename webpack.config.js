@@ -1,9 +1,15 @@
 const path = require("path");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const extractSass = new ExtractTextPlugin({
-    filename: "styles/[name].css"
+// const extractSass = new ExtractTextPlugin({
+//     filename: "styles/[name].css"
+// });
+
+const compileScss = new MiniCssExtractPlugin({
+    // Options similar to the same options in webpackOptions.output
+    // both options are optional
+    filename: "styles/[name].css",
 });
 
 const copyImages = new CopyWebpackPlugin([{
@@ -32,19 +38,19 @@ const config = {
                 }
             }]
         }, {
-            test: /\.scss$/,
-            use: extractSass.extract([{
-                loader: "css-loader" // translates CSS into CommonJS
-            }, {
-                loader: "sass-loader" // compiles Sass to CSS
-            }])
+            test: /\.(sa|sc|c)ss$/,
+            use: [
+                MiniCssExtractPlugin.loader,
+                "css-loader",
+                "sass-loader"
+            ],
         }, {
             test: /\.(jpg|png|gif|svg|pdf|ico)$/,
             use: [{
                 loader: "file-loader",
                 options: {
                     outputPath: "media/images/",
-                    name: "[name].[ext]"
+                    name: "[name].[ext]",
                 },
             }]
         }, {
@@ -59,8 +65,8 @@ const config = {
         }]
     },
     plugins: [
-        extractSass,
         copyImages,
+        compileScss,
     ],
 };
 
