@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import PetInfo from "./pet-info";
-import PetStory from "./pet-story";
-import PetPhotos from "./pet-photos";
+import PetInfo from "../pet-info/pet-info";
+import PetStory from "../pet-story/pet-story";
 
 import { getPetWithUser } from "../../../redux/actions/pet";
 
@@ -18,8 +17,7 @@ class PetProfileContainer extends React.Component {
         const { user: { profile }, match: { params: { petId } } } = this.props;
         const pet = profile && profile.Pets && profile.Pets.find(p => p.id === Number(petId));
 
-        const story = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa impedit libero necessitatibus porro! Accusamus iusto pariatur ratione voluptate." +
-            "Asperiores eligendi expedita explicabo iure non quaerat, sit! Enim iusto libero rerum? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa impedit libero necessitatibus porro! Accusamus iusto pariatur ratione voluptate. Asperiores eligendi expedita explicabo iure non quaerat, sit! Enim iusto libero rerum?"
+        const story = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa impedit libero necessitatibus porro! Accusamus iusto pariatur ratione voluptate.";
 
         if (!pet) {
             return <div>!pet</div>;
@@ -30,8 +28,6 @@ class PetProfileContainer extends React.Component {
                 <PetInfo pet={ pet } />
 
                 <PetStory story={story} />
-
-                {/*<PetPhotos />*/}
             </div>
         );
     }

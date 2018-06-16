@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import ProfileCard from "./user-profile-card";
-import PetsCard from "../../pets/pets-card/pets-card";
+import ProfileCard from "../../users/user-profile/user-profile-card";
+import PetsCard from "../pets-card/pets-card";
 
 class UserProfile extends React.Component {
 
@@ -25,7 +25,6 @@ class UserProfile extends React.Component {
             </div>
         );
     }
-
 }
 
 export default withRouter(UserProfile);

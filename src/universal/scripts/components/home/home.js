@@ -1,8 +1,7 @@
-import * as React from "react";
+import React from "react";
 import AddPet from "./add-pet";
 
 const Home = ({ pets }) => {
-
     if (!pets || !pets.length) {
         return <AddPet />;
     }

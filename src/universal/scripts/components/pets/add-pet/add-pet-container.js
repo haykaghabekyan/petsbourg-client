@@ -70,7 +70,7 @@ class AddPetContainer extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        petTypes: state.pet.petTypes
+        petTypes: state.petTypes
     };
 };
 

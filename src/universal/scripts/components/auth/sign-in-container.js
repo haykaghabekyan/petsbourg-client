@@ -1,8 +1,8 @@
-import * as React from "react";
-import {connect} from "react-redux";
-import {signIn} from "../../redux/actions/auth";
+import React from "react";
+import { connect} from "react-redux";
+import { SubmissionError } from "redux-form";
+import { signIn } from "../../redux/actions/auth";
 import SignInForm from "./sign-in-form";
-import {SubmissionError} from "redux-form";
 
 class SignIn extends React.Component {
 

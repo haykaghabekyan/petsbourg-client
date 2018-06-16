@@ -1,8 +1,8 @@
-import * as React from "react";
-import {connect} from "react-redux";
-import {SubmissionError} from "redux-form";
-import {Redirect} from "react-router-dom";
-import {signUp} from "../../redux/actions/auth";
+import React from "react";
+import { connect } from "react-redux";
+import { SubmissionError } from "redux-form";
+import { Redirect } from "react-router-dom";
+import { signUp } from "../../redux/actions/auth";
 import SignUpForm from "./sign-up-form";
 
 class SignUp extends React.Component {

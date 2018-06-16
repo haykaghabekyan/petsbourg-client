@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./dist/server/scripts/index.js",
     "start:dev": "nodemon ./dist/server/scripts/index.js",
-    "build:dev": "webpack --mode development --watch --progress & ./node_modules/.bin/babel -w ./src/server/scripts --out-dir ./dist/server/scripts --source-maps & ./node_modules/.bin/babel -w ./src/universal/scripts --out-dir ./dist/universal/scripts --ignore **/*.test.js --source-maps",
+    "build:dev": "webpack --mode development --watch --progress & ./node_modules/.bin/babel -w ./src/server/scripts --out-dir ./dist/server/scripts & ./node_modules/.bin/babel -w ./src/universal/scripts --out-dir ./dist/universal/scripts --ignore **/*.test.js",
     "build:prod": "",
     "test": "./node_modules/.bin/jest"
   },

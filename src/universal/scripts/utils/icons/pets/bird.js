@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 const BirdIcon = ({ color="#27AE60", width=50 }) => {
     return (

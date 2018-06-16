@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 const Input = ({ input, meta: { touched, error }, placeholder = "", type = "text", border = true}) => {
     return (

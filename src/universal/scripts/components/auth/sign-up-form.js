@@ -1,8 +1,8 @@
-import * as React from "react";
+import React from "react";
 import { Field, reduxForm, SubmissionError } from "redux-form";
+import { required, email } from "../../utils/form/validators";
 import Input from "../../utils/form/input";
 import Select from "../../utils/form/select";
-import { required, email } from "../../utils/form/validators";
 
 const genderOptions = [{
     name: "Male",

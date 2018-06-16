@@ -1,7 +1,7 @@
 import axios from "axios/index";
 import jwt from "jsonwebtoken";
 import JWT_PUBLIC_KEY from "../../../universal/scripts/configs/jwt";
-import PRELOADED_STATE from "./preloaded-state";
+import PRELOADED_STATE from "../../../universal/scripts/redux/preloaded-state";
 
 const verifyToken = async (req, res, next) => {
     const { jwtToken = null } = req.cookies;
@@ -34,7 +34,7 @@ const verifyToken = async (req, res, next) => {
     try {
         const result = await axios.get("/api/pets/pet-types");
 
-        preloadedState.pet.petTypes = result.data.petTypes;
+        preloadedState.petTypes = result.data.petTypes;
     } catch (error) {
         // console.error(error);
     }
