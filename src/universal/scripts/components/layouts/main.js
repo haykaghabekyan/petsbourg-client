@@ -1,5 +1,6 @@
 import React from "react";
 import { renderRoutes } from "react-router-config";
+import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import AuthHeader from "../header/auth-header";
@@ -31,4 +32,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(MainLayout);
+export default withRouter(connect(mapStateToProps)(MainLayout));

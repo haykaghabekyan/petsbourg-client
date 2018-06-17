@@ -1,12 +1,10 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
 import ProfileCard from "../users/user-profile/user-profile-card";
 import PetsCard from "../pets/pets-card/pets-card";
 
-class UserProfile extends React.Component {
-
+class ProfileLayout extends React.Component {
     render () {
-        const { user } = this.props;
+        const { children, user } = this.props;
 
         return (
             <div className="main-layout-page home-container">
@@ -15,7 +13,7 @@ class UserProfile extends React.Component {
                     <PetsCard pets={ user.profile.Pets } />
                 </div>
 
-                <div className="main-content" />
+                <div className="main-content">{ children }</div>
 
                 <div className="main-right-sidebar">
                     <div />
@@ -27,4 +25,4 @@ class UserProfile extends React.Component {
     }
 }
 
-export default withRouter(UserProfile);
+export default ProfileLayout;

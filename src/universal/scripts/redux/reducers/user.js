@@ -1,7 +1,8 @@
-import { SET_USER_PROFILE, REMOVE_USER_PROFILE, GET_USER_PROFILE } from "../types";
+import { SET_USER_PROFILE, REMOVE_USER, GET_USER_PROFILE } from "../types";
 
 const INITIAL_STATE = {
     profile: null,
+    pet: null,
     isFetching: false,
 };
 
@@ -15,7 +16,7 @@ export default (state = INITIAL_STATE, action) => {
             return {
                 ...state, ...action.payload, isFetching: false,
             };
-        case REMOVE_USER_PROFILE:
+        case REMOVE_USER:
             return {
                 ...INITIAL_STATE
             };

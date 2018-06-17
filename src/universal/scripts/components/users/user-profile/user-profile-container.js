@@ -1,42 +1,47 @@
 import React from "react";
+import { renderRoutes } from "react-router-config";
 import { connect } from "react-redux";
-import { getUserProfile, removeUserProfile } from "../../../redux/actions/user";
-import UserProfile from "./user-profile";
+import { getUserProfile, removeUser } from "../../../redux/actions/user";
+import ProfileLayout from "../../layouts/profile";
 
 class UserProfileContainer extends React.Component {
 
-    componentDidMount() {
+    componentWillMount() {
         const { match: { params: { userId } } } = this.props;
 
         this.props.getUserProfile(userId);
     }
 
     componentWillUnmount() {
-        this.props.removeUserProfile();
+        this.props.removeUser();
     }
 
     render () {
-        const { user } = this.props;
-        const { profile, isFetching } = user;
+        const { user, route } = this.props;
 
-        if (isFetching && !profile) {
+        if (!user.profile || user.isFetching) {
             return <div>Loading...</div>;
         }
 
-        return <UserProfile user={ user } />;
+        return (
+            <ProfileLayout user={ user }>
+                { renderRoutes(route.routes) }
+            </ProfileLayout>
+        );
     }
 
 }
 
 const mapStateToProps = state => {
     return {
+        me: state.me,
         user: state.user,
     };
 };
 
 const actionCreators = {
     getUserProfile,
-    removeUserProfile,
+    removeUser,
 };
 
 export default connect(mapStateToProps, actionCreators)(UserProfileContainer);

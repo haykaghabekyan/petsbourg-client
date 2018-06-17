@@ -15,6 +15,7 @@ class ApiRouter {
         this.router.get('/search', verifyToken, indexRouter);
         this.router.get('/users/:userId', verifyToken, usersRouter.get);
         this.router.get('/pets/:petId', verifyToken, petsRouter.get);
+        this.router.get('/pets/:petId/edit', verifyToken, indexRouter);
         this.router.get('*', verifyToken, indexRouter);
     }
 }

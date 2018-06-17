@@ -17,12 +17,11 @@
 
 .main-layout-page {
   display: flex;
+  flex-direction: row;
 
   .main-left-sidebar {
     width: 196px;
     background-color: $white;
-    min-height: calc(100vh - 69px - 80px);
-    align-self: flex-start;
   }
 
   .main-content {

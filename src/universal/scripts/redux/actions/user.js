@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_USER_PROFILE, REMOVE_USER_PROFILE, SET_USER_PROFILE } from "../types";
+import { GET_USER_PROFILE, REMOVE_USER, SET_USER_PROFILE } from "../types";
 
 export const getUserProfile = userId => {
     return dispatch => {
@@ -28,10 +28,10 @@ export const getUserProfile = userId => {
     };
 };
 
-export const removeUserProfile = () => {
+export const removeUser = () => {
     return dispatch => {
         dispatch({
-            type: REMOVE_USER_PROFILE,
+            type: REMOVE_USER,
         });
     };
 };

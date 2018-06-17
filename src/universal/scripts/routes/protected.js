@@ -7,6 +7,7 @@ import HomeContainer from "../components/home/home-container";
 import Home from "../components/home/home";
 import AddPetContainer from "../components/pets/add-pet/add-pet-container";
 import SearchResultsContainer from "../components/search/search-results-container";
+import PetProfileContainer from "../components/pets/pet-profile/pet-profile-container";
 
 const protectedRoutes = [{
     path: "/",
@@ -27,6 +28,14 @@ const protectedRoutes = [{
     routes: [{
         path: "/pets/add",
         component: AddPetContainer
+    }]
+},  {
+    path: "/pets/:petId/edit",
+    component: MainLayout,
+    exact: true,
+    routes: [{
+        path: "/pets/:petId/edit",
+        component: PetProfileContainer
     }]
 }, {
     path: "/search",

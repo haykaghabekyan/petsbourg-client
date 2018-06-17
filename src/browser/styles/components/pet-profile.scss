@@ -2,6 +2,13 @@
   padding: 35px;
   background-color: $white;
   margin-bottom: 20px;
+  position: relative;
+
+  &-edit {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
 
   &-title {
     font-size: 16px;

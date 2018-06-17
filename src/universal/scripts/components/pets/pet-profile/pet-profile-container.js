@@ -1,46 +1,56 @@
 import React from "react";
+import { renderRoutes } from "react-router-config";
 import { connect } from "react-redux";
-import PetInfo from "../pet-info/pet-info";
-import PetStory from "../pet-story/pet-story";
-
+import ProfileLayout from "../../layouts/profile";
 import { getPetWithUser } from "../../../redux/actions/pet";
+import { removeUser } from "../../../redux/actions/user";
 
 class PetProfileContainer extends React.Component {
 
-    componentDidMount() {
-        const { match: { params: { petId } } } = this.props;
+    componentWillMount() {
+        this.props.getPetWithUser(this.props.match.params.petId);
+    }
 
-        this.props.getPetWithUser(petId);
+    componentWillUpdate(nextProps) {
+        if (this.props.match.params.petId !== nextProps.match.params.petId) {
+            this.props.getPetWithUser(nextProps.match.params.petId);
+        }
+    }
+
+    componentWillUnmount() {
+        this.props.removeUser();
     }
 
     render() {
-        const { user: { profile }, match: { params: { petId } } } = this.props;
-        const pet = profile && profile.Pets && profile.Pets.find(p => p.id === Number(petId));
+        const { me, user, route } = this.props;
 
-        const story = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa impedit libero necessitatibus porro! Accusamus iusto pariatur ratione voluptate.";
-
-        if (!pet) {
-            return <div>!pet</div>;
+        if ((!user.profile && !user.pet) || user.isFetching) {
+            return <div>Loading...</div>;
         }
 
         return (
-            <div>
-                <PetInfo pet={ pet } />
-
-                <PetStory story={story} />
-            </div>
+            <ProfileLayout user={ user }>
+                {
+                    renderRoutes(route.routes, {
+                        pet: user.pet,
+                        isEditable: me.profile && user.profile && me.profile.id === user.profile.id,
+                    })
+                }
+            </ProfileLayout>
         );
     }
 }
 
 const mapStateToProps = state => {
     return {
+        me: state.me,
         user: state.user,
     };
 };
 
 const actionCreators = {
     getPetWithUser,
+    removeUser,
 };
 
 export default connect(mapStateToProps, actionCreators)(PetProfileContainer);

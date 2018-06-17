@@ -9,9 +9,10 @@ export default {
         try {
             const result = await axios.get(`/api/pets/${ petId }`);
 
-            const { user } = result.data;
+            const { user, pet } = result.data;
 
             preloadedState.user.profile = user;
+            preloadedState.user.pet = pet;
         } catch (error) {
             console.error(error);
         }

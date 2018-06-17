@@ -1,9 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const PetInfo = ({ pet }) => {
+const PetInfo = ({ pet, isEditable }) => {
     return (
         <div className="pet-profile">
             <div className="pet-profile-content">
+
+                { isEditable && <Link className="pet-profile-edit" to={ `/pets/${ pet.id }/edit` }>Edit</Link> }
+
                 <div className="pet-facts">
                     <div className="pet-facts-picture">
                         <img className="pet-facts-img" src="/media/images/fake-dog/5.jpeg" />
@@ -43,6 +48,15 @@ const PetInfo = ({ pet }) => {
             </div>
         </div>
     );
+};
+
+PetInfo.propTypes = {
+    pet: PropTypes.any,
+    isEditable: PropTypes.bool,
+};
+
+PetInfo.defaultProps = {
+    isEditable: false,
 };
 
 export default PetInfo;

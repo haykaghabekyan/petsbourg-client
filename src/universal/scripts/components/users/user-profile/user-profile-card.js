@@ -43,7 +43,7 @@ const Card = ({ user, me }) => {
 
 const mapStateToProps = state => {
     return {
-        me: state.me
+        me: state.me,
     };
 };
 

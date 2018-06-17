@@ -3,12 +3,9 @@ export default {
         profile: null,
     },
     user: {
-        profile: null,
         isFetching: false,
+        profile: null,
+        pet: null,
     },
     petTypes: null,
-    pet: {
-        profile: null,
-        isFetching: false,
-    },
 };
