@@ -11,7 +11,7 @@ const Card = ({ user, me }) => {
         <div className="profile-card-container">
             <div className="profile-card-content">
                 <div className="avatar-container">
-                    <div className="profile-card-avatar">
+                    <div className="profile-card-avatar d-flex justify-center">
                         <UserIcon width={18} />
                     </div>
                 </div>

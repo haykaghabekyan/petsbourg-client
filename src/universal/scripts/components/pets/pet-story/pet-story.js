@@ -2,9 +2,11 @@ import React from "react";
 
 const PetStory = ({ story }) => {
     return (
-        <div className="pet-profile pet-story-container">
-            <h3 className="pet-profile-title">Pet Story</h3>
-            <div className="pet-story">{ story }</div>
+        <div className="pet-profile bg-white">
+            <div className="padding-35">
+                <h3 className="pet-profile-title">Pet Story</h3>
+                <pre className="pet-story">{ story }</pre>
+            </div>
         </div>
     );
 };

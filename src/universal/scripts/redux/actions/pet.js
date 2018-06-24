@@ -50,3 +50,20 @@ export const getPetWithUser = petId => {
         return request;
     };
 };
+
+export const updatePet = (petId, data) => {
+    return dispatch => {
+
+        const request = axios.put(`/api/pets/${ petId }`, data);
+
+        request.then(response => {
+
+            console.log(response.data);
+
+        }).catch(error => {
+            console.error(error);
+        });
+
+        return request;
+    };
+};

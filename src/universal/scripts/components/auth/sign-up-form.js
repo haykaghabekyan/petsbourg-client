@@ -1,19 +1,9 @@
 import React from "react";
-import { Field, reduxForm, SubmissionError } from "redux-form";
+import { Field, reduxForm } from "redux-form";
 import { required, email } from "../../utils/form/validators";
 import Input from "../../utils/form/input";
 import Select from "../../utils/form/select";
-
-const genderOptions = [{
-    name: "Male",
-    value: "Male"
-}, {
-    name: "Female",
-    value: "Female"
-}, {
-    name: "Other",
-    value: "Other"
-}];
+import { GENDER_OPTIONS } from "../../constants/gender-options";
 
 class SignUpForm extends React.Component {
 
@@ -31,7 +21,7 @@ class SignUpForm extends React.Component {
 
                     <Field name="email" id="signUpEmail" type="email" placeholder="Email" component={ Input } validate={ [required, email] } border={false} />
 
-                    <Field name="gender" id="signUpGender" placeholder="Select gender" options={genderOptions} component={ Select } validate={ [required] } border={false} />
+                    <Field name="gender" id="signUpGender" placeholder="Select gender" options={ GENDER_OPTIONS } component={ Select } validate={ [required] } border={false} />
 
                     <Field name="password" type="password" id="signUpPassword" placeholder="Password" component={ Input } validate={ [required] } border={false} />
 

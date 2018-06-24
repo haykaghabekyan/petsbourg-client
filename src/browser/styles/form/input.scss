@@ -22,16 +22,15 @@
     font-weight: 500;
     line-height: 40px;
     border: 1px solid $gray-light;
-    color: $gray;
     padding: 0 16px;
+    color: $gray-dark;
+
+    @include placeholder {
+      color: $gray;
+    }
 
     &:focus {
       outline: none;
-    }
-
-    &::placeholder {
-      color: $gray;
-      opacity: 1;
     }
 
     &.no-border {
@@ -40,10 +39,6 @@
       border-right: none;
     }
 
-  }
-
-  &[value=""] {
-    color: #263238;
   }
 
   .input-error {

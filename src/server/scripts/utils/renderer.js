@@ -1,5 +1,5 @@
 import React from "react";
-import {renderToString} from "react-dom/server";
+import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { applyMiddleware, createStore, compose } from "redux";
@@ -9,7 +9,7 @@ import reducer from "../../../universal/scripts/redux/reducers/index";
 import App from "../../../universal/scripts/app";
 import markup from "./markup";
 
-const renderer = (location, preloadedState, hydrate) => {
+const renderer = (location, preloadedState, hydrate = false) => {
 
     const context = {};
 

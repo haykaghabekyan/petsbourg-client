@@ -6,7 +6,7 @@ const UserProfile = ({ pet, isEditable }) => {
     return (
         <div>
             <PetInfo pet={ pet } isEditable={ isEditable } />
-            <PetStory story={ pet.story } />
+            { pet.story && <PetStory story={ pet.story } /> }
         </div>
     );
 };

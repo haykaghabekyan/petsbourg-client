@@ -24,17 +24,19 @@ class AddPetForm extends React.Component {
         });
 
         return (
-            <div className="add-pet">
+            <div className="add-pet padding-35">
                 <h3 className="add-pet-title">Please, add your pet details</h3>
 
-                <form className="add-pet-form" onSubmit={handleSubmit}>
+                <form className="add-pet-form" onSubmit={ handleSubmit }>
                     <Field name="breed" id="addPetBreed" placeholder="Select breed" options={ breedsOptions } component={ Select } validate={ [required] } />
 
                     <Field name="name" id="addPetName" placeholder="Name" component={ Input } validate={ [required] } />
 
                     <Field name="gender" id="addPetGender" placeholder="Select gender" options={genderOptions} component={ Select } validate={ [required] } />
 
-                    <button type="submit" className="btn btn-green">Add</button>
+                    <div className="text-right">
+                        <button type="submit" className="btn btn-green">Add</button>
+                    </div>
                 </form>
             </div>
         );

@@ -7,12 +7,20 @@
 }
 
 @mixin clearfix {
-  &:before,
-  &:after {
+  &:before, &:after {
     content: " "; // 1
     display: table; // 2
   }
+
   &:after {
     clear: both;
   }
+}
+
+@mixin placeholder {
+  &::placeholder               {@content}
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}
 }

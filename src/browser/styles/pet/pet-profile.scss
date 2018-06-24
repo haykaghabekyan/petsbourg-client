@@ -1,6 +1,4 @@
 .pet-profile {
-  padding: 35px;
-  background-color: $white;
   margin-bottom: 20px;
   position: relative;
 
@@ -70,7 +68,7 @@
   }
 
   &-label {
-    width: 85px;
+    width: 100px;
     float: left;
     clear: left;
     margin-top: 26px;
@@ -86,9 +84,9 @@
 .pet-info {
   display: flex;
   justify-content: space-between;
-  margin-top: 35px;
 
   &-list {
+    margin-top: 35px;
     flex-grow: 1;
     flex-basis: 0;
     margin-right: 15px;

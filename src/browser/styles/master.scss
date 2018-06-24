@@ -4,6 +4,7 @@
 @import "~react-image-gallery/styles/scss/image-gallery.scss";
 
 @import "variables";
+@import "mixins";
 @import "helpers";
 @import "typography";
 
@@ -22,12 +23,14 @@
 @import "components/dropdown";
 @import "components/user-profile-card";
 @import "components/user-profile-dropdown";
-@import "components/pet-profile";
 
+@import "pet/pet-profile";
+@import "pet/edit-pet";
 
 * {
   margin: 0;
   padding: 0;
+  font-family: "Roboto", sans-serif;
 }
 
 *, :after, :before {

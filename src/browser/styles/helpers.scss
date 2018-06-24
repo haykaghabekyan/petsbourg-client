@@ -42,9 +42,52 @@
   color: $gray-dark;
 }
 
+.bg-white {
+  background-color: $white;
+}
+
+@each $size in $sizes {
+  .padding-#{$size} {
+    padding: #{$size}px;
+  }
+
+  .margin-t-#{$size} {
+    margin-top: #{$size}px;
+  }
+
+  .margin-b-#{$size} {
+    margin-bottom: #{$size}px;
+  }
+}
+
 .submission-error {
   margin-top: 5px;
   margin-bottom: 18px;
   display: block;
   color: $red;
+}
+
+.d-flex {
+  display: flex;
+
+  .col-6 {
+    width: 50%;
+    margin: 0 10px;
+  }
+
+  &.row {
+    margin: 0 -10px;
+  }
+
+  &.justify-center {
+    justify-content: center;
+  }
+
+  &.justify-space-between {
+    justify-content: space-between;
+  }
+
+  &.align-center {
+    align-items: center;
+  }
 }

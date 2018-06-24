@@ -60,7 +60,7 @@ class AddPetContainer extends React.Component {
                     </div>
                 </div>
 
-                <div className="main-content">
+                <div className="main-content bg-white">
                     { !selectedPetType ? <AddPetChooseType /> : <AddPetForm key={selectedPetType} onSubmit={this.handleSubmit} petType={selectedPetType} breeds={breeds.PetBreeds} /> }
                 </div>
 
