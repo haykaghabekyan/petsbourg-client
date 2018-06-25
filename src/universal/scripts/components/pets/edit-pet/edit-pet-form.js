@@ -53,7 +53,7 @@ class EditPetForm extends React.Component {
                     <p className="edit-pet--add-photo ">Add a profile picture</p>
 
                     <div className="edit-pet--profile-photo margin-t-10 d-flex justify-center">
-                        <ImageIcon width={50} />
+                        <ImageIcon width="50%" />
                     </div>
                 </div>
 
