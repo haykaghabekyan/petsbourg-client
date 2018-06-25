@@ -3,22 +3,6 @@
   background-color: $white;
   border-bottom: 1px solid $gray-light;
 
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .brand-container {
-
-    .brand {
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 24px;
-    }
-
-  }
-
   .search-container {
     color: #282828;
     font-weight: bold;

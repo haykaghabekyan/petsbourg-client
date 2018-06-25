@@ -24,14 +24,14 @@ const SignInForm = ({ handleSubmit }) => {
 
             <p className="hr-text">or</p>
 
-            <div className="social-auth-container">
-                <Link to="/" className="btn btn-circle btn-facebook">
+            <div className="social margin-t-30">
+                <Link to="/" className="btn social-btn btn-circle btn-facebook margin-h-20">
                     <FacebookIcon width={13} color="#BDBDBD" />
                 </Link>
-                <Link to="/" className="btn btn-circle btn-twitter">
+                <Link to="/" className="btn social-btn btn-circle btn-twitter margin-h-20">
                     <TwitterIcon width={24} color="#BDBDBD" />
                 </Link>
-                <Link to="/" className="btn btn-circle btn-google">
+                <Link to="/" className="btn social-btn btn-circle btn-google margin-h-20">
                     <GoogleIcon width={24} color="#BDBDBD" />
                 </Link>
             </div>

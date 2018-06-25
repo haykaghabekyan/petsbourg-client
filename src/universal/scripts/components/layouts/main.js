@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import AuthHeader from "../header/auth-header";
 import ProtectedHeader from "../header/protected-header";
+import Footer from "../shared/footer";
 
 const MainLayout = ({ route, me }) => {
     return (
         <div className="main-layout">
             <header className="main-header">
-                <div className="container">
+                <div className="container d-flex justify-space-between align-center">
                     <div className="brand-container">
                         <Link to="/" className="brand">Petsbourg</Link>
                     </div>
@@ -22,6 +23,7 @@ const MainLayout = ({ route, me }) => {
                     { renderRoutes(route.routes) }
                 </div>
             </main>
+            <Footer />
         </div>
     );
 };

@@ -20,6 +20,9 @@
 @import "pages/home";
 
 @import "components/header";
+@import "components/footer";
+@import "components/social";
+@import "components/list";
 @import "components/dropdown";
 @import "components/user-profile-card";
 @import "components/user-profile-dropdown";
@@ -80,4 +83,14 @@ main {
     left: 20px;
     margin-right: -50%;
   }
+}
+
+.brand-container {
+
+  .brand {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+  }
+
 }

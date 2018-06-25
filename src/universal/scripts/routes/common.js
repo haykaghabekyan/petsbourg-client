@@ -30,7 +30,10 @@ const commonRoutes = [{
     component: () => <div>About</div>
 }, {
     path: "**",
-    component: NotFound,
+    component: MainLayout,
+    routes: [{
+        component: NotFound,
+    }]
 }];
 
 export default commonRoutes;

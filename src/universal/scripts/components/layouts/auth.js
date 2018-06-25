@@ -2,6 +2,7 @@ import React from "react";
 import { renderRoutes } from "react-router-config";
 import { Link } from "react-router-dom";
 import AuthHeader from "../header/auth-header";
+import Footer from "../shared/footer";
 
 const Layout = ({ route }) => {
     const showSignIn = route.showSignIn || false;
@@ -9,7 +10,7 @@ const Layout = ({ route }) => {
     return (
         <div className="auth-layout">
             <header className="main-header">
-                <div className="container">
+                <div className="container d-flex justify-space-between align-center">
                     <div className="brand-container">
                         <Link to="/" className="brand">Petsbourg</Link>
                     </div>
@@ -19,9 +20,10 @@ const Layout = ({ route }) => {
             <main className="">
                 <div className="container index-page">
                     <div className="get-started-container" />
-                    {renderRoutes(route.routes)}
+                    { renderRoutes(route.routes) }
                 </div>
             </main>
+            <Footer />
         </div>
     )
 };

@@ -58,8 +58,15 @@ button, .btn {
     padding: 0;
     border-radius: 50%;
     text-align: center;
-    line-height: 60px;
     font-size: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    &.small {
+      width: 30px;
+      height: 30px;
+    }
   }
 
   &.btn-facebook {

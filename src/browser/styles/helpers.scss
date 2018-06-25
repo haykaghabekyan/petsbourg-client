@@ -46,9 +46,23 @@
   background-color: $white;
 }
 
+.color-gray {
+  color: $gray;
+}
+
 @each $size in $sizes {
   .padding-#{$size} {
     padding: #{$size}px;
+  }
+
+  .padding-v-#{$size} {
+    padding-top: #{$size}px;
+    padding-bottom: #{$size}px;
+  }
+
+  .margin-h-#{$size} {
+    margin-left: #{$size}px;
+    margin-right: #{$size}px;
   }
 
   .margin-t-#{$size} {
