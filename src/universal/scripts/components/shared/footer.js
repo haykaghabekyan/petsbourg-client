@@ -35,7 +35,7 @@ const Footer = () => {
                     </a>
                 </div>
             </div>
-            <ul className="d-flex justify-center margin-t-30 list-style-none">
+            <ul className="d-flex justify-center margin-t-50 list-style-none">
                 <li className="margin-h-10">
                     <Link className="color-gray" to="/">© { moment().year() } Petsbourg</Link>
                 </li>
