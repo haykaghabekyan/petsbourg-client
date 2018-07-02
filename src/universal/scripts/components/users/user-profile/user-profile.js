@@ -1,31 +1,17 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
-import ProfileCard from "./user-profile-card";
-import PetsCard from "../../pets/pets-card/pets-card";
 
 class UserProfile extends React.Component {
 
     render () {
-        const { user, match: { params: { petId } } } = this.props;
+        const { user } = this.props;
 
         return (
-            <div className="main-layout-page home-container">
-                <div className="main-left-sidebar">
-                    <ProfileCard user={ user } />
-                    <PetsCard pets={ user.profile.Pets } selectedPetId={ petId } />
-                </div>
-
-                <div className="main-content" />
-
-                <div className="main-right-sidebar">
-                    <div />
-                    <div />
-                    <div />
-                </div>
+            <div>
+                User profile
             </div>
         );
     }
 
 }
 
-export default withRouter(UserProfile);
+export default UserProfile;

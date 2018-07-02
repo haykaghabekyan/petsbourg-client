@@ -1,7 +1,7 @@
 import React from "react";
+import moment from "moment";
 import { required } from "../../../utils/form/validators";
 import { Field, reduxForm } from "redux-form";
-import moment from "moment";
 import Input from "../../../utils/form/input";
 import Select from "../../../utils/form/select";
 import Textarea from "../../../utils/form/textarea";
@@ -50,16 +50,16 @@ class EditPetForm extends React.Component {
                 <h3>Complete your pet profile</h3>
 
                 <div className="margin-t-30">
-                    <p className="edit-pet--add-photo ">Add a profile picture</p>
+                    <p className="edit-pet__add-photo ">Add a profile picture</p>
 
-                    <div className="edit-pet--profile-photo margin-t-10 d-flex justify-center">
+                    <div className="edit-pet__profile-photo margin-t-10 d-flex justify-center">
                         <ImageIcon width="50%" />
                     </div>
                 </div>
 
                 <form onSubmit={ handleSubmit } className="edit-pet-form">
                     <div className="margin-t-30">
-                        <h4 className="edit-pet--section-title">Pet Facts</h4>
+                        <h2 className="margin-b-20">Pet Facts</h2>
 
                         <div className="d-flex row">
                             <div className="col-6">
@@ -88,7 +88,7 @@ class EditPetForm extends React.Component {
                     </div>
 
                     <div className="margin-t-20">
-                        <h4 className="edit-pet--section-title">Pet Information</h4>
+                        <h2 className="margin-b-20">Pet Information</h2>
 
                         <div className="d-flex row">
                             <div className="col-6">
@@ -108,7 +108,7 @@ class EditPetForm extends React.Component {
                     </div>
 
                     <div className="margin-t-20">
-                        <h4 className="edit-pet--section-title">Pet Story</h4>
+                        <h2 className="margin-b-20">Pet Story</h2>
 
                         <div>
                             <Field name="story" id="editPetStory" placeholder="Funny story about your pet" component={ Textarea } validate={ [] } />
@@ -124,7 +124,7 @@ class EditPetForm extends React.Component {
     }
 }
 
-const formName = "addPetForm";
+const formName = "editPetForm";
 
 export default reduxForm({
     form: formName,

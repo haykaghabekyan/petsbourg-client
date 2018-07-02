@@ -1,6 +1,7 @@
 import React from "react";
-import SignOut from "./sign-out";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import SignOut from "./sign-out";
 import { signOut } from "../../redux/actions/auth";
 
 class SignOutContainer extends React.Component {
@@ -15,15 +16,17 @@ class SignOutContainer extends React.Component {
         event.preventDefault();
 
         this.props.signOut();
+
+        this.props.history.push("/");
     };
 
     render () {
-        return <SignOut handleSignOutClick={this.handleSignOutClick} />;
+        return <SignOut handleSignOutClick={ this.handleSignOutClick } />;
     }
 }
 
 const actionCreators = {
-    signOut
+    signOut,
 };
 
-export default connect(null, actionCreators)(SignOutContainer);
+export default withRouter(connect(null, actionCreators)(SignOutContainer));

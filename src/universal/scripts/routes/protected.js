@@ -9,6 +9,7 @@ import AddPetContainer from "../components/pets/add-pet/add-pet-container";
 import SearchResultsContainer from "../components/search/search-results-container";
 import PetProfileContainer from "../components/pets/pet-profile/pet-profile-container";
 import EditPetContainer from "../components/pets/edit-pet/edit-pet-container";
+import EditUserContainer from "../components/users/edit-user/edit-user-container";
 
 const protectedRoutes = [{
     path: "/",
@@ -19,9 +20,21 @@ const protectedRoutes = [{
         component: HomeContainer,
         routes: [{
             path: "/",
-            component: Home
-        }]
-    }]
+            component: Home,
+        }],
+    }],
+}, {
+    path: "/users/:id/edit",
+    component: MainLayout,
+    exact: true,
+    routes: [{
+        path: "/users/:id/edit",
+        component: HomeContainer,
+        routes: [{
+            path: "/users/:id/edit",
+            component: EditUserContainer,
+        }],
+    }],
 }, {
     path: "/pets/add",
     component: MainLayout,
@@ -29,7 +42,7 @@ const protectedRoutes = [{
     routes: [{
         path: "/pets/add",
         component: AddPetContainer,
-    }]
+    }],
 },  {
     path: "/pets/:petId/edit",
     component: MainLayout,
@@ -49,12 +62,12 @@ const protectedRoutes = [{
     routes: [{
         path: "/search",
         component: SearchResultsContainer,
-    }]
+    }],
 }, {
     path: "/sign-up",
     component: () => <Redirect to="/" />
 },
-    ...commonRoutes
+    ...commonRoutes,
 ];
 
 export default protectedRoutes;

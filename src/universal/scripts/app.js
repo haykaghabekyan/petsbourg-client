@@ -6,20 +6,15 @@ import { renderRoutes } from "react-router-config";
 import protectedRoutes from "./routes/protected";
 import publicRoutes from "./routes/public";
 
-class App extends React.Component {
+const App = ({ me }) => {
+    const routesToRender = me.profile ? protectedRoutes : publicRoutes;
 
-    render () {
-        const { me } = this.props;
+    return renderRoutes(routesToRender);
+};
 
-        const routesToRender = me.profile ? protectedRoutes : publicRoutes;
-
-        return renderRoutes(routesToRender);
-    }
-}
-
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
-        me: state.me
+        me: state.me,
     };
 };
 

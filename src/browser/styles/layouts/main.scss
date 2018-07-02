@@ -31,12 +31,7 @@
   }
 
   .main-right-sidebar {
-    width: 300px;
-
-    > div {
-      min-height: 300px;
-      margin-bottom: 20px;
-      background: $gray;
-    }
+    max-width: 300px;
+    width: 100%;
   }
 }

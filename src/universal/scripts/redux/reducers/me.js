@@ -1,4 +1,4 @@
-import { SET_ME, REMOVE_ME, ADD_USER_PET } from "../types";
+import { SET_ME, SET_ME_PROFILE, REMOVE_ME, ADD_USER_PET } from "../types";
 
 const INITIAL_STATE = {
     profile: null,
@@ -8,7 +8,15 @@ export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case SET_ME:
             return {
-                ...state, ...action.me
+                ...state, ...action.me,
+            };
+        case SET_ME_PROFILE:
+            return {
+                ...state,
+                profile: {
+                    ...action.payload.profile,
+                    Pets: state.profile.Pets,
+                },
             };
         case REMOVE_ME:
             return {

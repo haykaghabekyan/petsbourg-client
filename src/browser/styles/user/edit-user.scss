@@ -1,7 +1,8 @@
-.edit-pet {
+.edit-user {
   &__profile-photo {
     width: 140px;
     height: 140px;
+    border-radius: 50%;
     background: $gray-light;
   }
 

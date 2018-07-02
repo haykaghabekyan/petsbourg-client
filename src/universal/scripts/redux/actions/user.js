@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_USER_PROFILE, REMOVE_USER, SET_USER_PROFILE } from "../types";
+import { GET_USER_PROFILE, REMOVE_USER, SET_USER_PROFILE, SET_ME_PROFILE } from "../types";
 
 export const getUserProfile = userId => {
     return dispatch => {
@@ -15,6 +15,29 @@ export const getUserProfile = userId => {
 
             dispatch({
                 type: SET_USER_PROFILE,
+                payload: {
+                    profile: user,
+                },
+            });
+
+        }).catch(error => {
+            console.error(error);
+        });
+
+        return request;
+    };
+};
+
+export const updateUser = (userId, data) => {
+    return dispatch => {
+
+        const request = axios.put(`/api/users/${ userId }`, data);
+
+        request.then(response => {
+            const { user } = response.data;
+
+            dispatch({
+                type: SET_ME_PROFILE,
                 payload: {
                     profile: user,
                 },

@@ -2,7 +2,7 @@ import React from "react";
 import PetInfo from "../pet-info/pet-info";
 import PetStory from "../pet-story/pet-story";
 
-const UserProfile = ({ pet, isEditable }) => {
+const PetProfile = ({ pet, isEditable }) => {
     return (
         <div>
             <PetInfo pet={ pet } isEditable={ isEditable } />
@@ -11,4 +11,4 @@ const UserProfile = ({ pet, isEditable }) => {
     );
 };
 
-export default UserProfile;
+export default PetProfile;

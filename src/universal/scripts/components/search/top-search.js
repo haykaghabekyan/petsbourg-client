@@ -36,7 +36,7 @@ class TopSearch extends React.Component {
             url += `?q=${ query }`
         }
 
-        this.props.history.push(url)
+        this.props.history.push(url);
     }
 
     render () {

@@ -30,7 +30,7 @@ const HomeAddPet = ({ petTypes }) => {
 
 const mapStateToProps = state => {
     return {
-        petTypes: state.pet.petTypes
+        petTypes: state.petTypes,
     };
 };
 

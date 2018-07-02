@@ -2,28 +2,34 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import UserIcon from "../../../utils/icons/common/user";
+import PenIcon from "../../../utils/icons/common/pen";
 import MessageIcon from "../../../utils/icons/common/message";
 import PhoneIcon from "../../../utils/icons/common/phone";
 import EnvelopeIcon from "../../../utils/icons/common/envelope";
 
 const Card = ({ user, me }) => {
     return (
-        <div className="profile-card-container">
-            <div className="profile-card-content">
-                <div className="avatar-container">
-                    <div className="profile-card-avatar d-flex justify-center">
+        <div className="profile-card">
+            {
+                me.profile && me.profile.id === user.profile.id &&
+                <Link to={`/users/${ me.profile.id }/edit`} className="profile-card__edit">
+                    <PenIcon color="#E0E4E9" />
+                </Link>
+            }
+            <div className="profile-card__content">
+                <div className="d-flex justify-center">
+                    <div className="profile-card__avatar d-flex justify-center align-center">
                         <UserIcon width={18} />
                     </div>
                 </div>
-                <div className="profile-card-user">
-                    <div className="profile-card-name">
+                <div className="profile-card__user">
+                    <div className="profile-card__name">
                         <Link to={ `/users/${ user.profile.id }` }>{user.profile.firstName + " " + user.profile.lastName}</Link>
                     </div>
-                    <div className="profile-card-info">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores consequuntur dolor ipsa ipsam molestiae nemo nobis porro quia temporibus!
-                    </div>
+                    { me.profile && me.profile.biography && <div className="profile-card__info">{ me.profile.biography }</div> }
                     {
-                        me.profile && me.profile.id !== user.profile.id && <div className="profile-card-contacts">
+                        me.profile && me.profile.id !== user.profile.id &&
+                        <div className="profile-card__contacts">
                             <div>
                                 <MessageIcon width={15} />
                             </div>

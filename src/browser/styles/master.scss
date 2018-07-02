@@ -24,8 +24,11 @@
 @import "components/social";
 @import "components/list";
 @import "components/dropdown";
-@import "components/user-profile-card";
-@import "components/user-profile-dropdown";
+@import "components/banners";
+
+@import "user/user-profile-card";
+@import "user/user-profile-dropdown";
+@import "user/edit-user";
 
 @import "pet/pet-profile";
 @import "pet/edit-pet";

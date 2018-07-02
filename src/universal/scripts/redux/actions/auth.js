@@ -43,7 +43,7 @@ export const signUp = (data) => {
             dispatch(setMe(decodedToken));
 
         }).catch(error => {
-
+            console.log(error);
         });
 
         return req;

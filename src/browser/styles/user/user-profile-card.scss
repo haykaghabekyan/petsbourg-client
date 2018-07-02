@@ -1,0 +1,62 @@
+.profile-card {
+  background-color: $green;
+  border-bottom: 1px solid $gray-light;
+  position: relative;
+
+  &__edit {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+  &__content {
+    padding: 18px 0 25px;
+  }
+
+  &__avatar {
+    padding: 0 0 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: $white;
+  }
+
+  &__info {
+    color: $white;
+  }
+
+  &__user {
+    padding: 0 13px;
+  }
+
+  &__contacts {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 0 9px;
+
+    > div {
+      width: 30px;
+      height: 30px;
+      background-color: $white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__name {
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    margin-top: 16px;
+    padding-bottom: 16px;
+    font-weight: bold;
+
+    a {
+      color: $white;
+    }
+  }
+
+}

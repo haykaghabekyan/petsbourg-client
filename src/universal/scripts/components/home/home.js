@@ -2,7 +2,7 @@ import React from "react";
 import AddPet from "./add-pet";
 
 const Home = ({ pets }) => {
-    if (!pets || !pets.length) {
+    if (!pets.length) {
         return <AddPet />;
     }
 

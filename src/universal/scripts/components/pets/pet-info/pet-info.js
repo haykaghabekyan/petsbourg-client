@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import moment from "moment";
+import PenIcon from "../../../utils/icons/common/pen";
 
 const box = (label, value) => {
 
@@ -28,7 +29,12 @@ const PetInfo = ({ pet, isEditable }) => {
             <div className="padding-35">
                 <div className="pet-profile-content">
 
-                    { isEditable && <Link className="pet-profile-edit" to={ `/pets/${ pet.id }/edit` }>Edit</Link> }
+                    {
+                        isEditable &&
+                        <Link className="pet-profile-edit" to={ `/pets/${ pet.id }/edit` }>
+                            <PenIcon />
+                        </Link>
+                    }
 
                     <div className="pet-facts">
                         <div className="pet-facts-picture">

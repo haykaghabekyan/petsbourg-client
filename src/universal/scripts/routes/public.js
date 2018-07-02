@@ -11,8 +11,8 @@ const publicRoutes = [{
     component: AuthLayout,
     routes: [{
         path: "/",
-        component: SignIn
-    }]
+        component: SignIn,
+    }],
 }, {
     showSignIn: true,
     path: '/sign-up',
@@ -20,10 +20,10 @@ const publicRoutes = [{
     component: AuthLayout,
     routes: [{
         path: '/sign-up',
-        component: SignUp
-    }]
+        component: SignUp,
+    }],
 },
-    ...commonRoutes
+    ...commonRoutes,
 ];
 
 export default publicRoutes;

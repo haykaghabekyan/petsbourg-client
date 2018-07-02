@@ -2,8 +2,9 @@ import React from "react";
 
 import MainLayout from "../components/layouts/main";
 import PetProfileContainer from "../components/pets/pet-profile/pet-profile-container";
-import UserProfile from "../components/pets/pet-profile/pet-profile";
+import PetProfile from "../components/pets/pet-profile/pet-profile";
 import UserProfileContainer from "../components/users/user-profile/user-profile-container";
+import UserProfile from "../components/users/user-profile/user-profile";
 import NotFound from "../components/error/not-found";
 
 const commonRoutes = [{
@@ -12,6 +13,10 @@ const commonRoutes = [{
     exact: true,
     routes: [{
         component: UserProfileContainer,
+        routes: [{
+            path: "/pets/:petId",
+            component: UserProfile,
+        }]
     }]
 }, {
     path: "/pets/:petId",
@@ -22,7 +27,7 @@ const commonRoutes = [{
         component: PetProfileContainer,
         routes: [{
             path: "/pets/:petId",
-            component: UserProfile,
+            component: PetProfile,
         }]
     }]
 }, {
