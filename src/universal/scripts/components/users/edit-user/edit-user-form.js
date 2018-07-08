@@ -5,10 +5,14 @@ import { required, email } from "../../../utils/form/validators";
 import Input from "../../../utils/form/input";
 import Select from "../../../utils/form/select";
 import Textarea from "../../../utils/form/textarea";
-import ImageIcon from "../../../utils/icons/common/image";
 import { GENDER_OPTIONS } from "../../../constants/gender-options";
+import EditProfilePicture from "./edit-profile-picture";
 
 class EditUserForm extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
 
     componentWillMount() {
         const { user } = this.props;
@@ -30,13 +34,7 @@ class EditUserForm extends React.Component {
             <div className="edit-user bg-white padding-35">
                 <h3>Complete your profile</h3>
 
-                <div className="margin-t-30">
-                    <p className="edit-user__add-photo ">Add a profile picture</p>
-
-                    <div className="edit-user__profile-photo margin-t-10 d-flex justify-center">
-                        <ImageIcon width="50%" />
-                    </div>
-                </div>
+                <EditProfilePicture />
 
                 <form onSubmit={ handleSubmit } className="edit-user-form">
                     <div className="margin-t-30">

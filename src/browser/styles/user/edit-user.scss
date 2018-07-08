@@ -4,6 +4,15 @@
     height: 140px;
     border-radius: 50%;
     background: $gray-light;
+    cursor: pointer;
+
+    &:hover {
+      background: $gray;
+
+      svg {
+        fill: $white;
+      }
+    }
   }
 
   &__add-photo {

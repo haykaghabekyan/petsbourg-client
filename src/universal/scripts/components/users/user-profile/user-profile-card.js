@@ -26,7 +26,12 @@ const Card = ({ user, me }) => {
                     <div className="profile-card__name">
                         <Link to={ `/users/${ user.profile.id }` }>{user.profile.firstName + " " + user.profile.lastName}</Link>
                     </div>
-                    { me.profile && me.profile.biography && <div className="profile-card__info">{ me.profile.biography }</div> }
+                    {
+                        user.profile && user.profile.biography &&
+                        <div className="profile-card__biography">
+                            { user.profile.biography }
+                        </div>
+                    }
                     {
                         me.profile && me.profile.id !== user.profile.id &&
                         <div className="profile-card__contacts">

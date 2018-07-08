@@ -28,6 +28,30 @@ export const getUserProfile = userId => {
     };
 };
 
+export const uploadProfilePicture = (userId, file) => {
+    return dispatch => {
+        const request = axios.post(
+            `/api/uploads/${ userId }/profile`,
+            file, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+                onUploadProgress: progressEvent => {
+                    console.log(progressEvent.loaded);
+                },
+            },
+        );
+
+        request.then(response => {
+
+            console.log(response.data);
+
+        }).catch(error => {
+            console.error(error);
+        });
+    };
+};
+
 export const updateUser = (userId, data) => {
     return dispatch => {
 
