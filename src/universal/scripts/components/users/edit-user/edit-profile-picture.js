@@ -22,7 +22,7 @@ class EditProfilePicture extends React.Component {
                 formData.append('profilePicture', file);
             });
 
-            uploadProfilePicture(me.profile.id, formData);
+            uploadProfilePicture(me.profile._id, formData);
         } else {
             console.log("onDrop error");
         }

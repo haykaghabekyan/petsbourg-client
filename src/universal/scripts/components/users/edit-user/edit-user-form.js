@@ -9,21 +9,16 @@ import { GENDER_OPTIONS } from "../../../constants/gender-options";
 import EditProfilePicture from "./edit-profile-picture";
 
 class EditUserForm extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
-
     componentWillMount() {
-        const { user } = this.props;
+        const { userProfile } = this.props;
 
         this.props.initialize({
-            firstName: user.firstName,
-            lastName: user.lastName,
-            email: user.email,
-            birthday: moment(user.birthday).format('YYYY-MM-DD'),
-            biography: user.biography,
-            gender: user.gender,
+            firstName: userProfile.firstName,
+            lastName: userProfile.lastName,
+            email: userProfile.email,
+            birthday: moment(userProfile.birthday).format('YYYY-MM-DD'),
+            biography: userProfile.biography,
+            gender: userProfile.gender,
         });
     }
 

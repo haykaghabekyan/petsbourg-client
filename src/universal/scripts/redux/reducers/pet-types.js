@@ -1,7 +1,7 @@
-import preloadedStae from "../preloaded-state";
+import { PRELOADED_STATE } from "../preloaded-state";
 
 const INITIAL_STATE = {
-    ...preloadedStae.petTypes,
+    ...PRELOADED_STATE.petTypes,
 };
 
 export default (state = INITIAL_STATE, action) => {

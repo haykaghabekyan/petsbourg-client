@@ -5,8 +5,8 @@ import PetStory from "../pet-story/pet-story";
 const PetProfile = ({ pet, isEditable }) => {
     return (
         <div>
-            <PetInfo pet={ pet } isEditable={ isEditable } />
-            { pet.story && <PetStory story={ pet.story } /> }
+            <PetInfo petProfile={ pet.profile } isEditable={ isEditable } />
+            { pet.profile.story && <PetStory story={ pet.profile.story } /> }
         </div>
     );
 };

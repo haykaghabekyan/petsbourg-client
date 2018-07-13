@@ -3,25 +3,19 @@ import jwt from "jsonwebtoken";
 import { SET_ME, REMOVE_ME } from "../types";
 import { setAuth, removeAuth } from "../../utils/auth";
 
-export const setMe = me => {
-    return {
-        type: SET_ME,
-        me,
-    };
-};
-
 export const signIn = (data) => {
     return dispatch => {
         const req = axios.post("/api/auth/sign-in", data);
 
         req.then(response => {
-            const { token } = response.data;
+            const { token, user } = response.data;
 
             setAuth(token);
 
-            const decodedToken = jwt.decode(token);
-            dispatch(setMe(decodedToken));
-
+            dispatch({
+                type: SET_ME,
+                payload: user,
+            });
         }).catch(error => {
             console.log(error);
         });
@@ -35,13 +29,14 @@ export const signUp = (data) => {
         const req = axios.post("/api/auth/sign-up", data);
 
         req.then(response => {
-            const { token } = response.data;
+            const { token, user } = response.data;
 
             setAuth(token);
 
-            const decodedToken = jwt.decode(token);
-            dispatch(setMe(decodedToken));
-
+            dispatch({
+                type: SET_ME,
+                payload: user,
+            });
         }).catch(error => {
             console.log(error);
         });

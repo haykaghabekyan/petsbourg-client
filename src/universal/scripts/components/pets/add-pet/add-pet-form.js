@@ -19,7 +19,7 @@ class AddPetForm extends React.Component {
         const breedsOptions = breeds.map(breed => {
             return {
                 name: breed.name,
-                value: breed.id,
+                value: breed._id,
             };
         });
 

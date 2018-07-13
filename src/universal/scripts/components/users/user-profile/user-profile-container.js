@@ -19,9 +19,12 @@ class UserProfileContainer extends React.Component {
     render () {
         const { user, route } = this.props;
 
-        if (!user.profile || user.isFetching) {
+        if (!user.profile) {
             return <div>Loading...</div>;
         }
+
+
+        console.log(user);
 
         return (
             <ProfileLayout user={ user }>

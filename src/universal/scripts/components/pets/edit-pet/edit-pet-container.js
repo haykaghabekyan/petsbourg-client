@@ -14,7 +14,7 @@ class EditPetContainer extends React.Component {
     handleSubmit(data) {
         const { pet, updatePet } = this.props;
 
-        updatePet(pet.id, data);
+        updatePet(pet._id, data);
     };
 
     render () {

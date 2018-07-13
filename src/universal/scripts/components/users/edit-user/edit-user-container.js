@@ -14,13 +14,13 @@ class EditUserContainer extends React.Component {
     handleSubmit(data) {
         const { updateUser, me } = this.props;
 
-        updateUser(me.profile.id, data);
+        updateUser(me.profile._id, data);
     };
 
     render () {
         const { me } = this.props;
 
-        return <EditUserForm user={ me.profile } onSubmit={ this.handleSubmit } />;
+        return <EditUserForm userProfile={ me.profile } onSubmit={ this.handleSubmit } />;
     }
 }
 

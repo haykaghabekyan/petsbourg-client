@@ -23,7 +23,7 @@ const box = (label, value) => {
     );
 };
 
-const PetInfo = ({ pet, isEditable }) => {
+const PetInfo = ({ petProfile, isEditable }) => {
     return (
         <div className="pet-profile bg-white">
             <div className="padding-35">
@@ -31,7 +31,7 @@ const PetInfo = ({ pet, isEditable }) => {
 
                     {
                         isEditable &&
-                        <Link className="pet-profile-edit" to={ `/pets/${ pet.id }/edit` }>
+                        <Link className="pet-profile-edit" to={ `/pets/${ petProfile._id }/edit` }>
                             <PenIcon />
                         </Link>
                     }
@@ -41,28 +41,28 @@ const PetInfo = ({ pet, isEditable }) => {
                             <img className="pet-facts-img" src="/media/images/fake-dog/5.jpeg" />
                         </div>
                         <div className="pet-facts-content">
-                            <h2 className="pet-facts-name">{ pet.name }</h2>
+                            <h2 className="pet-facts-name">{ petProfile.name }</h2>
 
                             <dl className="pet-facts-list">
                                 <dt className="pet-facts-label">Passport Id</dt>
-                                <dd className="pet-facts-value">{ pet.passportId || "-" }</dd>
+                                <dd className="pet-facts-value">{ petProfile.passportId || "-" }</dd>
 
                                 <dt className="pet-facts-label">Type</dt>
-                                <dd className="pet-facts-value">{ pet.PetType.name || "-" }</dd>
+                                <dd className="pet-facts-value">{ petProfile.type.name || "-" }</dd>
 
                                 <dt className="pet-facts-label">Breed</dt>
-                                <dd className="pet-facts-value">{ pet.PetBreed.name || "-" }</dd>
+                                <dd className="pet-facts-value">{ petProfile.breed.name || "-" }</dd>
 
                                 <dt className="pet-facts-label">Gender</dt>
-                                <dd className="pet-facts-value">{ pet.gender || "-" }</dd>
+                                <dd className="pet-facts-value">{ petProfile.gender || "-" }</dd>
                             </dl>
                         </div>
                     </div>
                 </div>
                 <div className="pet-info">
-                    { pet.color && box("Color", pet.color) }
-                    { pet.birthday && box("Birthday", pet.birthday) }
-                    { pet.size && box("Size", pet.size) }
+                    { petProfile.color && box("Color", petProfile.color) }
+                    { petProfile.birthday && box("Birthday", petProfile.birthday) }
+                    { petProfile.size && box("Size", petProfile.size) }
                 </div>
             </div>
         </div>

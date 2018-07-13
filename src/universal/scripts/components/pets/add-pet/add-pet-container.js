@@ -1,11 +1,11 @@
 import React from "react";
-import {connect} from "react-redux";
-import {Link} from "react-router-dom";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import find from "lodash/find"
 import AddPetForm from "./add-pet-form";
 import AddPetChooseType from "./add-pet-choose-type";
 import getPetIcon from "../../../utils/icons/pets/index";
-import {addPet} from "../../../redux/actions/pet";
+import { addPet } from "../../../redux/actions/pet";
 
 class AddPetContainer extends React.Component {
 
@@ -29,7 +29,7 @@ class AddPetContainer extends React.Component {
         const { petTypes } = this.props;
 
         const breeds = find(petTypes, pT => {
-            return pT.id === selectedPetType
+            return pT._id === selectedPetType
         });
 
         return (
@@ -45,10 +45,10 @@ class AddPetContainer extends React.Component {
                                         <li key={key}>
                                             <Link to={{
                                                 pathname: "/pets/add",
-                                                petType: petType.id
-                                            }} className={`pet-type-item ${ petType.id === selectedPetType ? "selected" : "" }`}>
+                                                petType: petType._id,
+                                            }} className={`pet-type-item ${ petType._id === selectedPetType ? "selected" : "" }`}>
                                                 <div className="pet-icon">
-                                                    <PetIcon width={30} />
+                                                    <PetIcon width={ 30 } />
                                                 </div>
                                                 <div className="pet-name">{ petType.name }</div>
                                             </Link>
@@ -61,7 +61,7 @@ class AddPetContainer extends React.Component {
                 </div>
 
                 <div className="main-content bg-white">
-                    { !selectedPetType ? <AddPetChooseType /> : <AddPetForm key={selectedPetType} onSubmit={this.handleSubmit} petType={selectedPetType} breeds={breeds.PetBreeds} /> }
+                    { !selectedPetType ? <AddPetChooseType /> : <AddPetForm key={ selectedPetType } onSubmit={this.handleSubmit} petType={ selectedPetType } breeds={breeds.breeds} /> }
                 </div>
 
                 <div className="main-right-sidebar">

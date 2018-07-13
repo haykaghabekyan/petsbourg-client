@@ -11,18 +11,18 @@ import { GENDER_OPTIONS } from "../../../constants/gender-options";
 class EditPetForm extends React.Component {
 
     componentWillMount() {
-        const { pet } = this.props;
+        const { pet: { profile } } = this.props;
 
         this.props.initialize({
-            name: pet.name,
-            petId: pet.petId,
-            gender: pet.gender,
-            story: pet.story,
-            birthday: moment(pet.birthday).format('YYYY-MM-DD'),
-            size: pet.size,
-            color: pet.color,
-            type: pet.PetType.id,
-            breed: pet.PetBreed.id,
+            name: profile.name,
+            petId: profile.petId,
+            gender: profile.gender,
+            story: profile.story,
+            birthday: moment(profile.birthday).format('YYYY-MM-DD'),
+            size: profile.size,
+            color: profile.color,
+            type: profile.type._id,
+            breed: profile.breed._id,
         });
     }
 
@@ -32,16 +32,16 @@ class EditPetForm extends React.Component {
         const petTypesOptions = petTypes.map(petType => {
             return {
                 name: petType.name,
-                value: petType.id,
+                value: petType._id,
             };
         });
 
-        const selectedType = petTypes.find(petType => petType.id === pet.PetType.id);
+        const selectedType = petTypes.find(petType => petType._id === pet.profile.type._id);
 
-        const petBreedsOptions = selectedType.PetBreeds.map(petBreed => {
+        const petBreedsOptions = selectedType.breeds.map(petBreed => {
             return {
                 name: petBreed.name,
-                value: petBreed.id,
+                value: petBreed._id,
             };
         });
 

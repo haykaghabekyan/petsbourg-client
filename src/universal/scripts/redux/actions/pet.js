@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_USER_PROFILE, REMOVE_USER_PROFILE, SET_USER_PROFILE, ADD_USER_PET } from "../types";
+import { SET_PET, ADD_USER_PET } from "../types";
 
 export const addPet = data => {
     return dispatch => {
@@ -23,12 +23,8 @@ export const addPet = data => {
     };
 };
 
-export const getPetWithUser = petId => {
+export const getPet = petId => {
     return dispatch => {
-
-        dispatch({
-            type: GET_USER_PROFILE,
-        });
 
         const request = axios.get(`/api/pets/${ petId }`);
 
@@ -36,11 +32,8 @@ export const getPetWithUser = petId => {
             const { user, pet } = response.data;
 
             dispatch({
-                type: SET_USER_PROFILE,
-                payload: {
-                    profile: user,
-                    pet: pet,
-                },
+                type: SET_PET,
+                payload: pet,
             });
 
         }).catch(error => {

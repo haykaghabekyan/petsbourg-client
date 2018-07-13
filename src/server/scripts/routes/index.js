@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "../utils/renderer";
-import PRELOADED_STATE from "../../../universal/scripts/redux/preloaded-state";
+import { PRELOADED_STATE } from "../../../universal/scripts/redux/preloaded-state";
 
 const indexRouter = async (req, res) => {
     const { url, preloadedState = PRELOADED_STATE } = req;

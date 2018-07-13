@@ -11,12 +11,13 @@ const HomeAddPet = ({ petTypes }) => {
             <div className="pet-types-list">
                 {
                     petTypes.map(petType => {
+                        console.log(petType);
                         const PetIcon = getPetIcon(petType.name);
 
                         return (
-                            <Link key={petType.id} to={ { pathname: "/pets/add", petType: petType.id } } className="pet-type-item">
+                            <Link key={petType._id} to={ { pathname: "/pets/add", petType: petType._id } } className="pet-type-item">
                                 <div className="pet-type-icon">
-                                    <PetIcon width={53} />
+                                    <PetIcon width={ 53 } />
                                 </div>
                                 <p className="pet-type-name">{ petType.name }</p>
                             </Link>

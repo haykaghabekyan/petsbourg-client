@@ -1,14 +1,13 @@
 import { SET_ME, SET_ME_PROFILE, REMOVE_ME, ADD_USER_PET } from "../types";
+import { PRELOADED_STATE } from "../preloaded-state";
 
-const INITIAL_STATE = {
-    profile: null,
-};
+const INITIAL_STATE = PRELOADED_STATE.me;
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case SET_ME:
             return {
-                ...state, ...action.me,
+                ...state, ...action.payload,
             };
         case SET_ME_PROFILE:
             return {

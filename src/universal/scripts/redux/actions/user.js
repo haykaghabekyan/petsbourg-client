@@ -15,9 +15,7 @@ export const getUserProfile = userId => {
 
             dispatch({
                 type: SET_USER_PROFILE,
-                payload: {
-                    profile: user,
-                },
+                payload: user,
             });
 
         }).catch(error => {

@@ -2,18 +2,18 @@ import React from "react";
 import { renderRoutes } from "react-router-config";
 import { connect } from "react-redux";
 import ProfileLayout from "../../layouts/profile";
-import { getPetWithUser } from "../../../redux/actions/pet";
+import { getPet } from "../../../redux/actions/pet";
 import { removeUser } from "../../../redux/actions/user";
 
 class PetProfileContainer extends React.Component {
 
     componentWillMount() {
-        this.props.getPetWithUser(this.props.match.params.petId);
+        this.props.getPet(this.props.match.params.petId);
     }
 
     componentWillUpdate(nextProps) {
         if (this.props.match.params.petId !== nextProps.match.params.petId) {
-            this.props.getPetWithUser(nextProps.match.params.petId);
+            this.props.getPet(nextProps.match.params.petId);
         }
     }
 
@@ -22,18 +22,18 @@ class PetProfileContainer extends React.Component {
     }
 
     render() {
-        const { me, user, route } = this.props;
+        const { me, pet, route } = this.props;
 
-        if ((!user.profile && !user.pet) || user.isFetching) {
+        if (!pet.profile) {
             return <div>Loading...</div>;
         }
 
         return (
-            <ProfileLayout user={ user }>
+            <ProfileLayout user={ pet.owner }>
                 {
                     renderRoutes(route.routes, {
-                        pet: user.pet,
-                        isEditable: me.profile && user.profile && me.profile.id === user.profile.id,
+                        pet: pet,
+                        isEditable: me.profile && me.profile._id === pet.owner.profile._id,
                     })
                 }
             </ProfileLayout>
@@ -44,12 +44,12 @@ class PetProfileContainer extends React.Component {
 const mapStateToProps = state => {
     return {
         me: state.me,
-        user: state.user,
+        pet: state.pet,
     };
 };
 
 const actionCreators = {
-    getPetWithUser,
+    getPet,
     removeUser,
 };
 
