@@ -23,11 +23,8 @@ class UserProfileContainer extends React.Component {
             return <div>Loading...</div>;
         }
 
-
-        console.log(user);
-
         return (
-            <ProfileLayout user={ user }>
+            <ProfileLayout userProfile={ user.profile }>
                 { renderRoutes(route.routes) }
             </ProfileLayout>
         );

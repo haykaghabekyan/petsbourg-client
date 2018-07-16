@@ -3,17 +3,17 @@
   border-bottom: 1px solid $gray-light;
   position: relative;
 
-  &__edit {
+  &--edit {
     position: absolute;
     right: 10px;
     top: 10px;
   }
 
-  &__content {
+  &--content {
     padding: 18px 0 25px;
   }
 
-  &__avatar {
+  &--avatar {
     padding: 0;
     width: 50px;
     height: 50px;
@@ -21,15 +21,16 @@
     background: $white;
   }
 
-  &__biography {
+  &--biography {
     color: $white;
+    margin-top: 15px;
   }
 
-  &__user {
+  &--user {
     padding: 0 13px;
   }
 
-  &__contacts {
+  &--contacts {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
@@ -46,12 +47,11 @@
     }
   }
 
-  &__name {
+  &--name {
     font-size: 14px;
     line-height: 16px;
     text-align: center;
     margin-top: 16px;
-    padding-bottom: 16px;
     font-weight: bold;
 
     a {

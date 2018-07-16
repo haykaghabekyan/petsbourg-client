@@ -12,9 +12,9 @@ class EditPetContainer extends React.Component {
     }
 
     handleSubmit(data) {
-        const { pet, updatePet } = this.props;
+        const { pet } = this.props;
 
-        updatePet(pet._id, data);
+        this.props.updatePet(pet.profile._id, data);
     };
 
     render () {

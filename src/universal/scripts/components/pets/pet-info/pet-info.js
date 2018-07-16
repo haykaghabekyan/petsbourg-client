@@ -5,12 +5,11 @@ import moment from "moment";
 import PenIcon from "../../../utils/icons/common/pen";
 
 const box = (label, value) => {
-
-    if (label === "Birthday") {
+    if (label !== "Birthday") {
         return (
             <dl className="pet-info-list">
                 <dt className="pet-info-label">{ label } </dt>
-                <dd className="pet-info-value">{ moment(value, "YYYYMMDD").fromNow() }</dd>
+                <dd className="pet-info-value">{ value }</dd>
             </dl>
         );
     }
@@ -18,8 +17,16 @@ const box = (label, value) => {
     return (
         <dl className="pet-info-list">
             <dt className="pet-info-label">{ label } </dt>
-            <dd className="pet-info-value">{ value }</dd>
+            <dd className="pet-info-value">{ moment(value, "YYYYMMDD").fromNow() }</dd>
         </dl>
+    );
+};
+
+const edit = (petId) => {
+    return (
+        <Link className="pet-profile-edit" to={ `/pets/${ petId }/edit` }>
+            <PenIcon />
+        </Link>
     );
 };
 
@@ -28,13 +35,7 @@ const PetInfo = ({ petProfile, isEditable }) => {
         <div className="pet-profile bg-white">
             <div className="padding-35">
                 <div className="pet-profile-content">
-
-                    {
-                        isEditable &&
-                        <Link className="pet-profile-edit" to={ `/pets/${ petProfile._id }/edit` }>
-                            <PenIcon />
-                        </Link>
-                    }
+                    { isEditable &&  edit(petProfile._id) }
 
                     <div className="pet-facts">
                         <div className="pet-facts-picture">

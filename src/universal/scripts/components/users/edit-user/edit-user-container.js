@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { updateUser } from "../../../redux/actions/user";
+import { updateUserProfile } from "../../../redux/actions/user";
 import EditUserForm from "./edit-user-form";
 
 class EditUserContainer extends React.Component {
@@ -12,9 +12,9 @@ class EditUserContainer extends React.Component {
     }
 
     handleSubmit(data) {
-        const { updateUser, me } = this.props;
+        const { me } = this.props;
 
-        updateUser(me.profile._id, data);
+        this.props.updateUserProfile(me.profile._id, data);
     };
 
     render () {
@@ -31,7 +31,7 @@ const mapStateToProps = state => {
 };
 
 const actionCreators = {
-    updateUser,
+    updateUserProfile,
 };
 
 export default connect(mapStateToProps, actionCreators)(EditUserContainer);

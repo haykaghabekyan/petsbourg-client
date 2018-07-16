@@ -29,13 +29,12 @@ export const getPet = petId => {
         const request = axios.get(`/api/pets/${ petId }`);
 
         request.then(response => {
-            const { user, pet } = response.data;
+            const { pet } = response.data;
 
             dispatch({
                 type: SET_PET,
                 payload: pet,
             });
-
         }).catch(error => {
             console.error(error);
         });
@@ -46,13 +45,15 @@ export const getPet = petId => {
 
 export const updatePet = (petId, data) => {
     return dispatch => {
-
         const request = axios.put(`/api/pets/${ petId }`, data);
 
         request.then(response => {
+            const { pet } = response.data;
 
-            console.log(response.data);
-
+            dispatch({
+                type: SET_PET,
+                payload: pet,
+            });
         }).catch(error => {
             console.error(error);
         });

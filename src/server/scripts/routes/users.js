@@ -4,16 +4,17 @@ import renderer from "../utils/renderer";
 export default {
     get: async (req, res) => {
         const { url, preloadedState, params: { userId } }  = req;
-        console.log(`/users/${ userId }`);
 
         try {
             const result = await axios.get(`/api/users/${ userId }`);
-
             const { user } = result.data;
 
-            preloadedState.user.profile = user;
+            preloadedState.user = {
+                ...preloadedState.user,
+                ...user,
+            };
         } catch (error) {
-            // console.error(error);
+            console.error("Error while getting user", error);
         }
 
         res.send(renderer(url, preloadedState, true));

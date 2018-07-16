@@ -4,14 +4,11 @@ import { connect } from "react-redux";
 import ProfileLayout from "../layouts/profile";
 
 const HomeContainer = ({ me, route }) => {
-
-    const { profile, pets } = me;
-
     return (
-        <ProfileLayout user={ me }>
+        <ProfileLayout userProfile={ me.profile }>
             {
                 renderRoutes(route.routes, {
-                    pets: pets,
+                    pets: me.profile.pets,
                 })
             }
         </ProfileLayout>

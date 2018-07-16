@@ -29,11 +29,11 @@ class PetProfileContainer extends React.Component {
         }
 
         return (
-            <ProfileLayout user={ pet.owner }>
+            <ProfileLayout userProfile={ pet.profile.owner }>
                 {
                     renderRoutes(route.routes, {
                         pet: pet,
-                        isEditable: me.profile && me.profile._id === pet.owner.profile._id,
+                        isEditable: me.profile && me.profile._id === pet.profile.owner._id,
                     })
                 }
             </ProfileLayout>

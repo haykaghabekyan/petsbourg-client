@@ -11,7 +11,6 @@ const HomeAddPet = ({ petTypes }) => {
             <div className="pet-types-list">
                 {
                     petTypes.map(petType => {
-                        console.log(petType);
                         const PetIcon = getPetIcon(petType.name);
 
                         return (

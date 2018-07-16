@@ -25,7 +25,10 @@ const verifyToken = async (req, res, next) => {
 
                 const { user } = result.data;
 
-                preloadedState.me = user;
+                preloadedState.me = {
+                    ...preloadedState.me,
+                    ...user,
+                };
 
             } catch(error) {
                 console.error("2", error);

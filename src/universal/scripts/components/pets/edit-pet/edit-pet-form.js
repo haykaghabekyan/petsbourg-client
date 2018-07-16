@@ -16,6 +16,7 @@ class EditPetForm extends React.Component {
         this.props.initialize({
             name: profile.name,
             petId: profile.petId,
+            passportId: profile.passportId,
             gender: profile.gender,
             story: profile.story,
             birthday: moment(profile.birthday).format('YYYY-MM-DD'),

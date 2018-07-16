@@ -13,15 +13,13 @@ export const Header = () => {
 };
 
 const ContentComponent = ({ me }) => {
-    const { profile, pets } = me;
-
     return (
         <div>
             <div className="dropdown-list-container">
                 <h4 className="dropdown-list-title">Your pets</h4>
                 <ul className="dropdown-list">
                     {
-                        pets.map((pet, key) => {
+                        me.profile.pets.map((pet, key) => {
                             return (
                                 <li className="dropdown-list-item" key={key}>
                                     <Link to={`/pets/${ pet._id }`}>{ pet.name }</Link>
@@ -41,7 +39,7 @@ const ContentComponent = ({ me }) => {
             <div className="dropdown-list-container">
                 <ul className="dropdown-list">
                     <li className="dropdown-list-item">
-                        <Link to={ `/users/${ profile._id }` }>My profile</Link>
+                        <Link to={ `/users/${ me.profile._id }` }>My profile</Link>
                     </li>
                     <li className="dropdown-list-item">
                         <SignOutContainer />
