@@ -12,7 +12,7 @@ const getPicture = (pet, width=23) => {
     return <PetIcon width={ width } />;
 };
 
-const PetsCard = ({ pets }) => {
+const PetsCard = ({ pets, selectedPetId }) => {
     return (
         <div className="pet-types-container">
             <div className="pet-types-title">Pets</div>
@@ -20,8 +20,8 @@ const PetsCard = ({ pets }) => {
                 {
                     pets.map((pet, key) => {
                         return (
-                            <li key={key}>
-                                <Link to={`/pets/${ pet._id }`} className={`pet-type-item`}>
+                            <li key={ key }>
+                                <Link to={`/pets/${ pet._id }`} className={`pet-type-item ${ pet && pet._id === selectedPetId ? 'selected' : '' }`}>
                                     <div className="pet-icon">
                                         { getPicture(pet) }
                                     </div>

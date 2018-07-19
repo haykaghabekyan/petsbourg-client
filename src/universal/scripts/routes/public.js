@@ -1,9 +1,11 @@
 import React from "react";
 
 import commonRoutes from "./common";
+import MainLayout from "../components/layouts/main";
 import AuthLayout from "../components/layouts/auth";
 import SignIn from "../components/auth/sign-in-container";
 import SignUp from "../components/auth/sign-up-container";
+import NotFound from "../components/error/not-found";
 
 const publicRoutes = [{
     path: "/",
@@ -21,6 +23,12 @@ const publicRoutes = [{
     routes: [{
         path: '/sign-up',
         component: SignUp,
+    }],
+}, {
+    path: "/pets/add",
+    component: MainLayout,
+    routes: [{
+        component: NotFound,
     }],
 },
     ...commonRoutes,

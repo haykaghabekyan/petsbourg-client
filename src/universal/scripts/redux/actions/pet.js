@@ -1,19 +1,18 @@
 import axios from "axios";
-import { SET_PET, ADD_USER_PET } from "../types";
+import { GET_PET, SET_PET, ADD_USER_PET } from "../types";
 
 export const addPet = data => {
     return dispatch => {
         const request = axios.post(`/api/pets`, data);
 
         request.then(response => {
-
             const { pet } = response.data;
 
             dispatch({
                 type: ADD_USER_PET,
                 payload: {
                     pet: pet,
-                }
+                },
             });
         }).catch(error => {
             console.log("addPet -> error ->", error);
@@ -25,6 +24,9 @@ export const addPet = data => {
 
 export const getPet = petId => {
     return dispatch => {
+        dispatch({
+            type: GET_PET,
+        });
 
         const request = axios.get(`/api/pets/${ petId }`);
 
@@ -36,6 +38,10 @@ export const getPet = petId => {
                 payload: pet,
             });
         }).catch(error => {
+            dispatch({
+                type: SET_PET,
+                payload: null,
+            });
             console.error(error);
         });
 

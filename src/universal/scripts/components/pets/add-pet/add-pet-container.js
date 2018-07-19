@@ -6,6 +6,7 @@ import AddPetForm from "./add-pet-form";
 import AddPetChooseType from "./add-pet-choose-type";
 import getPetIcon from "../../../utils/icons/pets/index";
 import { addPet } from "../../../redux/actions/pet";
+import CreatePetProfileDog from "../../../utils/banners/create-pet-profile-dog";
 
 class AddPetContainer extends React.Component {
 
@@ -65,7 +66,7 @@ class AddPetContainer extends React.Component {
                 </div>
 
                 <div className="main-right-sidebar">
-                    <div />
+                    <CreatePetProfileDog />
                 </div>
             </div>
         );
@@ -74,12 +75,12 @@ class AddPetContainer extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        petTypes: state.petTypes
+        petTypes: state.petTypes,
     };
 };
 
 const actionCreators = {
-    addPet
+    addPet,
 };
 
 export default connect(mapStateToProps, actionCreators)(AddPetContainer);

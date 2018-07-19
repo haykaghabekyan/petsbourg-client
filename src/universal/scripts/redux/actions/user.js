@@ -1,8 +1,12 @@
 import axios from "axios";
-import { REMOVE_USER, SET_USER, SET_ME } from "../types";
+import { REMOVE_USER, GET_USER, SET_USER, SET_ME } from "../types";
 
 export const getUserProfile = userId => {
     return dispatch => {
+        dispatch({
+            type: GET_USER,
+        });
+
         const request = axios.get(`/api/users/${ userId }`);
 
         request.then(response => {
@@ -13,7 +17,11 @@ export const getUserProfile = userId => {
                 payload: user,
             });
         }).catch(error => {
-            console.error(error);
+            dispatch({
+                type: SET_USER,
+                payload: null,
+            });
+            console.error("Error while getting the user", error);
         });
 
         return request;
@@ -57,7 +65,7 @@ export const updateUserProfile = (userId, data) => {
             });
 
         }).catch(error => {
-            console.error(error);
+            console.error("Error while updating the user", error);
         });
 
         return request;

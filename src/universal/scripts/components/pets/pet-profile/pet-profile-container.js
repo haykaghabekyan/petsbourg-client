@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import ProfileLayout from "../../layouts/profile";
 import { getPet } from "../../../redux/actions/pet";
 import { removeUser } from "../../../redux/actions/user";
+import ProfileLoadingLayout from "../../layouts/profile-loading";
 
 class PetProfileContainer extends React.Component {
-
     componentWillMount() {
         this.props.getPet(this.props.match.params.petId);
     }
@@ -23,13 +23,18 @@ class PetProfileContainer extends React.Component {
 
     render() {
         const { me, pet, route } = this.props;
+        const { isFetching } = pet;
+
+        if (isFetching) {
+            return <ProfileLoadingLayout />;
+        }
 
         if (!pet.profile) {
-            return <div>Loading...</div>;
+            return <div>not found</div>;
         }
 
         return (
-            <ProfileLayout userProfile={ pet.profile.owner }>
+            <ProfileLayout userProfile={ pet.profile.owner } selectedPetId={ pet.profile._id }>
                 {
                     renderRoutes(route.routes, {
                         pet: pet,

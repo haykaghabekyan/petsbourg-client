@@ -2,10 +2,16 @@
   .pet-types-title {
     font-size: 16px;
     line-height: 45px;
-    padding-left: 13px;
+    padding: 0 15px;
     border-bottom: 1px solid $gray-light;
     color: $gray;
     font-weight: 400;
+
+    span {
+      &.loading {
+        @include loader(10px);
+      }
+    }
   }
 
   .pet-types-list {
@@ -16,7 +22,7 @@
       background: $white;
       border-left: 5px solid $white;
       border-bottom: 1px solid $gray-light;
-      cursor: pointer;
+      padding: 0 10px 0 5px;
 
       transition: all 0.5s;
 
@@ -31,6 +37,21 @@
 
       .pet-name {
         flex: 1;
+
+        &.loading {
+          @include loader(10px);
+        }
+      }
+
+      .pet-circle {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+
+        &.loading {
+          @include loader();
+        }
       }
 
       &:hover {

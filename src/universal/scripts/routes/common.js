@@ -38,7 +38,7 @@ const commonRoutes = [{
     component: MainLayout,
     routes: [{
         component: NotFound,
-    }]
+    }],
 }];
 
 export default commonRoutes;

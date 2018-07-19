@@ -3,6 +3,7 @@ import { renderRoutes } from "react-router-config";
 import { connect } from "react-redux";
 import { getUserProfile, removeUser } from "../../../redux/actions/user";
 import ProfileLayout from "../../layouts/profile";
+import ProfileLoadingLayout from "../../layouts/profile-loading";
 
 class UserProfileContainer extends React.Component {
 
@@ -18,13 +19,18 @@ class UserProfileContainer extends React.Component {
 
     render () {
         const { user, route } = this.props;
+        const { isFetching, profile } = user;
 
-        if (!user.profile) {
-            return <div>Loading...</div>;
+        if (isFetching) {
+            return <ProfileLoadingLayout />;
+        }
+
+        if (!isFetching && !user.profile) {
+            return <div>not found</div>;
         }
 
         return (
-            <ProfileLayout userProfile={ user.profile }>
+            <ProfileLayout userProfile={ profile }>
                 { renderRoutes(route.routes) }
             </ProfileLayout>
         );
