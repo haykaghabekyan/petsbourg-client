@@ -1,17 +1,35 @@
 import React from "react";
 import queryString from "query-string";
+import { connect } from "react-redux";
+import { search } from "../../redux/actions/search";
 
 class SearchResultsContainer extends React.Component {
-    render () {
 
+    componentDidMount() {
+        const params = queryString.parse(this.props.location.search);
+
+        this.props.search(params);
+    }
+
+    render() {
         const { q = null } = queryString.parse(this.props.location.search);
 
         return (
             <div>
-                SearchResultsContainer -> { q }
+                SearchResultsContainer
             </div>
         );
     }
 }
 
-export default SearchResultsContainer;
+const mapStateToProps = state => {
+    return {
+
+    };
+};
+
+const actionCreators = {
+    search,
+};
+
+export default connect(mapStateToProps, actionCreators)(SearchResultsContainer);

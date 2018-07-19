@@ -4,6 +4,7 @@ import { reducer as formReducer } from "redux-form";
 import me from "./me";
 import user from "./user";
 import pet from "./pet";
+import search from "./search";
 import petTypes from "./pet-types";
 
 export default combineReducers({
@@ -11,5 +12,6 @@ export default combineReducers({
     user,
     pet,
     petTypes,
-    form: formReducer
+    search,
+    form: formReducer,
 });

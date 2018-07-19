@@ -41,9 +41,9 @@ class TopSearch extends React.Component {
 
     render () {
         return (
-            <div className="search-container">
+            <div className="top-search">
                 <form onSubmit={ this.onSubmit }>
-                    <input className="search-input-item" placeholder="Search.." onChange={ this.onChange } />
+                    <input className="top-search-input" placeholder="Search.." onChange={ this.onChange } />
                 </form>
             </div>
         );

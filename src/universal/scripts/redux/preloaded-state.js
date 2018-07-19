@@ -12,4 +12,8 @@ export const PRELOADED_STATE = {
         profile: null,
     },
     petTypes: [],
+    search: {
+        results: [],
+        searchBy: '',
+    },
 };
