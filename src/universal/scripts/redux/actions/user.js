@@ -1,5 +1,11 @@
 import axios from "axios";
-import { REMOVE_USER, GET_USER, SET_USER, SET_ME } from "../types";
+import {
+    REMOVE_USER,
+    GET_USER,
+    SET_USER,
+    SET_ME,
+    SET_ME_PICTURE,
+} from "../types";
 
 export const getUserProfile = userId => {
     return dispatch => {
@@ -28,10 +34,10 @@ export const getUserProfile = userId => {
     };
 };
 
-export const uploadProfilePicture = (userId, file) => {
+export const uploadUserPicture = (userId, file) => {
     return dispatch => {
         const request = axios.post(
-            `/api/uploads/${ userId }/profile`,
+            `/api/uploads/${ userId }/user`,
             file, {
                 headers: {
                     "Content-Type": "multipart/form-data",
@@ -43,9 +49,14 @@ export const uploadProfilePicture = (userId, file) => {
         );
 
         request.then(response => {
+            const { picture } = response.data;
 
-            console.log(response.data);
-
+            dispatch({
+                type: SET_ME_PICTURE,
+                payload: {
+                    picture: picture,
+                },
+            });
         }).catch(error => {
             console.error(error);
         });

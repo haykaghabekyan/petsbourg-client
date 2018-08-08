@@ -1,11 +1,37 @@
 .edit-pet {
-  &__profile-photo {
+  &--profile-photo {
     width: 140px;
     height: 140px;
-    background: $gray-light;
+    cursor: pointer;
+    position: relative;
+
+    &:hover, &.active {
+      svg {
+        fill: $white;
+      }
+    }
   }
 
-  &__add-photo {
+  &--img {
+    width: 100%;
+  }
+
+  &--icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background: rgba($black, 0.5);
+    }
+  }
+
+  &--add-photo {
     color: $gray;
     font-weight: 500;
   }

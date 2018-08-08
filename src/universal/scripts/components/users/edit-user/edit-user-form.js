@@ -6,7 +6,7 @@ import Input from "../../../utils/form/input";
 import Select from "../../../utils/form/select";
 import Textarea from "../../../utils/form/textarea";
 import { GENDER_OPTIONS } from "../../../constants/gender-options";
-import EditProfilePicture from "./edit-profile-picture";
+import EditProfilePicture from "./upload-user-picture";
 
 class EditUserForm extends React.Component {
     componentWillMount() {
@@ -23,13 +23,13 @@ class EditUserForm extends React.Component {
     }
 
     render() {
-        const { handleSubmit } = this.props;
+        const { handleSubmit, userProfile } = this.props;
 
         return (
             <div className="edit-user bg-white padding-35">
                 <h3>Complete your profile</h3>
 
-                <EditProfilePicture />
+                <EditProfilePicture userProfile={ userProfile } />
 
                 <form onSubmit={ handleSubmit } className="edit-user-form">
                     <div className="margin-t-30">

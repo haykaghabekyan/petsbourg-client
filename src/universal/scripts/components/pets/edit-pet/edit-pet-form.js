@@ -7,6 +7,7 @@ import Select from "../../../utils/form/select";
 import Textarea from "../../../utils/form/textarea";
 import ImageIcon from "../../../utils/icons/common/image";
 import { GENDER_OPTIONS } from "../../../constants/gender-options";
+import UploadPetPicture from "./upload-pet-picture";
 
 class EditPetForm extends React.Component {
 
@@ -50,13 +51,7 @@ class EditPetForm extends React.Component {
             <div className="edit-pet bg-white padding-35">
                 <h3>Complete your pet profile</h3>
 
-                <div className="margin-t-30">
-                    <p className="edit-pet__add-photo ">Add a profile picture</p>
-
-                    <div className="edit-pet__profile-photo margin-t-10 d-flex justify-center">
-                        <ImageIcon width="50%" />
-                    </div>
-                </div>
+                <UploadPetPicture petProfile={ pet.profile } />
 
                 <form onSubmit={ handleSubmit } className="edit-pet-form">
                     <div className="margin-t-30">

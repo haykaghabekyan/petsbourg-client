@@ -50,7 +50,7 @@ class Select extends React.Component {
         // Open on click, enter, or space
         if(evt.which === 13 || evt.which === 32 || evt.type === 'click') {
             this.setState({
-                open: !this.state.open
+                open: !this.state.open,
             });
         }
     }
@@ -65,12 +65,12 @@ class Select extends React.Component {
     }
 
     render() {
-        const { options, input, meta: { touched, error }, disabled, border } = this.props;
+        const { options, input, meta: { touched, error }, disabled, border, className = "" } = this.props;
         const { placeholder, open } = this.state;
 
         return (
             <ClickListener onClickOutside={this.close}>
-                <div className={`select-container ${ (touched && error) ? "select-error" : "" }`} disabled={ disabled }>
+                <div className={`select-container ${ className } ${ (touched && error) ? "select-error" : "" }`} disabled={ disabled }>
                     <ul className={`select ${ open ? "select-open" : "" }`}>
                         <li className={`select-text ${ border ? "" : "no-border" }`} onClick={this.toggle} onKeyPress={this.toggle}>
                             <input type="hidden" value={ input.value } />

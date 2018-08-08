@@ -17,7 +17,7 @@ app.use((req, res, next) => {
     return next();
 });
 
-axios.defaults.baseURL = 'http://localhost:3000';
+axios.defaults.baseURL = 'http://localhost:3003';
 
 const appRouter = new AppRouter();
 app.use(appRouter.router);

@@ -1,5 +1,10 @@
 import axios from "axios";
-import { GET_PET, SET_PET, ADD_USER_PET } from "../types";
+import {
+    GET_PET,
+    SET_PET,
+    ADD_USER_PET,
+    SET_PET_PICTURE,
+} from "../types";
 
 export const addPet = data => {
     return dispatch => {
@@ -65,5 +70,34 @@ export const updatePet = (petId, data) => {
         });
 
         return request;
+    };
+};
+
+export const uploadPetPicture = (petId, file) => {
+    return dispatch => {
+        const request = axios.post(
+            `/api/uploads/${ petId }/pet`,
+            file, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+                onUploadProgress: progressEvent => {
+                    console.log(progressEvent.loaded);
+                },
+            },
+        );
+
+        request.then(response => {
+            const { picture } = response.data;
+
+            dispatch({
+                type: SET_PET_PICTURE,
+                payload: {
+                    picture: picture,
+                },
+            });
+        }).catch(error => {
+            console.error(error);
+        });
     };
 };

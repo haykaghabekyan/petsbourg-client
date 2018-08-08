@@ -2,7 +2,7 @@ import axios from "axios";
 import UniversalCookie from "universal-cookie";
 
 export const setAxiosConfigs = () => {
-    axios.defaults.baseURL = 'http://localhost:3000';
+    axios.defaults.baseURL = 'http://localhost:3003';
 
     const universalCookie = new UniversalCookie();
 

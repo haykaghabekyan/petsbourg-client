@@ -7,6 +7,16 @@ import MessageIcon from "../../../utils/icons/common/message";
 import PhoneIcon from "../../../utils/icons/common/phone";
 import EnvelopeIcon from "../../../utils/icons/common/envelope";
 
+import { circle } from "../../../utils/helpers/cloudinary";
+
+const profilePicture = profile => {
+    if(!profile || !profile.picture) {
+        return <UserIcon width={ 18 } />;
+    }
+
+    return <img className="profile-card--picture" src={circle(profile.picture.publicId)} alt=""/>
+};
+
 const Card = ({ userProfile, me }) => {
     const { profile } = me;
 
@@ -21,7 +31,7 @@ const Card = ({ userProfile, me }) => {
             <div className="profile-card--content">
                 <div className="d-flex justify-center">
                     <div className="profile-card--avatar d-flex justify-center align-center">
-                        <UserIcon width={ 18 } />
+                        { profilePicture(userProfile) }
                     </div>
                 </div>
                 <div className="profile-card--user">

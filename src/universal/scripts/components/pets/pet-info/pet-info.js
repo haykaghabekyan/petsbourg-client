@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import moment from "moment";
 import PenIcon from "../../../utils/icons/common/pen";
+import { thumbnail } from "../../../utils/helpers/cloudinary";
 
 const box = (label, value) => {
     if (label !== "Birthday") {
@@ -39,7 +40,7 @@ const PetInfo = ({ petProfile, isEditable }) => {
 
                     <div className="pet-facts">
                         <div className="pet-facts-picture">
-                            <img className="pet-facts-img" src="/media/images/fake-dog/5.jpeg" />
+                            <img className="pet-facts-img" src={ thumbnail(petProfile.picture.publicId) } />
                         </div>
                         <div className="pet-facts-content">
                             <h2 className="pet-facts-name">{ petProfile.name }</h2>

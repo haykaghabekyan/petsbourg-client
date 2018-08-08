@@ -2,9 +2,10 @@ import React from "react";
 import Dropzone from "react-dropzone";
 import { connect } from "react-redux";
 import ImageIcon from "../../../utils/icons/common/image";
-import { uploadProfilePicture } from "../../../redux/actions/user";
+import { uploadUserPicture } from "../../../redux/actions/user";
+import { circle } from "../../../utils/helpers/cloudinary";
 
-class EditProfilePicture extends React.Component {
+class UploadUserPicture extends React.Component {
     constructor(props) {
         super(props);
 
@@ -13,16 +14,16 @@ class EditProfilePicture extends React.Component {
     }
 
     onDrop(acceptedFiles) {
-        const { uploadProfilePicture, me } = this.props;
+        const { uploadUserPicture, me } = this.props;
 
         if (acceptedFiles.length) {
             const formData = new FormData();
 
             acceptedFiles.forEach(file => {
-                formData.append('profilePicture', file);
+                formData.append('picture', file);
             });
 
-            uploadProfilePicture(me.profile._id, formData);
+            uploadUserPicture(me.profile._id, formData);
         } else {
             console.log("onDrop error");
         }
@@ -33,19 +34,24 @@ class EditProfilePicture extends React.Component {
     }
 
     render() {
+        const { userProfile } = this.props;
         return (
             <div className="margin-t-30 dropzone">
-                <p className="edit-user__add-photo ">Add a profile picture</p>
+                <p className="edit-user--add-photo ">Add a profile picture</p>
 
                 <Dropzone
                     onDrop={ this.onDrop }
                     onDropRejected={ this.onDropRejected }
-                    maxSize={ 1024 * 1024 }
+                    maxSize={ 1024 * 1024 * 1024 }
                     accept="image/*"
                     multiple={ false }
-                    className="edit-user__profile-photo margin-t-10 d-flex justify-center"
+                    className="edit-user--profile-photo margin-t-10 d-flex justify-center"
+                    activeClassName="active"
                 >
-                    <ImageIcon width="50%" />
+                    `{ userProfile.picture && <img className="edit-user--img" src={ circle(userProfile.picture.publicId) } alt=""/> }
+                    <div className="edit-user--icon">
+                        <ImageIcon width="50%" />
+                    </div>
                 </Dropzone>
             </div>
         );
@@ -59,7 +65,7 @@ const mapStateToProps = state => {
 };
 
 const actionCreators = {
-    uploadProfilePicture
+    uploadUserPicture,
 };
 
-export default connect(mapStateToProps, actionCreators)(EditProfilePicture);
+export default connect(mapStateToProps, actionCreators)(UploadUserPicture);
