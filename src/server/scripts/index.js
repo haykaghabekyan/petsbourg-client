@@ -17,7 +17,7 @@ app.use((req, res, next) => {
     return next();
 });
 
-axios.defaults.baseURL = 'http://localhost:3003';
+axios.defaults.baseURL = process.env.API_ENDPOINT ? process.env.API_ENDPOINT : "http://localhost:3003";
 
 const appRouter = new AppRouter();
 app.use(appRouter.router);
