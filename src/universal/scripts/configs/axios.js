@@ -2,7 +2,7 @@ import axios from "axios";
 import UniversalCookie from "universal-cookie";
 
 export const setAxiosConfigs = () => {
-    axios.defaults.baseURL = API_ENDPOINT;
+    axios.defaults.baseURL = process.env.API_ENDPOINT;
 
     const universalCookie = new UniversalCookie();
 

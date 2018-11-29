@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -68,7 +69,7 @@ const config = {
         copyImages,
         compileScss,
         new webpack.DefinePlugin({
-            "API_ENDPOINT": process.env.API_ENDPOINT ? process.env.API_ENDPOINT: "http://localhost:3003",
+            'process.env.API_ENDPOINT': process.env.API_ENDPOINT ? process.env.API_ENDPOINT : '"http://localhost:3003"'
         }),
     ],
 };
