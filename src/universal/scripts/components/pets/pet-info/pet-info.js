@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import moment from "moment";
 import PenIcon from "../../../utils/icons/common/pen";
 import { thumbnail } from "../../../utils/helpers/cloudinary";
+import getPetIcon from "../../../utils/icons/pets";
 
 const box = (label, value) => {
     if (label !== "Birthday") {
@@ -31,6 +32,16 @@ const edit = (petId) => {
     );
 };
 
+const profilePicture = petProfile => {
+    if(!petProfile || !petProfile.picture) {
+        const PetIcon = getPetIcon(petProfile.type.name);
+
+        return <PetIcon width={ 300 } />;
+    }
+
+    return <img className="pet-facts-img" src={ thumbnail(petProfile.picture.publicId) } />;
+};
+
 const PetInfo = ({ petProfile, isEditable }) => {
     return (
         <div className="pet-profile bg-white">
@@ -40,7 +51,7 @@ const PetInfo = ({ petProfile, isEditable }) => {
 
                     <div className="pet-facts">
                         <div className="pet-facts-picture">
-                            <img className="pet-facts-img" src={ thumbnail(petProfile.picture.publicId) } />
+                            { profilePicture(petProfile) }
                         </div>
                         <div className="pet-facts-content">
                             <h2 className="pet-facts-name">{ petProfile.name }</h2>
