@@ -69,7 +69,7 @@ const config = {
         copyImages,
         compileScss,
         new webpack.DefinePlugin({
-            'process.env.API_ENDPOINT': process.env.API_ENDPOINT ? process.env.API_ENDPOINT : '"http://localhost:3003"'
+            'process.env.API_ENDPOINT': process.env.API_ENDPOINT ? `"${ process.env.API_ENDPOINT }"` : '"http://localhost:3003"'
         }),
     ],
 };
