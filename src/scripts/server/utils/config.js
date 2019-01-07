@@ -1,0 +1,9 @@
+/**
+ * Returns env configs
+ * @returns { { backend: { url: {string} }, auth: { jwtToken: {string} } } }
+ */
+export const configs = () => {
+    const env = process.env.NODE_ENV || 'dev';
+
+    return require(`../../../vars/${ env }/vars.json`);
+};

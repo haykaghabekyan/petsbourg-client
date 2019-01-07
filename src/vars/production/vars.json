@@ -1,0 +1,8 @@
+{
+  "backend": {
+    "url": ""
+  },
+  "auth": {
+    "jwtToken": "petsbourgjwttoken"
+  }
+}

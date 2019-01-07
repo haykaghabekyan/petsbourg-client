@@ -4,63 +4,43 @@
   "description": "",
   "main": "",
   "scripts": {
-    "start": "node ./dist/server/scripts/index.js",
-    "start:dev": "nodemon ./dist/server/scripts/index.js",
-    "build:dev": "webpack --mode development --watch --progress & ./node_modules/.bin/babel -w ./src/server/scripts --out-dir ./dist/server/scripts & ./node_modules/.bin/babel -w ./src/universal/scripts --out-dir ./dist/universal/scripts --ignore **/*.test.js",
-    "build:prod": "webpack --mode production --progress & ./node_modules/.bin/babel ./src/server/scripts --out-dir ./dist/server/scripts & ./node_modules/.bin/babel ./src/universal/scripts --out-dir ./dist/universal/scripts --ignore **/*.test.js",
+    "start": "nodemon ./dist/server/scripts/bundle.js",
+    "build": "webpack --mode development --watch --progress",
+    "start:prod": "node ./dist/server/scripts/bundle.js",
+    "build:prod": "webpack --mode production --progress",
     "heroku-postbuild": "npm run build:prod",
-    "test": "./node_modules/.bin/jest"
-  },
-  "babel": {
-    "presets": [
-      "es2015",
-      "react",
-      "stage-0"
-    ],
-    "plugins": []
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js"
-    ],
-    "moduleDirectories": [
-      "node_modules"
-    ],
-    "setupTestFrameworkScriptFile": "./jestsetup.js",
-    "testRegex": "/src/(.+)(.test.js)$"
+    "test": ""
   },
   "author": "Hayk Aghabekyan",
   "license": "ISC",
   "devDependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.0.0-beta.51",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-jest": "^23.0.1",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "copy-webpack-plugin": "^4.5.1",
-    "css-loader": "^0.28.7",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.1.2",
+    "babel-loader": "^8.0.5",
+    "babel-polyfill": "^6.26.0",
+    "css-loader": "^1.0.1",
     "file-loader": "^1.1.11",
-    "glob": "^7.1.2",
-    "jest": "^23.1.0",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.7.2",
     "nodemon": "^1.17.3",
     "sass-loader": "^7.0.3",
     "source-map-loader": "^0.2.3",
-    "webpack": "^4.5.0",
-    "webpack-cli": "^3.0.6",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.1.2",
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "babel-polyfill": "^6.26.0",
     "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.4",
@@ -78,7 +58,10 @@
     "react-router-dom": "^4.2.2",
     "redux": "^4.0.0",
     "redux-form": "^7.4.0",
+    "redux-observable": "^1.0.0",
     "redux-thunk": "^2.2.0",
+    "rxjs": "^6.3.3",
+    "serve-favicon": "^2.5.0",
     "universal-cookie": "^2.1.2"
   }
 }
