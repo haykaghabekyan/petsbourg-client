@@ -10,9 +10,9 @@ import { StaticRouter, matchPath } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { authMiddleware } from './middlewares/auth.middleware';
 import { serviceMiddleware } from './middlewares/service.middleware';
-import { getRoutes } from '../app/app.routes';
-import { App } from '../app/app';
-import { getStore } from '../app/model/app.store';
+import { getRoutes } from '../universal/app/app.routes';
+import { App } from '../universal/app/app';
+import { getStore } from '../universal/app/model/app.store';
 
 const app = express();
 

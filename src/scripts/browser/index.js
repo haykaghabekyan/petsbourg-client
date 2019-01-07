@@ -4,8 +4,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { App } from '../app/app';
-import { getStore } from '../app/model/app.store';
+import { App } from '../universal/app/app';
+import { getStore } from '../universal/app/model/app.store';
 
 // Grab the state from a global variable injected into the server-generated HTML
 const initialState = window['__INITIAL_STATE__'];
