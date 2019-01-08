@@ -1,9 +1,8 @@
-import PropTypes from "prop-types";
-import React from "react";
-import ClickListener from "./click-listener";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { ClickListener } from '../click-listener';
 
-class Dropdown extends React.Component {
-
+export class Dropdown extends React.Component {
     static propTypes = {
         className: PropTypes.string
     };
@@ -43,7 +42,7 @@ class Dropdown extends React.Component {
     }
 
     render () {
-        const {Header, Content, className} = this.props;
+        const { Header, Content, className } = this.props;
 
         return (
             <ClickListener onClickOutside={this.close}>
@@ -60,5 +59,3 @@ class Dropdown extends React.Component {
     }
 
 }
-
-export default Dropdown;

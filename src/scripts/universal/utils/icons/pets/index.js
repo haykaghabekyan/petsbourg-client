@@ -1,23 +1,23 @@
-import DogIcon from "./dog";
-import CatIcon from "./cat";
-import BirdIcon from "./bird";
-import HamsterIcon from "./hamster";
-import RabbitIcon from "./rabbit";
-import FishIcon from "./fish";
+import DogIcon from './dog';
+import CatIcon from './cat';
+import BirdIcon from './bird';
+import HamsterIcon from './hamster';
+import RabbitIcon from './rabbit';
+import FishIcon from './fish';
 
 export default (petType) => {
     switch (petType) {
-        case "Dog":
+        case 'Dog':
             return DogIcon;
-        case "Bird":
+        case 'Bird':
             return BirdIcon;
-        case "Hamster":
+        case 'Hamster':
             return HamsterIcon;
-        case "Rabbit":
+        case 'Rabbit':
             return RabbitIcon;
-        case "Fish":
+        case 'Fish':
             return FishIcon;
-        case "Cat":
+        case 'Cat':
             return CatIcon;
     }
 }

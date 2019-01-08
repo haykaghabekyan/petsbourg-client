@@ -1,10 +1,10 @@
 import React from "react";
 import moment from "moment";
-import { required } from "../../../utils/form/validators";
+import { required } from "../../../utils/validators";
 import { Field, reduxForm } from "redux-form";
-import Input from "../../../utils/form/input";
-import Select from "../../../utils/form/select";
-import Textarea from "../../../utils/form/textarea";
+import Input from "../../form-elements/input";
+import Select from "../../form-elements/select";
+import Textarea from "../../form-elements/textarea";
 import ImageIcon from "../../../utils/icons/common/image";
 import { GENDER_OPTIONS } from "../../../constants/gender-options";
 import UploadPetPicture from "./upload-pet-picture";

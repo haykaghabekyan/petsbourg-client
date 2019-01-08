@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const DogIcon = ({ color="#27AE60", width=50 }) => {
+const DogIcon = ({ color='#27AE60', width=50 }) => {
     return (
         <svg width={width} fill={color} viewBox="0 0 466.225 466.225" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <title>Dog</title>

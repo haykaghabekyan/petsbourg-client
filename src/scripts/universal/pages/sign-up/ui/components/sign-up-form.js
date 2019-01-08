@@ -1,9 +1,9 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { required, email } from '../../../../utils/form/validators';
+import { required, email } from '../../../../utils/validators';
 import { GENDER_OPTIONS } from '../../../../constants/gender-options';
-import Input from '../../../../utils/form/input';
-import Select from '../../../../utils/form/select';
+import Input from '../../../../components/form-elements/input';
+import Select from '../../../../components/form-elements/select';
 
 const SignUpFormComponent = ({ handleSubmit }) => {
     return (

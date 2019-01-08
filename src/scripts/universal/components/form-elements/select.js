@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import React from "react";
-import ClickListener from "../click-listener";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { ClickListener } from '../click-listener';
 
 class Select extends React.Component {
     static propTypes = {

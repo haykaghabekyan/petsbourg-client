@@ -5,7 +5,7 @@ import React from 'react';
  * Generic component used for reacting to a click event happening outside of a
  * given `children` element.
  */
-class ClickListener extends React.Component {
+export class ClickListener extends React.Component {
     static propTypes = {
         children: PropTypes.element.isRequired,
         onClickOutside: PropTypes.func.isRequired,
@@ -60,5 +60,3 @@ class ClickListener extends React.Component {
         });
     }
 }
-
-export default ClickListener;

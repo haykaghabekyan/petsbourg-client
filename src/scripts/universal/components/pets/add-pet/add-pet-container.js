@@ -6,7 +6,7 @@ import AddPetForm from "./add-pet-form";
 import AddPetChooseType from "./add-pet-choose-type";
 import getPetIcon from "../../../utils/icons/pets";
 import { addPet } from "../../../redux/actions/pet";
-import CreatePetProfileDog from "../../../utils/banners/create-pet-profile-dog";
+import CreatePetProfileDog from "../../banners/create-pet-profile-dog";
 
 class AddPetContainer extends React.Component {
 

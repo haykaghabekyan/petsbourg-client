@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const CatIcon = ({ color="#27AE60", width=50 }) => {
+const CatIcon = ({ color='#27AE60', width=50 }) => {
     return (
         <svg width={width} fill={color} viewBox="0 0 485.876 485.876" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <title>Cat</title>

@@ -84,5 +84,5 @@ app.get('*', authMiddleware, serviceMiddleware, (req, res) => {
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
+    console.log(`Server listening on port ${ port }`);
 });

@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-const GoogleIcon = ({ color="#27AE60", width=50 }) => {
+const GoogleIcon = ({ color = '#27AE60', width = 50 }) => {
     return (
         <svg width={ width } fill={ color } viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-            <g id="GoogleIcon">
+            <g>
                 <g id="GoogleIconOrangeVector">
                     <path d="M 5.32031 8.02031L 4.48594 11.1375L 1.43438 11.2031C 0.515625 9.51094 0 7.575 0 5.51719C 0 3.525 0.482813 1.65 1.34063 1.43051e-07L 4.05937 0.496875L 5.25 3.19687C 5.00156 3.92344 4.86563 4.70156 4.86563 5.51719C 4.86563 6.39844 5.025 7.24219 5.32031 8.02031Z" transform="translate(0 6.48279)"/>
                 </g>
