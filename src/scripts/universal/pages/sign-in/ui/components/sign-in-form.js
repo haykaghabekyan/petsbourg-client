@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
-import Input from '../../utils/form/input';
-import { required, email } from '../../utils/form/validators';
-import FacebookIcon from '../../utils/icons/social/facebook';
-import TwitterIcon from '../../utils/icons/social/twitter';
-import GoogleIcon from '../../utils/icons/social/google';
+import { required, email } from '../../../../utils/form/validators';
+import Input from '../../../../utils/form/input';
+import FacebookIcon from '../../../../utils/icons/social/facebook';
+import TwitterIcon from '../../../../utils/icons/social/twitter';
+import GoogleIcon from '../../../../utils/icons/social/google';
 
-const SignInForm = ({ handleSubmit }) => {
+const SignInFormComponent = ({ handleSubmit }) => {
     return (
         <div className="auth-form-container">
             <h3>Sign in to Petsbourg</h3>
@@ -35,5 +35,4 @@ const SignInForm = ({ handleSubmit }) => {
     );
 };
 
-const formName = 'signInForm';
-export default reduxForm({ form: formName })(SignInForm);
+export const SignInForm = reduxForm({ form: 'signInForm' })(SignInFormComponent);

@@ -1,35 +1,27 @@
 import React from 'react';
 
-import commonRoutes from './common';
+import { SignInPage } from '../pages/sign-in';
+import { SignUpPage } from '../pages/sign-up';
+
 import MainLayout from '../components/layouts/main';
-import AuthLayout from '../components/layouts/auth';
-import SignIn from '../components/auth/sign-in-container';
-import SignUp from '../components/auth/sign-up-container';
 import NotFound from '../components/error/not-found';
 
-export const publicRoutes = [{
-    path: '/',
-    exact: true,
-    component: AuthLayout,
-    routes: [{
+export const publicRoutes = [
+    {
         path: '/',
-        component: SignIn,
-    }],
-}, {
-    showSignIn: true,
-    path: '/sign-up',
-    exact: true,
-    component: AuthLayout,
-    routes: [{
+        exact: true,
+        component: SignInPage,
+    },
+    {
         path: '/sign-up',
-        component: SignUp,
-    }],
-}, {
-    path: '/pets/add',
-    component: MainLayout,
-    routes: [{
-        component: NotFound,
-    }],
-},
-    ...commonRoutes,
+        exact: true,
+        component: SignUpPage,
+    },
+    {
+        path: '/pets/add',
+        component: MainLayout,
+        routes: [{
+            component: NotFound,
+        }],
+    },
 ];

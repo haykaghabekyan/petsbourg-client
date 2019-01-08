@@ -1,9 +1,9 @@
-import React from "react";
-import Dropdown from "../../utils/dropdown";
-import { Header, Content } from "../shared/user-profile-dropdown";
-import TopSearch from "./top-search/top-search";
+import React from 'react';
+import Dropdown from '../../utils/dropdown';
+import { Header, Content } from '../shared/user-profile-dropdown';
+import TopSearch from './top-search/top-search';
 
-const ProtectedHeader = () => {
+export const ProtectedHeader = () => {
     return (
         <div className="header-actions">
             <TopSearch />
@@ -13,5 +13,3 @@ const ProtectedHeader = () => {
         </div>
     );
 };
-
-export default ProtectedHeader;

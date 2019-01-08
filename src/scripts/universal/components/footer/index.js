@@ -1,11 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import moment from "moment";
-import FacebookIcon from "../../utils/icons/social/facebook";
-import TwitterIcon from "../../utils/icons/social/twitter";
-import GoogleIcon from "../../utils/icons/social/google";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
+import FacebookIcon from '../../utils/icons/social/facebook';
+import TwitterIcon from '../../utils/icons/social/twitter';
+import GoogleIcon from '../../utils/icons/social/google';
 
-const Footer = () => {
+export const Footer = () => {
     return (
         <footer className="main-footer">
             <div className="container d-flex justify-space-between align-center">
@@ -25,13 +25,13 @@ const Footer = () => {
                 </ul>
                 <div className="social">
                     <a href="https://www.facebook.com/petsbourg" target="_blank" className="btn social-btn btn-circle small btn-facebook margin-h-10">
-                        <FacebookIcon width={7} color="#BDBDBD" />
+                        <FacebookIcon width={ 7 } color="#BDBDBD" />
                     </a>
                     <a href="https://www.facebook.com/petsbourg" target="_blank" className="btn social-btn btn-circle small btn-twitter margin-h-10">
-                        <TwitterIcon width={12} color="#BDBDBD" />
+                        <TwitterIcon width={ 12 } color="#BDBDBD" />
                     </a>
                     <a href="https://www.facebook.com/petsbourg" target="_blank" className="btn social-btn btn-circle small btn-google margin-h-10">
-                        <GoogleIcon width={12} color="#BDBDBD" />
+                        <GoogleIcon width={ 12 } color="#BDBDBD" />
                     </a>
                 </div>
             </div>
@@ -49,5 +49,3 @@ const Footer = () => {
         </footer>
     );
 };
-
-export default Footer;

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import { getRoutes } from './app.routes';
+import { getRoutes } from '../routes';
 
 const mapStateToProps = state => ({ me: state.me });
 

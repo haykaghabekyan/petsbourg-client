@@ -3,9 +3,8 @@ import { renderRoutes } from "react-router-config";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import AuthHeader from "../header/auth-header";
-import ProtectedHeader from "../header/protected-header";
-import Footer from "../shared/footer";
+import { ProtectedHeader } from "../header/protected-header";
+import { Footer } from "../footer";
 
 const MainLayout = ({ route, me }) => {
     return (
@@ -15,7 +14,7 @@ const MainLayout = ({ route, me }) => {
                     <div className="brand-container">
                         <Link to="/" className="brand">Petsbourg</Link>
                     </div>
-                    { me.profile ? <ProtectedHeader /> : <AuthHeader showSignIn /> }
+                    { me.profile ? <ProtectedHeader /> : null }
                 </div>
             </header>
             <main className="">

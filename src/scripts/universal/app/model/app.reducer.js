@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import { indexPageReducer } from '../../pages/index';
+import { meReducer } from './me/me.reducer';
+import { signInPageReducer } from '../../pages/sign-in';
+import { signUpPageReducer } from '../../pages/sign-up';
 import { homePageReducer } from '../../pages/home';
 
 export const combinedReducers = combineReducers({
     form: formReducer,
-    indexPage: indexPageReducer,
+    me: meReducer,
+    signInPage: signInPageReducer,
+    signUpPage: signUpPageReducer,
     homePage: homePageReducer,
 });
