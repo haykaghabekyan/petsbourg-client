@@ -56,7 +56,7 @@ app.get('*', authMiddleware, serviceMiddleware, (req, res) => {
                 </StaticRouter>
             );
 
-            res.send(`
+            const html = `
                 <!DOCTYPE html>
                 <html lang="en">
                     <head>
@@ -67,17 +67,15 @@ app.get('*', authMiddleware, serviceMiddleware, (req, res) => {
                     </head>
                     <body>
                         <div id="root">${ markupString }</div>
-                        
                         <script>
-                        // WARNING: See the following for security issues around embedding JSON in HTML:
-                        // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
-                        window.__INITIAL_STATE__ = ${ JSON.stringify(store.getState()).replace(/</g, '\\\\\\\\\u003c')};
+                            window.__INITIAL_STATE__ = ${ JSON.stringify(store.getState()).replace(/</g, '\\\\\\\\\u003c')};
                         </script>
-                    
                         <script defer src="/scripts/bundle.js"></script>
                     </body>
                 </html>
-            `);
+            `;
+
+            res.send(html.replace(/[\t ]+\</g, '<'));
         }
     });
 });
