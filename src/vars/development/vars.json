@@ -3,6 +3,6 @@
     "url": "http://localhost:3003"
   },
   "auth": {
-    "jwtToken": "petsbourgjwttoken"
+    "publicKey": "petsbourgjwttoken"
   }
 }

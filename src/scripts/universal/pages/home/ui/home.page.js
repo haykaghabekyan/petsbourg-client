@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
 import { homePageLoadAction } from '../model/home.actions';
+import { ProfileLayout } from '../../../components/layouts/profile';
+import { MainLayout } from '../../../components/layouts/main';
 
 class HomeContainer extends React.Component {
     constructor(props) {
@@ -15,20 +17,21 @@ class HomeContainer extends React.Component {
     }
 
     render() {
+        const { me, route } = this.props;
         return (
-            <div>
-                Home page - { String(this.props.homePage.isLoading) }
-                <div>
-                    <Link to='/'>index</Link>
-                </div>
-            </div>
+            <MainLayout>
+                <ProfileLayout userProfile={ me.profile }>
+                    <div>qaq</div>
+                </ProfileLayout>
+            </MainLayout>
         );
     }
 
 }
 
 const mapStateToProps = state => ({
-    homePage: state.homePage
+    me: state.me,
+    homePage: state.homePage,
 });
 const actionCreators = {
     homePageLoadAction,

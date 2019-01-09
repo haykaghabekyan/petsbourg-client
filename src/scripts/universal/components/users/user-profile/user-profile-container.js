@@ -2,7 +2,7 @@ import React from "react";
 import { renderRoutes } from "react-router-config";
 import { connect } from "react-redux";
 import { getUserProfile, removeUser } from "../../../redux/actions/user";
-import ProfileLayout from "../../layouts/profile";
+import { ProfileLayout } from "../../layouts/profile";
 import ProfileLoadingLayout from "../../layouts/profile-loading";
 
 class UserProfileContainer extends React.Component {

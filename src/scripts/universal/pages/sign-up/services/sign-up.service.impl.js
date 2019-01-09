@@ -6,17 +6,17 @@ export class SignUpServiceImpl {
         const { backend } = configs();
         const { firstName, lastName, email, gender, password } = req.body;
 
-        axios.post(`${ backend.url }/api/auth/sign-up`, { firstName, lastName, email, gender, password })
-            .then(({ data }) => {
-                res.send({
-                    success: true,
-                    data: data,
-                });
-            })
-            .catch(({ response }) => {
-                res.send({
-                    ...response.data
-                });
+        try {
+            const { data } = axios.post(`${ backend.url }/api/auth/sign-up`, { firstName, lastName, email, gender, password });
+
+            res.send({
+                success: true,
+                data: data,
             });
+        } catch ({ response }) {
+            res.status(400).send({
+                ...response.data
+            });
+        }
     }
 }

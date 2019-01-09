@@ -3,6 +3,6 @@
     "url": ""
   },
   "auth": {
-    "jwtToken": "petsbourgjwttoken"
+    "publicKey": "petsbourgjwttoken"
   }
 }

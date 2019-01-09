@@ -1,6 +1,6 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
-import debounce from "lodash/debounce";
+import React from 'react';
+import debounce from 'lodash/debounce';
+import { withRouter } from 'react-router-dom';
 
 class TopSearch extends React.Component {
 
@@ -28,7 +28,7 @@ class TopSearch extends React.Component {
     onSubmit (e) {
         e.preventDefault();
 
-        let url = "/search";
+        let url = '/search';
 
         const { query } = this.state;
 
@@ -51,4 +51,4 @@ class TopSearch extends React.Component {
 
 }
 
-export default withRouter(TopSearch);
+export const TopSearchComponent = withRouter(TopSearch);

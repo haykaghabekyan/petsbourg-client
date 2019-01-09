@@ -3,7 +3,7 @@ import React from 'react';
 import { SignInPage } from '../pages/sign-in';
 import { SignUpPage } from '../pages/sign-up';
 
-import MainLayout from '../components/layouts/main';
+import { MainLayout } from '../components/layouts/main';
 import NotFound from '../components/error/not-found';
 
 export const publicRoutes = [

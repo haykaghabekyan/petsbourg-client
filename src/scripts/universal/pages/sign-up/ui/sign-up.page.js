@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-import { Footer } from '../../../components/footer';
-import { SubmissionError } from "redux-form";
+import { SubmissionError } from 'redux-form';
+import { FooterComponent } from '../../../components/footer';
 import { SignUpForm } from './components/sign-up-form';
 
 class SignUpContainer extends React.Component {
@@ -43,17 +43,11 @@ class SignUpContainer extends React.Component {
                         { !me || !me.profile ? <SignUpForm onSubmit={this.handleSubmit} /> : <Redirect push to="/" /> }
                     </div>
                 </main>
-                <Footer />
+                <FooterComponent />
             </div>
         );
     }
 }
 
-const mapStateToProps = state => ({
-    me: state.me,
-});
-const actionCreators = {
-
-};
-
-export const SignUpPage = connect(mapStateToProps, actionCreators)(SignUpContainer);
+const mapStateToProps = state => ({ me: state.me });
+export const SignUpPage = connect(mapStateToProps)(SignUpContainer);

@@ -14,6 +14,7 @@ import { serviceMiddleware } from './middlewares/service.middleware';
 import { getRoutes } from '../universal/routes';
 import { App } from '../universal/app/app';
 import { getStore } from '../universal/app/model/app.store';
+import { setMeAction } from '../universal/app/model/me/me.actions';
 
 const app = express();
 // parse application/x-www-form-urlencoded
@@ -41,7 +42,13 @@ app.get('*', authMiddleware, (req, res) => {
     const context = {};
     const store = getStore();
 
-    const activeRoute = getRoutes().find((route) => matchPath(req.url, route)) || {};
+    let isAuthenticated = false;
+    if (req.user) {
+        isAuthenticated = true;
+        store.dispatch(setMeAction(req.user));
+    }
+
+    const activeRoute = getRoutes(isAuthenticated).find((route) => matchPath(req.url, route)) || {};
 
     let loadPageObserver;
     if (activeRoute.loadPage) {

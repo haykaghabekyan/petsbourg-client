@@ -1,13 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import getPetIcon from "../../utils/icons/pets";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import getPetIcon from '../../../../utils/icons/pets';
 
-const HomeAddPet = ({ petTypes }) => {
+const AddPet = ({ petTypes }) => {
     return (
         <div className="pet-types-list-container">
             <h3 className="add-pet-title">Add your Pet</h3>
-
             <div className="pet-types-list">
                 {
                     petTypes.map(petType => {
@@ -20,7 +19,7 @@ const HomeAddPet = ({ petTypes }) => {
                                 </div>
                                 <p className="pet-type-name">{ petType.name }</p>
                             </Link>
-                        )
+                        );
                     })
                 }
             </div>
@@ -28,10 +27,5 @@ const HomeAddPet = ({ petTypes }) => {
     );
 };
 
-const mapStateToProps = state => {
-    return {
-        petTypes: state.petTypes,
-    };
-};
-
-export default connect(mapStateToProps)(HomeAddPet);
+const mapStateToProps = state => ({ petTypes: state.petTypes });
+export const AddPetComponent = connect(mapStateToProps)(AddPet);

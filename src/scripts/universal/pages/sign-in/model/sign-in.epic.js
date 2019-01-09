@@ -1,7 +1,8 @@
 import { from, of } from 'rxjs';
 import { filter, mergeMap, map, catchError } from 'rxjs/operators';
-import { SIGN_IN_PAGE_SIGN_IN_ACTION, signInPageSignInFailedAction, signInPageSignInSucceededAction } from '../../sign-in';
+import { SIGN_IN_PAGE_SIGN_IN_ACTION, signInPageSignInFailedAction } from '../../sign-in';
 import { SignInService } from '../services/sign-in.service';
+import { setMeAction } from '../../../app/model/me/me.actions';
 
 export const signInEpic = action$ => {
     return action$.pipe(
@@ -13,17 +14,17 @@ export const signInEpic = action$ => {
                 .pipe(
                     map(result => {
                         if (action.meta && action.meta.resolve) {
-                            action.meta.resolve(result);
+                            action.meta.resolve(result.user);
                         }
 
-                        return signInPageSignInSucceededAction(result);
+                        return setMeAction(result.user);
                     }),
-                    catchError(error => {
+                    catchError(({ response: { data } }) => {
                         if (action.meta && action.meta.reject) {
-                            action.meta.reject(error);
+                            action.meta.reject(data.errors);
                         }
 
-                        return of(signInPageSignInFailedAction(error));
+                        return of(signInPageSignInFailedAction(data.errors));
                     })
                 );
         })

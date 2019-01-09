@@ -1,7 +1,7 @@
 import React from "react";
 import { renderRoutes } from "react-router-config";
 import { connect } from "react-redux";
-import ProfileLayout from "../../layouts/profile";
+import { ProfileLayout } from "../../layouts/profile";
 import { getPet } from "../../../redux/actions/pet";
 import { removeUser } from "../../../redux/actions/user";
 import ProfileLoadingLayout from "../../layouts/profile-loading";

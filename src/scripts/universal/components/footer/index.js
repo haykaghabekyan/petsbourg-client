@@ -5,7 +5,7 @@ import FacebookIcon from '../../utils/icons/social/facebook';
 import TwitterIcon from '../../utils/icons/social/twitter';
 import GoogleIcon from '../../utils/icons/social/google';
 
-export const Footer = () => {
+export const FooterComponent = () => {
     return (
         <footer className="main-footer">
             <div className="container d-flex justify-space-between align-center">

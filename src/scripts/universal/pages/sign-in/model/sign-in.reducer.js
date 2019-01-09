@@ -16,13 +16,12 @@ export const signInPageReducer = (state = signInPageDefaultState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                error: action.payload,
+                errors: action.payload,
             };
         case SIGN_IN_PAGE_SIGN_IN_SUCCEEDED_ACTION:
             return {
                 ...state,
                 isLoading: false,
-                data: action.payload,
             };
         default:
             return state;

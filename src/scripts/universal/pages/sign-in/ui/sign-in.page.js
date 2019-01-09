@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { SubmissionError } from 'redux-form';
 import { Link} from 'react-router-dom';
-import { Footer } from '../../../components/footer';
+import { FooterComponent } from '../../../components/footer';
 import { SignInForm } from './components/sign-in-form';
 import { signInPageSignInAction } from '../model/sign-in.actions';
 
@@ -44,11 +44,10 @@ class SignInContainer extends React.Component {
                         <SignInForm onSubmit={ this.handleSubmit } />
                     </div>
                 </main>
-                <Footer />
+                <FooterComponent />
             </div>
         );
     }
-
 }
 
 const mapStateToProps = null;
