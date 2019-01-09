@@ -1,7 +1,7 @@
 import React from 'react';
 import ProfileCard from '../users/user-profile/user-profile-card';
 import PetsCard from '../pets/pets-card/pets-card';
-import CreatePetProfileCat from '../banners/create-pet-profile-cat';
+import { CreatePetProfileCat } from '../banners/create-pet-profile-cat';
 
 export const ProfileLayout = ({ children, userProfile, selectedPetId = null }) => {
     return (
