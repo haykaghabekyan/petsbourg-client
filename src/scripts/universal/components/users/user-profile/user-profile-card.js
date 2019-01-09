@@ -1,17 +1,16 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import UserIcon from "../../../utils/icons/common/user";
-import PenIcon from "../../../utils/icons/common/pen";
-import MessageIcon from "../../../utils/icons/common/message";
-import PhoneIcon from "../../../utils/icons/common/phone";
-import EnvelopeIcon from "../../../utils/icons/common/envelope";
-
-import { circle } from "../../../utils/helpers/cloudinary";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import UserIcon from '../../../utils/icons/common/user';
+import PenIcon from '../../../utils/icons/common/pen';
+import MessageIcon from '../../../utils/icons/common/message';
+import PhoneIcon from '../../../utils/icons/common/phone';
+import EnvelopeIcon from '../../../utils/icons/common/envelope';
+import { circle } from '../../../utils/helpers/cloudinary';
 
 const profilePicture = profile => {
     if(!profile || !profile.picture) {
-        return <UserIcon width={ 18 } />;
+        return <UserIcon width={ 18 } color="#fff" />;
     }
 
     return <img className="profile-card--picture" src={circle(profile.picture.publicId)} alt=""/>
