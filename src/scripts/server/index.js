@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import React from 'react';
 import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
 // import favicon from 'serve-favicon';
 import { of } from 'rxjs';
 import { renderToString } from 'react-dom/server';
@@ -15,7 +16,10 @@ import { App } from '../universal/app/app';
 import { getStore } from '../universal/app/model/app.store';
 
 const app = express();
-
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+// parse application/json
+app.use(bodyParser.json());
 // app.use(favicon('dist/browser/media/favicon.ico'));
 app.use(cookieParser());
 app.use(cors());
@@ -30,7 +34,9 @@ app.use( (req, res, next) => {
 
 app.use(express.static('dist/browser'));
 
-app.get('*', authMiddleware, serviceMiddleware, (req, res) => {
+app.use('/api', serviceMiddleware());
+
+app.get('*', authMiddleware, (req, res) => {
     const location = req.url;
     const context = {};
     const store = getStore();
@@ -65,17 +71,11 @@ app.get('*', authMiddleware, serviceMiddleware, (req, res) => {
                         <title>Petsbourg</title>
                         <link rel="stylesheet" href="/styles/main.css" />
                     </head>
-                    <body>
-                        <div id="root">${ markupString }</div>
-                        <script>
-                            window.__INITIAL_STATE__ = ${ JSON.stringify(store.getState()).replace(/</g, '\\\\\\\\\u003c')};
-                        </script>
-                        <script defer src="/scripts/bundle.js"></script>
-                    </body>
+                    <body><div id="root">${ markupString }</div><script>window.__INITIAL_STATE__ = ${ JSON.stringify(store.getState()).replace(/</g, '\\\\\\\\\u003c')};</script><script defer src="/scripts/bundle.js"></script></body>
                 </html>
             `;
 
-            res.send(html.replace(/[\t ]+\</g, '<'));
+            res.send(html);
         }
     });
 });

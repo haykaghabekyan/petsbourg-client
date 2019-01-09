@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { SubmissionError } from 'redux-form';
 import { Link} from 'react-router-dom';
-// import { SubmissionError } from 'redux-form';
 import { Footer } from '../../../components/footer';
 import { SignInForm } from './components/sign-in-form';
+import { signInPageSignInAction } from '../model/sign-in.actions';
 
 class SignInContainer extends React.Component {
     constructor(props) {
@@ -12,12 +13,16 @@ class SignInContainer extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit(data) {
-        // return this.props.signIn(data).catch(error => {
-        //     throw new SubmissionError({
-        //         ...error.response.data.errors
-        //     });
-        // });
+    async handleSubmit(data, dispatch) {
+        try {
+            await new Promise((resolve, reject) => {
+                dispatch(signInPageSignInAction(data, { resolve, reject }));
+            });
+        } catch (error) {
+            throw new SubmissionError({
+                _error: `Sign in failed! Server responded with: ${ error.message }`,
+            });
+        }
     }
 
     render() {
@@ -47,6 +52,8 @@ class SignInContainer extends React.Component {
 }
 
 const mapStateToProps = null;
-const actionCreators = {};
+const actionCreators = {
+    signInPageSignInAction,
+};
 
 export const SignInPage = connect(mapStateToProps, actionCreators)(SignInContainer);
