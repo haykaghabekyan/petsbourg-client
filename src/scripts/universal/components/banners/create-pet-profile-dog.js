@@ -1,10 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import dogBanner from '../../../../media/images/banners/banner-dog.png';
 
-const CreatePetProfileDog = () => {
+export const CreatePetProfileDog = () => {
     return (
         <Link to="/pets/add" className="banner">
-            <img className="banner-img" src="/media/images/banners/banner-dog.png" alt="Create pet profile" />
+            <img className="banner-img" src={ dogBanner } alt="Create pet profile" />
 
             <p className="banner-create text-center">Create Your</p>
             <p className="banner-profile text-center">Pet Profile</p>
@@ -15,5 +16,3 @@ const CreatePetProfileDog = () => {
         </Link>
     );
 };
-
-export default CreatePetProfileDog;

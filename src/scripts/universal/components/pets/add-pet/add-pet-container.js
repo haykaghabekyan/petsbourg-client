@@ -1,12 +1,12 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import find from "lodash/find"
-import AddPetForm from "./add-pet-form";
-import AddPetChooseType from "./add-pet-choose-type";
-import getPetIcon from "../../../utils/icons/pets";
-import { addPet } from "../../../redux/actions/pet";
-import CreatePetProfileDog from "../../banners/create-pet-profile-dog";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { find } from 'lodash'
+import AddPetForm from './add-pet-form';
+import AddPetChooseType from './add-pet-choose-type';
+import getPetIcon from '../../../utils/icons/pets';
+import { addPet } from '../../../redux/actions/pet';
+import { CreatePetProfileDog } from '../../banners/create-pet-profile-dog';
 
 class AddPetContainer extends React.Component {
 
@@ -60,11 +60,9 @@ class AddPetContainer extends React.Component {
                         </ul>
                     </div>
                 </div>
-
                 <div className="main-content bg-white">
-                    { !selectedPetType ? <AddPetChooseType /> : <AddPetForm key={ selectedPetType } onSubmit={this.handleSubmit} petType={ selectedPetType } breeds={breeds.breeds} /> }
+                    { !selectedPetType ? <AddPetChooseType /> : <AddPetForm key={ selectedPetType } onSubmit={ this.handleSubmit } petType={ selectedPetType } breeds={ breeds.breeds } /> }
                 </div>
-
                 <div className="main-right-sidebar">
                     <CreatePetProfileDog />
                 </div>
@@ -73,14 +71,6 @@ class AddPetContainer extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        petTypes: state.petTypes,
-    };
-};
-
-const actionCreators = {
-    addPet,
-};
-
+const mapStateToProps = state => ({ petTypes: state.petTypes });
+const actionCreators = { addPet };
 export default connect(mapStateToProps, actionCreators)(AddPetContainer);

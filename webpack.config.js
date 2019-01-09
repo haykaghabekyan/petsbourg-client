@@ -18,7 +18,8 @@ const browserConfig = {
     // Enable sourcemaps for debugging webpack's output.
     devtool: 'source-map',
     module: {
-        rules: [{
+        rules: [
+        {
             test: /\.(js|jsx)$/,
             use: [{
                 loader: 'babel-loader',
@@ -28,7 +29,6 @@ const browserConfig = {
                         '@babel/preset-react',
                     ],
                     plugins: [
-                        // '@babel/plugin-transform-runtime',
                         '@babel/plugin-proposal-object-rest-spread',
                         '@babel/plugin-proposal-class-properties',
                         '@babel/plugin-syntax-dynamic-import',
@@ -36,14 +36,16 @@ const browserConfig = {
                     ]
                 }
             }]
-        }, {
+        },
+        {
             test: /\.(sa|sc|c)ss$/,
             use: [
                 MiniCssExtractPlugin.loader,
                 'css-loader',
                 'sass-loader'
             ],
-        }, {
+        },
+        {
             test: /\.(jpg|png|gif|svg|pdf|ico)$/,
             use: [{
                 loader: 'file-loader',
@@ -52,7 +54,8 @@ const browserConfig = {
                     name: '[name].[ext]',
                 },
             }]
-        }, {
+        },
+        {
             test: /\.woff$|\.woff2?$|\.ttf$|\.eot$|\.otf$/,
             use: [{
                 loader: 'file-loader',
@@ -92,13 +95,21 @@ const serverConfig = {
                         '@babel/preset-react',
                     ],
                     plugins: [
-                        // '@babel/plugin-transform-runtime',
                         '@babel/plugin-proposal-object-rest-spread',
                         '@babel/plugin-proposal-class-properties',
                         '@babel/plugin-syntax-dynamic-import',
                         '@babel/plugin-transform-modules-commonjs',
                     ]
                 }
+            }]
+        }, {
+            test: /\.(jpg|png|gif|svg|pdf|ico)$/,
+            use: [{
+                loader: 'file-loader',
+                options: {
+                    outputPath: 'media/images/',
+                    name: '[name].[ext]',
+                },
             }]
         }]
     },
