@@ -3,11 +3,11 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const nodeExternals = require('webpack-node-externals');
 
-// const compileScss = new MiniCssExtractPlugin({
-//     // Options similar to the same options in webpackOptions.output
-//     // both options are optional
-//     filename: 'styles/[name].css',
-// });
+const compileScss = new MiniCssExtractPlugin({
+    // Options similar to the same options in webpackOptions.output
+    // both options are optional
+    filename: 'styles/[name].css',
+});
 
 const browserConfig = {
     entry: path.join(__dirname, '/src/scripts/browser/index.js'),
@@ -64,7 +64,7 @@ const browserConfig = {
         }]
     },
     plugins: [
-        // compileScss,
+        compileScss,
         // new webpack.DefinePlugin({
         //     'process.env.API_ENDPOINT': process.env.API_ENDPOINT ? `'${ process.env.API_ENDPOINT }'` : '"http://localhost:3003"'
         // }),

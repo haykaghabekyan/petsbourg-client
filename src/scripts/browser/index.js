@@ -1,4 +1,4 @@
-// import '../../styles/master.scss';
+import '../../styles/master.scss';
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
