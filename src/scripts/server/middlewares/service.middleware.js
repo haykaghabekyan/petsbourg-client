@@ -5,8 +5,8 @@ import { SignUpServiceImpl } from '../../universal/pages/sign-up';
 export const serviceMiddleware = () => {
     const router = Router();
 
-    router.post('/sign-in', new SignInServiceImpl().signIn);
-    router.post('/sign-up', new SignUpServiceImpl().signUp);
+    router.post('/sign-in', SignInServiceImpl.signIn);
+    router.post('/sign-up', SignUpServiceImpl.signUp);
 
     return router;
 };

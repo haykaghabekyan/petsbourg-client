@@ -3,7 +3,7 @@ import { configs} from '../../../../server/utils/config';
 import { UserService } from '../../../../server/services/user.service';
 
 export class SignInServiceImpl {
-    async signIn(req, res) {
+    static async signIn(req, res) {
         const { backend } = configs();
         const { email, password } = req.body;
 

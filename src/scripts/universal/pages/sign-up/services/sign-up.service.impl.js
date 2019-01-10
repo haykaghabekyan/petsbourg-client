@@ -2,7 +2,7 @@ import axios from 'axios';
 import { configs} from '../../../../server/utils/config';
 
 export class SignUpServiceImpl {
-    async signUp(req, res) {
+    static async signUp(req, res) {
         const { backend } = configs();
         const { firstName, lastName, email, gender, password } = req.body;
 
