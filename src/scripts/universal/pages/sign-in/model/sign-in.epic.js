@@ -1,6 +1,6 @@
 import { from, of } from 'rxjs';
 import { filter, mergeMap, map, catchError } from 'rxjs/operators';
-import { SIGN_IN_PAGE_SIGN_IN_ACTION, signInPageSignInFailedAction } from '../../sign-in';
+import { SIGN_IN_PAGE_SIGN_IN_ACTION } from '../../sign-in';
 import { SignInService } from '../services/sign-in.service';
 import { setMeAction } from '../../../app/model/me/me.actions';
 
@@ -24,7 +24,7 @@ export const signInEpic = action$ => {
                             action.meta.reject(data.errors);
                         }
 
-                        return of(signInPageSignInFailedAction(data.errors));
+                        return of();
                     })
                 );
         })

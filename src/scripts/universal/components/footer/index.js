@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import FacebookIcon from '../../utils/icons/social/facebook';
-import TwitterIcon from '../../utils/icons/social/twitter';
-import GoogleIcon from '../../utils/icons/social/google';
+import { FacebookIcon } from '../../utils/icons/social/facebook';
+import { TwitterIcon } from '../../utils/icons/social/twitter';
+import { GoogleIcon } from '../../utils/icons/social/google';
 
 export const FooterComponent = () => {
     return (

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export class SignUpService {
-    async signUn(data) {
+    async signUp(data) {
         return axios.post('/api/sign-up', data)
             .then(({ data }) => data);
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GoogleIcon = ({ color = '#27AE60', width = 50 }) => {
+export const GoogleIcon = ({ color = '#27AE60', width = 50 }) => {
     return (
         <svg width={ width } fill={ color } viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g>
@@ -20,5 +20,3 @@ const GoogleIcon = ({ color = '#27AE60', width = 50 }) => {
         </svg>
     );
 };
-
-export default GoogleIcon;

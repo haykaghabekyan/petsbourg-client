@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { SubmissionError } from 'redux-form';
 import { FooterComponent } from '../../../components/footer';
 import { SignUpForm } from './components/sign-up-form';
+import { signUpPageSignInAction } from '../../sign-up';
 
 class SignUpContainer extends React.Component {
     constructor(props) {
@@ -12,14 +13,16 @@ class SignUpContainer extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit (data) {
-        return this.props.signUp(data).then(() => {
-
-        }).catch(error => {
-            throw new SubmissionError({
-                ...error.response.data.errors
+    async handleSubmit(data, dispatch) {
+        try {
+            await new Promise((resolve, reject) => {
+                dispatch(signUpPageSignInAction(data, { resolve, reject }));
             });
-        });
+        } catch (error) {
+            throw new SubmissionError({
+                _error: `Sign up failed! Server responded with: ${ error.message }`,
+            });
+        }
     }
 
     render() {

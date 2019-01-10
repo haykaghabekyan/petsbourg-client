@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import { required, email } from '../../../../utils/validators';
 import Input from '../../../../components/form-elements/input';
-import FacebookIcon from '../../../../utils/icons/social/facebook';
-import TwitterIcon from '../../../../utils/icons/social/twitter';
-import GoogleIcon from '../../../../utils/icons/social/google';
+import { FacebookIcon } from '../../../../utils/icons/social/facebook';
+import { TwitterIcon } from '../../../../utils/icons/social/twitter';
+import { GoogleIcon } from '../../../../utils/icons/social/google';
 
 const SignInFormComponent = ({ handleSubmit, submit, error, dispatch }) => {
     return (
@@ -23,13 +23,13 @@ const SignInFormComponent = ({ handleSubmit, submit, error, dispatch }) => {
             <p className="hr-text">or</p>
             <div className="social margin-t-30">
                 <Link to="/" className="btn social-btn btn-circle btn-facebook margin-h-20">
-                    <FacebookIcon width={13} color="#BDBDBD" />
+                    <FacebookIcon width={ 13 } color="#BDBDBD" />
                 </Link>
                 <Link to="/" className="btn social-btn btn-circle btn-twitter margin-h-20">
-                    <TwitterIcon width={24} color="#BDBDBD" />
+                    <TwitterIcon width={ 24 } color="#BDBDBD" />
                 </Link>
                 <Link to="/" className="btn social-btn btn-circle btn-google margin-h-20">
-                    <GoogleIcon width={24} color="#BDBDBD" />
+                    <GoogleIcon width={ 24 } color="#BDBDBD" />
                 </Link>
             </div>
         </div>

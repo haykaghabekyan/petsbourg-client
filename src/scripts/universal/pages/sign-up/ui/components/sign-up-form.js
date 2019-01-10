@@ -5,12 +5,12 @@ import { GENDER_OPTIONS } from '../../../../constants/gender-options';
 import Input from '../../../../components/form-elements/input';
 import Select from '../../../../components/form-elements/select';
 
-const SignUpFormComponent = ({ handleSubmit }) => {
+const SignUpFormComponent = ({ handleSubmit, submit, error, dispatch }) => {
     return (
         <div className="auth-form-container">
             <h3>Sign up to Petsbourg</h3>
 
-            <form className="auth-form" onSubmit={ handleSubmit }>
+            <form className="auth-form" onSubmit={ handleSubmit(values => submit(values, dispatch)) }>
                 <Field name="firstName" placeholder="First name" component={ Input } validate={ [required] } border={ false } />
 
                 <Field name="lastName" placeholder="Last name" component={ Input } validate={ [required] } border={ false } />
@@ -25,6 +25,8 @@ const SignUpFormComponent = ({ handleSubmit }) => {
                     <button type="submit" className="btn btn-green">Sign up</button>
                 </div>
             </form>
+
+            { error && <div className="submission-error">{ error }</div> }
         </div>
     );
 };
