@@ -8,7 +8,7 @@ export const signUpEpic = action$ => {
     return action$.pipe(
         filter(action => action.type === SIGN_UP_PAGE_SIGN_UP_ACTION),
         mergeMap((action) => {
-            const promise = new SignUpService().signUp(action.payload);
+            const promise = SignUpService.signUp(action.payload);
 
             return from(promise)
                 .pipe(

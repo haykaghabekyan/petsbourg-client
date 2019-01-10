@@ -6,7 +6,8 @@ export const meReducer = (state = meDefaultState, action) => {
         case SET_ME_ACTION:
             return {
                 ...state,
-                profile: action.payload
+                profile: action.payload.profile,
+                pets: action.payload.pets,
             };
         default:
             return state;

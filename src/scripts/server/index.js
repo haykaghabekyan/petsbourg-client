@@ -43,9 +43,9 @@ app.get('*', authMiddleware, (req, res) => {
     const store = getStore();
 
     let isAuthenticated = false;
-    if (req.user) {
+    if (req.me) {
         isAuthenticated = true;
-        store.dispatch(setMeAction(req.user));
+        store.dispatch(setMeAction(req.me));
     }
 
     const activeRoute = getRoutes(isAuthenticated).find((route) => matchPath(req.url, route)) || {};

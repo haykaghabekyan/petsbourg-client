@@ -8,16 +8,16 @@ export const signInEpic = action$ => {
     return action$.pipe(
         filter(action => action.type === SIGN_IN_PAGE_SIGN_IN_ACTION),
         mergeMap((action) => {
-            const promise = new SignInService().signIn(action.payload);
+            const promise = SignInService.signIn(action.payload);
 
             return from(promise)
                 .pipe(
                     map(result => {
                         if (action.meta && action.meta.resolve) {
-                            action.meta.resolve(result.user);
+                            action.meta.resolve(result);
                         }
 
-                        return setMeAction(result.user);
+                        return setMeAction(result);
                     }),
                     catchError(({ response: { data } }) => {
                         if (action.meta && action.meta.reject) {

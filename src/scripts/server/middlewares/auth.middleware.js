@@ -13,12 +13,18 @@ export const authMiddleware = async (req, res, next) => {
     }
 
     if (decodedToken) {
-        const userService = new UserService();
+        let user;
+        let pets;
+
         try {
-            req.user = await userService.getUser(decodedToken.user.id);
-        } catch (error) {
-            req.user = null;
-        }
+            user = await UserService.getUser(decodedToken.user.id);
+            pets = await UserService.getUserPets(decodedToken.user.id);
+
+            req.me = {
+                profile: user,
+                pets: pets,
+            };
+        } catch (error) {}
     }
 
     next();

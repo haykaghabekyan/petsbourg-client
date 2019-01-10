@@ -13,9 +13,10 @@ export class SignUpServiceImpl {
 
             res.send({
                 success: success,
-                user: user,
+                profile: user,
+                pets: null,
             });
-        } catch (error) {
+        } catch(error) {
             res.status(400).send({
                 ...error.response.data
             });

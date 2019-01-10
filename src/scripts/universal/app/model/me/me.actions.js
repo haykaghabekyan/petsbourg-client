@@ -1,7 +1,7 @@
 export const SET_ME_ACTION = 'SET_ME_ACTION';
-export const setMeAction = user => {
+export const setMeAction = payload => {
     return {
         type: SET_ME_ACTION,
-        payload: user,
+        payload,
     };
 };
