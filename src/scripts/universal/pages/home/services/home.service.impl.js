@@ -1,3 +1,3 @@
-class HomeServiceImpl {
+export class HomeServiceImpl {
 
 }

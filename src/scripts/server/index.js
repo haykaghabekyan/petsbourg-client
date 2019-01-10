@@ -10,7 +10,7 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter, matchPath } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { authMiddleware } from './middlewares/auth.middleware';
-import { serviceMiddleware } from './middlewares/service.middleware';
+import { router } from './router';
 import { getRoutes } from '../universal/routes';
 import { App } from '../universal/app/app';
 import { getStore } from '../universal/app/model/app.store';
@@ -35,7 +35,7 @@ app.use( (req, res, next) => {
 
 app.use(express.static('dist/browser'));
 
-app.use('/api', serviceMiddleware());
+app.use('/api', router());
 
 app.get('*', authMiddleware, (req, res) => {
     const location = req.url;
