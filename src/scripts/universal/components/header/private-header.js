@@ -72,7 +72,7 @@ export class PrivateHeader extends React.Component {
                                     <div className="dropdown-list-container">
                                         <ul className="dropdown-list">
                                             <li className="dropdown-list-item">
-                                                <Link to={ `/users/${ profile._id }` }>My profile</Link>
+                                                <Link to={ `/users/${ profile._id }` } onClick={ this.close }>My profile</Link>
                                             </li>
                                             <li className="dropdown-list-item">
                                                 <Link to="/">Sign out</Link>
