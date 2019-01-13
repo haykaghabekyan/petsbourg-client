@@ -12,7 +12,7 @@ const getPicture = (pet, width=23) => {
     return <PetIcon width={ width } />;
 };
 
-const PetsCard = ({ pets, selectedPetId }) => {
+export const PetsCard = ({ pets, selectedPetId }) => {
     return (
         <div className="pet-types-container">
             <div className="pet-types-title">Pets</div>
@@ -35,5 +35,3 @@ const PetsCard = ({ pets, selectedPetId }) => {
         </div>
     );
 };
-
-export default PetsCard;

@@ -1,29 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import UserIcon from '../../../utils/icons/common/user';
+import { UserIcon } from '../../../utils/icons/common/user';
 import PenIcon from '../../../utils/icons/common/pen';
 import MessageIcon from '../../../utils/icons/common/message';
 import PhoneIcon from '../../../utils/icons/common/phone';
 import EnvelopeIcon from '../../../utils/icons/common/envelope';
 import { circle } from '../../../utils/helpers/cloudinary';
 
-const profilePicture = profile => {
-    if(!profile || !profile.picture) {
+const profilePicture = userProfile => {
+    if (!userProfile.picture) {
         return <UserIcon width={ 18 } color="#fff" />;
     }
 
-    return <img className="profile-card--picture" src={circle(profile.picture.publicId)} alt=""/>
+    return <img className="profile-card--picture" src={ circle(userProfile.picture.publicId) } alt="" />;
 };
 
-const Card = ({ userProfile, me }) => {
-    const { profile } = me;
-
+export const UserProfileCard = ({ userProfile, meProfile }) => {
     return (
         <div className="profile-card">
             {
-                profile && profile._id === userProfile._id &&
-                <Link to={`/users/${ profile._id }/edit`} className="profile-card--edit">
+                meProfile._id && meProfile._id === userProfile._id &&
+                <Link to={`/users/${ userProfile._id }/edit`} className="profile-card--edit">
                     <PenIcon color="#E0E4E9" />
                 </Link>
             }
@@ -35,16 +32,11 @@ const Card = ({ userProfile, me }) => {
                 </div>
                 <div className="profile-card--user">
                     <div className="profile-card--name">
-                        <Link to={ `/users/${ userProfile._id }` }>{userProfile.firstName + " " + userProfile.lastName}</Link>
+                        <Link to={ `/users/${ userProfile._id }` }>{ `${ userProfile.firstName } ${ userProfile.lastName }` }</Link>
                     </div>
+                    { userProfile.biography && <div className="profile-card--biography">{ userProfile.biography }</div> }
                     {
-                        userProfile && userProfile.biography &&
-                        <div className="profile-card--biography">
-                            { userProfile.biography }
-                        </div>
-                    }
-                    {
-                        profile && profile._id !== userProfile._id &&
+                        meProfile._id && meProfile._id !== userProfile._id &&
                         <div className="profile-card--contacts">
                             <div>
                                 <MessageIcon width={ 15 } />
@@ -62,11 +54,3 @@ const Card = ({ userProfile, me }) => {
         </div>
     );
 };
-
-const mapStateToProps = state => {
-    return {
-        me: state.me,
-    };
-};
-
-export default connect(mapStateToProps)(Card);

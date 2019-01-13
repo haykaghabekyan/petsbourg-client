@@ -5,10 +5,10 @@
   "main": "",
   "scripts": {
     "start": "node ./dist/server/scripts/bundle.js",
-    "build:prod": "webpack --mode production --progress",
+    "build": "webpack --mode production --progress",
     "start:dev": "nodemon --inspect ./dist/server/scripts/bundle.js",
     "build:dev": "webpack --mode development --watch --progress",
-    "heroku-postbuild": "npm run build:prod",
+    "heroku-postbuild": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Hayk Aghabekyan",

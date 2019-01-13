@@ -79,6 +79,7 @@ app.get('*', authMiddleware, (req, res) => {
                         <meta name="viewport" content="width=device-width,initial-scale=1" />
                         <title>Petsbourg</title>
                         <link rel="stylesheet" href="/styles/main.css" />
+                        <base href="/" target="_blank">
                     </head>
                     <body><div id="root">${ markupString }</div><script>window.__INITIAL_STATE__ = ${ JSON.stringify(store.getState()).replace(/</g, '\\\\\\\\\u003c')};</script><script defer src="/scripts/bundle.js"></script></body>
                 </html>

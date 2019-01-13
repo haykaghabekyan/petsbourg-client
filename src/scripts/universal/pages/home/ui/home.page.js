@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { renderRoutes } from 'react-router-config';
 import { homePageLoadAction } from '../model/home.actions';
 import { ProfileLayout } from '../../../components/layouts/profile';
 import { MainLayout } from '../../../components/layouts/main';
@@ -17,10 +16,10 @@ class HomeContainer extends React.Component {
     }
 
     render() {
-        const { me, route } = this.props;
+        const { me } = this.props;
         return (
             <MainLayout me={ me }>
-                <ProfileLayout userProfile={ me.profile }>
+                <ProfileLayout me={ me } user={ me }>
                     <div>qaq</div>
                 </ProfileLayout>
             </MainLayout>

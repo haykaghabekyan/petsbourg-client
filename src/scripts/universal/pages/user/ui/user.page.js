@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { MainLayout } from '../../../components/layouts/main';
 import { userPageLoadAction } from '../model/user.actions';
+import { ProfileLayout } from '../../../components/layouts/profile';
 
 export class UserPageContainer extends React.Component {
     constructor(props) {
@@ -16,10 +17,22 @@ export class UserPageContainer extends React.Component {
     }
 
     render() {
-        const { me } = this.props;
+        const { me, userPage } = this.props;
+        if (!userPage.opened) {
+            return 'not opened';
+        }
+
+        if (userPage.isLoading) {
+            return 'loading';
+        }
+
+        console.log(me, userPage);
+
         return (
             <MainLayout me={ me }>
-                user
+                <ProfileLayout me={ me } user={ userPage }>
+                    <div>qaq</div>
+                </ProfileLayout>
             </MainLayout>
         );
     }
