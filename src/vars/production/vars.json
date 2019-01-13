@@ -1,9 +1,9 @@
 {
   "backend": {
-    "url": ""
+    "url": "https://petsbourg-server.herokuapp.com"
   },
   "frontend": {
-    "url": ""
+    "url": "https://petsbourg-client.herokuapp.com"
   },
   "auth": {
     "publicKey": "petsbourgjwttoken"
