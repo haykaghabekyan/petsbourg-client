@@ -2,24 +2,26 @@ import axios from 'axios';
 import { configs} from '../../../../server/utils/config';
 
 export class SignUpServiceImpl {
-    static async signUp(req, res) {
+    static signUp(req, res) {
         const { backend } = configs();
         const { firstName, lastName, email, gender, password } = req.body;
 
-        try {
-            const { data: { success, token, user } } = await axios.post(`${ backend.url }/api/auth/sign-up`, { firstName, lastName, email, gender, password });
+        axios.post(`${ backend.url }/api/auth/sign-up`, { firstName, lastName, email, gender, password })
+            .then(({ data }) => {
+                const { success, token, user } = data;
 
-            res.cookie('jwt', token, { maxAge: 900000 });
+                res.cookie('jwt', token, { maxAge: 900000 });
 
-            res.send({
-                success: success,
-                profile: user,
-                pets: null,
+                res.send({
+                    success: success,
+                    profile: user,
+                    pets: null,
+                });
+            })
+            .catch(error => {
+                res.status(400).send({
+                    ...error.response.data
+                });
             });
-        } catch(error) {
-            res.status(400).send({
-                ...error.response.data
-            });
-        }
     }
 }

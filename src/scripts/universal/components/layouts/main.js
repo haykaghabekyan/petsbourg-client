@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { PrivateHeader } from '../header/private-header';
 import { FooterComponent } from '../footer';
 
-const Main = ({ children, me }) => {
+export const MainLayout = ({ children, me }) => {
     return (
         <div className="main-layout">
             <header className="main-header">
@@ -12,7 +11,7 @@ const Main = ({ children, me }) => {
                     <div className="brand-container">
                         <Link to="/" className="brand">Petsbourg</Link>
                     </div>
-                    { me.profile ? <PrivateHeader /> : null }
+                    { me.profile ? <PrivateHeader user={ me } /> : null }
                 </div>
             </header>
             <main className="">
@@ -24,6 +23,3 @@ const Main = ({ children, me }) => {
         </div>
     );
 };
-
-const mapStateToProps = state => ({ me: state.me });
-export const MainLayout = connect(mapStateToProps)(Main);

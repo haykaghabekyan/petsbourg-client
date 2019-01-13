@@ -1,6 +1,6 @@
 import { verify } from 'jsonwebtoken';
 import { configs } from '../utils/config';
-import { UserService } from '../services/user.service';
+import { UserServiceImpl } from '../../universal/pages/user';
 
 export const authMiddleware = async (req, res, next) => {
     const { jwt = '' } = req.cookies;
@@ -13,12 +13,9 @@ export const authMiddleware = async (req, res, next) => {
     }
 
     if (decodedToken) {
-        let user;
-        let pets;
-
         try {
-            user = await UserService.getUser(decodedToken.user.id);
-            pets = await UserService.getUserPets(decodedToken.user.id);
+            const user = await UserServiceImpl.getUser(decodedToken.user.id);
+            const pets = await UserServiceImpl.getUserPets(decodedToken.user.id);
 
             req.me = {
                 profile: user,

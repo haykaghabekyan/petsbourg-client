@@ -1,0 +1,40 @@
+import axios from 'axios';
+import { configs } from '../../../../server/utils/config';
+
+export class UserServiceImpl {
+    static loadUserPage(req, res) {
+        const { userId = '' } = req.params;
+
+        const userPromise = UserServiceImpl.getUser(userId);
+        const petsPromise = UserServiceImpl.getUserPets(userId);
+
+        Promise.all([ userPromise, petsPromise ]).then(([ user, pets ]) => {
+            res.send({
+                success: true,
+                profile: user,
+                pets: pets,
+            });
+        }).catch(error => {
+            res.send({
+                success: false,
+                errors: {
+                    message: 'qaq'
+                }
+            });
+        });
+    }
+
+    static getUser(userId) {
+        const { backend } = configs();
+
+        return axios.get(`${ backend.url }/api/users/${ userId }`)
+            .then(({ data }) => data.user);
+    }
+
+    static getUserPets(userId) {
+        const { backend } = configs();
+        debugger
+        return axios.get(`${ backend.url }/api/users/${ userId }/pets`)
+            .then(({ data }) => data.pets);
+    }
+}

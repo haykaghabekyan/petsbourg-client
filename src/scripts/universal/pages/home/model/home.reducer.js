@@ -15,14 +15,15 @@ export const homePageReducer = (state = homePageDefaultState, action) => {
         case HOME_PAGE_LOAD_FAILED_ACTION_TYPE:
             return {
                 ...state,
+                opened: true,
                 isLoading: false,
                 error: action.payload,
             };
         case HOME_PAGE_LOAD_SUCCEEDED_ACTION_TYPE:
             return {
                 ...state,
+                opened: true,
                 isLoading: false,
-                data: action.payload,
             };
         default:
             return state;

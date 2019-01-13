@@ -38,8 +38,6 @@ app.use(express.static('dist/browser'));
 app.use('/api', router());
 
 app.get('*', authMiddleware, (req, res) => {
-    const location = req.url;
-    const context = {};
     const store = getStore();
 
     let isAuthenticated = false;
@@ -48,11 +46,15 @@ app.get('*', authMiddleware, (req, res) => {
         store.dispatch(setMeAction(req.me));
     }
 
-    const activeRoute = getRoutes(isAuthenticated).find((route) => matchPath(req.url, route)) || {};
+    const activeRoute = getRoutes(isAuthenticated).find((route) => {
+        return matchPath(req.url, route);
+    }) || {};
+
+    const { params } = matchPath(req.url, activeRoute);
 
     let loadPageObserver;
     if (activeRoute.loadPage) {
-        loadPageObserver = activeRoute.loadPage(store);
+        loadPageObserver = activeRoute.loadPage(store, params);
     } else {
         loadPageObserver = {
             ready: of(true),
@@ -62,7 +64,7 @@ app.get('*', authMiddleware, (req, res) => {
     loadPageObserver.ready.subscribe(ready => {
         if (ready) {
             const markupString = renderToString(
-                <StaticRouter location={ location } context={ context }>
+                <StaticRouter location={ req.url } context={ {} }>
                     <Provider store={ store }>
                         <App />
                     </Provider>

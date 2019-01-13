@@ -8,7 +8,7 @@ export const loadHomePageEpic = action$ => {
         mergeMap(() => {
             const promise = new Promise((resolve => {
                 setTimeout(() => {
-                    resolve('yahooo home');
+                    resolve();
                 }, 2000);
             }));
 

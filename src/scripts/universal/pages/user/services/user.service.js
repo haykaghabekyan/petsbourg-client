@@ -1,14 +1,11 @@
 import axios from 'axios';
+import { configs } from '../../../../server/utils/config';
 
-class UserService {
-    baseUrl = '';
+export class UserService {
+    static async loadUserPage(userId) {
+        const { frontend } = configs();
 
-    contrustor(baseUrl) {
-        this.baseUrl = baseUrl;
-    }
-
-    async getUser(userId) {
-        return axios.get(`${ this.baseUrl }/users/${ userId }`)
-            .then(response => response.data);
+        return axios.get(`${ frontend.url }/api/user-page/${ userId }`)
+            .then(({ data }) => data);
     }
 }

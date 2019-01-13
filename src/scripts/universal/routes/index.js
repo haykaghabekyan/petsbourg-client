@@ -1,6 +1,6 @@
 import React from 'react';
-// import { observableFromStore } from '../utils/observable-from-store';
-// import { filter, map, take } from 'rxjs/operators';
+import { observableFromStore } from '../utils/observable-from-store';
+import { filter, map, take } from 'rxjs/operators';
 // import { MainLayout } from '../components/layouts/main';
 // import PetProfileContainer from '../components/pets/pet-profile/pet-profile-container';
 // import PetProfile from '../components/pets/pet-profile/pet-profile';
@@ -9,6 +9,7 @@ import React from 'react';
 // import UserProfile from '../components/users/user-profile/user-profile';
 import { privateRoutes } from './private';
 import { publicRoutes } from './public';
+import { UserPage, userPageLoadAction } from '../pages/user';
 
 export const getRoutes = (isAuthenticated = false) => {
     const routes = [];
@@ -20,29 +21,29 @@ export const getRoutes = (isAuthenticated = false) => {
     }
 
     routes.push(
-        // {
-        //     path: '/users/:userId',
-        //     component: MainLayout,
-        //     exact: true,
-        //     routes: [{
-        //         component: UserProfileContainer,
-        //         routes: [{
-        //             path: '/pets/:petId',
-        //             component: UserProfile,
-        //         }]
-        //     }],
-        //     loadPage: (store) => {
-        //         store.dispatch(indexPageLoadAction());
-        //
-        //         return {
-        //             ready: observableFromStore(store).pipe(
-        //                 map(state => !state.indexPage.isLoading),
-        //                 filter(x => x === true),
-        //                 take(1)
-        //             ),
-        //         };
-        //     }
-        // },
+        {
+            path: '/users/:userId',
+            component: UserPage,
+            exact: true,
+            // routes: [{
+            //     component: UserProfileContainer,
+            //     routes: [{
+            //         path: '/pets/:petId',
+            //         component: UserProfile,
+            //     }]
+            // }],
+            loadPage: (store, params) => {
+                store.dispatch(userPageLoadAction(params));
+
+                return {
+                    ready: observableFromStore(store).pipe(
+                        map(state => !state.userPage.isLoading),
+                        filter(x => x === true),
+                        take(1)
+                    ),
+                };
+            }
+        },
         // {
         //     path: '/pets/:petId',
         //     exact: true,

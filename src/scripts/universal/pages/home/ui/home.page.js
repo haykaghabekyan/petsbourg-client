@@ -11,7 +11,7 @@ class HomeContainer extends React.Component {
     }
 
     componentDidMount() {
-        if (!this.props.homePage.data) {
+        if (!this.props.homePage.opened) {
             this.props.homePageLoadAction();
         }
     }
@@ -19,14 +19,13 @@ class HomeContainer extends React.Component {
     render() {
         const { me, route } = this.props;
         return (
-            <MainLayout>
+            <MainLayout me={ me }>
                 <ProfileLayout userProfile={ me.profile }>
                     <div>qaq</div>
                 </ProfileLayout>
             </MainLayout>
         );
     }
-
 }
 
 const mapStateToProps = state => ({

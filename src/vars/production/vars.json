@@ -2,6 +2,9 @@
   "backend": {
     "url": ""
   },
+  "frontend": {
+    "url": ""
+  },
   "auth": {
     "publicKey": "petsbourgjwttoken"
   }

@@ -1,31 +1,35 @@
 import axios from 'axios';
 import { configs} from '../../../../server/utils/config';
-import { UserService } from '../../../../server/services/user.service';
+import { UserServiceImpl } from '../../user';
 
 export class SignInServiceImpl {
-    static async signIn(req, res) {
+    static signIn(req, res) {
         const { backend } = configs();
         const { email, password } = req.body;
 
-        try {
-            const { data: { token, user } } = await axios.post(`${ backend.url }/api/auth/sign-in`, { email, password });
+        axios.post(`${ backend.url }/api/auth/sign-in`, { email, password })
+            .then(async ({ data }) => {
+                const { token, user } = data;
 
-            res.cookie('jwt', token, { maxAge: 900000 });
+                res.cookie('jwt', token, { maxAge: 900000 });
 
-            let pets = null;
-            try {
-                pets = await UserService.getUserPets(user.id);
-            } catch(error) {}
+                let pets = null;
+                try {
+                    pets = await UserServiceImpl.getUserPets(user._id);
+                } catch(error) {
+                    debugger
+                }
 
-            res.send({
-                success: true,
-                profile: user,
-                pets: pets,
+                res.send({
+                    success: true,
+                    profile: user,
+                    pets: pets,
+                });
+            })
+            .catch(error => {
+                res.status(400).send({
+                    ...error.response.data
+                });
             });
-        } catch(error) {
-            res.status(400).send({
-                ...error.response.data
-            });
-        }
     }
 }
