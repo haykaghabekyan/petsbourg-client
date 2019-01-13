@@ -7,9 +7,7 @@ export const loadHomePageEpic = action$ => {
         filter(action => action.type === HOME_PAGE_LOAD_ACTION_TYPE),
         mergeMap(() => {
             const promise = new Promise((resolve => {
-                setTimeout(() => {
-                    resolve();
-                }, 2000);
+                resolve();
             }));
 
             return from(promise)
