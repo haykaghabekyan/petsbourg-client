@@ -20,7 +20,7 @@ class SignInContainer extends React.Component {
             });
         } catch (error) {
             throw new SubmissionError({
-                _error: `Sign in failed! Server responded with: ${ error.message }`,
+                _error: error.message,
             });
         }
     }

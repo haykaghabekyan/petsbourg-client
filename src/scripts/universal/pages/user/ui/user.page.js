@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { MainLayout } from '../../../components/layouts/main';
 import { userPageLoadAction } from '../model/user.actions';
 import { ProfileLayout } from '../../../components/layouts/profile';
+import { LoadingLayout } from '../../../components/layouts/loading';
 
 export class UserPageContainer extends React.Component {
     constructor(props) {
@@ -10,23 +11,19 @@ export class UserPageContainer extends React.Component {
     }
 
     componentDidMount() {
-        if (!this.props.userPage.opened) {
-            const { params } = this.props.match;
-            this.props.userPageLoadAction(params);
+        const { userPage, match } = this.props;
+
+        if (!userPage.opened) {
+            this.props.userPageLoadAction(match.params);
         }
     }
 
     render() {
         const { me, userPage } = this.props;
-        if (!userPage.opened) {
-            return 'not opened';
-        }
 
-        if (userPage.isLoading) {
-            return 'loading';
+        if (!userPage.opened || userPage.isLoading) {
+            return <LoadingLayout />;
         }
-
-        console.log(me, userPage);
 
         return (
             <MainLayout me={ me }>

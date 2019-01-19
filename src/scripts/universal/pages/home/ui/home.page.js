@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { homePageLoadAction } from '../model/home.actions';
 import { ProfileLayout } from '../../../components/layouts/profile';
 import { MainLayout } from '../../../components/layouts/main';
+import { LoadingLayout } from '../../../components/layouts/loading';
 
 class HomeContainer extends React.Component {
     constructor(props) {
@@ -10,13 +11,20 @@ class HomeContainer extends React.Component {
     }
 
     componentDidMount() {
-        if (!this.props.homePage.opened) {
-            this.props.homePageLoadAction();
+        const { homePage, match } = this.props;
+
+        if (!homePage.opened) {
+            this.props.homePageLoadAction(match.params);
         }
     }
 
     render() {
-        const { me } = this.props;
+        const { me, homePage } = this.props;
+
+        if (!homePage.opened || homePage.isLoading) {
+            return <LoadingLayout />;
+        }
+
         return (
             <MainLayout me={ me }>
                 <ProfileLayout me={ me } user={ me }>

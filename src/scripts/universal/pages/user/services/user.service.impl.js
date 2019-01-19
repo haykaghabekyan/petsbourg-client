@@ -24,16 +24,16 @@ export class UserServiceImpl {
         });
     }
 
-    static getUser(userId) {
+    static async getUser(userId) {
         const { backend } = configs();
 
         return axios.get(`${ backend.url }/api/users/${ userId }`)
             .then(({ data }) => data.user);
     }
 
-    static getUserPets(userId) {
+    static async getUserPets(userId) {
         const { backend } = configs();
-        debugger
+        
         return axios.get(`${ backend.url }/api/users/${ userId }/pets`)
             .then(({ data }) => data.pets);
     }

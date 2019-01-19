@@ -1,10 +1,7 @@
 import React from 'react';
-
 import { SignInPage } from '../pages/sign-in';
 import { SignUpPage } from '../pages/sign-up';
-
-import { MainLayout } from '../components/layouts/main';
-import NotFound from '../components/error/not-found';
+import { ErrorPage, Error401 } from '../pages/error';
 
 export const publicRoutes = [
     {
@@ -19,9 +16,9 @@ export const publicRoutes = [
     },
     {
         path: '/pets/add',
-        component: MainLayout,
+        component: ErrorPage,
         routes: [{
-            component: NotFound,
+            component: Error401,
         }],
     },
 ];

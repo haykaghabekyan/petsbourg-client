@@ -10,6 +10,7 @@ import { filter, map, take } from 'rxjs/operators';
 import { privateRoutes } from './private';
 import { publicRoutes } from './public';
 import { UserPage, userPageLoadAction } from '../pages/user';
+import { ErrorPage, Error404 } from '../pages/error';
 
 export const getRoutes = (isAuthenticated = false) => {
     const routes = [];
@@ -61,13 +62,13 @@ export const getRoutes = (isAuthenticated = false) => {
         //     path: '/about',
         //     component: () => <div>About</div>
         // },
-        // {
-        //     path: '**',
-        //     component: MainLayout,
-        //     routes: [{
-        //         component: NotFound,
-        //     }],
-        // }
+        {
+            path: '**',
+            component: ErrorPage,
+            routes: [{
+                component: Error404,
+            }]
+        }
     );
 
     return routes;

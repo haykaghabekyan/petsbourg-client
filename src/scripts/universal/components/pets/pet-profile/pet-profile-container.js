@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { ProfileLayout } from "../../layouts/profile";
 import { getPet } from "../../../redux/actions/pet";
 import { removeUser } from "../../../redux/actions/user";
-import ProfileLoadingLayout from "../../layouts/profile-loading";
+import ProfileLoadingLayout from "../../layouts/loading";
 
 class PetProfileContainer extends React.Component {
     constructor(props) {
