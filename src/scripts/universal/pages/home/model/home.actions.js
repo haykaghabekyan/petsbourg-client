@@ -20,3 +20,10 @@ export const homePageLoadFailedAction = data => {
         payload: data,
     };
 };
+
+export const HOME_PAGE_RESET_ACTION_TYPE = 'HOME_PAGE_RESET_ACTION_TYPE';
+export const homePageResetAction = () => {
+    return {
+        type: HOME_PAGE_RESET_ACTION_TYPE,
+    };
+};

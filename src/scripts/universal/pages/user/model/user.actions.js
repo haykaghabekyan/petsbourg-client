@@ -21,3 +21,11 @@ export const userPageLoadFailedAction = data => {
         payload: data,
     };
 };
+
+export const USER_PAGE_RESET_ACTION_TYPE = 'USER_PAGE_RESET_ACTION_TYPE';
+export const userPageResetAction = () => {
+    return {
+        type: USER_PAGE_RESET_ACTION_TYPE,
+    };
+};
+

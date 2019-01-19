@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { homePageLoadAction } from '../model/home.actions';
+import { homePageLoadAction, homePageResetAction } from '../model/home.actions';
 import { ProfileLayout } from '../../../components/layouts/profile';
 import { MainLayout } from '../../../components/layouts/main';
 import { LoadingLayout } from '../../../components/layouts/loading';
@@ -33,6 +33,10 @@ class HomeContainer extends React.Component {
             </MainLayout>
         );
     }
+
+    componentWillUnmount() {
+        this.props.homePageResetAction();
+    }
 }
 
 const mapStateToProps = state => ({
@@ -41,6 +45,7 @@ const mapStateToProps = state => ({
 });
 const actionCreators = {
     homePageLoadAction,
+    homePageResetAction,
 };
 
 export const HomePage = connect(mapStateToProps, actionCreators)(HomeContainer);

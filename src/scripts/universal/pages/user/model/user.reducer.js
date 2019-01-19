@@ -3,6 +3,7 @@ import {
     USER_PAGE_LOAD_ACTION_TYPE,
     USER_PAGE_LOAD_FAILED_ACTION_TYPE,
     USER_PAGE_LOAD_SUCCEEDED_ACTION_TYPE,
+    USER_PAGE_RESET_ACTION_TYPE,
 } from './user.actions';
 
 export const userPageReducer = (state = userPageDefaultState, action) => {
@@ -26,6 +27,8 @@ export const userPageReducer = (state = userPageDefaultState, action) => {
                 isLoading: false,
                 ...action.payload,
             };
+        case USER_PAGE_RESET_ACTION_TYPE:
+            return userPageDefaultState;
         default:
             return state;
     }

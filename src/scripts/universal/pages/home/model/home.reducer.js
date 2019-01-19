@@ -3,6 +3,7 @@ import {
     HOME_PAGE_LOAD_ACTION_TYPE,
     HOME_PAGE_LOAD_FAILED_ACTION_TYPE,
     HOME_PAGE_LOAD_SUCCEEDED_ACTION_TYPE,
+    HOME_PAGE_RESET_ACTION_TYPE,
 } from './home.actions';
 
 export const homePageReducer = (state = homePageDefaultState, action) => {
@@ -25,6 +26,8 @@ export const homePageReducer = (state = homePageDefaultState, action) => {
                 opened: true,
                 isLoading: false,
             };
+        case HOME_PAGE_RESET_ACTION_TYPE:
+            return homePageDefaultState;
         default:
             return state;
     }

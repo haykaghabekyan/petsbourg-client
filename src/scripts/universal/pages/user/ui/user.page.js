@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { MainLayout } from '../../../components/layouts/main';
-import { userPageLoadAction } from '../model/user.actions';
+import { userPageLoadAction, userPageResetAction } from '../model/user.actions';
 import { ProfileLayout } from '../../../components/layouts/profile';
 import { LoadingLayout } from '../../../components/layouts/loading';
 
@@ -33,6 +33,10 @@ export class UserPageContainer extends React.Component {
             </MainLayout>
         );
     }
+
+    componentWillUnmount() {
+        this.props.userPageResetAction();
+    }
 }
 
 const mapStateToProps = state => ({
@@ -41,6 +45,7 @@ const mapStateToProps = state => ({
 });
 const actionCreators = {
     userPageLoadAction,
+    userPageResetAction,
 };
 
 export const UserPage = connect(mapStateToProps, actionCreators)(UserPageContainer);
