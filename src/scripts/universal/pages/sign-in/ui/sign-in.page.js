@@ -50,9 +50,6 @@ class SignInContainer extends React.Component {
     }
 }
 
-const mapStateToProps = null;
-const actionCreators = {
-    signInPageSignInAction,
-};
+const actionCreators = { signInPageSignInAction };
 
-export const SignInPage = connect(mapStateToProps, actionCreators)(SignInContainer);
+export const SignInPage = connect(null, actionCreators)(SignInContainer);
