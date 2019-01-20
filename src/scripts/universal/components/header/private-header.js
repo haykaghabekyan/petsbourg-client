@@ -32,7 +32,7 @@ export class PrivateHeader extends React.Component {
     }
 
     render() {
-        const { profile, pets } = this.props.user;
+        const { user, pets } = this.props;
 
         return (
             <div className="header-actions">
@@ -72,7 +72,7 @@ export class PrivateHeader extends React.Component {
                                     <div className="dropdown-list-container">
                                         <ul className="dropdown-list">
                                             <li className="dropdown-list-item">
-                                                <Link to={ `/users/${ profile._id }` } onClick={ this.close }>My profile</Link>
+                                                <Link to={ `/users/${ user._id }` } onClick={ this.close }>My profile</Link>
                                             </li>
                                             <li className="dropdown-list-item">
                                                 <Link to="/">Sign out</Link>

@@ -14,7 +14,7 @@ import { router } from './router';
 import { getRoutes } from '../universal/routes';
 import { App } from '../universal/app/app';
 import { getStore } from '../universal/app/model/app.store';
-import { setMeAction } from '../universal/app/model/me/me.actions';
+import { setAuthAction } from '../universal/app/model/auth/auth.actions';
 
 const app = express();
 // parse application/x-www-form-urlencoded
@@ -41,9 +41,9 @@ app.get('*', authMiddleware, (req, res) => {
     const store = getStore();
 
     let isAuthenticated = false;
-    if (req.me) {
+    if (req.auth) {
         isAuthenticated = true;
-        store.dispatch(setMeAction(req.me));
+        store.dispatch(setAuthAction(req.auth));
     }
 
     const activeRoute = getRoutes(isAuthenticated).find((route) => {

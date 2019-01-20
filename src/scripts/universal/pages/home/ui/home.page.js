@@ -19,16 +19,20 @@ class HomeContainer extends React.Component {
     }
 
     render() {
-        const { me, homePage } = this.props;
+        const { auth, homePage } = this.props;
 
         if (!homePage.opened || homePage.isLoading) {
-            return <LoadingLayout />;
+            return (
+                <MainLayout>
+                    <LoadingLayout />
+                </MainLayout>
+            );
         }
 
         return (
-            <MainLayout me={ me }>
-                <ProfileLayout me={ me } user={ me }>
-                    <div>qaq</div>
+            <MainLayout user={ auth.user } pets={ auth.pets }>
+                <ProfileLayout user={ auth.user } pets={ auth.pets } allowEdit>
+                    home page
                 </ProfileLayout>
             </MainLayout>
         );
@@ -40,7 +44,7 @@ class HomeContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    me: state.me,
+    auth: state.auth,
     homePage: state.homePage,
 });
 const actionCreators = {

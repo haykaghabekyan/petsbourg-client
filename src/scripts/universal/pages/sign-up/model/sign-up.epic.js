@@ -2,7 +2,7 @@ import { from, of } from 'rxjs';
 import { filter, mergeMap, map, catchError } from 'rxjs/operators';
 import { SIGN_UP_PAGE_SIGN_UP_ACTION } from './sign-up.actions';
 import { SignUpService } from '../services/sign-up.service';
-import { setMeAction } from '../../../app/model/me/me.actions';
+import { setAuthAction } from '../../../app/model/auth/auth.actions';
 
 export const signUpEpic = action$ => {
     return action$.pipe(
@@ -17,7 +17,7 @@ export const signUpEpic = action$ => {
                             action.meta.resolve(result.user);
                         }
 
-                        return setMeAction(result.user);
+                        return setAuthAction(result.user);
                     }),
                     catchError(({ response: { data } }) => {
                         if (action.meta && action.meta.reject) {

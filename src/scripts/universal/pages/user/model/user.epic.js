@@ -13,9 +13,9 @@ export const loadUserPageEpic = action$ => {
             return from(promise)
                 .pipe(
                     map(result => {
-                        const { profile, pets } = result;
+                        const { user, pets } = result;
 
-                        return userPageLoadSucceededAction({ profile, pets });
+                        return userPageLoadSucceededAction({ user, pets });
                     }),
                     catchError(error => {
                         return of(userPageLoadFailedAction(error.message));

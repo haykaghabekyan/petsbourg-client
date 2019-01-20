@@ -11,8 +11,8 @@ export class UserServiceImpl {
         Promise.all([ userPromise, petsPromise ]).then(([ user, pets ]) => {
             res.send({
                 success: true,
-                profile: user,
-                pets: pets,
+                user,
+                pets,
             });
         }).catch(error => {
             res.send({

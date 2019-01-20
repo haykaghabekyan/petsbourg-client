@@ -20,9 +20,9 @@ export class SignInServiceImpl {
                     debugger
                 }
 
-                res.send({
+                res.status(200).send({
                     success: true,
-                    profile: user,
+                    user: user,
                     pets: pets,
                 });
             })

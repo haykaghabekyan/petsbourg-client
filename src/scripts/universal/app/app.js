@@ -4,8 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import { getRoutes } from '../routes';
 
-const mapStateToProps = state => ({ me: state.me });
+const mapStateToProps = state => ({ auth: state.auth });
 
 export const App = withRouter(
-    connect(mapStateToProps)(({ me }) => renderRoutes(getRoutes(me && me.profile)))
+    connect(mapStateToProps)(({ auth }) => renderRoutes(getRoutes(auth && auth.user)))
 );

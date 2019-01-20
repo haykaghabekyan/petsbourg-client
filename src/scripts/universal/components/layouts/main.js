@@ -4,7 +4,7 @@ import { PrivateHeader } from '../header/private-header';
 import { PublicHeader } from '../header/public-header';
 import { FooterComponent } from '../footer';
 
-export const MainLayout = ({ children, me }) => {
+export const MainLayout = ({ children, user, pets }) => {
     return (
         <div className="main-layout">
             <header className="main-header">
@@ -12,7 +12,7 @@ export const MainLayout = ({ children, me }) => {
                     <div className="brand-container">
                         <Link to="/" className="brand">Petsbourg</Link>
                     </div>
-                    { me.profile ? <PrivateHeader user={ me } /> : <PublicHeader /> }
+                    { user ? <PrivateHeader user={ user } pets={ pets } /> : <PublicHeader /> }
                 </div>
             </header>
             <main className="">

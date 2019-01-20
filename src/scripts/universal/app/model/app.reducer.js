@@ -1,16 +1,18 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import { meReducer } from './me/me.reducer';
+import { authReducer } from './auth/auth.reducer';
 import { signInPageReducer } from '../../pages/sign-in';
 import { signUpPageReducer } from '../../pages/sign-up';
 import { homePageReducer } from '../../pages/home';
 import { userPageReducer } from '../../pages/user';
+import { petPageReducer } from '../../pages/pet';
 
 export const combinedReducers = combineReducers({
     form: formReducer,
-    me: meReducer,
+    auth: authReducer,
     signInPage: signInPageReducer,
     signUpPage: signUpPageReducer,
     homePage: homePageReducer,
     userPage: userPageReducer,
+    petPage: petPageReducer,
 });

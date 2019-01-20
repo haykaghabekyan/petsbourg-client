@@ -15,14 +15,14 @@ export const userPageReducer = (state = userPageDefaultState, action) => {
             };
         case USER_PAGE_LOAD_FAILED_ACTION_TYPE:
             return {
-                ...userPageDefaultState,
+                ...state,
                 opened: true,
                 isLoading: false,
                 error: action.payload,
             };
         case USER_PAGE_LOAD_SUCCEEDED_ACTION_TYPE:
             return {
-                ...userPageDefaultState,
+                ...state,
                 opened: true,
                 isLoading: false,
                 ...action.payload,

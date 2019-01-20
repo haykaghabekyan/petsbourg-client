@@ -12,9 +12,9 @@ export class SignUpServiceImpl {
 
                 res.cookie('jwt', token, { maxAge: 900000 });
 
-                res.send({
+                res.status(200).send({
                     success: success,
-                    profile: user,
+                    user: user,
                     pets: null,
                 });
             })

@@ -10,6 +10,7 @@ import { filter, map, take } from 'rxjs/operators';
 import { privateRoutes } from './private';
 import { publicRoutes } from './public';
 import { UserPage, userPageLoadAction } from '../pages/user';
+import { PetPage } from '../pages/pet';
 import { ErrorPage, Error404 } from '../pages/error';
 
 export const getRoutes = (isAuthenticated = false) => {
@@ -45,19 +46,19 @@ export const getRoutes = (isAuthenticated = false) => {
                 };
             }
         },
-        // {
-        //     path: '/pets/:petId',
-        //     exact: true,
-        //     component: MainLayout,
-        //     routes: [{
-        //         path: '/pets/:petId',
-        //         component: PetProfileContainer,
-        //         routes: [{
-        //             path: '/pets/:petId',
-        //             component: PetProfile,
-        //         }]
-        //     }]
-        // },
+        {
+            path: '/pets/:petId',
+            component: PetPage,
+            exact: true,
+            // routes: [{
+            //     path: '/pets/:petId',
+            //     component: PetProfileContainer,
+            //     routes: [{
+            //         path: '/pets/:petId',
+            //         component: PetProfile,
+            //     }]
+            // }]
+        },
         // {
         //     path: '/about',
         //     component: () => <div>About</div>

@@ -18,17 +18,28 @@ export class UserPageContainer extends React.Component {
         }
     }
 
+    componentWillReceiveProps() {
+        const { match } = this.props;
+        console.log(match);
+    }
+
     render() {
-        const { me, userPage } = this.props;
+        const { auth, userPage } = this.props;
 
         if (!userPage.opened || userPage.isLoading) {
-            return <LoadingLayout />;
+            return (
+                <MainLayout>
+                    <LoadingLayout />
+                </MainLayout>
+            );
         }
 
+        const allowEdit = auth.user && userPage.user && auth.user._id === userPage.user._id;
+
         return (
-            <MainLayout me={ me }>
-                <ProfileLayout me={ me } user={ userPage }>
-                    <div>qaq</div>
+            <MainLayout user={ auth.user } pets={ auth.pets }>
+                <ProfileLayout user={ userPage.user } pets={ userPage.pets } allowEdit={ allowEdit }>
+                    user page
                 </ProfileLayout>
             </MainLayout>
         );
@@ -40,7 +51,7 @@ export class UserPageContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    me: state.me,
+    auth: state.auth,
     userPage: state.userPage,
 });
 const actionCreators = {

@@ -1,0 +1,46 @@
+import axios from 'axios';
+import { configs } from '../../../../server/utils/config';
+import { UserServiceImpl } from '../../user';
+
+export class PetServiceImpl {
+    static async loadPetPage(req, res) {
+        const { petId = '' } = req.params;
+
+        try {
+            const pet = await PetServiceImpl.getPet(petId);
+            const userPromise = UserServiceImpl.getUser(pet.owner);
+            const petsPromise = UserServiceImpl.getUserPets(pet.owner);
+
+            Promise.all([ userPromise, petsPromise ])
+                .then(([ user, pets ]) => {
+                    res.send({
+                        success: true,
+                        pet: pet,
+                        user: user,
+                        pets: pets,
+                    });
+                }).catch((error) => {
+                    res.send({
+                        success: false,
+                        errors: {
+                            message: 'Something went wrong.'
+                        }
+                    });
+                });
+        } catch(error) {
+            res.send({
+                success: false,
+                errors: {
+                    message: 'Something went wrong.'
+                }
+            });
+        }
+    }
+
+    static async getPet(petId) {
+        const { backend } = configs();
+
+        return axios.get(`${ backend.url }/api/pets/${ petId }`)
+            .then(({ data }) => data.pet);
+    }
+}
