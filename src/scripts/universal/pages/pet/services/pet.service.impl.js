@@ -6,35 +6,46 @@ export class PetServiceImpl {
     static async loadPetPage(req, res) {
         const { petId = '' } = req.params;
 
+        let pet;
         try {
-            const pet = await PetServiceImpl.getPet(petId);
-            const userPromise = UserServiceImpl.getUser(pet.owner);
-            const petsPromise = UserServiceImpl.getUserPets(pet.owner);
-
-            Promise.all([ userPromise, petsPromise ])
-                .then(([ user, pets ]) => {
-                    res.send({
-                        success: true,
-                        pet: pet,
-                        user: user,
-                        pets: pets,
-                    });
-                }).catch((error) => {
-                    res.send({
-                        success: false,
-                        errors: {
-                            message: 'Something went wrong.'
-                        }
-                    });
-                });
+            pet = await PetServiceImpl.getPet(petId);
         } catch(error) {
-            res.send({
+            res.status(400).send({
                 success: false,
                 errors: {
                     message: 'Something went wrong.'
                 }
             });
         }
+
+        if (!pet) {
+            return res.status(404).send({
+                success: false,
+                errors: {
+                    message: 'Something went wrong.'
+                }
+            });
+        }
+
+        const userPromise = UserServiceImpl.getUser(pet.owner);
+        const petsPromise = UserServiceImpl.getUserPets(pet.owner);
+
+        Promise.all([ userPromise, petsPromise ])
+            .then(([ user, pets ]) => {
+                res.send({
+                    success: true,
+                    pet: pet,
+                    user: user,
+                    pets: pets,
+                });
+            }).catch((error) => {
+            res.send({
+                success: false,
+                errors: {
+                    message: 'Something went wrong.'
+                }
+            });
+        });
     }
 
     static async getPet(petId) {

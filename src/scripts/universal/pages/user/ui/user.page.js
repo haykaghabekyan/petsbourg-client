@@ -26,6 +26,11 @@ export class UserPageContainer extends React.Component {
     render() {
         const { auth, userPage } = this.props;
 
+        // TODO
+        if (userPage.error) {
+            return userPage.error;
+        }
+
         if (!userPage.opened || userPage.isLoading) {
             return (
                 <MainLayout>

@@ -21,6 +21,11 @@ class HomeContainer extends React.Component {
     render() {
         const { auth, homePage } = this.props;
 
+        // TODO
+        if (homePage.error) {
+            return homePage.error;
+        }
+
         if (!homePage.opened || homePage.isLoading) {
             return (
                 <MainLayout>
