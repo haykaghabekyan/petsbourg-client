@@ -8,7 +8,7 @@ export const Error404 = () => {
                 Go <Link to="/">home</Link>!
             </h3>
             <p className="text-center margin-t-30">
-                This page is not found.
+                The page you have requested is not found.
             </p>
         </div>
     );
