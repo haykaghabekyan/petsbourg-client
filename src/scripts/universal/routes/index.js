@@ -10,7 +10,7 @@ import { filter, map, take } from 'rxjs/operators';
 import { privateRoutes } from './private';
 import { publicRoutes } from './public';
 import { UserPage, userPageLoadAction } from '../pages/user';
-import { PetPage } from '../pages/pet';
+import { PetPage, petPageLoadAction } from '../pages/pet';
 import { ErrorPage, Error404 } from '../pages/error';
 
 export const getRoutes = (isAuthenticated = false) => {
@@ -58,6 +58,17 @@ export const getRoutes = (isAuthenticated = false) => {
             //         component: PetProfile,
             //     }]
             // }]
+            loadPage: (store, params) => {
+                store.dispatch(petPageLoadAction(params));
+
+                return {
+                    ready: observableFromStore(store).pipe(
+                        map(state => !state.petPage.isLoading),
+                        filter(x => x === true),
+                        take(1)
+                    ),
+                };
+            }
         },
         // {
         //     path: '/about',
