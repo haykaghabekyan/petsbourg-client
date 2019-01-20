@@ -1,10 +1,10 @@
 import React from 'react';
 
-const CatIcon = ({ color='#27AE60', width=50 }) => {
+export const CatIcon = ({ color='#27AE60', width=50 }) => {
     return (
-        <svg width={width} fill={color} viewBox="0 0 485.876 485.876" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg width={ width } fill={ color } viewBox="0 0 485.876 485.876" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <title>Cat</title>
-            <desc>Created using Figma</desc>
+            <desc></desc>
             <path d="M391.793,444.209h-71.932l-2.862-117.89c-0.228-9.374,1.185-18.63,4.198-27.51l30.234-89.11
                 c2.173-6.405,3.057-13.075,2.628-19.823l-4.439-69.826c0.074-0.058,0.152-0.119,0.225-0.177c7.394-5.846,11.529-14.95,11.063-24.355
                 c-0.337-6.783-0.923-16.38-1.801-23.579c-0.079-0.644-0.24-1.274-0.481-1.876c-0.455-1.137-1.022-2.287-1.711-3.459l0.236-0.278
@@ -39,6 +39,3 @@ const CatIcon = ({ color='#27AE60', width=50 }) => {
 
     );
 };
-
-export default CatIcon;
-

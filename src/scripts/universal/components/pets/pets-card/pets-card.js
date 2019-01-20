@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import getPetIcon from "../../../utils/icons/pets";
+import { getPetIcon } from "../../../utils/icons/pets";
 
 const getPicture = (pet, width=23) => {
     if (pet.profilePicture) {

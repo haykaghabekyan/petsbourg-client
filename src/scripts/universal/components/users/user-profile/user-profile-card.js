@@ -15,10 +15,10 @@ const profilePicture = user => {
     return <img className="profile-card--picture" src={ circle(user.picture.publicId) } alt="" />;
 };
 
-export const UserProfileCard = ({ user, allowEdit }) => {
+export const UserProfileCard = ({ user, isEditable }) => {
     return (
         <div className="profile-card">
-            { allowEdit && <Link to={`/users/${ user._id }/edit`} className="profile-card--edit"><PenIcon color="#E0E4E9" /></Link> }
+            { isEditable && <Link to={`/users/${ user._id }/edit`} className="profile-card--edit"><PenIcon color="#E0E4E9" /></Link> }
             <div className="profile-card--content">
                 <div className="d-flex justify-center">
                     <div className="profile-card--avatar d-flex justify-center align-center">
@@ -31,7 +31,7 @@ export const UserProfileCard = ({ user, allowEdit }) => {
                     </div>
                     { user.biography && <div className="profile-card--biography">{ user.biography }</div> }
                     {
-                        !allowEdit &&
+                        !isEditable &&
                         <div className="profile-card--contacts">
                             <div>
                                 <MessageIcon width={ 15 } />

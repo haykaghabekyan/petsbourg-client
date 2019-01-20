@@ -1,13 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import moment from "moment";
-import PenIcon from "../../../utils/icons/common/pen";
-import { thumbnail } from "../../../utils/helpers/cloudinary";
-import getPetIcon from "../../../utils/icons/pets";
+import React from 'react';
+import PropTypes from 'prop-types';
+import moment from 'moment';
+import { Link } from 'react-router-dom';
+import { PenIcon } from '../../../../utils/icons/common/pen';
+import { thumbnail } from '../../../../utils/helpers/cloudinary';
+import { getPetIcon } from '../../../../utils/icons/pets/index';
 
 const box = (label, value) => {
-    if (label !== "Birthday") {
+    if (label !== 'Birthday') {
         return (
             <dl className="pet-info-list">
                 <dt className="pet-info-label">{ label } </dt>
@@ -19,7 +19,7 @@ const box = (label, value) => {
     return (
         <dl className="pet-info-list">
             <dt className="pet-info-label">{ label } </dt>
-            <dd className="pet-info-value">{ moment(value, "YYYYMMDD").fromNow() }</dd>
+            <dd className="pet-info-value">{ moment(value, 'YYYYMMDD').fromNow() }</dd>
         </dl>
     );
 };
@@ -42,44 +42,50 @@ const profilePicture = petProfile => {
     return <img className="pet-facts-img" src={ thumbnail(petProfile.picture.publicId) } />;
 };
 
-const PetInfo = ({ petProfile, isEditable }) => {
-    return (
+export const PetInfo = ({ pet, isEditable }) => {
+    return [
         <div className="pet-profile bg-white">
-            <div className="padding-35">
+            <div className="padding-20">
                 <div className="pet-profile-content">
-                    { isEditable &&  edit(petProfile._id) }
+                    { isEditable &&  edit(pet._id) }
 
                     <div className="pet-facts">
                         <div className="pet-facts-picture">
-                            { profilePicture(petProfile) }
+                            { profilePicture(pet) }
                         </div>
                         <div className="pet-facts-content">
-                            <h2 className="pet-facts-name">{ petProfile.name }</h2>
+                            <h2 className="pet-facts-name">{ pet.name }</h2>
 
                             <dl className="pet-facts-list">
                                 <dt className="pet-facts-label">Passport Id</dt>
-                                <dd className="pet-facts-value">{ petProfile.passportId || "-" }</dd>
+                                <dd className="pet-facts-value">{ pet.passportId || '-' }</dd>
 
                                 <dt className="pet-facts-label">Type</dt>
-                                <dd className="pet-facts-value">{ petProfile.type.name || "-" }</dd>
+                                <dd className="pet-facts-value">{ pet.type.name || '-' }</dd>
 
                                 <dt className="pet-facts-label">Breed</dt>
-                                <dd className="pet-facts-value">{ petProfile.breed.name || "-" }</dd>
+                                <dd className="pet-facts-value">{ pet.breed.name || '-' }</dd>
 
                                 <dt className="pet-facts-label">Gender</dt>
-                                <dd className="pet-facts-value">{ petProfile.gender || "-" }</dd>
+                                <dd className="pet-facts-value">{ pet.gender || '-' }</dd>
                             </dl>
                         </div>
                     </div>
                 </div>
                 <div className="pet-info">
-                    { petProfile.color && box("Color", petProfile.color) }
-                    { petProfile.birthday && box("Birthday", petProfile.birthday) }
-                    { petProfile.size && box("Size", petProfile.size) }
+                    { pet.color && box('Color', pet.color) }
+                    { pet.birthday && box('Birthday', pet.birthday) }
+                    { pet.size && box('Size', pet.size) }
                 </div>
             </div>
+        </div>,
+        <div className="pet-profile bg-white">
+            <div className="padding-20">
+                <h3 className="pet-profile-title">Pet Story</h3>
+                <pre className="pet-story">{ pet.story || '-' }</pre>
+            </div>
         </div>
-    );
+    ];
 };
 
 PetInfo.propTypes = {
@@ -90,5 +96,3 @@ PetInfo.propTypes = {
 PetInfo.defaultProps = {
     isEditable: false,
 };
-
-export default PetInfo;

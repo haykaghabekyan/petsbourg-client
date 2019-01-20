@@ -4,6 +4,7 @@ import { MainLayout } from '../../../components/layouts/main';
 import { petPageLoadAction, petPageResetAction } from '../model/pet.actions';
 import { ProfileLayout } from '../../../components/layouts/profile';
 import { LoadingLayout } from '../../../components/layouts/loading';
+import { PetInfo } from './components/pet-info';
 
 class PetPageContainer extends React.Component {
     constructor(props) {
@@ -35,12 +36,12 @@ class PetPageContainer extends React.Component {
             );
         }
 
-        const allowEdit = auth.user && petPage.user && auth.user._id === petPage.user._id;
+        const isEditable = auth.user && petPage.user && auth.user._id === petPage.user._id;
 
         return (
             <MainLayout user={ auth.user } pets={ auth.pets }>
-                <ProfileLayout user={ petPage.user } pets={ petPage.pets } allowEdit={ allowEdit } selectedPetId={ petPage.pet._id }>
-                    pet page
+                <ProfileLayout user={ petPage.user } pets={ petPage.pets } isEditable={ isEditable } selectedPetId={ petPage.pet._id }>
+                    <PetInfo pet={ petPage.pet } isEditable={ isEditable } />
                 </ProfileLayout>
             </MainLayout>
         );

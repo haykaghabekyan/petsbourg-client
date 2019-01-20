@@ -1,11 +1,11 @@
-import DogIcon from './dog';
-import CatIcon from './cat';
-import BirdIcon from './bird';
-import HamsterIcon from './hamster';
-import RabbitIcon from './rabbit';
-import FishIcon from './fish';
+import { DogIcon } from './dog';
+import { CatIcon } from './cat';
+import { BirdIcon } from './bird';
+import { HamsterIcon } from './hamster';
+import { RabbitIcon } from './rabbit';
+import { FishIcon } from './fish';
 
-export default (petType) => {
+export const getPetIcon = petType => {
     switch (petType) {
         case 'Dog':
             return DogIcon;
@@ -20,4 +20,4 @@ export default (petType) => {
         case 'Cat':
             return CatIcon;
     }
-}
+};

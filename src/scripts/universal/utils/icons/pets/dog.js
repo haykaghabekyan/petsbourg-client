@@ -1,10 +1,10 @@
 import React from 'react';
 
-const DogIcon = ({ color='#27AE60', width=50 }) => {
+export const DogIcon = ({ color='#27AE60', width=50 }) => {
     return (
-        <svg width={width} fill={color} viewBox="0 0 466.225 466.225" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg width={ width } fill={ color } viewBox="0 0 466.225 466.225" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <title>Dog</title>
-            <desc>Created using Figma</desc>
+            <desc>Dog icon for Petsbourg</desc>
             <path d="M463.86,91.568c-2.486-3.93-6.563-6.479-11.186-6.993l-11.909-1.323c-0.496-8.402-4.773-16.218-11.653-21.156
                 l-29.688-21.307c-5.9-4.234-12.858-6.473-20.12-6.473c-10.633,0-20.852,5.027-27.336,13.449
                 c-14.67,19.053-41.28,54.676-54.673,79.183c-4.723,8.64-12.375,15.096-21.548,18.178c-12.942,4.349-19.061,4.544-19.029,4.545
@@ -45,6 +45,3 @@ const DogIcon = ({ color='#27AE60', width=50 }) => {
         </svg>
     );
 };
-
-export default DogIcon;
-

@@ -1,10 +1,10 @@
 import React from 'react';
 
-const BirdIcon = ({ color='#27AE60', width=50 }) => {
+export const BirdIcon = ({ color='#27AE60', width=50 }) => {
     return (
-        <svg width={width} fill={color} viewBox="0 0 199.944 199.944" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg width={ width } fill={ color } viewBox="0 0 199.944 199.944" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <title>Bird</title>
-            <desc>Created using Figma</desc>
+            <desc></desc>
             <path d="M166.598,174.271h-16.692c-4.357,0-8.663-1.983-11.461-3.608c-0.181,0.682-0.479,1.358-0.956,1.949
                 c-0.609,0.757-1.747,1.659-3.702,1.659h-8.302c-1.104,0-2-0.896-2-2s0.896-2,2-2h8.302c0.451,0,0.55-0.122,0.587-0.168
                 c0.289-0.358,0.343-1.202,0.297-1.908l-18.866-12.024c-1.321,0.408-2.751,0.379-4.069-0.099c-1.696-0.616-3.048-1.926-3.706-3.595
@@ -67,6 +67,3 @@ const BirdIcon = ({ color='#27AE60', width=50 }) => {
 
     );
 };
-
-export default BirdIcon;
-
