@@ -44,7 +44,7 @@ const profilePicture = petProfile => {
 
 export const PetInfo = ({ pet, isEditable }) => {
     return [
-        <div className="pet-profile bg-white">
+        <div className="pet-profile bg-white" key="petInfo">
             <div className="padding-20">
                 <div className="pet-profile-content">
                     { isEditable &&  edit(pet._id) }
@@ -79,7 +79,7 @@ export const PetInfo = ({ pet, isEditable }) => {
                 </div>
             </div>
         </div>,
-        <div className="pet-profile bg-white">
+        <div className="pet-profile bg-white" key="petStory">
             <div className="padding-20">
                 <h3 className="pet-profile-title">Pet Story</h3>
                 <pre className="pet-story">{ pet.story || '-' }</pre>
