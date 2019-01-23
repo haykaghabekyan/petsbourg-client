@@ -2,14 +2,8 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { observableFromStore } from '../utils/observable-from-store';
 import { filter, map, take } from 'rxjs/operators';
-// import { MainLayout } from '../components/layouts/main';
-// import AddPetContainer from '../components/pets/add-pet/add-pet-container';
-// import SearchResultsContainer from '../components/search/search-results-container';
-// import PetProfileContainer from '../components/pets/pet-profile/pet-profile-container';
-// import EditPetContainer from '../components/pets/edit-pet/edit-pet-container';
-// import EditUserContainer from '../components/users/edit-user/edit-user-container';
-
 import { HomePage, homePageLoadAction, HomeComponent } from '../pages/home';
+import { PetPage, petPageLoadAction } from '../pages/pet';
 
 export const privateRoutes = [
     {
@@ -26,6 +20,30 @@ export const privateRoutes = [
             return {
                 ready: observableFromStore(store).pipe(
                     map(state => !state.homePage.isLoading),
+                    filter(x => x === true),
+                    take(1)
+                ),
+            };
+        }
+    },
+    {
+        path: '/pets/:petId/edit',
+        component: PetPage,
+        exact: true,
+        // routes: [{
+        //     path: '/pets/:petId',
+        //     component: PetProfileContainer,
+        //     routes: [{
+        //         path: '/pets/:petId',
+        //         component: PetProfile,
+        //     }]
+        // }]
+        loadPage: (store, params) => {
+            store.dispatch(petPageLoadAction(params));
+
+            return {
+                ready: observableFromStore(store).pipe(
+                    map(state => !state.petPage.isLoading),
                     filter(x => x === true),
                     take(1)
                 ),

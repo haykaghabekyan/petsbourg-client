@@ -17,6 +17,7 @@ export const publicRoutes = [
     {
         path: '/pets/add',
         component: ErrorPage,
+        exact: true,
         routes: [{
             component: Error401,
         }],

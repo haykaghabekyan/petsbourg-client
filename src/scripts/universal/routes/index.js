@@ -1,12 +1,6 @@
 import React from 'react';
 import { observableFromStore } from '../utils/observable-from-store';
 import { filter, map, take } from 'rxjs/operators';
-// import { MainLayout } from '../components/layouts/main';
-// import PetProfileContainer from '../components/pets/pet-profile/pet-profile-container';
-// import PetProfile from '../components/pets/pet-profile/pet-profile';
-// import NotFound from '../components/error/not-found';
-// import UserProfileContainer from '../components/users/user-profile/user-profile-container';
-// import UserProfile from '../components/users/user-profile/user-profile';
 import { privateRoutes } from './private';
 import { publicRoutes } from './public';
 import { UserPage, userPageLoadAction } from '../pages/user';
@@ -70,10 +64,6 @@ export const getRoutes = (isAuthenticated = false) => {
                 };
             }
         },
-        // {
-        //     path: '/about',
-        //     component: () => <div>About</div>
-        // },
         {
             path: '**',
             component: ErrorPage,
