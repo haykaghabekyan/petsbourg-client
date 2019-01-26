@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import { required, email } from '../../../../utils/validators';
-import Input from '../../../../components/form-elements/input';
+import { Input } from '../../../../components/form-elements/input';
 import { FacebookIcon } from '../../../../utils/icons/social/facebook';
 import { TwitterIcon } from '../../../../utils/icons/social/twitter';
 import { GoogleIcon } from '../../../../utils/icons/social/google';

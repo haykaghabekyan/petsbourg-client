@@ -22,4 +22,12 @@ export const publicRoutes = [
             component: Error401,
         }],
     },
+    {
+        path: '/pets/:petId/edit',
+        component: ErrorPage,
+        exact: true,
+        routes: [{
+            component: Error401,
+        }],
+    }
 ];

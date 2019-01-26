@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { observableFromStore } from '../utils/observable-from-store';
 import { filter, map, take } from 'rxjs/operators';
 import { HomePage, homePageLoadAction, HomeComponent } from '../pages/home';
-import { PetPage, petPageLoadAction } from '../pages/pet';
+import { PetEditPage, petEditPageLoadAction } from '../pages/pet-edit';
 
 export const privateRoutes = [
     {
@@ -28,7 +28,7 @@ export const privateRoutes = [
     },
     {
         path: '/pets/:petId/edit',
-        component: PetPage,
+        component: PetEditPage,
         exact: true,
         // routes: [{
         //     path: '/pets/:petId',
@@ -39,7 +39,7 @@ export const privateRoutes = [
         //     }]
         // }]
         loadPage: (store, params) => {
-            store.dispatch(petPageLoadAction(params));
+            store.dispatch(petEditPageLoadAction(params));
 
             return {
                 ready: observableFromStore(store).pipe(

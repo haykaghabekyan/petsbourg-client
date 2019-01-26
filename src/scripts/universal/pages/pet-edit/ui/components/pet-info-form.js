@@ -1,35 +1,37 @@
-import React from "react";
-import moment from "moment";
-import { required } from "../../../utils/validators";
-import { Field, reduxForm } from "redux-form";
-import Input from "../../form-elements/input";
-import Select from "../../form-elements/select";
-import Textarea from "../../form-elements/textarea";
-import ImageIcon from "../../../utils/icons/common/image";
-import { GENDER_OPTIONS } from "../../../constants/gender-options";
-import UploadPetPicture from "./upload-pet-picture";
+import React from 'react';
+import moment from 'moment';
+import { Field, reduxForm } from 'redux-form';
+import { required } from '../../../../utils/validators';
+import { Input } from '../../../../components/form-elements/input';
+import { Select } from '../../../../components/form-elements/select';
+import Textarea from '../../../../components/form-elements/textarea';
+import { GENDER_OPTIONS } from '../../../../constants/gender-options';
+// import UploadPetPicture from './pet-photo-upload';
 
-class EditPetForm extends React.Component {
+class PetInfoFormComponent extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
     componentWillMount() {
-        const { pet: { profile } } = this.props;
+        const { pet } = this.props;
 
         this.props.initialize({
-            name: profile.name,
-            petId: profile.petId,
-            passportId: profile.passportId,
-            gender: profile.gender,
-            story: profile.story,
-            birthday: moment(profile.birthday).format('YYYY-MM-DD'),
-            size: profile.size,
-            color: profile.color,
-            type: profile.type._id,
-            breed: profile.breed._id,
+            name: pet.name,
+            petId: pet.petId,
+            passportId: pet.passportId,
+            gender: pet.gender,
+            story: pet.story,
+            birthday: moment(pet.birthday).format('YYYY-MM-DD'),
+            size: pet.size,
+            color: pet.color,
+            type: pet.type._id,
+            breed: pet.breed._id,
         });
     }
 
     render() {
-        const { handleSubmit, petTypes, pet } = this.props;
+        const { handleSubmit, petTypes, petBreeds } = this.props;
 
         const petTypesOptions = petTypes.map(petType => {
             return {
@@ -38,9 +40,7 @@ class EditPetForm extends React.Component {
             };
         });
 
-        const selectedType = petTypes.find(petType => petType._id === pet.profile.type._id);
-
-        const petBreedsOptions = selectedType.breeds.map(petBreed => {
+        const petBreedsOptions = petBreeds.map(petBreed => {
             return {
                 name: petBreed.name,
                 value: petBreed._id,
@@ -51,7 +51,7 @@ class EditPetForm extends React.Component {
             <div className="edit-pet bg-white padding-35">
                 <h3>Complete your pet profile</h3>
 
-                <UploadPetPicture petProfile={ pet.profile } />
+                {/*<UploadPetPicture petProfile={ pet.profile } />*/}
 
                 <form onSubmit={ handleSubmit } className="edit-pet-form">
                     <div className="margin-t-30">
@@ -120,8 +120,4 @@ class EditPetForm extends React.Component {
     }
 }
 
-const formName = "editPetForm";
-
-export default reduxForm({
-    form: formName,
-})(EditPetForm);
+export const PetInfoForm = reduxForm({ form: 'editPetForm' })(PetInfoFormComponent);

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ImageIcon = ({ color = '#27AE60', width = 50 }) => {
+export const ImageIcon = ({ color = '#27AE60', width = 50 }) => {
     return (
         <svg width={ width } fill={ color } viewBox="0 0 50 40" version="1.1" xmlnsXlink="http://www.w3.org/1999/xlink">
             <path d="M49.1379 0H0.862069C0.386207 0 0 0.388696 0 0.869565V39.1304C0 39.6113 0.386207 40 0.862069 40H49.1379C49.6138 40 50 39.6113 50 39.1304V0.869565C50 0.388696 49.6138 0 49.1379 0ZM48.2759 38.2609H1.72414V1.73913H48.2759V38.2609Z" />
@@ -9,5 +9,3 @@ const ImageIcon = ({ color = '#27AE60', width = 50 }) => {
         </svg>
     );
 };
-
-export default ImageIcon;

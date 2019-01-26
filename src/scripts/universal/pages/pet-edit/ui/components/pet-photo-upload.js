@@ -1,11 +1,10 @@
-import React from "react";
-import Dropzone from "react-dropzone";
-import { connect } from "react-redux";
-import ImageIcon from "../../../utils/icons/common/image";
-import { uploadPetPicture } from "../../../redux/actions/pet";
-import { thumbnail } from "../../../utils/helpers/cloudinary";
+import React from 'react';
+import Dropzone from 'react-dropzone';
+import { connect } from 'react-redux';
+import { ImageIcon } from '../../../../utils/icons/common/image';
+import { thumbnail } from '../../../../utils/helpers/cloudinary';
 
-class UploadPetPicture extends React.Component {
+class PetPhotoUpload extends React.Component {
     constructor(props) {
         super(props);
 
@@ -25,7 +24,7 @@ class UploadPetPicture extends React.Component {
 
             uploadPetPicture(pet.profile._id, formData);
         } else {
-            console.log("onDrop error");
+            console.log('onDrop error');
         }
     }
 
@@ -37,7 +36,7 @@ class UploadPetPicture extends React.Component {
         const { petProfile } = this.props;
         return (
             <div className="margin-t-30 dropzone">
-                <p className="edit-pet--add-photo ">Add a profile picture</p>
+                <p className="edit-pet--add-photo">Add a profile picture</p>
 
                 <Dropzone
                     onDrop={ this.onDrop }
@@ -48,7 +47,7 @@ class UploadPetPicture extends React.Component {
                     className="edit-pet--profile-photo margin-t-10 d-flex justify-center"
                     activeClassName="active"
                 >
-                    `{ petProfile.picture && <img className="edit-pet--img" src={ thumbnail(petProfile.picture.publicId) } alt=""/> }
+                    { petProfile.picture && <img className="edit-pet--img" src={ thumbnail(petProfile.picture.publicId) } alt="" /> }
                     <div className="edit-pet--icon">
                         <ImageIcon width="50%" />
                     </div>
@@ -68,4 +67,4 @@ const actionCreators = {
     uploadPetPicture,
 };
 
-export default connect(mapStateToProps, actionCreators)(UploadPetPicture);
+export default connect(mapStateToProps, actionCreators)(PetPhotoUpload);

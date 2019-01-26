@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { ClickListener } from '../click-listener';
 
-class Select extends React.Component {
+export class Select extends React.Component {
     static propTypes = {
         placeholder: PropTypes.string.isRequired,
         border: PropTypes.bool,
@@ -88,5 +88,3 @@ class Select extends React.Component {
         );
     }
 }
-
-export default Select;
