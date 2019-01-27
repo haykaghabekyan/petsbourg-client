@@ -10,7 +10,7 @@ const SignUpFormComponent = ({ handleSubmit, submit, error, dispatch }) => {
         <div className="auth-form-container">
             <h3>Sign up to Petsbourg</h3>
 
-            <form className="auth-form" onSubmit={ handleSubmit(values => submit(values, dispatch)) }>
+            <form method="post" className="auth-form" onSubmit={ handleSubmit(values => submit(values, dispatch)) }>
                 <Field name="firstName" placeholder="First name" component={ Input } validate={ [required] } border={ false } />
 
                 <Field name="lastName" placeholder="Last name" component={ Input } validate={ [required] } border={ false } />
