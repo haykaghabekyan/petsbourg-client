@@ -8,6 +8,7 @@ import { userPageReducer } from '../../pages/user';
 import { petPageReducer } from '../../pages/pet';
 import { petEditPageReducer } from '../../pages/pet-edit';
 import { searchPageReducer } from '../../pages/search';
+import { petAddPageReducer } from '../../pages/pet-add';
 
 export const combinedReducers = combineReducers({
     form: formReducer,
@@ -18,5 +19,6 @@ export const combinedReducers = combineReducers({
     userPage: userPageReducer,
     petPage: petPageReducer,
     petEditPage: petEditPageReducer,
+    petAddPage: petAddPageReducer,
     searchPage: searchPageReducer,
 });

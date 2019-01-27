@@ -4,6 +4,7 @@ import { observableFromStore } from '../utils/observable-from-store';
 import { filter, map, take } from 'rxjs/operators';
 import { HomePage, homePageLoadAction, HomeComponent } from '../pages/home';
 import { PetEditPage, petEditPageLoadAction } from '../pages/pet-edit';
+import { PetAddPage } from '../pages/pet-add';
 
 export const privateRoutes = [
     {
@@ -63,15 +64,11 @@ export const privateRoutes = [
     //         }],
     //     }],
     // },
-    // {
-    //     path: '/pets/add',
-    //     component: MainLayout,
-    //     exact: true,
-    //     routes: [{
-    //         path: '/pets/add',
-    //         component: AddPetContainer,
-    //     }],
-    // },
+    {
+        path: '/pets/add',
+        component: PetAddPage,
+        exact: true,
+    },
     // {
     //     path: '/pets/:petId/edit',
     //     component: MainLayout,
