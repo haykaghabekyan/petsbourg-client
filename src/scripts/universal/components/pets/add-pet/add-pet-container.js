@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { find } from 'lodash'
-import AddPetForm from './add-pet-form';
+import AddPetForm from '../../../pages/pet-add/ui/components/add-pet-form';
 import AddPetChooseType from './add-pet-choose-type';
 import getPetIcon from '../../../utils/icons/pets';
 import { addPet } from '../../../redux/actions/pet';

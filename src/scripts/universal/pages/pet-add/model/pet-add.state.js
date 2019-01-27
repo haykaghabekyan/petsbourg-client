@@ -1,5 +1,6 @@
 export const petAddPageDefaultState = {
-    opened: false,
     isLoading: false,
+    opened: false,
     error: null,
+    isLoadingBreeds: false,
 };

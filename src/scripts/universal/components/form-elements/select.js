@@ -19,7 +19,7 @@ export class Select extends React.Component {
 
         let placeholder = props.placeholder;
 
-        if(props.input !== "") {
+        if(props.input !== '') {
             const option = props.options.find(option => option.value === props.input.value);
 
             if (option) {
@@ -43,12 +43,8 @@ export class Select extends React.Component {
     }
 
     toggle(evt) {
-        if(this.props.disabled) {
-            return;
-        }
-
         // Open on click, enter, or space
-        if(evt.which === 13 || evt.which === 32 || evt.type === 'click') {
+        if(!this.props.disabled && (evt.which === 13 || evt.which === 32 || evt.type === 'click')) {
             this.setState({
                 open: !this.state.open,
             });
@@ -65,20 +61,28 @@ export class Select extends React.Component {
     }
 
     render() {
-        const { options, input, meta: { touched, error }, disabled, border, className = "" } = this.props;
+        const { options, input, meta: { touched, error }, disabled = false, border, className = '' } = this.props;
         const { placeholder, open } = this.state;
 
         return (
-            <ClickListener onClickOutside={this.close}>
-                <div className={`select-container ${ className } ${ (touched && error) ? "select-error" : "" }`} disabled={ disabled }>
-                    <ul className={`select ${ open ? "select-open" : "" }`}>
-                        <li className={`select-text ${ border ? "" : "no-border" }`} onClick={this.toggle} onKeyPress={this.toggle}>
+            <ClickListener onClickOutside={ this.close }>
+                <div className={`select-container ${ className } ${ (touched && error) ? 'select-error' : '' }`}>
+                    <ul className={`select ${ open ? 'select-open' : '' }`}>
+                        <li className={`select-text ${ border ? '' : 'no-border' }`} onClick={ this.toggle } onKeyPress={ this.toggle }>
                             <input type="hidden" value={ input.value } />
                             { placeholder }
                         </li>
                         <li>
                             <ul className="select-list">
-                                {options.map(option => <li key={option.name} className="select-item" onClick={() => this.handleItemClick(option)}>{option.name}</li>)}
+                                {
+                                    options.map(option => {
+                                        return (
+                                            <li key={ option.name } className="select-item" onClick={() => this.handleItemClick(option)}>
+                                                { option.name }
+                                            </li>
+                                        );
+                                    })
+                                }
                             </ul>
                         </li>
                     </ul>

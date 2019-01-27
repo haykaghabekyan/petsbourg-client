@@ -8,12 +8,12 @@ export class SignUpServiceImpl {
 
         axios.post(`${ backend.url }/api/auth/sign-up`, { firstName, lastName, email, gender, password })
             .then(({ data }) => {
-                const { success, token, user } = data;
+                const { token, user } = data;
 
                 res.cookie('jwt', token, { maxAge: 900000 });
 
                 res.status(200).send({
-                    success: success,
+                    success: true,
                     user: user,
                     pets: null,
                 });
