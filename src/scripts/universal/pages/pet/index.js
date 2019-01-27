@@ -5,4 +5,3 @@ export * from './model/pet.state';
 export * from './model/pet.epic';
 export * from './model/pet.epic';
 export * from './services/pet.service';
-export * from './services/pet.service.impl';

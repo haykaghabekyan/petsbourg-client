@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { configs } from '../../../../server/utils/config';
-import { UserServiceImpl } from '../../user';
+import { UserServiceImpl } from '../../user/services/user.service.impl';
 
 export class PetServiceImpl {
     static async loadPetPage(req, res) {

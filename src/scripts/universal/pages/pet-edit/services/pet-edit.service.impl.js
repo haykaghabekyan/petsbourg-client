@@ -1,9 +1,8 @@
-import axios from 'axios';
-import { configs } from '../../../../server/utils/config';
-import { UserServiceImpl } from '../../user';
+import { UserServiceImpl } from '../../user/services/user.service.impl';
+import { PetServiceImpl } from '../../pet/services/pet.service.impl';
 
-export class PetServiceImpl {
-    static async loadPetPage(req, res) {
+export class PetEditServiceImpl {
+    static async loadPetEditPage(req, res) {
         const { petId = '' } = req.params;
 
         let pet;
@@ -46,12 +45,5 @@ export class PetServiceImpl {
                 }
             });
         });
-    }
-
-    static async getPet(petId) {
-        const { backend } = configs();
-
-        return axios.get(`${ backend.url }/api/pets/${ petId }`)
-            .then(({ data }) => data.pet);
     }
 }

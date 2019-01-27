@@ -14,11 +14,11 @@ export class UserServiceImpl {
                 user,
                 pets,
             });
-        }).catch(error => {
+        }).catch(() => {
             res.send({
                 success: false,
                 errors: {
-                    message: 'qaq'
+                    message: 'Something went wrong.'
                 }
             });
         });

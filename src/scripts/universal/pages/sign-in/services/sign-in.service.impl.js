@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { configs} from '../../../../server/utils/config';
-import { UserServiceImpl } from '../../user';
+import { UserServiceImpl } from '../../user/services/user.service.impl';
 
 export class SignInServiceImpl {
     static signIn(req, res) {
@@ -16,9 +16,7 @@ export class SignInServiceImpl {
                 let pets = null;
                 try {
                     pets = await UserServiceImpl.getUserPets(user._id);
-                } catch(error) {
-                    debugger
-                }
+                } catch(error) {}
 
                 res.status(200).send({
                     success: true,
