@@ -1,12 +1,10 @@
 import React from "react";
 
-const Textarea = ({ input, meta: { touched, error }, placeholder = "", border = true }) => {
+export const Textarea = ({ input, meta: { touched, error }, placeholder = "", border = true }) => {
     return (
         <div className={ `input-container ${ (touched && error) ? "input-container-error" : "" }` }>
-            <textarea className={`input-item ${ border ? "" : "no-border" }`} { ...input } placeholder={ placeholder }></textarea>
+            <textarea className={`input-item ${ border ? "" : "no-border" }`} { ...input } placeholder={ placeholder } />
             { touched && error && <p className="input-error">{ error }</p> }
         </div>
     );
 };
-
-export default Textarea;

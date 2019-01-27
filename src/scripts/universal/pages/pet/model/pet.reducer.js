@@ -5,7 +5,7 @@ export const petPageReducer = (state = petPageDefaultState, action) => {
     switch (action.type) {
         case PET_PAGE_LOAD_ACTION_TYPE:
             return {
-                ...state,
+                ...petPageDefaultState,
                 isLoading: true,
             };
         case PET_PAGE_LOAD_FAILED_ACTION_TYPE:

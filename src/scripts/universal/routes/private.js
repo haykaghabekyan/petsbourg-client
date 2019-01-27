@@ -43,7 +43,7 @@ export const privateRoutes = [
 
             return {
                 ready: observableFromStore(store).pipe(
-                    map(state => !state.petPage.isLoading),
+                    map(state => !state.petEditPage.isLoading),
                     filter(x => x === true),
                     take(1)
                 ),

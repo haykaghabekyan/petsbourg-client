@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { required } from '../../../../utils/validators';
 import { Input } from '../../../../components/form-elements/input';
 import { Select } from '../../../../components/form-elements/select';
-import Textarea from '../../../../components/form-elements/textarea';
+import { Textarea } from '../../../../components/form-elements/textarea';
 import { GENDER_OPTIONS } from '../../../../constants/gender-options';
 // import UploadPetPicture from './pet-photo-upload';
 
@@ -18,7 +18,7 @@ class PetInfoFormComponent extends React.Component {
 
         this.props.initialize({
             name: pet.name,
-            petId: pet.petId,
+            petId: pet._id,
             passportId: pet.passportId,
             gender: pet.gender,
             story: pet.story,
@@ -31,7 +31,7 @@ class PetInfoFormComponent extends React.Component {
     }
 
     render() {
-        const { handleSubmit, petTypes, petBreeds } = this.props;
+        const { handleSubmit, submit, dispatch, petTypes, petBreeds } = this.props;
 
         const petTypesOptions = petTypes.map(petType => {
             return {
@@ -53,7 +53,7 @@ class PetInfoFormComponent extends React.Component {
 
                 {/*<UploadPetPicture petProfile={ pet.profile } />*/}
 
-                <form onSubmit={ handleSubmit } className="edit-pet-form">
+                <form onSubmit={ handleSubmit(values => submit(values, dispatch)) } className="edit-pet-form">
                     <div className="margin-t-30">
                         <h2 className="margin-b-20">Pet Facts</h2>
 

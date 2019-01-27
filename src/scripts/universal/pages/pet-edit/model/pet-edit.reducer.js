@@ -1,5 +1,11 @@
 import { petEditPageDefaultState } from './pet-edit.state';
-import { PET_EDIT_PAGE_RESET_ACTION_TYPE, PET_EDIT_PAGE_LOAD_ACTION_TYPE, PET_EDIT_PAGE_LOAD_FAILED_ACTION_TYPE, PET_EDIT_PAGE_LOAD_SUCCEEDED_ACTION_TYPE } from './pet-edit.actions';
+import {
+    PET_EDIT_PAGE_RESET_ACTION_TYPE,
+    PET_EDIT_PAGE_LOAD_ACTION_TYPE,
+    PET_EDIT_PAGE_LOAD_FAILED_ACTION_TYPE,
+    PET_EDIT_PAGE_LOAD_SUCCEEDED_ACTION_TYPE,
+    PET_EDIT_PAGE_UPDATE_SUCCEEDED_PET_ACTION
+} from './pet-edit.actions';
 
 export const petEditPageReducer = (state = petEditPageDefaultState, action) => {
     switch (action.type) {
@@ -24,6 +30,14 @@ export const petEditPageReducer = (state = petEditPageDefaultState, action) => {
             };
         case PET_EDIT_PAGE_RESET_ACTION_TYPE:
             return petEditPageDefaultState;
+        case PET_EDIT_PAGE_UPDATE_SUCCEEDED_PET_ACTION:
+            return {
+                ...state,
+            };
+        case PET_EDIT_PAGE_LOAD_FAILED_ACTION_TYPE:
+            return {
+                ...state,
+            };
         default:
             return state;
     }

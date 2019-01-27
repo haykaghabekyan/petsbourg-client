@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { SubmissionError } from 'redux-form';
 import { MainLayout } from '../../../components/layouts/main';
-import { petEditPageLoadAction, petEditPageResetAction } from '../model/pet-edit.actions';
+import { petEditPageLoadAction, petEditPageResetAction, petEditPageUpdateAction } from '../model/pet-edit.actions';
 import { ProfileLayout } from '../../../components/layouts/profile';
 import { LoadingLayout } from '../../../components/layouts/loading';
 import { PetInfoForm } from './components/pet-info-form';
@@ -9,6 +10,8 @@ import { PetInfoForm } from './components/pet-info-form';
 class PetEditPageContainer extends React.Component {
     constructor(props) {
         super(props);
+
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -22,6 +25,19 @@ class PetEditPageContainer extends React.Component {
     componentWillReceiveProps(newProps) {
         if (this.props.match.params.petId !== newProps.match.params.petId) {
             this.props.petEditPageLoadAction(newProps.match.params);
+        }
+    }
+
+    async handleSubmit(data, dispatch) {
+        debugger
+        try {
+            await new Promise((resolve, reject) => {
+                dispatch(petEditPageUpdateAction(data, { resolve, reject }));
+            });
+        } catch (error) {
+            throw new SubmissionError({
+                _error: error.message,
+            });
         }
     }
 
@@ -46,7 +62,12 @@ class PetEditPageContainer extends React.Component {
         return (
             <MainLayout user={ auth.user } pets={ auth.pets }>
                 <ProfileLayout user={ petEditPage.user } pets={ petEditPage.pets } isEditable={ isEditable } selectedPetId={ petEditPage.pet._id }>
-                    <PetInfoForm pet={ petEditPage.pet } petTypes={ [] } petBreeds={ [] }  />
+                    <PetInfoForm
+                        pet={ petEditPage.pet }
+                        petTypes={ [] }
+                        petBreeds={ [] }
+                        onSubmit={ this.handleSubmit }
+                    />
                 </ProfileLayout>
             </MainLayout>
         );

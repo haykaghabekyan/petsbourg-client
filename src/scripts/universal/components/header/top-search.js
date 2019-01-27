@@ -3,19 +3,18 @@ import debounce from 'lodash/debounce';
 import { withRouter } from 'react-router-dom';
 
 class TopSearch extends React.Component {
-
     state = {
         query: null,
     };
 
-    constructor (props) {
+    constructor(props) {
         super (props);
 
         this.onSubmit = this.onSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
     }
 
-    onChange (event) {
+    onChange(event) {
         event.persist();
 
         debounce(event => {
@@ -25,15 +24,15 @@ class TopSearch extends React.Component {
         }, 100)(event);
     }
 
-    onSubmit (e) {
-        e.preventDefault();
+    onSubmit(event) {
+        event.preventDefault();
 
         let url = '/search';
 
         const { query } = this.state;
 
         if (query) {
-            url += `?q=${ query }`
+            url += `?query=${ query }`
         }
 
         this.props.history.push(url);
@@ -43,7 +42,7 @@ class TopSearch extends React.Component {
         return (
             <div className="top-search">
                 <form onSubmit={ this.onSubmit }>
-                    <input className="top-search-input" placeholder="Search.." onChange={ this.onChange } />
+                    <input className="top-search-input" placeholder="Search..." onChange={ this.onChange } />
                 </form>
             </div>
         );
