@@ -4,7 +4,7 @@ import catBanner from '../../../../media/images/banners/banner-cat.png';
 
 export const CreatePetProfileCat = () => {
     return (
-        <Link to="/pets/add" className="banner">
+        <Link to="/pet/add" className="banner">
             <img className="banner-img" src={ catBanner } alt="Create pet profile" />
 
             <p className="banner-create text-center">Create Your</p>

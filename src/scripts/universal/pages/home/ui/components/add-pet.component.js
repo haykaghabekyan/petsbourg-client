@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import getPetIcon from '../../../../utils/icons/pets';
+import { getPetIcon } from '../../../../utils/icons/pets';
 
 const AddPet = ({ petTypes }) => {
     return (
@@ -13,7 +13,7 @@ const AddPet = ({ petTypes }) => {
                         const PetIcon = getPetIcon(petType.name);
 
                         return (
-                            <Link key={petType._id} to={ { pathname: "/pets/add", petType: petType._id } } className="pet-type-item">
+                            <Link key={petType._id} to={ { pathname: '/pet/add', petType: petType._id } } className="pet-type-item">
                                 <div className="pet-type-icon">
                                     <PetIcon width={ 53 } />
                                 </div>

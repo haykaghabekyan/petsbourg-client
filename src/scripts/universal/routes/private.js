@@ -58,7 +58,7 @@ export const privateRoutes = [
     //     }],
     // },
     {
-        path: '/pets/add',
+        path: '/pet/add',
         component: PetAddPage,
         exact: true,
     },

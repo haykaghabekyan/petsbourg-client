@@ -65,7 +65,7 @@ export class PrivateHeader extends React.Component {
                                     <div className="dropdown-list-container">
                                         <ul className="dropdown-list">
                                             <li className="dropdown-list-item">
-                                                <Link to={ `/pets/add` }>Add pet</Link>
+                                                <Link to="/pet/add">Add pet</Link>
                                             </li>
                                         </ul>
                                     </div>

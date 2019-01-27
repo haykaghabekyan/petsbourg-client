@@ -69,7 +69,7 @@ class PetAddPageContainer extends React.Component {
                                         return (
                                             <li key={ key }>
                                                 <Link to={{
-                                                    pathname: '/pets/add',
+                                                    pathname: '/pet/add',
                                                     petType: petType._id,
                                                 }} className={`pet-type-item ${ petType._id === selectedPetType ? 'selected' : '' }`}>
                                                     <div className="pet-icon">

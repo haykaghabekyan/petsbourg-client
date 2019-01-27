@@ -15,7 +15,7 @@ export const publicRoutes = [
         component: SignUpPage,
     },
     {
-        path: '/pets/add',
+        path: '/pet/add',
         component: ErrorPage,
         exact: true,
         routes: [{
