@@ -12,7 +12,7 @@ const genderOptions = [{
     value: 'Female'
 }];
 
-const AddPetFormContainer = ({ handleSubmit, submit, dispatch, breeds }) => {
+const PetAddFormContainer = ({ handleSubmit, submit, dispatch, breeds }) => {
     const breedsOptions = breeds.map(breed => {
         return {
             name: breed.name,
@@ -39,4 +39,5 @@ const AddPetFormContainer = ({ handleSubmit, submit, dispatch, breeds }) => {
     );
 };
 
-export const AddPetForm = reduxForm({ form: 'addPetForm' })(AddPetFormContainer);
+export const PetAddForm = reduxForm({ form: 'addPetForm' })(PetAddFormContainer);
+

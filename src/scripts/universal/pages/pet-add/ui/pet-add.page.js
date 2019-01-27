@@ -4,7 +4,8 @@ import { SubmissionError } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { MainLayout } from '../../../components/layouts/main';
 import { CreatePetProfileDog } from '../../../components/banners';
-import { AddPetForm } from './components/add-pet-form';
+import { PetAddForm } from './components/pet-add-form';
+import { PetAddLoading } from './components/pet-add-loading';
 import { petAddPageLoadAction, petAddPageLoadBreedsAction, petAddPageSaveAction } from '../model/pet-add.actions';
 import { getPetIcon } from '../../../utils/icons/pets';
 
@@ -46,14 +47,18 @@ class PetAddPageContainer extends React.Component {
         }
 
         if (!petAddPage.opened || petAddPage.isLoading) {
-            return <MainLayout>Loading...</MainLayout>;
+            return (
+                <MainLayout user={ auth.user } pets={ auth.pets }>
+                    <PetAddLoading />
+                </MainLayout>
+            );
         }
 
         const selectedPetType = location.petType || null;
 
         return (
             <MainLayout user={ auth.user } pets={ auth.pets }>
-                <div className="main-layout-page pets-container">
+                <div className="main-layout-page add-pet-page">
                     <div className="main-left-sidebar">
                         <div className="pet-types-container">
                             <ul className="pet-types-list">
@@ -62,7 +67,7 @@ class PetAddPageContainer extends React.Component {
                                         const PetIcon = getPetIcon(petType.name);
 
                                         return (
-                                            <li key={key}>
+                                            <li key={ key }>
                                                 <Link to={{
                                                     pathname: '/pets/add',
                                                     petType: petType._id,
@@ -105,7 +110,7 @@ class PetAddPageContainer extends React.Component {
             return 'Loading breeds...';
         }
 
-        return <AddPetForm onSubmit={ this.handleSubmit } breeds={ petAddPage.petBreeds } />;
+        return <PetAddForm onSubmit={ this.handleSubmit } breeds={ petAddPage.petBreeds } />;
     }
 }
 

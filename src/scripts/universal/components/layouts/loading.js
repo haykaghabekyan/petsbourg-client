@@ -5,7 +5,6 @@ export const LoadingLayout = () => {
     return (
         <div className="main-layout-page home-container">
             <div className="main-left-sidebar">
-
                 <div className="profile-card">
                     <div className="profile-card--content">
                         <div className="d-flex justify-center">
@@ -16,7 +15,6 @@ export const LoadingLayout = () => {
                         </div>
                     </div>
                 </div>
-
                 <div className="pet-types-container">
                     <div className="pet-types-title">
                         <span className="loading">&nbsp;</span>

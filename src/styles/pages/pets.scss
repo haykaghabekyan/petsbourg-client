@@ -77,3 +77,11 @@
     margin-top: 20px;
   }
 }
+
+.add-pet-page {
+  .pet-name {
+    &.loading {
+      @include loader();
+    }
+  }
+}
