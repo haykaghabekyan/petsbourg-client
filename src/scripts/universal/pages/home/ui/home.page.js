@@ -36,7 +36,7 @@ class HomeContainer extends React.Component {
 
         return (
             <MainLayout user={ auth.user } pets={ auth.pets }>
-                <ProfileLayout user={ auth.user } pets={ auth.pets } allowEdit>
+                <ProfileLayout user={ auth.user } pets={ auth.pets } isEditable>
                     home page
                 </ProfileLayout>
             </MainLayout>
