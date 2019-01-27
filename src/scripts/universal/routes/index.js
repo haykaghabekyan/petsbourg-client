@@ -21,13 +21,6 @@ export const getRoutes = (isAuthenticated = false) => {
             path: '/users/:userId',
             component: UserPage,
             exact: true,
-            // routes: [{
-            //     component: UserProfileContainer,
-            //     routes: [{
-            //         path: '/pets/:petId',
-            //         component: UserProfile,
-            //     }]
-            // }],
             loadPage: (store, params) => {
                 store.dispatch(userPageLoadAction(params));
 
@@ -44,14 +37,6 @@ export const getRoutes = (isAuthenticated = false) => {
             path: '/pets/:petId',
             component: PetPage,
             exact: true,
-            // routes: [{
-            //     path: '/pets/:petId',
-            //     component: PetProfileContainer,
-            //     routes: [{
-            //         path: '/pets/:petId',
-            //         component: PetProfile,
-            //     }]
-            // }]
             loadPage: (store, params) => {
                 store.dispatch(petPageLoadAction(params));
 

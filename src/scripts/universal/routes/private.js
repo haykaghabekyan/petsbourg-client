@@ -5,6 +5,7 @@ import { filter, map, take } from 'rxjs/operators';
 import { HomePage, homePageLoadAction, HomeComponent } from '../pages/home';
 import { PetEditPage, petEditPageLoadAction } from '../pages/pet-edit';
 import { PetAddPage } from '../pages/pet-add';
+import { SearchPage } from '../pages/search';
 
 export const privateRoutes = [
     {
@@ -31,14 +32,6 @@ export const privateRoutes = [
         path: '/pets/:petId/edit',
         component: PetEditPage,
         exact: true,
-        // routes: [{
-        //     path: '/pets/:petId',
-        //     component: PetProfileContainer,
-        //     routes: [{
-        //         path: '/pets/:petId',
-        //         component: PetProfile,
-        //     }]
-        // }]
         loadPage: (store, params) => {
             store.dispatch(petEditPageLoadAction(params));
 
@@ -82,15 +75,11 @@ export const privateRoutes = [
     //         }],
     //     }],
     // },
-    // {
-    //     path: '/search',
-    //     component: MainLayout,
-    //     exact: true,
-    //     routes: [{
-    //         path: '/search',
-    //         component: SearchResultsContainer,
-    //     }],
-    // },
+    {
+        path: '/search',
+        component: SearchPage,
+        exact: true,
+    },
     {
         path: '/sign-up',
         component: () => <Redirect to='/' />
