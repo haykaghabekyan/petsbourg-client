@@ -1,5 +1,6 @@
 import { from, of } from 'rxjs';
 import { filter, mergeMap, map, catchError } from 'rxjs/operators';
+import { PetAddService } from '../services/pet-add.service';
 import {
     PET_ADD_PAGE_LOAD_ACTION,
     petAddPageLoadSucceededAction,
@@ -11,7 +12,6 @@ import {
     petAddPageSaveSucceededAction,
     petAddPageSaveFailedAction,
 } from './pet-add.actions';
-import { PetAddService } from '../services/pet-add.service';
 
 export const petAddPageLoadEpic = action$ => {
     return action$.pipe(
