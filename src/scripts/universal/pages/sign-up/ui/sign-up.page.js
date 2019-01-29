@@ -14,15 +14,19 @@ class SignUpContainer extends React.Component {
     }
 
     async handleSubmit(data, dispatch) {
-        try {
-            await new Promise((resolve, reject) => {
-                dispatch(signUpPageSignInAction(data, { resolve, reject }));
+        const promise = new Promise((resolve, reject) => {
+            dispatch(signUpPageSignInAction(data, { resolve, reject }));
+        });
+
+        promise
+            .then(user => {
+                
+            })
+            .catch(error => {
+                throw new SubmissionError({
+                    _error: `Sign up failed! Server responded with: ${ error.message }`,
+                });
             });
-        } catch (error) {
-            throw new SubmissionError({
-                _error: `Sign up failed! Server responded with: ${ error.message }`,
-            });
-        }
     }
 
     render() {

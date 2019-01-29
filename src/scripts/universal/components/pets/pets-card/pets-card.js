@@ -18,7 +18,7 @@ export const PetsCard = ({ pets, selectedPetId }) => {
             <div className="pet-types-title">Pets</div>
             <ul className="pet-types-list">
                 {
-                    pets.map((pet, key) => {
+                    pets && pets.map((pet, key) => {
                         return (
                             <li key={ key }>
                                 <Link to={`/pets/${ pet._id }`} className={`pet-type-item ${ pet && pet._id === selectedPetId ? 'selected' : '' }`}>

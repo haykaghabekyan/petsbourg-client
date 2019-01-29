@@ -14,10 +14,13 @@ export const signUpEpic = action$ => {
                 .pipe(
                     map(result => {
                         if (action.meta && action.meta.resolve) {
-                            action.meta.resolve(result.user);
+                            action.meta.resolve(result);
                         }
 
-                        return setAuthAction(result.user);
+                        return setAuthAction({
+                            user: result.user,
+                            pets: null,
+                        });
                     }),
                     catchError(({ response: { data } }) => {
                         if (action.meta && action.meta.reject) {

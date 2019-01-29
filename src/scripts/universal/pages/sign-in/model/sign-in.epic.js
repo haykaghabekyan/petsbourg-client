@@ -17,7 +17,10 @@ export const signInEpic = action$ => {
                             action.meta.resolve(result);
                         }
 
-                        return setAuthAction(result);
+                        return setAuthAction({
+                            user: result.user,
+                            pets: result.pets,
+                        });
                     }),
                     catchError(({ response: { data } }) => {
                         if (action.meta && action.meta.reject) {

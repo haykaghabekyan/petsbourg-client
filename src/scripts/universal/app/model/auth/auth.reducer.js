@@ -6,8 +6,7 @@ export const authReducer = (state = authDefaultState, action) => {
         case SET_AUTH_ACTION:
             return {
                 ...state,
-                user: action.payload.user,
-                pets: action.payload.pets,
+                ...action.payload,
             };
         default:
             return state;
