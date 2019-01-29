@@ -114,7 +114,11 @@ class PetAddPageContainer extends React.Component {
         const { petAddPage } = this.props;
 
         if (petAddPage.isLoadingBreeds || !petAddPage.petBreeds) {
-            return 'Loading breeds...';
+            return (
+                <div className="add-pet padding-35">
+                    <h3 className="add-pet-title loading">&nbsp;</h3>
+                </div>
+            );
         }
 
         return <PetAddForm onSubmit={ this.handleSubmit } breeds={ petAddPage.petBreeds } />;

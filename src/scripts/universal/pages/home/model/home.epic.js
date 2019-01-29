@@ -6,6 +6,7 @@ export const loadHomePageEpic = action$ => {
     return action$.pipe(
         filter(action => action.type === HOME_PAGE_LOAD_ACTION_TYPE),
         mergeMap(() => {
+            // TODO
             const promise = new Promise((resolve => {
                 resolve();
             }));

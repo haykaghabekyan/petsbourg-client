@@ -70,7 +70,9 @@
 
 .add-pet {
   &-title {
-
+    &.loading {
+      @include loader();
+    }
   }
 
   &-form {
