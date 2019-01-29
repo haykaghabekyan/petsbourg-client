@@ -27,15 +27,22 @@ class PetAddPageContainer extends React.Component {
     }
 
     async handleSubmit(data, dispatch) {
-        try {
-            await new Promise((resolve, reject) => {
-                dispatch(petAddPageSaveAction(data, { resolve, reject }));
+        const promise = new Promise((resolve, reject) => {
+            dispatch(petAddPageSaveAction({
+                ...data,
+                type: this.props.location.petType,
+            }, { resolve, reject }));
+        });
+
+        promise
+            .then((pet) => {
+                this.props.history.push(`/pets/${ pet._id }/edit`);
+            })
+            .catch((error) => {
+                throw new SubmissionError({
+                    _error: error.message,
+                });
             });
-        } catch (error) {
-            throw new SubmissionError({
-                _error: error.message,
-            });
-        }
     }
 
     render() {

@@ -5,9 +5,12 @@ import { UserServiceImpl } from '../../universal/pages/user/services/user.servic
 export const requireAuthMiddleware = async (req, res, next) => {
     const { jwt = '' } = req.cookies;
 
+    const bearer = decodeURIComponent(jwt).split(' ');
+    const jwtToken = bearer[1];
+
     let decodedToken;
     try {
-        decodedToken = verify(jwt, configs().auth.publicKey);
+        decodedToken = verify(jwtToken, configs().auth.publicKey);
     } catch(error) {
         res.clearCookie('jwt');
     }

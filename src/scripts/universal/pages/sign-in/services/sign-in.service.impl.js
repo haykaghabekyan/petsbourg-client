@@ -11,7 +11,7 @@ export class SignInServiceImpl {
             .then(async ({ data }) => {
                 const { token, user } = data;
 
-                res.cookie('jwt', token, { maxAge: 900000 });
+                res.cookie('jwt', `Bearer: ${ token }`, { maxAge: 900000 });
 
                 let pets = null;
                 try {

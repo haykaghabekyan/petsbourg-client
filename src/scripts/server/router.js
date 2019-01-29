@@ -14,7 +14,7 @@ export const router = () => {
     router.get('/user-page/:userId', UserServiceImpl.loadUserPage);
     router.get('/pet-page/:petId', PetServiceImpl.loadPetPage);
     router.get('/pet-add-page/pet-types/:petTypeId/breeds', requireAuthMiddleware, PetAddServiceImpl.getPetBreeds);
-    router.get('/pet-add-page/pet-types', requireAuthMiddleware, PetAddServiceImpl.getPetTypes);
+    router.use('/pet-add-page', PetAddServiceImpl.getRoutes());
 
     return router;
 };

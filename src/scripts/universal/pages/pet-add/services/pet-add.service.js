@@ -15,4 +15,12 @@ export class PetAddService {
         return axios.get(`${ frontend.url }/api/pet-add-page/pet-types/${ petType }/breeds`)
             .then(({ data }) => data);
     }
+
+    static savePet(data) {
+        const { frontend } = configs();
+
+        return axios.post(`${ frontend.url }/api/pet-add-page`, data)
+            .then(({ data }) => data);
+    }
+
 }

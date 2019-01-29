@@ -30,6 +30,22 @@ export const petAddPageSaveAction = (payload, meta) => {
     };
 };
 
+export const PET_ADD_PAGE_SAVE_SUCCEEDED_ACTION = 'PET_ADD_PAGE_SAVE_SUCCEEDED_ACTION';
+export const petAddPageSaveSucceededAction = payload => {
+    return {
+        type: PET_ADD_PAGE_SAVE_SUCCEEDED_ACTION,
+        payload: payload,
+    };
+};
+
+export const PET_ADD_PAGE_SAVE_FAILED_ACTION = 'PET_ADD_PAGE_SAVE_FAILED_ACTION';
+export const petAddPageSaveFailedAction = payload => {
+    return {
+        type: PET_ADD_PAGE_SAVE_FAILED_ACTION,
+        payload: payload,
+    };
+};
+
 export const PET_ADD_PAGE_LOAD_BREEDS_ACTION = 'PET_ADD_PAGE_LOAD_BREEDS_ACTION';
 export const petAddPageLoadBreedsAction = petType => {
     return {

@@ -10,7 +10,7 @@ export class SignUpServiceImpl {
             .then(({ data }) => {
                 const { token, user } = data;
 
-                res.cookie('jwt', token, { maxAge: 900000 });
+                res.cookie('jwt', `Bearer: ${ token }`, { maxAge: 900000 });
 
                 res.status(200).send({
                     success: true,

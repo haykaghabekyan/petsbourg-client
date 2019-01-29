@@ -3,25 +3,32 @@ import { configs } from '../utils/config';
 import { UserServiceImpl } from '../../universal/pages/user/services/user.service.impl';
 
 export const authMiddleware = async (req, res, next) => {
-    const { jwt = '' } = req.cookies;
+    const { jwt = null } = req.cookies;
 
-    let decodedToken;
-    try {
-        decodedToken = verify(jwt, configs().auth.publicKey);
-    } catch(error) {
-        res.clearCookie('jwt');
-    }
+    if (jwt) {
+        const bearer = decodeURIComponent(jwt).split('Bearer: ');
+        const jwtToken = bearer[1] ? bearer[1] : null;
 
-    if (decodedToken) {
+        let decodedToken;
         try {
-            const user = await UserServiceImpl.getUser(decodedToken.user._id);
-            const pets = await UserServiceImpl.getUserPets(decodedToken.user._id);
+            decodedToken = verify(jwtToken, configs().auth.publicKey);
 
-            req.auth = {
-                user,
-                pets,
-            };
-        } catch (error) {}
+            res.cookie('jwt', jwt, { maxAge: 900000 });
+        } catch(error) {
+            res.clearCookie('jwt');
+        }
+
+        if (decodedToken) {
+            try {
+                const user = await UserServiceImpl.getUser(decodedToken.user._id);
+                const pets = await UserServiceImpl.getUserPets(decodedToken.user._id);
+
+                req.auth = {
+                    user,
+                    pets,
+                };
+            } catch (error) {}
+        }
     }
 
     next();
