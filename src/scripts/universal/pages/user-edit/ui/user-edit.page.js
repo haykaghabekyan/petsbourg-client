@@ -28,7 +28,7 @@ export class UserEditPageContainer extends React.Component {
 
         if (!userEditPage.opened || userEditPage.isLoading) {
             return (
-                <MainLayout>
+                <MainLayout user={ auth.user } pets={ auth.pets }>
                     <LoadingLayout />
                 </MainLayout>
             );

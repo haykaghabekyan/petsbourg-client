@@ -28,7 +28,7 @@ export class UserPageContainer extends React.Component {
 
         if (!userPage.opened || userPage.isLoading) {
             return (
-                <MainLayout>
+                <MainLayout user={ auth.user } pets={ auth.pets }>
                     <LoadingLayout />
                 </MainLayout>
             );

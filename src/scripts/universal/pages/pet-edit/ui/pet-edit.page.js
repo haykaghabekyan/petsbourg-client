@@ -29,7 +29,6 @@ class PetEditPageContainer extends React.Component {
     }
 
     async handleSubmit(data, dispatch) {
-        debugger
         try {
             await new Promise((resolve, reject) => {
                 dispatch(petEditPageUpdateAction(data, { resolve, reject }));
@@ -51,7 +50,7 @@ class PetEditPageContainer extends React.Component {
 
         if (!petEditPage.opened || petEditPage.isLoading) {
             return (
-                <MainLayout>
+                <MainLayout user={ auth.user } pets={ auth.pets }>
                     <LoadingLayout />
                 </MainLayout>
             );
