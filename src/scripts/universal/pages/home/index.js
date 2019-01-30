@@ -4,5 +4,3 @@ export * from './model/home.reducer';
 export * from './model/home.epic';
 export * from './services/home.service.impl';
 export * from './ui/home.page';
-export * from './ui/components/home.component';
-export * from './ui/components/add-pet.component';
