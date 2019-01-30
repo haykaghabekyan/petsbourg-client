@@ -25,8 +25,8 @@ export const PET_ADD_PAGE_SAVE_ACTION = 'PET_ADD_PAGE_SAVE_ACTION';
 export const petAddPageSaveAction = (payload, meta) => {
     return {
         type: PET_ADD_PAGE_SAVE_ACTION,
-        payload: payload,
-        meta: meta,
+        payload,
+        meta,
     };
 };
 

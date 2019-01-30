@@ -18,11 +18,6 @@ export class UserPageContainer extends React.Component {
         }
     }
 
-    componentWillReceiveProps() {
-        const { match } = this.props;
-        console.log(match);
-    }
-
     render() {
         const { auth, userPage } = this.props;
 
