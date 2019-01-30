@@ -5,6 +5,7 @@ import { signInPageReducer } from '../../pages/sign-in';
 import { signUpPageReducer } from '../../pages/sign-up';
 import { homePageReducer } from '../../pages/home';
 import { userPageReducer } from '../../pages/user';
+import { userEditPageReducer } from '../../pages/user-edit';
 import { petPageReducer } from '../../pages/pet';
 import { petEditPageReducer } from '../../pages/pet-edit';
 import { searchPageReducer } from '../../pages/search';
@@ -17,6 +18,7 @@ export const combinedReducers = combineReducers({
     signUpPage: signUpPageReducer,
     homePage: homePageReducer,
     userPage: userPageReducer,
+    userEditPage: userEditPageReducer,
     petPage: petPageReducer,
     petEditPage: petEditPageReducer,
     petAddPage: petAddPageReducer,
