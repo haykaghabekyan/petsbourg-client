@@ -23,7 +23,11 @@ export class UserPageContainer extends React.Component {
 
         // TODO
         if (userPage.error) {
-            return userPage.error;
+            return (
+                <MainLayout user={ auth.user } pets={ auth.pets }>
+                    { userPage.error }
+                </MainLayout>
+            );
         }
 
         if (!userPage.opened || userPage.isLoading) {

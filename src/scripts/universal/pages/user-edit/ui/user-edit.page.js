@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { MainLayout } from '../../../components/layouts/main';
-// import { userPageLoadAction, userPageResetAction } from '../model/user.actions';
+import { userEditPageLoadAction, userEditPageResetAction } from '../model/user-edit.actions';
 // import { ProfileLayout } from '../../../components/layouts/profile';
 import { LoadingLayout } from '../../../components/layouts/loading';
 
@@ -11,11 +11,11 @@ export class UserEditPageContainer extends React.Component {
     }
 
     componentDidMount() {
-        // const { userPage, match } = this.props;
-        //
-        // if (!userPage.opened) {
-        //     this.props.userPageLoadAction(match.params);
-        // }
+        const { userEditPage, match } = this.props;
+
+        if (!userEditPage.opened) {
+            this.props.userEditPageLoadAction(match.params);
+        }
     }
 
     render() {
@@ -23,7 +23,11 @@ export class UserEditPageContainer extends React.Component {
 
         // TODO
         if (userEditPage.error) {
-            return userEditPage.error;
+            return (
+                <MainLayout user={ auth.user } pets={ auth.pets }>
+                    { userEditPage.error }
+                </MainLayout>
+            );
         }
 
         if (!userEditPage.opened || userEditPage.isLoading) {
@@ -42,7 +46,7 @@ export class UserEditPageContainer extends React.Component {
     }
 
     componentWillUnmount() {
-        // this.props.userPageResetAction();
+        this.props.userEditPageResetAction();
     }
 }
 
@@ -51,7 +55,8 @@ const mapStateToProps = state => ({
     userEditPage: state.userEditPage,
 });
 const actionCreators = {
-
+    userEditPageLoadAction,
+    userEditPageResetAction,
 };
 
 export const UserEditPage = connect(mapStateToProps, actionCreators)(UserEditPageContainer);
