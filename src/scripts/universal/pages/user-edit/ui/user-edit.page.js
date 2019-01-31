@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { MainLayout } from '../../../components/layouts/main';
 import { userEditPageLoadAction, userEditPageResetAction } from '../model/user-edit.actions';
-// import { ProfileLayout } from '../../../components/layouts/profile';
+import { ProfileLayout } from '../../../components/layouts/profile';
 import { LoadingLayout } from '../../../components/layouts/loading';
 
 export class UserEditPageContainer extends React.Component {
@@ -40,7 +40,9 @@ export class UserEditPageContainer extends React.Component {
 
         return (
             <MainLayout user={ auth.user } pets={ auth.pets }>
-
+                <ProfileLayout user={ userEditPage.user } pets={ userEditPage.pets } isEditable>
+                    user edit page
+                </ProfileLayout>
             </MainLayout>
         );
     }

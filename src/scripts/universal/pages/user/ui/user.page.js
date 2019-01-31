@@ -38,11 +38,11 @@ export class UserPageContainer extends React.Component {
             );
         }
 
-        const allowEdit = auth.user && userPage.user && auth.user._id === userPage.user._id;
+        const isEditable = auth.user && userPage.user && auth.user._id === userPage.user._id;
 
         return (
             <MainLayout user={ auth.user } pets={ auth.pets }>
-                <ProfileLayout user={ userPage.user } pets={ userPage.pets } allowEdit={ allowEdit }>
+                <ProfileLayout user={ userPage.user } pets={ userPage.pets } isEditable={ isEditable }>
                     user page
                 </ProfileLayout>
             </MainLayout>

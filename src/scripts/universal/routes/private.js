@@ -18,7 +18,7 @@ export const privateRoutes = [
         exact: true,
     },
     {
-        path: '/users/:id/edit',
+        path: '/users/:userId/edit',
         component: UserEditPage,
         exact: true,
     },

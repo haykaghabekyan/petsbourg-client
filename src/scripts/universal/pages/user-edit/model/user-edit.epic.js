@@ -1,6 +1,6 @@
 import { from, of } from 'rxjs';
 import { filter, mergeMap, map, catchError } from 'rxjs/operators';
-import { UserEditService } from '../services/user-edit.service';
+import { UserService } from '../../user/services/user.service';
 import { USER_EDIT_PAGE_LOAD_ACTION_TYPE, userEditPageLoadSucceededAction, userEditPageLoadFailedAction } from './user-edit.actions';
 
 export const userEditPageLoadEpic = action$ => {
@@ -8,7 +8,7 @@ export const userEditPageLoadEpic = action$ => {
         filter(action => action.type === USER_EDIT_PAGE_LOAD_ACTION_TYPE),
         mergeMap((action) => {
             const { userId } = action.payload;
-            const promise = UserEditService.loadUserEditPage(userId);
+            const promise = UserService.loadUserPage(userId);
 
             return from(promise)
                 .pipe(
