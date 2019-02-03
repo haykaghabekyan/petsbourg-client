@@ -17,7 +17,7 @@ class UserEditFormComponent extends React.Component {
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
-            birthday: moment(user.birthday).format('YYYY-MM-DD'),
+            birthday: user.birthday ? moment(user.birthday).format('DD/MM/YYYY') : null,
             biography: user.biography,
             gender: user.gender,
         });
@@ -53,7 +53,7 @@ class UserEditFormComponent extends React.Component {
                         </div>
                         <div className="d-flex row">
                             <div className="col-6">
-                                <Field name="birthday" id="editUserBirthday" placeholder="Birthday" type="date" component={ Datepicker } validate={ [required] } />
+                                <Field name="birthday" id="editUserBirthday" placeholder="Birthday" component={ Datepicker } validate={ [required] } />
                             </div>
                             <div className="col-6" />
                         </div>
