@@ -4,7 +4,8 @@ import {
     PET_EDIT_PAGE_LOAD_ACTION_TYPE,
     PET_EDIT_PAGE_LOAD_FAILED_ACTION_TYPE,
     PET_EDIT_PAGE_LOAD_SUCCEEDED_ACTION_TYPE,
-    PET_EDIT_PAGE_UPDATE_SUCCEEDED_PET_ACTION
+    PET_EDIT_PAGE_UPDATE_SUCCEEDED_ACTION,
+    PET_EDIT_PAGE_UPDATE_FAILED_ACTION
 } from './pet-edit.actions';
 
 export const petEditPageReducer = (state = petEditPageDefaultState, action) => {
@@ -30,11 +31,11 @@ export const petEditPageReducer = (state = petEditPageDefaultState, action) => {
             };
         case PET_EDIT_PAGE_RESET_ACTION_TYPE:
             return petEditPageDefaultState;
-        case PET_EDIT_PAGE_UPDATE_SUCCEEDED_PET_ACTION:
+        case PET_EDIT_PAGE_UPDATE_SUCCEEDED_ACTION:
             return {
                 ...state,
             };
-        case PET_EDIT_PAGE_LOAD_FAILED_ACTION_TYPE:
+        case PET_EDIT_PAGE_UPDATE_FAILED_ACTION:
             return {
                 ...state,
             };

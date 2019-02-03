@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { SubmissionError } from 'redux-form';
 import { MainLayout } from '../../../components/layouts/main';
-import { userEditPageLoadAction, userEditPageResetAction } from '../model/user-edit.actions';
+import { userEditPageLoadAction, userEditPageResetAction, userEditPageSaveAction } from '../model/user-edit.actions';
 import { ProfileLayout } from '../../../components/layouts/profile';
 import { LoadingLayout } from '../../../components/layouts/loading';
+import { UserEditForm } from './components/user-edit-form';
 
 export class UserEditPageContainer extends React.Component {
     constructor(props) {
@@ -16,6 +18,38 @@ export class UserEditPageContainer extends React.Component {
         if (!userEditPage.opened) {
             this.props.userEditPageLoadAction(match.params);
         }
+    }
+
+    // onDrop(acceptedFiles) {
+    //     const { uploadUserPicture, me } = this.props;
+    //
+    //     if (acceptedFiles.length) {
+    //         const formData = new FormData();
+    //
+    //         acceptedFiles.forEach(file => {
+    //             formData.append('picture', file);
+    //         });
+    //
+    //         uploadUserPicture(me.profile._id, formData);
+    //     } else {
+    //         console.log("onDrop error");
+    //     }
+    // }
+
+    async handleSubmit(data, dispatch) {
+        const promise = new Promise((resolve, reject) => {
+            dispatch(userEditPageSaveAction(data, { resolve, reject }));
+        });
+
+        promise
+            .then(() => {
+                console.log('saved');
+            })
+            .catch((error) => {
+                throw new SubmissionError({
+                    _error: error.message,
+                });
+            });
     }
 
     render() {
@@ -41,7 +75,7 @@ export class UserEditPageContainer extends React.Component {
         return (
             <MainLayout user={ auth.user } pets={ auth.pets }>
                 <ProfileLayout user={ userEditPage.user } pets={ userEditPage.pets } isEditable>
-                    user edit page
+                    <UserEditForm onSubmit={ this.handleSubmit } user={ userEditPage.user } />
                 </ProfileLayout>
             </MainLayout>
         );

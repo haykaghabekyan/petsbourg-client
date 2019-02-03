@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { updateUserProfile } from "../../../redux/actions/user";
-import EditUserForm from "./edit-user-form";
+import EditUserForm from "../../../pages/user-edit/ui/components/user-edit-form";
 
 class EditUserContainer extends React.Component {
 

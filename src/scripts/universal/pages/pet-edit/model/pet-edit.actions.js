@@ -1,24 +1,24 @@
 export const PET_EDIT_PAGE_LOAD_ACTION_TYPE = 'PET_EDIT_PAGE_LOAD_ACTION_TYPE';
-export const petEditPageLoadAction = params => {
+export const petEditPageLoadAction = payload => {
     return {
         type: PET_EDIT_PAGE_LOAD_ACTION_TYPE,
-        payload: params,
+        payload,
     };
 };
 
 export const PET_EDIT_PAGE_LOAD_SUCCEEDED_ACTION_TYPE = 'PET_EDIT_PAGE_LOAD_SUCCEEDED_ACTION_TYPE';
-export const petEditPageLoadSucceededAction = data => {
+export const petEditPageLoadSucceededAction = payload => {
     return {
         type: PET_EDIT_PAGE_LOAD_SUCCEEDED_ACTION_TYPE,
-        payload: data,
+        payload,
     };
 };
 
 export const PET_EDIT_PAGE_LOAD_FAILED_ACTION_TYPE = 'PET_EDIT_PAGE_LOAD_FAILED_ACTION_TYPE';
-export const petEditPageLoadFailedAction = data => {
+export const petEditPageLoadFailedAction = payload => {
     return {
         type: PET_EDIT_PAGE_LOAD_FAILED_ACTION_TYPE,
-        payload: data,
+        payload,
     };
 };
 
@@ -29,28 +29,28 @@ export const petEditPageResetAction = () => {
     };
 };
 
-export const PET_EDIT_PAGE_UPDATE_PET_ACTION = 'PET_EDIT_PAGE_UPDATE_PET_ACTION';
+export const PET_EDIT_PAGE_UPDATE_ACTION = 'PET_EDIT_PAGE_UPDATE_ACTION';
 export const petEditPageUpdateAction = (payload, meta) => {
     return {
-        type: PET_EDIT_PAGE_UPDATE_PET_ACTION,
-        payload: payload,
-        meta: meta,
+        type: PET_EDIT_PAGE_UPDATE_ACTION,
+        payload,
+        meta,
     };
 };
 
-export const PET_EDIT_PAGE_UPDATE_SUCCEEDED_PET_ACTION = 'PET_EDIT_PAGE_UPDATE_SUCCEEDED_PET_ACTION';
+export const PET_EDIT_PAGE_UPDATE_SUCCEEDED_ACTION = 'PET_EDIT_PAGE_UPDATE_SUCCEEDED_ACTION';
 export const petEditPageUpdateSucceededAction = payload => {
     return {
-        type: PET_EDIT_PAGE_UPDATE_SUCCEEDED_PET_ACTION,
-        payload: payload,
+        type: PET_EDIT_PAGE_UPDATE_SUCCEEDED_ACTION,
+        payload,
     };
 };
 
-export const PET_EDIT_PAGE_UPDATE_FAILED_PET_ACTION = 'PET_EDIT_PAGE_UPDATE_FAILED_PET_ACTION';
+export const PET_EDIT_PAGE_UPDATE_FAILED_ACTION = 'PET_EDIT_PAGE_UPDATE_FAILED_ACTION';
 export const petEditPageUpdateFailedAction = payload => {
     return {
-        type: PET_EDIT_PAGE_UPDATE_FAILED_PET_ACTION,
-        payload: payload,
+        type: PET_EDIT_PAGE_UPDATE_FAILED_ACTION,
+        payload,
     };
 };
 

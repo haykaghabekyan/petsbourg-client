@@ -1,11 +1,9 @@
 import axios from 'axios';
 
-
 export class UserEditService {
-    static async loadUserEditPage(userId) {
+    static async userEditPageSave(data) {
         return {
-            user: {},
-            pets: [],
+
         };
     }
 }

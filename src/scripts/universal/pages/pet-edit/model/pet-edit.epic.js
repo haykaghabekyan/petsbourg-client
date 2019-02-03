@@ -5,7 +5,7 @@ import {
     PET_EDIT_PAGE_LOAD_ACTION_TYPE,
     petEditPageLoadSucceededAction,
     petEditPageLoadFailedAction,
-    PET_EDIT_PAGE_UPDATE_PET_ACTION,
+    PET_EDIT_PAGE_UPDATE_ACTION,
     petEditPageUpdateSucceededAction,
     petEditPageUpdateFailedAction,
 } from './pet-edit.actions';
@@ -34,7 +34,7 @@ export const petEditPageLoadEpic = action$ => {
 
 export const petEditPageUpdateEpic = action$ => {
     return action$.pipe(
-        filter(action => action.type === PET_EDIT_PAGE_UPDATE_PET_ACTION),
+        filter(action => action.type === PET_EDIT_PAGE_UPDATE_ACTION),
         mergeMap(action => {
             const promise = new Promise((resolve => { resolve({}); }));
 

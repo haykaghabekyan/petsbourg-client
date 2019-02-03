@@ -1,37 +1,37 @@
-import React from "react";
-import moment from "moment";
-import { Field, reduxForm } from "redux-form";
-import { required, email } from "../../../utils/validators";
-import Input from "../../form-elements/input";
-import Select from "../../form-elements/select";
-import Textarea from "../../form-elements/textarea";
-import { GENDER_OPTIONS } from "../../../constants/gender-options";
-import EditProfilePicture from "./upload-user-picture";
+import React from 'react';
+import moment from 'moment';
+// import DayPicker from 'react-day-picker';
+import { Field, reduxForm } from 'redux-form';
+import { required, email } from '../../../../utils/validators';
+import { Input } from '../../../../components/form-elements/input';
+import { Select } from '../../../../components/form-elements/select';
+import { Textarea } from '../../../../components/form-elements/textarea';
+import { GENDER_OPTIONS } from '../../../../constants/gender-options';
+import { UserPhoto } from './user-photo';
 
-class EditUserForm extends React.Component {
+class UserEditFormComponent extends React.Component {
     componentWillMount() {
-        const { userProfile } = this.props;
+        const { user } = this.props;
 
         this.props.initialize({
-            firstName: userProfile.firstName,
-            lastName: userProfile.lastName,
-            email: userProfile.email,
-            birthday: moment(userProfile.birthday).format('YYYY-MM-DD'),
-            biography: userProfile.biography,
-            gender: userProfile.gender,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            birthday: moment(user.birthday).format('YYYY-MM-DD'),
+            biography: user.biography,
+            gender: user.gender,
         });
     }
 
     render() {
-        const { handleSubmit, userProfile } = this.props;
+        const { handleSubmit, submit, error, dispatch } = this.props;
 
         return (
             <div className="edit-user bg-white padding-35">
                 <h3>Complete your profile</h3>
+                {/*<UserPhoto />*/}
 
-                <EditProfilePicture userProfile={ userProfile } />
-
-                <form onSubmit={ handleSubmit } className="edit-user-form">
+                <form onSubmit={ handleSubmit(values => submit(values, dispatch)) } className="edit-user-form">
                     <div className="margin-t-30">
                         <h2 className="margin-b-20">General account settings</h2>
 
@@ -69,13 +69,10 @@ class EditUserForm extends React.Component {
                         <button type="submit" className="btn btn-green">Save</button>
                     </div>
                 </form>
+                { error && <div className="submission-error">{ error }</div> }
             </div>
         );
     }
 }
 
-const formName = "editUserForm";
-
-export default reduxForm({
-    form: formName,
-})(EditUserForm);
+export const UserEditForm = reduxForm({ form: 'editUserForm' })(UserEditFormComponent);
