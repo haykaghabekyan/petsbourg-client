@@ -19,7 +19,7 @@ export class Select extends React.Component {
 
         let placeholder = props.placeholder;
 
-        if(props.input !== '') {
+        if (props.input !== '') {
             const option = props.options.find(option => option.value === props.input.value);
 
             if (option) {
@@ -44,7 +44,7 @@ export class Select extends React.Component {
 
     toggle(evt) {
         // Open on click, enter, or space
-        if(!this.props.disabled && (evt.which === 13 || evt.which === 32 || evt.type === 'click')) {
+        if (!this.props.disabled && (evt.which === 13 || evt.which === 32 || evt.type === 'click')) {
             this.setState({
                 open: !this.state.open,
             });

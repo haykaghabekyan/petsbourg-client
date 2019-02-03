@@ -33,7 +33,7 @@ const edit = (petId) => {
 };
 
 const profilePicture = petProfile => {
-    if(!petProfile || !petProfile.picture) {
+    if (!petProfile || !petProfile.picture) {
         const PetIcon = getPetIcon(petProfile.type.name);
 
         return <PetIcon width={ 300 } />;
