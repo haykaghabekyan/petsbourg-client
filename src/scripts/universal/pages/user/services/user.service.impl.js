@@ -9,16 +9,16 @@ export class UserServiceImpl {
         const petsPromise = UserServiceImpl.getUserPets(userId);
 
         Promise.all([ userPromise, petsPromise ]).then(([ user, pets ]) => {
-            res.send({
+            res.status(200).send({
                 success: true,
                 user,
                 pets,
             });
         }).catch(() => {
-            res.send({
+            res.status(400).send({
                 success: false,
                 errors: {
-                    message: 'Something went wrong.'
+                    message: 'User not found.'
                 }
             });
         });

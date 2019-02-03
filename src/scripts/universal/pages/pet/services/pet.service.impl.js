@@ -13,7 +13,7 @@ export class PetServiceImpl {
             res.status(400).send({
                 success: false,
                 errors: {
-                    message: 'Something went wrong.'
+                    message: 'Something went wrong.',
                 }
             });
         }
@@ -22,7 +22,7 @@ export class PetServiceImpl {
             return res.status(404).send({
                 success: false,
                 errors: {
-                    message: 'Something went wrong.'
+                    message: 'Pet not found.',
                 }
             });
         }

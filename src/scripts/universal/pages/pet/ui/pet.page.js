@@ -30,7 +30,11 @@ class PetPageContainer extends React.Component {
 
         // TODO
         if (petPage.error) {
-            return petPage.error;
+            return (
+                <MainLayout user={ auth.user } pets={ auth.pets }>
+                    { petPage.error }
+                </MainLayout>
+            );
         }
 
         if (!petPage.opened || petPage.isLoading) {

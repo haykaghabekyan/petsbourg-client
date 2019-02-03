@@ -37,8 +37,8 @@ export class PetEditServiceImpl {
                     user: user,
                     pets: pets,
                 });
-            }).catch((error) => {
-            res.send({
+            }).catch(() => {
+            res.status(400).send({
                 success: false,
                 errors: {
                     message: 'Something went wrong.'

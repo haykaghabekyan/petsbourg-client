@@ -19,12 +19,13 @@ export class PetServiceImpl {
         }
 
         if (!pet) {
-            return res.status(404).send({
-                success: false,
-                errors: {
-                    message: 'Something went wrong.'
-                }
-            });
+            return res
+                .status(404).send({
+                    success: false,
+                    errors: {
+                        message: 'Something went wrong.'
+                    }
+                });
         }
 
         const userPromise = UserServiceImpl.getUser(pet.owner);
