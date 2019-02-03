@@ -1,11 +1,11 @@
 import React from 'react';
 import moment from 'moment';
-// import DayPicker from 'react-day-picker';
 import { Field, reduxForm } from 'redux-form';
 import { required, email } from '../../../../utils/validators';
 import { Input } from '../../../../components/form-elements/input';
 import { Select } from '../../../../components/form-elements/select';
 import { Textarea } from '../../../../components/form-elements/textarea';
+import { Datepicker } from '../../../../components/form-elements/datepicker';
 import { GENDER_OPTIONS } from '../../../../constants/gender-options';
 import { UserPhoto } from './user-photo';
 
@@ -53,7 +53,7 @@ class UserEditFormComponent extends React.Component {
                         </div>
                         <div className="d-flex row">
                             <div className="col-6">
-                                <Field name="birthday" id="editUserBirthday" placeholder="Birthday" type="date" component={ Input } validate={ [required] } />
+                                <Field name="birthday" id="editUserBirthday" placeholder="Birthday" type="date" component={ Datepicker } validate={ [required] } />
                             </div>
                             <div className="col-6" />
                         </div>

@@ -38,7 +38,7 @@ export class PetServiceImpl {
                     user: user,
                     pets: pets,
                 });
-            }).catch((error) => {
+            }).catch(() => {
             res.send({
                 success: false,
                 errors: {

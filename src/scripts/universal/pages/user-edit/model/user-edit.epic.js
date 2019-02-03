@@ -33,6 +33,7 @@ export const userEditPageSaveEpic = action$ => {
     return action$.pipe(
         filter(action => action.type === USER_EDIT_PAGE_SAVE_ACTION_TYPE),
         mergeMap(action => {
+            debugger
             const promise = UserEditService.userEditPageSave(action.payload);
 
             return from(promise)
