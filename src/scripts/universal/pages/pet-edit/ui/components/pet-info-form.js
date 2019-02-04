@@ -4,6 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { required } from '../../../../utils/validators';
 import { Input } from '../../../../components/form-elements/input';
 import { Select } from '../../../../components/form-elements/select';
+import { Datepicker } from '../../../../components/form-elements/datepicker';
 import { Textarea } from '../../../../components/form-elements/textarea';
 import { GENDER_OPTIONS } from '../../../../constants/gender-options';
 // import UploadPetPicture from './pet-photo-upload';
@@ -22,7 +23,7 @@ class PetInfoFormComponent extends React.Component {
             passportId: pet.passportId,
             gender: pet.gender,
             story: pet.story,
-            birthday: moment(pet.birthday).format('YYYY-MM-DD'),
+            birthday: pet.birthday,
             size: pet.size,
             color: pet.color,
             type: pet.type._id,
@@ -91,7 +92,7 @@ class PetInfoFormComponent extends React.Component {
                                 <Field name="color" id="editPetColor" placeholder="Color" component={ Input } validate={ [] } />
                             </div>
                             <div className="col-6">
-                                <Field name="birthday" id="editPetBirthday" placeholder="Birthday" type="date" component={ Input } validate={ [] } />
+                                <Field name="birthday" id="editPetBirthday" placeholder="Birthday" component={ Datepicker } validate={ [] } />
                             </div>
                         </div>
 
