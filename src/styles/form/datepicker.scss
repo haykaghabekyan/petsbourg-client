@@ -1,0 +1,25 @@
+.pb-datepicker {
+  border-radius: 0;
+  border: 1px solid $green;
+
+  .react-datepicker {
+    &__header {
+      background: rgba($green, 0.1);
+    }
+
+    &__day--keyboard-selected {
+      background: $green;
+    }
+
+    &__day--selected {
+      background: $green;
+    }
+
+    &__day {
+      &:hover {
+        border-radius: 0;
+        background: rgba($green, 0.1);
+      }
+    }
+  }
+}

@@ -17,7 +17,7 @@ class UserEditFormComponent extends React.Component {
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
-            birthday: user.birthday ? moment(user.birthday).format('DD/MM/YYYY') : null,
+            birthday: user.birthday,
             biography: user.biography,
             gender: user.gender,
         });
