@@ -29,17 +29,20 @@ export const userEditPageLoadEpic = action$ => {
     );
 };
 
-export const userEditPageSaveEpic = action$ => {
+export const userEditPageSaveEpic = (action$, state$) => {
     return action$.pipe(
         filter(action => action.type === USER_EDIT_PAGE_SAVE_ACTION_TYPE),
         mergeMap(action => {
-            debugger
-            const promise = UserEditService.userEditPageSave(action.payload);
+            console.log(state$.value.auth);
+            const { auth } = state$.value;
+            const promise = UserEditService.userEditPageSave(auth.user._id, action.payload);
 
             return from(promise)
                 .pipe(
-                    map(result => {
-                        return userEditPageSaveSucceededAction();
+                    map((result) => {
+                        return userEditPageSaveSucceededAction({
+                            user: result.user
+                        });
                     }),
                     catchError(error => {
                         return of(userEditPageSaveFailedAction(error.message));

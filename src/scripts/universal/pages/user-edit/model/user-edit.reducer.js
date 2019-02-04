@@ -28,6 +28,7 @@ export const userEditPageReducer = (state = userEditPageDefaultState, action) =>
         case USER_EDIT_PAGE_SAVE_SUCCEEDED_ACTION_TYPE:
             return {
                 ...state,
+                ...action.payload,
             };
         case USER_EDIT_PAGE_SAVE_FAILED_ACTION_TYPE:
             return {
