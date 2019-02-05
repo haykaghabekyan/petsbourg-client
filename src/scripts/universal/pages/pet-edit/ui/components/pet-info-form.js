@@ -69,21 +69,13 @@ class PetInfoFormComponent extends React.Component {
 
                         <div className="d-flex row">
                             <div className="col-6">
-                                <Field disabled name="type" placeholder="Select type" options={ petTypesOptions } component={ Select } validate={ [required] } />
-                            </div>
-                            <div className="col-6">
                                 <Field name="breed" placeholder="Select breed" options={ petBreedsOptions } component={ Select } validate={ [required] } />
                             </div>
-                        </div>
-
-                        <div className="d-flex row">
                             <div className="col-6">
                                 <Field name="gender" placeholder="Select gender" options={ GENDER_OPTIONS } component={ Select } validate={ [] } />
                             </div>
-                            <div className="col-6" />
                         </div>
                     </div>
-
                     <div className="margin-t-20">
                         <h2 className="margin-b-20">Pet Information</h2>
 
