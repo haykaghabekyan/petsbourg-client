@@ -21,7 +21,7 @@ class PetAddPageContainer extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.location.petType !== this.props.location.petType) {
+        if (nextProps.location.petType && nextProps.location.petType !== this.props.location.petType) {
             this.props.petAddPageLoadBreedsAction(nextProps.location.petType);
         }
     }
