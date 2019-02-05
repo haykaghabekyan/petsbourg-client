@@ -20,9 +20,9 @@ export const petEditPageLoadEpic = action$ => {
             return from(promise)
                 .pipe(
                     map(result => {
-                        const { pet, user, pets } = result;
+                        const { pet, user, pets, petTypes, petBreeds } = result;
 
-                        return petEditPageLoadSucceededAction({ pet, user, pets });
+                        return petEditPageLoadSucceededAction({ pet, user, pets, petTypes, petBreeds });
                     }),
                     catchError(error => {
                         return of(petEditPageLoadFailedAction(error.message));

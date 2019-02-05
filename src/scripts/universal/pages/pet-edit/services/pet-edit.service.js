@@ -5,7 +5,7 @@ export class PetEditService {
     static async loadPetPage(petId) {
         const { frontend } = configs();
 
-        return axios.get(`${ frontend.url }/api/pet-page/${ petId }`)
+        return axios.get(`${ frontend.url }/api/pet-edit-page/${ petId }`)
             .then(({ data }) => data);
     }
 }

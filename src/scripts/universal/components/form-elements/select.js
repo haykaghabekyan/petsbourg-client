@@ -68,7 +68,7 @@ export class Select extends React.Component {
             <ClickListener onClickOutside={ this.close }>
                 <div className={`select-container ${ className } ${ (touched && error) ? 'select-error' : '' }`}>
                     <ul className={`select ${ open ? 'select-open' : '' }`}>
-                        <li className={`select-text ${ border ? '' : 'no-border' }`} onClick={ this.toggle } onKeyPress={ this.toggle }>
+                        <li className={`select-text ${ disabled ? 'select-disabled' : '' } ${ border ? '' : 'no-border' }`} onClick={ this.toggle } onKeyPress={ this.toggle }>
                             <input type="hidden" value={ input.value } />
                             { placeholder }
                         </li>

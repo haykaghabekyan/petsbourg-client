@@ -36,6 +36,8 @@ export class PetEditServiceImpl {
                     pet: pet,
                     user: user,
                     pets: pets,
+                    petTypes: [],
+                    petBreeds: [],
                 });
             }).catch(() => {
             res.status(400).send({

@@ -1,6 +1,10 @@
 .select-container {
   margin-bottom: 20px;
 
+  .select-disabled {
+    cursor: not-allowed;
+  }
+
   &[disabled] {
     .select {
       background: $gray-light;

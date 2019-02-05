@@ -5,6 +5,7 @@ import { SignUpServiceImpl } from '../universal/pages/sign-up/services/sign-up.s
 import { UserServiceImpl } from '../universal/pages/user/services/user.service.impl';
 import { UserEditServiceImpl } from '../universal/pages/user-edit/services/user-edit.service.impl';
 import { PetServiceImpl } from '../universal/pages/pet/services/pet.service.impl';
+import { PetEditServiceImpl } from '../universal/pages/pet-edit/services/pet-edit.service.impl';
 import { PetAddServiceImpl } from '../universal/pages/pet-add/services/pet-add.service.impl';
 
 export const router = () => {
@@ -15,6 +16,7 @@ export const router = () => {
     router.get('/user-page/:userId', UserServiceImpl.loadUserPage);
     router.put('/user-edit-page/:userId', requireAuthMiddleware, UserEditServiceImpl.userEditPageSave);
     router.get('/pet-page/:petId', PetServiceImpl.loadPetPage);
+    router.get('/pet-edit-page/:petId', PetEditServiceImpl.loadPetEditPage);
     router.get('/pet-add-page/pet-types/:petTypeId/breeds', requireAuthMiddleware, PetAddServiceImpl.getPetBreeds);
     router.use('/pet-add-page', PetAddServiceImpl.getRoutes());
 
