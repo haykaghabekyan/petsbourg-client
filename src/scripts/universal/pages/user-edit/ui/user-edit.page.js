@@ -43,9 +43,9 @@ export class UserEditPageContainer extends React.Component {
 
         promise
             .then(() => {
-                console.log('saved');
+                // TODO
             })
-            .catch((error) => {
+            .catch(error => {
                 throw new SubmissionError({
                     _error: error.message,
                 });

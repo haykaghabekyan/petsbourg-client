@@ -5,7 +5,7 @@ import { MainLayout } from '../../../components/layouts/main';
 import { petEditPageLoadAction, petEditPageResetAction, petEditPageUpdateAction } from '../model/pet-edit.actions';
 import { ProfileLayout } from '../../../components/layouts/profile';
 import { LoadingLayout } from '../../../components/layouts/loading';
-import { PetInfoForm } from './components/pet-info-form';
+import { PetEditForm } from './components/pet-edit-form';
 
 class PetEditPageContainer extends React.Component {
     constructor(props) {
@@ -61,7 +61,7 @@ class PetEditPageContainer extends React.Component {
         return (
             <MainLayout user={ auth.user } pets={ auth.pets }>
                 <ProfileLayout user={ petEditPage.user } pets={ petEditPage.pets } isEditable={ isEditable } selectedPetId={ petEditPage.pet._id }>
-                    <PetInfoForm
+                    <PetEditForm
                         pet={ petEditPage.pet }
                         petTypes={ [] }
                         petBreeds={ petEditPage.petBreeds }

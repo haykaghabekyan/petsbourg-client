@@ -33,18 +33,27 @@ export const userEditPageSaveEpic = (action$, state$) => {
     return action$.pipe(
         filter(action => action.type === USER_EDIT_PAGE_SAVE_ACTION_TYPE),
         mergeMap(action => {
-            console.log(state$.value.auth);
             const { auth } = state$.value;
             const promise = UserEditService.userEditPageSave(auth.user._id, action.payload);
 
             return from(promise)
                 .pipe(
-                    map((result) => {
+                    map(result => {
+                        const { user } = result;
+
+                        if (action.meta && action.meta.resolve) {
+                            action.meta.resolve();
+                        }
+
                         return userEditPageSaveSucceededAction({
-                            user: result.user
+                            user,
                         });
                     }),
                     catchError(error => {
+                        if (action.meta && action.meta.resolve) {
+                            action.meta.reject(error);
+                        }
+
                         return of(userEditPageSaveFailedAction(error.message));
                     })
                 );

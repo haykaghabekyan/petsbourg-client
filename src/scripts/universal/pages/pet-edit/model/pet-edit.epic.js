@@ -15,7 +15,7 @@ export const petEditPageLoadEpic = action$ => {
         filter(action => action.type === PET_EDIT_PAGE_LOAD_ACTION_TYPE),
         mergeMap(action => {
             const { petId } = action.payload;
-            const promise = PetEditService.loadPetPage(petId);
+            const promise = PetEditService.load(petId);
 
             return from(promise)
                 .pipe(
@@ -36,14 +36,20 @@ export const petEditPageUpdateEpic = action$ => {
     return action$.pipe(
         filter(action => action.type === PET_EDIT_PAGE_UPDATE_ACTION),
         mergeMap(action => {
-            const promise = new Promise((resolve => { resolve({}); }));
+            const promise = PetEditService.update(action.payload.petId, action.payload);
 
             return from(promise)
                 .pipe(
-                    map(result => {
-                        return petEditPageUpdateSucceededAction({});
+                    map(({ pet }) => {
+                        if (action.meta && action.meta.resolve) {
+                            action.meta.resolve();
+                        }
+                        return petEditPageUpdateSucceededAction({ pet });
                     }),
                     catchError(error => {
+                        if (action.meta && action.meta.resolve) {
+                            action.meta.reject();
+                        }
                         return of(petEditPageUpdateFailedAction(error.message));
                     })
                 );

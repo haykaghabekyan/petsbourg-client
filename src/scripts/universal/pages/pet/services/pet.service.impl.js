@@ -3,7 +3,7 @@ import { configs } from '../../../../server/utils/config';
 import { UserServiceImpl } from '../../user/services/user.service.impl';
 
 export class PetServiceImpl {
-    static async loadPetPage(req, res) {
+    static async load(req, res) {
         const { petId = '' } = req.params;
 
         let pet;

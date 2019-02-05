@@ -2,7 +2,7 @@ import axios from 'axios';
 import { configs } from '../../../../server/utils/config';
 
 export class UserServiceImpl {
-    static loadUserPage(req, res) {
+    static load(req, res) {
         const { userId = '' } = req.params;
 
         const userPromise = UserServiceImpl.getUser(userId);

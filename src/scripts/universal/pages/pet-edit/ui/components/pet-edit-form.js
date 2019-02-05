@@ -9,7 +9,7 @@ import { Textarea } from '../../../../components/form-elements/textarea';
 import { GENDER_OPTIONS } from '../../../../constants/gender-options';
 // import UploadPetPicture from './pet-photo-upload';
 
-class PetInfoFormComponent extends React.Component {
+class PetEditFormComponent extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -23,7 +23,7 @@ class PetInfoFormComponent extends React.Component {
             passportId: pet.passportId,
             gender: pet.gender,
             story: pet.story,
-            birthday: pet.birthday,
+            birthday: pet.birthday ? moment(pet.birthday).format('DD/MM/YYYY') : null,
             size: pet.size,
             color: pet.color,
             type: pet.type._id,
@@ -119,4 +119,4 @@ class PetInfoFormComponent extends React.Component {
     }
 }
 
-export const PetInfoForm = reduxForm({ form: 'editPetForm' })(PetInfoFormComponent);
+export const PetEditForm = reduxForm({ form: 'editPetForm' })(PetEditFormComponent);

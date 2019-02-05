@@ -34,6 +34,7 @@ export const petEditPageReducer = (state = petEditPageDefaultState, action) => {
         case PET_EDIT_PAGE_UPDATE_SUCCEEDED_ACTION:
             return {
                 ...state,
+                ...action.payload,
             };
         case PET_EDIT_PAGE_UPDATE_FAILED_ACTION:
             return {

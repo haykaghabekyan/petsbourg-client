@@ -19,7 +19,7 @@ const box = (label, value) => {
     return (
         <dl className="pet-info-list">
             <dt className="pet-info-label">{ label } </dt>
-            <dd className="pet-info-value">{ moment(value, 'YYYYMMDD').fromNow() }</dd>
+            <dd className="pet-info-value">{ moment(value).fromNow() }</dd>
         </dl>
     );
 };

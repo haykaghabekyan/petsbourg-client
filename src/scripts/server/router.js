@@ -13,10 +13,10 @@ export const router = () => {
 
     router.post('/sign-in', SignInServiceImpl.signIn);
     router.post('/sign-up', SignUpServiceImpl.signUp);
-    router.get('/user-page/:userId', UserServiceImpl.loadUserPage);
+    router.get('/user-page/:userId', UserServiceImpl.load);
     router.put('/user-edit-page/:userId', requireAuthMiddleware, UserEditServiceImpl.userEditPageSave);
-    router.get('/pet-page/:petId', PetServiceImpl.loadPetPage);
-    router.get('/pet-edit-page/:petId', PetEditServiceImpl.loadPetEditPage);
+    router.get('/pet-page/:petId', PetServiceImpl.load);
+    router.use('/pet-edit-page', PetEditServiceImpl.getRoutes());
     router.get('/pet-add-page/pet-types/:petTypeId/breeds', requireAuthMiddleware, PetAddServiceImpl.getPetBreeds);
     router.use('/pet-add-page', PetAddServiceImpl.getRoutes());
 
