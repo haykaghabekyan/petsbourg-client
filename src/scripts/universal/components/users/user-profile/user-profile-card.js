@@ -9,7 +9,7 @@ import { circle } from '../../../utils/helpers/cloudinary';
 
 const renderPhoto = user => {
     if (!user.photo) {
-        return <UserIcon width={ 18 } color="#fff" />;
+        return <UserIcon width={ 18 } color="#27AE60" />;
     }
 
     return <img className="profile-card--picture" src={ circle(user.photo.publicId) } alt="" />;
