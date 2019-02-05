@@ -7,7 +7,7 @@ import { FacebookIcon } from '../../../../utils/icons/social/facebook';
 import { TwitterIcon } from '../../../../utils/icons/social/twitter';
 import { GoogleIcon } from '../../../../utils/icons/social/google';
 
-const SignInFormComponent = ({ handleSubmit, submit, error, dispatch }) => {
+const SignInFormComponent = ({ handleSubmit, submit, error, dispatch, invalid, submitting, pristine }) => {
     return (
         <div className="auth-form-container">
             <h3>Sign in to Petsbourg</h3>
@@ -16,7 +16,13 @@ const SignInFormComponent = ({ handleSubmit, submit, error, dispatch }) => {
                 <Field name="password" type="password" id="signIpPassword" placeholder="Password" component={ Input } validate={ [required] } border={ false } />
                 <div className="action-buttons-container">
                     <Link to="/forgot-password">Forgot your password?</Link>
-                    <button type="submit" className="btn btn-green">Sign in</button>
+                    <button
+                        type="submit"
+                        className="btn btn-green"
+                        disabled={ invalid || submitting || pristine }
+                    >
+                        Sign in
+                    </button>
                 </div>
             </form>
             { error && <div className="submission-error">{ error }</div> }

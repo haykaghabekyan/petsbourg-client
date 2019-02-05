@@ -5,7 +5,7 @@ import { GENDER_OPTIONS } from '../../../../constants/gender-options';
 import { Input } from '../../../../components/form-elements/input';
 import { Select } from '../../../../components/form-elements/select';
 
-const SignUpFormComponent = ({ handleSubmit, submit, error, dispatch }) => {
+const SignUpFormComponent = ({ handleSubmit, submit, error, dispatch, invalid, submitting, pristine }) => {
     return (
         <div className="auth-form-container">
             <h3>Sign up to Petsbourg</h3>
@@ -22,7 +22,13 @@ const SignUpFormComponent = ({ handleSubmit, submit, error, dispatch }) => {
                 <Field name="password" type="password" placeholder="Password" component={ Input } validate={ [required] } border={ false } />
 
                 <div className="text-right">
-                    <button type="submit" className="btn btn-green">Sign up</button>
+                    <button
+                        type="submit"
+                        className="btn btn-green"
+                        disabled={ invalid || submitting || pristine }
+                    >
+                        Sign up
+                    </button>
                 </div>
             </form>
 

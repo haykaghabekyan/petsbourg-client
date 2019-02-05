@@ -32,7 +32,7 @@ class PetInfoFormComponent extends React.Component {
     }
 
     render() {
-        const { handleSubmit, submit, dispatch, petTypes, petBreeds } = this.props;
+        const { handleSubmit, submit, dispatch, invalid, submitting, petTypes, petBreeds } = this.props;
 
         const petTypesOptions = petTypes.map(petType => {
             return {
@@ -113,7 +113,13 @@ class PetInfoFormComponent extends React.Component {
                     </div>
 
                     <div className="text-right">
-                        <button type="submit" className="btn btn-green">Save</button>
+                        <button
+                            type="submit"
+                            className="btn btn-green"
+                            disabled={ invalid || submitting }
+                        >
+                            Save
+                        </button>
                     </div>
                 </form>
             </div>

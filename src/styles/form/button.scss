@@ -117,4 +117,13 @@
     }
   }
 
+  &:disabled {
+    background: $gray-light;
+
+    &:hover {
+      background: $gray-light;
+      cursor: not-allowed;
+    }
+  }
+
 }

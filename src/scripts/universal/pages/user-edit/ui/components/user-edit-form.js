@@ -24,7 +24,7 @@ class UserEditFormComponent extends React.Component {
     }
 
     render() {
-        const { handleSubmit, submit, error, dispatch } = this.props;
+        const { handleSubmit, submit, error, dispatch, invalid, submitting } = this.props;
 
         return (
             <div className="edit-user bg-white padding-35">
@@ -66,7 +66,13 @@ class UserEditFormComponent extends React.Component {
                     </div>
 
                     <div className="text-right">
-                        <button type="submit" className="btn btn-green">Save</button>
+                        <button
+                            type="submit"
+                            className="btn btn-green"
+                            disabled={ invalid || submitting }
+                        >
+                            Save
+                        </button>
                     </div>
                 </form>
                 { error && <div className="submission-error">{ error }</div> }
