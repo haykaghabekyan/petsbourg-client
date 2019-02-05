@@ -64,7 +64,7 @@ class PetEditPageContainer extends React.Component {
                     <PetInfoForm
                         pet={ petEditPage.pet }
                         petTypes={ [] }
-                        petBreeds={ [] }
+                        petBreeds={ petEditPage.petBreeds }
                         onSubmit={ this.handleSubmit }
                     />
                 </ProfileLayout>
