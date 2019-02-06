@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { TopSearchComponent } from './top-search';
 import { ClickListener } from '../click-listener';
 import { UserIcon } from '../../utils/icons/common/user';
+import { removeAuthAction } from '../../app/model/auth/auth.actions';
 
-export class PrivateHeader extends React.Component {
+class PrivateHeaderComponent extends React.Component {
     state = {
         open: false,
     };
@@ -14,6 +16,11 @@ export class PrivateHeader extends React.Component {
 
         this.toggle = this.toggle.bind(this);
         this.close = this.close.bind(this);
+        this.signOut = this.signOut.bind(this);
+    }
+
+    signOut() {
+        this.props.removeAuthAction();
     }
 
     close() {
@@ -75,7 +82,7 @@ export class PrivateHeader extends React.Component {
                                                 <Link to={ `/users/${ user._id }` } onClick={ this.close }>My profile</Link>
                                             </li>
                                             <li className="dropdown-list-item">
-                                                <Link to="/">Sign out</Link>
+                                                <Link to="/" onClick={ this.signOut }>Sign out</Link>
                                             </li>
                                         </ul>
                                     </div>
@@ -89,3 +96,9 @@ export class PrivateHeader extends React.Component {
         );
     }
 }
+
+const actionCreators = {
+    removeAuthAction,
+};
+
+export const PrivateHeader = connect(null, actionCreators)(PrivateHeaderComponent);

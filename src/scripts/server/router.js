@@ -20,5 +20,13 @@ export const router = () => {
     router.get('/pet-add-page/pet-types/:petTypeId/breeds', requireAuthMiddleware, PetAddServiceImpl.getPetBreeds);
     router.use('/pet-add-page', PetAddServiceImpl.getRoutes());
 
+    router.get('/sign-out', (req, res) => {
+        res.clearCookie('jwt');
+
+        res.send({
+            success: true,
+        });
+    });
+
     return router;
 };

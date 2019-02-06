@@ -13,3 +13,17 @@ export const setAuthUserAction = payload => {
         payload,
     };
 };
+
+export const REMOVE_AUTH_ACTION = 'REMOVE_AUTH_ACTION';
+export const removeAuthAction = () => {
+    return {
+        type: REMOVE_AUTH_ACTION,
+    };
+};
+
+export const REMOVE_AUTH_SUCCEEDED_ACTION = 'REMOVE_AUTH_SUCCEEDED_ACTION';
+export const removeAuthSucceededAction = () => {
+    return {
+        type: REMOVE_AUTH_SUCCEEDED_ACTION,
+    };
+};
