@@ -8,6 +8,8 @@ import {
     PET_EDIT_PAGE_UPDATE_ACTION,
     petEditPageUpdateSucceededAction,
     petEditPageUpdateFailedAction,
+    PET_EDIT_PAGE_UPDATE_SUCCEEDED_ACTION,
+    petEditPageUpdatePetsListAction
 } from './pet-edit.actions';
 
 export const petEditPageLoadEpic = action$ => {
@@ -55,4 +57,16 @@ export const petEditPageUpdateEpic = action$ => {
                 );
         })
     );
+};
+
+export const petEditPageUpdatePetsListEpic = action$ => {
+    return action$
+        .pipe(
+            filter(action => action.type === PET_EDIT_PAGE_UPDATE_SUCCEEDED_ACTION),
+            map(action => {
+                const { pet } = action.payload;
+
+                return petEditPageUpdatePetsListAction({ pet });
+            })
+        );
 };

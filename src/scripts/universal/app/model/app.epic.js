@@ -5,7 +5,7 @@ import { userEditPageLoadEpic } from '../../pages/user-edit';
 import { signInEpic } from '../../pages/sign-in';
 import { signUpEpic } from '../../pages/sign-up';
 import { petPageLoadEpic } from '../../pages/pet';
-import { petEditPageLoadEpic, petEditPageUpdateEpic } from '../../pages/pet-edit';
+import { petEditPageLoadEpic, petEditPageUpdateEpic, petEditPageUpdatePetsListEpic } from '../../pages/pet-edit';
 import { userEditPageSaveEpic } from '../../pages/user-edit';
 import { petAddPageLoadEpic, petAddPageLoadBreedsEpic, petAddPageSaveEpic } from '../../pages/pet-add';
 
@@ -19,6 +19,7 @@ export const combinedEpics = combineEpics(
     petPageLoadEpic,
     petEditPageLoadEpic,
     petEditPageUpdateEpic,
+    petEditPageUpdatePetsListEpic,
     petAddPageLoadEpic,
     petAddPageLoadBreedsEpic,
     petAddPageSaveEpic,

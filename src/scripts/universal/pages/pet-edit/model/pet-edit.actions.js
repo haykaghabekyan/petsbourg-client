@@ -54,3 +54,10 @@ export const petEditPageUpdateFailedAction = payload => {
     };
 };
 
+export const PET_EDIT_PAGE_UPDATE_PETS_LIST_ACTION = 'PET_EDIT_PAGE_UPDATE_PETS_LIST_ACTION';
+export const petEditPageUpdatePetsListAction = payload => {
+    return {
+        type: PET_EDIT_PAGE_UPDATE_PETS_LIST_ACTION,
+        payload,
+    };
+};
