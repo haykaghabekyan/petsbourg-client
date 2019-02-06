@@ -38,7 +38,7 @@ export class PrivateHeader extends React.Component {
             <div className="header-actions">
                 <TopSearchComponent />
 
-                <div className="user-profile">
+                <div className="user-profile d-flex align-center">
                     <ClickListener onClickOutside={ this.close }>
                         <div className={`dropdown user-profile-dropdown ${ this.state.open ? 'dropdown-open' : '' }`}>
                             <div className="dropdown-header" onClick={ this.toggle } onKeyPress={ this.toggle }>
@@ -83,6 +83,7 @@ export class PrivateHeader extends React.Component {
                             </div>
                         </div>
                     </ClickListener>
+                    <div className="user-name">{ user.firstName }</div>
                 </div>
             </div>
         );

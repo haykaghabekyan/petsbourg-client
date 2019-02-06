@@ -1,4 +1,5 @@
 import { combineEpics } from 'redux-observable';
+import { authUpdateUserEpic } from './auth/auth.epic';
 import { homePageLoadEpic } from '../../pages/home';
 import { userPageLoadEpic } from '../../pages/user';
 import { userEditPageLoadEpic } from '../../pages/user-edit';
@@ -10,6 +11,7 @@ import { userEditPageSaveEpic } from '../../pages/user-edit';
 import { petAddPageLoadEpic, petAddPageLoadBreedsEpic, petAddPageSaveEpic } from '../../pages/pet-add';
 
 export const combinedEpics = combineEpics(
+    authUpdateUserEpic,
     signInEpic,
     signUpEpic,
     homePageLoadEpic,
