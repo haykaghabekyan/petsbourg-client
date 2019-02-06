@@ -65,7 +65,7 @@ export class PetEditServiceImpl {
     static getBreedsByType(petType) {
         const { backend } = configs();
         return axios.get(`${ backend.url }/api/pet-types/${ petType }/breeds`)
-            .then(({ data}) => data.breeds );
+            .then(({ data}) => data.petBreeds );
     }
 
     static update(req, res) {
