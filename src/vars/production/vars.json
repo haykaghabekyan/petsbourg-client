@@ -7,5 +7,10 @@
   },
   "auth": {
     "publicKey": "petsbourgjwttoken"
+  },
+  "tracking": {
+    "google": {
+      "trackingId": "UA-134427129-1"
+    }
   }
 }

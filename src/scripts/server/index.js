@@ -4,7 +4,6 @@ import cors from 'cors';
 import React from 'react';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-// import favicon from 'serve-favicon';
 import { of } from 'rxjs';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter, matchPath } from 'react-router-dom';
@@ -15,6 +14,7 @@ import { getRoutes } from '../universal/routes';
 import { App } from '../universal/app/app';
 import { getStore } from '../universal/app/model/app.store';
 import { setAuthAction } from '../universal/app/model/auth/auth.actions';
+import { configs } from './utils/config';
 
 const app = express();
 // parse application/x-www-form-urlencoded
@@ -75,6 +75,14 @@ app.get('*', authMiddleware, (req, res) => {
                 <!DOCTYPE html>
                 <html lang="en">
                     <head>
+                        <!-- Global site tag (gtag.js) - Google Analytics -->
+                        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134427129-1"></script>
+                        <script>
+                          window.dataLayer = window.dataLayer || [];
+                          function gtag(){dataLayer.push(arguments);}
+                          gtag('js', new Date());
+                          gtag('config', ${ configs().tracking.google.trackingId });
+                        </script>
                         <meta http-equiv="content-type" content="text/html" charset="utf-8" />
                         <meta name="viewport" content="width=device-width,initial-scale=1" />
                         <title>Petsbourg</title>
