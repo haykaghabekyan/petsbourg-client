@@ -90,7 +90,6 @@ class PrivateHeaderComponent extends React.Component {
                             </div>
                         </div>
                     </ClickListener>
-                    <div className="user-name">{ user.firstName }</div>
                 </div>
             </div>
         );
