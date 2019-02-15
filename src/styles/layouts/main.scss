@@ -27,18 +27,26 @@
   flex-direction: row;
 
   .main-left-sidebar {
-    width: 196px;
+    min-width: 196px;
     background-color: $white;
   }
 
   .main-content {
     flex: 1;
     margin: 0 20px;
-    max-width: 740px;
   }
 
   .main-right-sidebar {
     max-width: 300px;
     width: 100%;
+    display: none;
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  .main-layout-page {
+    .main-right-sidebar {
+      display: block;
+    }
   }
 }
