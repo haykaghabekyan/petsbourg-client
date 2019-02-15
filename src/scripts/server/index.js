@@ -88,13 +88,6 @@ app.get('*', authMiddleware, (req, res) => {
                         <title>Petsbourg</title>
                         <link rel="stylesheet" href="/styles/main.css" />
                         <base href="/" target="_blank">
-                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                        <script>
-                          (adsbygoogle = window.adsbygoogle || []).push({
-                            google_ad_client: "ca-pub-5037466754578890",
-                            enable_page_level_ads: true
-                          });
-                        </script>
                     </head>
                     <body><div id="root">${ markupString }</div><script>window.__INITIAL_STATE__ = ${ JSON.stringify(store.getState()).replace(/</g, '\\\\\\\\\u003c')};</script><script defer src="/scripts/bundle.js"></script></body>
                 </html>
