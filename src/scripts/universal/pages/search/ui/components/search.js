@@ -46,7 +46,7 @@ class SearchFormComponent extends React.Component {
             <div className="d-flex bg-white search-page-search align-center">
                 <div className="col-7">
                     <h3>Find a pet</h3>
-                    <p className="search-page-more">From more than 17,000 pets</p>
+                    <p className="search-page-more">From thousands of pets</p>
                 </div>
                 <div className="col-5">
                     <form onSubmit={ this.onSubmit } className="search-page-form">

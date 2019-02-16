@@ -9,9 +9,9 @@ export const MainLayout = ({ children, user, pets }) => {
         <div className="main-layout">
             <header className="main-header">
                 <div className="container d-flex justify-space-between align-center">
-                    <div className="brand-container">
+                    <h1 className="brand-container">
                         <Link to="/" className="brand">Petsbourg</Link>
-                    </div>
+                    </h1>
                     { user ? <PrivateHeader user={ user } pets={ pets } /> : <PublicHeader /> }
                 </div>
             </header>

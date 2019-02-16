@@ -91,79 +91,31 @@
   > .col-3 {
     width: calc(3 / 12 * 100%);
     margin: 0 10px;
-
-    &:first-child {
-      margin-left: 0;
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
   }
 
   > .col-4 {
     width: calc(4 / 12 * 100%);
     margin: 0 10px;
-
-    &:first-child {
-      margin-left: 0;
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
   }
 
   > .col-5 {
     width: calc(5 / 12 * 100%);
     margin: 0 10px;
-
-    &:first-child {
-      margin-left: 0;
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
   }
 
   > .col-7 {
     width: calc(7 / 12 * 100%);
     margin: 0 10px;
-
-    &:first-child {
-      margin-left: 0;
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
   }
 
   > .col-9 {
     width: calc(9 / 12 * 100%);
     margin: 0 10px;
-
-    &:first-child {
-      margin-left: 0;
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
   }
 
-  .col-6 {
+  > .col-6 {
     width: 50%;
     margin: 0 10px;
-
-    &:first-child {
-      margin-left: 0;
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
   }
 
   &.row {

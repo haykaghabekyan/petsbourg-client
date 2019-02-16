@@ -7,6 +7,7 @@ import { UserEditServiceImpl } from '../universal/pages/user-edit/services/user-
 import { PetServiceImpl } from '../universal/pages/pet/services/pet.service.impl';
 import { PetEditServiceImpl } from '../universal/pages/pet-edit/services/pet-edit.service.impl';
 import { PetAddServiceImpl } from '../universal/pages/pet-add/services/pet-add.service.impl';
+import { SearchServiceImpl } from '../universal/pages/search/services/search.service.impl';
 
 export const router = () => {
     const router = Router();
@@ -19,6 +20,7 @@ export const router = () => {
     router.use('/pet-edit-page', PetEditServiceImpl.getRoutes());
     router.get('/pet-add-page/pet-types/:petTypeId/breeds', requireAuthMiddleware, PetAddServiceImpl.getPetBreeds);
     router.use('/pet-add-page', PetAddServiceImpl.getRoutes());
+    router.use('/search-page', SearchServiceImpl.getRoutes());
 
     router.get('/sign-out', (req, res) => {
         res.clearCookie('jwt');

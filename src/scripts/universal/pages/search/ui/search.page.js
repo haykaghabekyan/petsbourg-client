@@ -4,12 +4,19 @@ import { connect } from 'react-redux';
 import { MainLayout } from '../../../components/layouts/main';
 import { SearchForm } from './components/search';
 import { SearchPetCard } from './components/pet-card';
+import { searchPageLoadAction } from '../model/search.actions';
 
 class SearchPageComponent extends React.Component {
 
     componentDidMount() {
-        const params = queryString.parse(this.props.location.search);
+        const { searchPage, location } = this.props;
+        const params = queryString.parse(location.search);
 
+        if (!searchPage.opened) {
+            this.props.searchPageLoadAction({
+                filters: params
+            });
+        }
     }
 
     render() {
@@ -21,7 +28,7 @@ class SearchPageComponent extends React.Component {
                     <div className="col-9">
                         <SearchForm />
 
-                        <div className="d-flex padding-t-20">
+                        <div className="d-flex padding-t-20 row">
                             <div className="col-4">
                                 <SearchPetCard />
                             </div>
@@ -45,7 +52,7 @@ const mapStateToProps = state => ({
 });
 
 const actionCreators = {
-
+    searchPageLoadAction,
 };
 
 export const SearchPage = connect(mapStateToProps, actionCreators)(SearchPageComponent);

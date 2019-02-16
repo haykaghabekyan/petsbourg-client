@@ -36,6 +36,11 @@
   &-card {
     background: $white;
 
+    &-photo {
+      height: 190px;
+      background-color: $gray-light;
+    }
+
     &-pet {
       padding: 12px 20px;
 

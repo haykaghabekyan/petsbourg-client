@@ -13,9 +13,9 @@ export const SearchPetCard = ({ pet }) => {
                 <p className="search-page-card-pet-info">Shan info</p>
             </div>
             <Link to="/" className="search-page-card-user d-flex align-center">
-                                        <span className="search-page-card-user-icon">
-                                            <UserIcon width={ 10 } color="white" />
-                                        </span>
+                <span className="search-page-card-user-icon">
+                    <UserIcon width={ 10 } color="white" />
+                </span>
                 <span className="search-page-card-user-name">User name</span>
             </Link>
         </div>
