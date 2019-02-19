@@ -6,6 +6,7 @@ export class Select extends React.Component {
     static propTypes = {
         placeholder: PropTypes.string.isRequired,
         border: PropTypes.bool,
+        options: PropTypes.array.isRequired,
     };
 
     static defaultProps = {
@@ -19,7 +20,7 @@ export class Select extends React.Component {
 
         let placeholder = props.placeholder;
 
-        if (props.input !== '') {
+        if (props.input && props.input.value) {
             const option = props.options.find(option => option.value === props.input.value);
 
             if (option) {
@@ -61,7 +62,7 @@ export class Select extends React.Component {
     }
 
     render() {
-        const { options, input, meta: { touched, error }, disabled = false, border, className = '' } = this.props;
+        const { options, input = {}, meta: { touched, error } = {}, disabled = false, border, className = '' } = this.props;
         const { placeholder, open } = this.state;
 
         return (
@@ -69,7 +70,7 @@ export class Select extends React.Component {
                 <div className={`select-container ${ className } ${ (touched && error) ? 'select-error' : '' }`}>
                     <ul className={`select ${ open ? 'select-open' : '' }`}>
                         <li className={`select-text ${ disabled ? 'select-disabled' : '' } ${ border ? '' : 'no-border' }`} onClick={ this.toggle } onKeyPress={ this.toggle }>
-                            <input type="hidden" value={ input.value } />
+                            <input type="hidden" value={ input.value || undefined } />
                             { placeholder }
                         </li>
                         <li>

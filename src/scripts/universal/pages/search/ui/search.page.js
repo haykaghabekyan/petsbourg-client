@@ -4,12 +4,16 @@ import { connect } from 'react-redux';
 import { MainLayout } from '../../../components/layouts/main';
 import { SearchForm } from './components/search';
 import { SearchPetCard } from './components/pet-card';
-import { searchPageLoadAction } from '../model/search.actions';
+import { searchPageLoadAction, searchPageSearchAction } from '../model/search.actions';
+import { Filters } from './components/filters';
+import isEqual from 'lodash/isEqual';
 
 class SearchPageComponent extends React.Component {
 
     componentDidMount() {
+        console.log('componentDidMount');
         const { searchPage, location } = this.props;
+        console.log(location.search);
         const params = queryString.parse(location.search);
 
         if (!searchPage.opened) {
@@ -19,8 +23,20 @@ class SearchPageComponent extends React.Component {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        const params = queryString.parse(this.props.location.search);
+        const newParams = queryString.parse(nextProps.location.search);
+
+        if(!isEqual(params, newParams)) {
+            console.log('componentWillReceiveProps  aa');
+            this.props.searchPageSearchAction({
+                filters: newParams
+            });
+        }
+    }
+
     render() {
-        const { auth, seachPage } = this.props;
+        const { auth, searchPage } = this.props;
 
         return (
             <MainLayout user={ auth.user } pets={ auth.pets }>
@@ -37,8 +53,8 @@ class SearchPageComponent extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col-3 bg-white search-page-filters">
-                        <h3 className="search-page-filters-title">Filters</h3>
+                    <div className="col-3 bg-white">
+                        <Filters petTypes={ searchPage.petTypes } />
                     </div>
                 </div>
             </MainLayout>
@@ -53,6 +69,7 @@ const mapStateToProps = state => ({
 
 const actionCreators = {
     searchPageLoadAction,
+    searchPageSearchAction,
 };
 
 export const SearchPage = connect(mapStateToProps, actionCreators)(SearchPageComponent);

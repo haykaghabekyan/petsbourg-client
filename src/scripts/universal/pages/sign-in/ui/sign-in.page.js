@@ -5,6 +5,7 @@ import { Link} from 'react-router-dom';
 import { FooterComponent } from '../../../components/footer';
 import { SignInForm } from './components/sign-in-form';
 import { signInPageSignInAction } from '../model/sign-in.actions';
+import dog from '../../../../../media/images/dog.png';
 
 class SignInContainer extends React.Component {
     constructor(props) {
@@ -40,7 +41,9 @@ class SignInContainer extends React.Component {
                 </header>
                 <main className="">
                     <div className="container index-page">
-                        <div className="get-started-container" />
+                        <div className="get-started-container">
+                            <img src={ dog } alt="Dog" />
+                        </div>
                         <SignInForm onSubmit={ this.handleSubmit } />
                     </div>
                 </main>

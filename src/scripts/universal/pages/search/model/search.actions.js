@@ -6,6 +6,14 @@ export const searchPageLoadAction = payload => {
     };
 };
 
+export const SEARCH_PAGE_SEARCH_ACTION_TYPE = 'SEARCH_PAGE_SEARCH_ACTION';
+export const searchPageSearchAction = payload => {
+    return {
+        type: SEARCH_PAGE_SEARCH_ACTION_TYPE,
+        payload,
+    };
+};
+
 export const SEARCH_PAGE_LOAD_SUCCEEDED_ACTION_TYPE = 'SEARCH_PAGE_LOAD_SUCCEEDED_ACTION';
 export const searchPageLoadSucceededAction = payload => {
     return {

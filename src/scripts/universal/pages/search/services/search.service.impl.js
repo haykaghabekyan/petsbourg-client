@@ -6,9 +6,36 @@ export class SearchServiceImpl {
     static getRoutes() {
         const router = Router();
 
-        router.get('/', SearchServiceImpl.search);
+        router.get('/', SearchServiceImpl.load);
+        router.get('/search', SearchServiceImpl.search);
 
         return router;
+    }
+
+    static async load(req, res) {
+        const { backend } = configs();
+        let pets;
+        let petTypes;
+
+        try {
+            const { data } = await axios.get(`${ backend.url }/api/pet-types`);
+
+            petTypes = data.petTypes;
+        } catch (e) {}
+
+        try {
+            const { data } = await axios.get(`${ backend.url }/api/search`, {
+                params: req.query,
+            });
+
+            pets = data.pets;
+        } catch (e) {}
+
+        res.send({
+            success: true,
+            petTypes: petTypes,
+            pets: pets,
+        });
     }
 
     static async search(req, res) {
