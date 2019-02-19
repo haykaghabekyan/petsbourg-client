@@ -41,7 +41,7 @@ class SignInContainer extends React.Component {
                 </header>
                 <main className="">
                     <div className="container index-page">
-                        <div className="get-started-container">
+                        <div className="get-started-container text-center">
                             <img src={ dog } alt="Dog" />
                         </div>
                         <SignInForm onSubmit={ this.handleSubmit } />
