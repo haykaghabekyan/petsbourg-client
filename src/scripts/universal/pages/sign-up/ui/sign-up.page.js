@@ -5,6 +5,7 @@ import { SubmissionError } from 'redux-form';
 import { FooterComponent } from '../../../components/footer';
 import { SignUpForm } from './components/sign-up-form';
 import { signUpPageSignInAction } from '../../sign-up';
+import cat from '../../../../../media/images/cat.png';
 
 class SignUpContainer extends React.Component {
     constructor(props) {
@@ -46,7 +47,9 @@ class SignUpContainer extends React.Component {
                 </header>
                 <main className="">
                     <div className="container index-page">
-                        <div className="get-started-container" />
+                        <div className="get-started-container text-center">
+                            <img src={ cat } alt="Cat" />
+                        </div>
                         { !me || !me.profile ? <SignUpForm onSubmit={this.handleSubmit} /> : <Redirect push to="/" /> }
                     </div>
                 </main>
