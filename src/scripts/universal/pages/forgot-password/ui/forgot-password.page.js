@@ -38,7 +38,7 @@ export class ForgotPasswordPage extends React.Component {
                 </header>
                 <main className="container index-page">
                     <div className="get-started-container text-center">
-                        <img src={ rabbit } alt="Rabbit" />
+                        <img src={ rabbit } className="margin-v-30" alt="Rabbit" />
                     </div>
                     <ForgotPasswordForm handleSubmit={ this.handleSubmit } />
                 </main>

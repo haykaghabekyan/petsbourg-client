@@ -64,6 +64,15 @@
     padding-bottom: #{$size}px;
   }
 
+  .margin-#{$size} {
+    margin: #{$size}px;
+  }
+
+  .margin-v-#{$size} {
+    margin-top: #{$size}px;
+    margin-bottom: #{$size}px;
+  }
+
   .margin-h-#{$size} {
     margin-left: #{$size}px;
     margin-right: #{$size}px;
