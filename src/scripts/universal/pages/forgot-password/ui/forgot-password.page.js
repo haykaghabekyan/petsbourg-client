@@ -23,7 +23,7 @@ export class ForgotPasswordPage extends React.Component {
                             <img src={ rabbit } alt="Rabbit" />
                         </div>
                         <div className="auth-form-container">
-                            asdsdasd
+                            Forget password - in development
                         </div>
                     </div>
                 </main>
