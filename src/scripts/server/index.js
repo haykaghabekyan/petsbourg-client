@@ -14,7 +14,7 @@ import { getRoutes } from '../universal/routes';
 import { App } from '../universal/app/app';
 import { getStore } from '../universal/app/model/app.store';
 import { setAuthAction } from '../universal/app/model/auth/auth.actions';
-import { configs } from './utils/config';
+import { getAnalyticsScript } from './utils/analytics';
 
 const app = express();
 // parse application/x-www-form-urlencoded
@@ -75,14 +75,7 @@ app.get('*', authMiddleware, (req, res) => {
                 <!DOCTYPE html>
                 <html lang="en">
                     <head>
-                        <!-- Global site tag (gtag.js) - Google Analytics -->
-                        <script async src="//www.googletagmanager.com/gtag/js?id=${ configs().tracking.google.trackingId }"></script>
-                        <script>
-                          window.dataLayer = window.dataLayer || [];
-                          function gtag(){dataLayer.push(arguments);}
-                          gtag('js', new Date());
-                          gtag('config', '${ configs().tracking.google.trackingId }');
-                        </script>
+                        ${ getAnalyticsScript() }
                         <meta http-equiv="content-type" content="text/html" charset="utf-8" />
                         <meta name="viewport" content="width=device-width,initial-scale=1" />
                         <title>Petsbourg</title>

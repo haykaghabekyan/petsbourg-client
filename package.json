@@ -1,8 +1,8 @@
 {
   "name": "petsbourg",
   "version": "1.0.0",
-  "description": "",
-  "main": "",
+  "description": "Petsbourg client app",
+  "main": "./dist/server/scripts/bundle.js",
   "scripts": {
     "start": "node ./dist/server/scripts/bundle.js",
     "build": "webpack --mode production --progress",

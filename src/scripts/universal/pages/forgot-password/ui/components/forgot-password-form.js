@@ -17,7 +17,7 @@ export const ForgotPasswordComponent = ({ handleSubmit, submit, error, dispatch,
                         className="btn btn-green"
                         disabled={ invalid || submitting || pristine }
                     >
-                        Send rest link
+                        Send reset link
                     </button>
                 </div>
             </form>

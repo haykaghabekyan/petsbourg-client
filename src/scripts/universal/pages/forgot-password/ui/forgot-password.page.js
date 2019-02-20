@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { SubmissionError } from 'redux-form';
 import { FooterComponent } from '../../../components/footer';
 import { ForgotPasswordForm } from './components/forgot-password-form';
 import rabbit from '../../../../../media/images/rabbit.png';
@@ -40,7 +41,7 @@ export class ForgotPasswordPage extends React.Component {
                     <div className="get-started-container text-center">
                         <img src={ rabbit } className="margin-v-30" alt="Rabbit" />
                     </div>
-                    <ForgotPasswordForm handleSubmit={ this.handleSubmit } />
+                    <ForgotPasswordForm onSubmit={ this.handleSubmit } />
                 </main>
                 <FooterComponent />
             </div>
