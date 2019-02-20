@@ -12,10 +12,10 @@ const SignInFormComponent = ({ handleSubmit, submit, error, dispatch, invalid, s
         <div className="auth-form-container">
             <h3>Sign in to Petsbourg</h3>
             <form method="post" onSubmit={ handleSubmit(values => submit(values, dispatch)) } className="auth-form">
-                <Field name="email" type="email" id="signIpEmail" placeholder="Email" component={ Input } validate={ [required, email] } border={ false } />
-                <Field name="password" type="password" id="signIpPassword" placeholder="Password" component={ Input } validate={ [required] } border={ false } />
+                <Field name="email" type="email" placeholder="Email" component={ Input } validate={ [required, email] } border={ false } />
+                <Field name="password" type="password" placeholder="Password" component={ Input } validate={ [required] } border={ false } />
                 <div className="action-buttons-container">
-                    <Link to="/forgot-password">Forgot your password?</Link>
+                    <Link to="/forgot-password">Forgot password?</Link>
                     <button
                         type="submit"
                         className="btn btn-green"
