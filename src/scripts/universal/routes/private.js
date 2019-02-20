@@ -34,6 +34,10 @@ export const privateRoutes = [
     },
     {
         path: '/sign-up',
-        component: () => <Redirect to='/' />
+        component: () => <Redirect to='/' />,
+    },
+    {
+        path: '/forgot-password',
+        component: () => <Redirect to='/' />,
     },
 ];

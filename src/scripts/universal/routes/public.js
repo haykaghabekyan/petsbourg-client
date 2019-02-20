@@ -2,6 +2,7 @@ import React from 'react';
 import { SignInPage } from '../pages/sign-in';
 import { SignUpPage } from '../pages/sign-up';
 import { ErrorPage, Error401 } from '../pages/error';
+import { ForgotPasswordPage } from '../pages/forgot-password/ui/forgot-password.page';
 
 export const publicRoutes = [
     {
@@ -29,5 +30,9 @@ export const publicRoutes = [
         routes: [{
             component: Error401,
         }],
-    }
+    },
+    {
+        path: '/forgot-password',
+        component: ForgotPasswordPage,
+    },
 ];

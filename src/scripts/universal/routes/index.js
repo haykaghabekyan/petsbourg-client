@@ -6,6 +6,7 @@ import { publicRoutes } from './public';
 import { UserPage, userPageLoadAction } from '../pages/user';
 import { PetPage, petPageLoadAction } from '../pages/pet';
 import { ErrorPage, Error404 } from '../pages/error';
+import { ForgotPasswordPage } from '../pages/forgot-password';
 
 export const getRoutes = (isAuthenticated = false) => {
     const routes = [];
