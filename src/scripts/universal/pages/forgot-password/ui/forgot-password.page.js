@@ -1,9 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FooterComponent } from '../../../components/footer';
+import { ForgotPasswordForm } from './components/forgot-password-form';
 import rabbit from '../../../../../media/images/rabbit.png';
 
 export class ForgotPasswordPage extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    async handleSubmit(data, dispatch) {
+        try {
+            await new Promise((resolve, reject) => {
+                // dispatch(action(data, { resolve, reject }));
+            });
+        } catch (error) {
+            throw new SubmissionError({
+                _error: error.message,
+            });
+        }
+    }
+
     render() {
         return (
             <div className="auth-layout">
@@ -17,15 +36,11 @@ export class ForgotPasswordPage extends React.Component {
                         </div>
                     </div>
                 </header>
-                <main className="">
-                    <div className="container index-page">
-                        <div className="get-started-container text-center">
-                            <img src={ rabbit } alt="Rabbit" />
-                        </div>
-                        <div className="auth-form-container">
-                            Forget password - in development
-                        </div>
+                <main className="container index-page">
+                    <div className="get-started-container text-center">
+                        <img src={ rabbit } alt="Rabbit" />
                     </div>
+                    <ForgotPasswordForm handleSubmit={ this.handleSubmit } />
                 </main>
                 <FooterComponent />
             </div>

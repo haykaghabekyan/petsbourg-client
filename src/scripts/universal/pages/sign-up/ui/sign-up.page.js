@@ -1,13 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { SubmissionError } from 'redux-form';
 import { FooterComponent } from '../../../components/footer';
 import { SignUpForm } from './components/sign-up-form';
 import { signUpPageSignInAction } from '../../sign-up';
 import cat from '../../../../../media/images/cat.png';
 
-class SignUpContainer extends React.Component {
+export class SignUpPage extends React.Component {
     constructor(props) {
         super(props);
 
@@ -31,8 +30,6 @@ class SignUpContainer extends React.Component {
     }
 
     render() {
-        const { me } = this.props;
-
         return (
             <div className="auth-layout">
                 <header className="main-header">
@@ -50,7 +47,7 @@ class SignUpContainer extends React.Component {
                         <div className="get-started-container text-center">
                             <img src={ cat } alt="Cat" />
                         </div>
-                        { !me || !me.profile ? <SignUpForm onSubmit={this.handleSubmit} /> : <Redirect push to="/" /> }
+                        <SignUpForm onSubmit={ this.handleSubmit } />
                     </div>
                 </main>
                 <FooterComponent />
@@ -58,6 +55,3 @@ class SignUpContainer extends React.Component {
         );
     }
 }
-
-const mapStateToProps = state => ({ me: state.me });
-export const SignUpPage = connect(mapStateToProps)(SignUpContainer);
