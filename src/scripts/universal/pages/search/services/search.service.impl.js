@@ -14,14 +14,32 @@ export class SearchServiceImpl {
 
     static async load(req, res) {
         const { backend } = configs();
+        const { petType = null } = req.query;
         let pets;
         let petTypes;
+        let petBreeds = [];
 
         try {
             const { data } = await axios.get(`${ backend.url }/api/pet-types`);
 
-            petTypes = data.petTypes;
-        } catch (e) {}
+            petTypes = data.petTypes.map(petType => {
+                return {
+                    name: petType.name,
+                    value: petType._id,
+                };
+            });
+        } catch (error) {}
+
+        if (petType) {
+            const { data } = await axios.get(`${ backend.url }/api/pet-types/${ petType }/breeds`);
+
+            petBreeds = data.petBreeds.map(petBreed => {
+                return {
+                    name: petBreed.name,
+                    value: petBreed._id,
+                };
+            });
+        }
 
         try {
             const { data } = await axios.get(`${ backend.url }/api/search`, {
@@ -34,6 +52,7 @@ export class SearchServiceImpl {
         res.send({
             success: true,
             petTypes: petTypes,
+            petBreeds: petBreeds,
             pets: pets,
         });
     }

@@ -18,9 +18,9 @@ export const searchPageLoadEpic = action$ => {
             return from(promise)
                 .pipe(
                     map(result => {
-                        const { pets, petTypes } = result;
+                        const { pets, petTypes, petBreeds } = result;
 
-                        return searchPageLoadSucceededAction({ pets, petTypes });
+                        return searchPageLoadSucceededAction({ pets, petTypes, petBreeds });
                     }),
                     catchError(({ response }) => {
                         const { errors } = response.data;

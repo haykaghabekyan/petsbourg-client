@@ -37,23 +37,23 @@ class UserEditFormComponent extends React.Component {
 
                         <div className="d-flex row">
                             <div className="col-6">
-                                <Field name="firstName" id="editUserFirstName" placeholder="First name" component={ Input } validate={ [required] } />
+                                <Field name="firstName" placeholder="First name" component={ Input } validate={ [required] } />
                             </div>
                             <div className="col-6">
-                                <Field name="lastName" id="editUserLastName" placeholder="Last name" component={ Input } validate={ [required] } />
-                            </div>
-                        </div>
-                        <div className="d-flex row">
-                            <div className="col-6">
-                                <Field name="email" id="editUserEmail" placeholder="Email" component={ Input } validate={ [required, email] } />
-                            </div>
-                            <div className="col-6">
-                                <Field name="gender" id="editUserGender" placeholder="Select gender" options={ GENDER_OPTIONS } component={ Select } validate={ [] } />
+                                <Field name="lastName" placeholder="Last name" component={ Input } validate={ [required] } />
                             </div>
                         </div>
                         <div className="d-flex row">
                             <div className="col-6">
-                                <Field name="birthday" id="editUserBirthday" placeholder="Birthday" component={ Datepicker } validate={ [required] } />
+                                <Field name="email" placeholder="Email" component={ Input } validate={ [required, email] } />
+                            </div>
+                            <div className="col-6">
+                                <Field name="gender" placeholder="Select gender" options={ GENDER_OPTIONS } component={ Select } />
+                            </div>
+                        </div>
+                        <div className="d-flex row">
+                            <div className="col-6">
+                                <Field name="birthday" placeholder="Birthday" component={ Datepicker } validate={ [required] } />
                             </div>
                             <div className="col-6" />
                         </div>
@@ -62,7 +62,7 @@ class UserEditFormComponent extends React.Component {
                     <div className="margin-t-30">
                         <h2 className="margin-b-20">Biography</h2>
 
-                        <Field name="biography" id="editUserBiography" placeholder="Biography" component={ Textarea } validate={ [] } />
+                        <Field name="biography" id="editUserBiography" placeholder="Biography" component={ Textarea } />
                     </div>
 
                     <div className="text-right">
