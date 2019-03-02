@@ -1,11 +1,16 @@
 import { from, of } from 'rxjs';
 import { filter, mergeMap, map, catchError } from 'rxjs/operators';
 import { SearchService } from '../services/search.service';
-import { SEARCH_PAGE_LOAD_ACTION_TYPE, SEARCH_PAGE_SEARCH_ACTION_TYPE, searchPageLoadFailedAction, searchPageLoadSucceededAction } from './search.actions';
+import {
+    SEARCH_PAGE_LOAD_ACTION_TYPE,
+    SEARCH_PAGE_RELOAD_ACTION_TYPE,
+    searchPageLoadFailedAction,
+    searchPageLoadSucceededAction,
+} from './search.actions';
 
 export const searchPageLoadEpic = action$ => {
     return action$.pipe(
-        filter(action => (action.type === SEARCH_PAGE_LOAD_ACTION_TYPE || action.type === SEARCH_PAGE_SEARCH_ACTION_TYPE)),
+        filter(action => (action.type === SEARCH_PAGE_LOAD_ACTION_TYPE || action.type === SEARCH_PAGE_RELOAD_ACTION_TYPE)),
         mergeMap((action) => {
             const { filters } = action.payload;
             let promise;
@@ -18,9 +23,7 @@ export const searchPageLoadEpic = action$ => {
             return from(promise)
                 .pipe(
                     map(result => {
-                        const { pets, petTypes, petBreeds } = result;
-
-                        return searchPageLoadSucceededAction({ pets, petTypes, petBreeds });
+                        return searchPageLoadSucceededAction(result);
                     }),
                     catchError(({ response }) => {
                         const { errors } = response.data;

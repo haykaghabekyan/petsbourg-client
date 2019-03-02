@@ -7,7 +7,7 @@ export class SearchServiceImpl {
         const router = Router();
 
         router.get('/', SearchServiceImpl.load);
-        router.get('/search', SearchServiceImpl.search);
+        router.get('/search', SearchServiceImpl.reload);
 
         return router;
     }
@@ -50,34 +50,40 @@ export class SearchServiceImpl {
         } catch (e) {}
 
         res.send({
-            success: true,
             petTypes: petTypes,
             petBreeds: petBreeds,
             pets: pets,
         });
     }
 
-    static async search(req, res) {
+    static async reload(req, res) {
         const { backend } = configs();
+        const { petType = null } = req.query;
+        let pets;
+        let petBreeds = [];
+
+        if (petType) {
+            const { data } = await axios.get(`${ backend.url }/api/pet-types/${ petType }/breeds`);
+
+            petBreeds = data.petBreeds.map(petBreed => {
+                return {
+                    name: petBreed.name,
+                    value: petBreed._id,
+                };
+            });
+        }
 
         try {
             const { data } = await axios.get(`${ backend.url }/api/search`, {
                 params: req.query,
             });
 
-            res.send({
-                success: true,
-                pets: data.pets,
-            });
-        } catch (e) {
-            res
-                .status(400)
-                .send({
-                    success: false,
-                    errors: {
-                        message: 'Something went wrong.',
-                    }
-                });
-        }
+            pets = data.pets;
+        } catch (e) {}
+
+        res.send({
+            petBreeds: petBreeds,
+            pets: pets,
+        });
     }
 }

@@ -25,7 +25,6 @@ class FiltersComponent extends React.Component {
         const newFormValues = nextProps.formValues;
         const newParams = queryString.parse(nextProps.location.search);
 
-
         const queryParams = {
             ...newFormValues,
         };

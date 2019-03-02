@@ -6,10 +6,10 @@ export const searchPageLoadAction = payload => {
     };
 };
 
-export const SEARCH_PAGE_SEARCH_ACTION_TYPE = 'SEARCH_PAGE_SEARCH_ACTION';
-export const searchPageSearchAction = payload => {
+export const SEARCH_PAGE_RELOAD_ACTION_TYPE = 'SEARCH_PAGE_RELOAD_ACTION';
+export const searchPageReloadAction = payload => {
     return {
-        type: SEARCH_PAGE_SEARCH_ACTION_TYPE,
+        type: SEARCH_PAGE_RELOAD_ACTION_TYPE,
         payload,
     };
 };

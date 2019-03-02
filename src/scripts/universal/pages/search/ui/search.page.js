@@ -5,9 +5,8 @@ import { connect } from 'react-redux';
 import { MainLayout } from '../../../components/layouts/main';
 import { SearchForm } from './components/search-form';
 import { SearchPetCard } from './components/pet-card';
-import { searchPageLoadAction, searchPageSearchAction } from '../model/search.actions';
+import { searchPageLoadAction, searchPageReloadAction } from '../model/search.actions';
 import { FiltersForm } from './components/filters-form';
-import { LoadingLayout } from '../../../components/layouts/loading';
 
 class SearchPageComponent extends React.Component {
 
@@ -27,7 +26,7 @@ class SearchPageComponent extends React.Component {
         const newParams = queryString.parse(nextProps.location.search);
 
         if(!isEqual(params, newParams)) {
-            this.props.searchPageSearchAction({
+            this.props.searchPageReloadAction({
                 filters: newParams
             });
         }
@@ -48,7 +47,7 @@ class SearchPageComponent extends React.Component {
         if (!searchPage.opened || searchPage.isLoading) {
             return (
                 <MainLayout user={ auth.user } pets={ auth.pets }>
-                    <LoadingLayout />
+                    Loading...
                 </MainLayout>
             );
         }
@@ -87,7 +86,7 @@ const mapStateToProps = state => ({
 
 const actionCreators = {
     searchPageLoadAction,
-    searchPageSearchAction,
+    searchPageReloadAction,
 };
 
 export const SearchPage = connect(mapStateToProps, actionCreators)(SearchPageComponent);
