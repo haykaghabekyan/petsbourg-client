@@ -29,6 +29,10 @@ class FiltersComponent extends React.Component {
             ...newFormValues,
         };
 
+        if(formValues && formValues.petType && newFormValues && newFormValues.petType && formValues.petType !== newFormValues.petType) {
+            delete queryParams.petBreed;
+        }
+
         if (newParams.query) {
             queryParams.query = newParams.query;
         }
@@ -45,21 +49,23 @@ class FiltersComponent extends React.Component {
             <div className="search-page-filters">
                 <h3 className="search-page-filters-title">Filters</h3>
 
-                <Field
-                    name="petType"
-                    placeholder="Pet Types"
-                    options={ petTypes }
-                    component={ Select }
-                />
+                <form method="get" className="margin-t-10">
+                    <Field
+                        name="petType"
+                        placeholder="Pet Types"
+                        options={ petTypes }
+                        component={ Select }
+                    />
 
-                <Field
-                    name="petBreed"
-                    placeholder="Pet Breeds"
-                    options={ petBreeds }
-                    component={ Select }
-                />
+                    <Field
+                        name="petBreed"
+                        placeholder="Pet Breeds"
+                        options={ petBreeds }
+                        component={ Select }
+                    />
 
-                <Field name="gender" placeholder="Gender" options={ GENDER_OPTIONS } component={ Select } />
+                    <Field name="gender" placeholder="Gender" options={ GENDER_OPTIONS } component={ Select } />
+                </form>
             </div>
         );
     }

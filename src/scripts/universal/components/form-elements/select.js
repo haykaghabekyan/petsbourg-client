@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ClickListener } from '../click-listener';
 
 export class Select extends React.Component {
@@ -15,23 +15,12 @@ export class Select extends React.Component {
         border: true,
     };
 
+    state = {
+        open: false,
+    };
+
     constructor(props) {
         super(props);
-
-        let placeholder = props.placeholder;
-
-        if (props.input && props.input.value) {
-            const option = props.options.find(option => option.value === props.input.value);
-
-            if (option) {
-                placeholder = option.name;
-            }
-        }
-
-        this.state = {
-            open: false,
-            placeholder: placeholder,
-        };
 
         this.toggle = this.toggle.bind(this);
         this.close = this.close.bind(this);
@@ -57,13 +46,22 @@ export class Select extends React.Component {
 
         this.setState({
             open: false,
-            placeholder: option.name,
         });
     }
 
     render() {
         const { options, input = {}, meta: { touched, error } = {}, disabled = false, border, className = '' } = this.props;
-        const { placeholder, open } = this.state;
+        const { open } = this.state;
+
+        let placeholder = this.props.placeholder;
+
+        if (input.value) {
+            const option = options.find(opt => opt.value === input.value);
+
+            if (option) {
+                placeholder = option.name;
+            }
+        }
 
         return (
             <ClickListener onClickOutside={ this.close }>
