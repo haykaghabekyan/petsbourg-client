@@ -14,7 +14,6 @@ import { getRoutes } from '../universal/routes';
 import { App } from '../universal/app/app';
 import { getStore } from '../universal/app/model/app.store';
 import { setAuthAction } from '../universal/app/model/auth/auth.actions';
-import { getAnalyticsScript } from './utils/analytics';
 
 const app = express();
 // parse application/x-www-form-urlencoded
@@ -75,14 +74,25 @@ app.get('*', authMiddleware, (req, res) => {
                 <!DOCTYPE html>
                 <html lang="en">
                     <head>
-                        ${ getAnalyticsScript() }
+                        <!-- Google Tag Manager -->
+                        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                        })(window,document,'script','dataLayer','GTM-W8FRN4C');</script>
+                        <!-- End Google Tag Manager -->
                         <meta http-equiv="content-type" content="text/html" charset="utf-8" />
                         <meta name="viewport" content="width=device-width,initial-scale=1" />
                         <title>Petsbourg</title>
                         <link rel="stylesheet" href="/styles/main.css" />
                         <base href="/" target="_blank">
                     </head>
-                    <body><div id="root">${ markupString }</div><script>window.__INITIAL_STATE__ = ${ JSON.stringify(store.getState()).replace(/</g, '\\\\\\\\\u003c')};</script><script defer src="/scripts/bundle.js"></script></body>
+                    <body><!-- Google Tag Manager (noscript) -->
+                        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8FRN4C"
+                        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+                        <!-- End Google Tag Manager (noscript) -->
+                        <div id="root">${ markupString }</div><script>window.__INITIAL_STATE__ = ${ JSON.stringify(store.getState()).replace(/</g, '\\\\\\\\\u003c')};</script><script defer src="/scripts/bundle.js"></script>
+                    </body>
                 </html>
             `;
 
