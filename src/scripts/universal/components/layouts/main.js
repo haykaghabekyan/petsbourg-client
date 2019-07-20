@@ -4,7 +4,7 @@ import { PrivateHeader } from '../header/private-header';
 import { PublicHeader } from '../header/public-header';
 import { FooterComponent } from '../footer';
 
-export const MainLayout = ({ children, user, pets }) => {
+export const MainLayout = ({ children, user = null, pets }) => {
     return (
         <div className="main-layout">
             <header className="main-header">

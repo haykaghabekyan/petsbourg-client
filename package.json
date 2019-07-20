@@ -2,6 +2,7 @@
   "name": "petsbourg",
   "version": "1.0.0",
   "description": "Petsbourg client app",
+  "repository": "git@github.com:haykaghabekyan/petsbourg-client.git",
   "main": "./dist/server/scripts/bundle.js",
   "scripts": {
     "start": "node ./dist/server/scripts/bundle.js",

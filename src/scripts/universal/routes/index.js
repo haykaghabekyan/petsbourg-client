@@ -7,6 +7,7 @@ import { UserPage, userPageLoadAction } from '../pages/user';
 import { PetPage, petPageLoadAction } from '../pages/pet';
 import { ErrorPage, Error404 } from '../pages/error';
 import { ForgotPasswordPage } from '../pages/forgot-password';
+import {ContactUsPage} from "../pages/contact-us/ui/contact-us.page";
 
 export const getRoutes = (isAuthenticated = false) => {
     const routes = [];
@@ -20,8 +21,8 @@ export const getRoutes = (isAuthenticated = false) => {
     routes.push(
         {
             path: '/users/:userId',
-            component: UserPage,
             exact: true,
+            component: UserPage,
             loadPage: (store, params) => {
                 store.dispatch(userPageLoadAction(params));
 
@@ -36,8 +37,8 @@ export const getRoutes = (isAuthenticated = false) => {
         },
         {
             path: '/pets/:petId',
-            component: PetPage,
             exact: true,
+            component: PetPage,
             loadPage: (store, params) => {
                 store.dispatch(petPageLoadAction(params));
 
@@ -49,6 +50,11 @@ export const getRoutes = (isAuthenticated = false) => {
                     ),
                 };
             }
+        },
+        {
+            path: '/contact-us',
+            exact: true,
+            component: ContactUsPage,
         },
         {
             path: '**',
