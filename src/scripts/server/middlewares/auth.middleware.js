@@ -13,7 +13,7 @@ export const authMiddleware = async (req, res, next) => {
         try {
             decodedToken = verify(jwtToken, configs().auth.publicKey);
 
-            res.cookie('jwt', jwt, { maxAge: 900000 });
+            res.cookie('jwt', jwt, { maxAge: 900000, httpOnly: true });
         } catch(error) {
             res.clearCookie('jwt');
         }
