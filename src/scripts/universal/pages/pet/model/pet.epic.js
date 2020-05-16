@@ -12,14 +12,12 @@ export const petPageLoadEpic = action$ => {
 
       return from(promise)
         .pipe(
-          map(({ data }) => {
-            console.log('pet.epic result', data);
-            const {pet, user, pets} = data;
+          map((result) => {
+            const {pet, user, pets} = result;
 
             return petPageLoadSucceededAction({pet, user, pets});
           }),
-          catchError(({response}) => {
-            console.error('pet.epic', response);
+          catchError(({response}) => {;
             const {errors} = response.data;
             return of(petPageLoadFailedAction(errors.message));
           })
