@@ -76,23 +76,21 @@ app.get('*', authMiddleware, (req, res) => {
                 <!DOCTYPE html>
                 <html lang="en">
                     <head>
-                        <!-- Google Tag Manager -->
-                        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                        })(window,document,'script','dataLayer','GTM-W8FRN4C');</script>
-                        <!-- End Google Tag Manager -->
+                        <!-- Global site tag (gtag.js) - Google Analytics -->
+                        <script async src="https://www.googletagmanager.com/gtag/js?id=${configs().tracking.google.trackingId}"></script>
+                        <script>
+                          window.dataLayer = window.dataLayer || [];
+                          function gtag(){dataLayer.push(arguments);}
+                          gtag('js', new Date());                        
+                          gtag('config', 'UA-134427129-1');
+                        </script>
                         <meta http-equiv="content-type" content="text/html" charset="utf-8" />
                         <meta name="viewport" content="width=device-width,initial-scale=1" />
                         <title>Petsbourg</title>
                         <link rel="stylesheet" href="/styles/main.css" />
                         <base href="/" target="_blank">
                     </head>
-                    <body><!-- Google Tag Manager (noscript) -->
-                        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8FRN4C"
-                        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-                        <!-- End Google Tag Manager (noscript) -->
+                    <body>
                         <div id="root">${ markupString }</div><script>window.__INITIAL_STATE__ = ${ JSON.stringify(store.getState()).replace(/</g, '\\\\\\\\\u003c')};</script><script defer src="/scripts/bundle.js"></script>
                     </body>
                 </html>
