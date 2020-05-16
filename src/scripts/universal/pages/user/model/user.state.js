@@ -1,5 +1,5 @@
 export const userPageDefaultState = {
-    opened: false,
-    isLoading: false,
-    error: null,
+  opened: false,
+  isLoading: false,
+  error: null,
 };

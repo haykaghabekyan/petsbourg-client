@@ -1,11 +1,9 @@
 import axios from 'axios';
-import { configs } from '../../../../server/utils/config';
+import {config} from '../../../config/config';
 
 export class UserEditService {
-    static async userEditPageSave(userId, data) {
-        const { frontend } = configs();
-
-        return axios.put(`${ frontend.url }/api/user-edit-page/${ userId }`, data)
-            .then(({ data }) => data);
-    }
+  static async userEditPageSave(userId, data) {
+    return axios.put(`${config.frontendUrl}/api/user-edit-page/${userId}`, data)
+      .then(({data}) => data);
+  }
 }
