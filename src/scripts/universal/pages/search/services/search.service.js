@@ -1,14 +1,15 @@
 import axios from 'axios';
+import {config} from '../../../config/config'
 
 export class SearchService {
   static load(filters) {
-    return axios.get(`${process.env.FRONTEND_URL}/api/search-page`, {
+    return axios.get(`${config.frontendUrl}/api/search-page`, {
       params: filters,
     }).then(({data}) => data);
   }
 
   static search(filters) {
-    return axios.get(`${process.env.FRONTEND_URL}/api/search-page/search`, {
+    return axios.get(`${config.frontendUrl}/api/search-page/search`, {
       params: filters,
     }).then(({data}) => data);
   }

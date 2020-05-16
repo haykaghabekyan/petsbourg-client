@@ -1,8 +1,9 @@
 import axios from 'axios';
+import {config} from '../../../config/config'
 
 export class PetService {
   static loadPetPage(petId) {
-    return axios.get(`${process.env.FRONTEND_URL}/api/pet-page/${petId}`)
+    return axios.get(`${config.frontendUrl}/api/pet-page/${petId}`)
       .then(({data}) => data);
   }
 }
