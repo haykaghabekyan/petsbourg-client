@@ -30,5 +30,13 @@ export const router = () => {
         });
     });
 
+    router.get('/health', (res, req) => {
+        req
+        .status(200)
+        .send({
+            date: new Date(),
+        });
+    });
+
     return router;
 };
