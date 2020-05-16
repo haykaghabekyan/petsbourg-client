@@ -1,5 +1,4 @@
 import { verify } from 'jsonwebtoken';
-import { configs } from '../utils/config';
 import { UserServiceImpl } from '../../universal/pages/user/services/user.service.impl';
 
 export const authMiddleware = async (req, res, next) => {
@@ -11,7 +10,7 @@ export const authMiddleware = async (req, res, next) => {
 
         let decodedToken;
         try {
-            decodedToken = verify(jwtToken, configs().auth.publicKey);
+            decodedToken = verify(jwtToken, process.env.JWT_PRIVATE_KEY);
 
             res.cookie('jwt', jwt, { maxAge: 900000, httpOnly: true });
         } catch(error) {

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { configs } from '../../../../server/utils/config';
 import { Router } from 'express';
 
 export class SearchServiceImpl {
@@ -13,14 +12,13 @@ export class SearchServiceImpl {
     }
 
     static async load(req, res) {
-        const { backend } = configs();
         const { petType = null } = req.query;
         let pets;
         let petTypes;
         let petBreeds = [];
 
         try {
-            const { data } = await axios.get(`${ backend.url }/api/pet-types`);
+            const { data } = await axios.get(`${ process.env.BACKEND_URL }/api/pet-types`);
 
             petTypes = data.petTypes.map(petType => {
                 return {
@@ -31,7 +29,7 @@ export class SearchServiceImpl {
         } catch (error) {}
 
         if (petType) {
-            const { data } = await axios.get(`${ backend.url }/api/pet-types/${ petType }/breeds`);
+            const { data } = await axios.get(`${ process.env.BACKEND_URL }/api/pet-types/${ petType }/breeds`);
 
             petBreeds = data.petBreeds.map(petBreed => {
                 return {
@@ -57,13 +55,12 @@ export class SearchServiceImpl {
     }
 
     static async reload(req, res) {
-        const { backend } = configs();
         const { petType = null } = req.query;
         let pets;
         let petBreeds = [];
 
         if (petType) {
-            const { data } = await axios.get(`${ backend.url }/api/pet-types/${ petType }/breeds`);
+            const { data } = await axios.get(`${ process.env.BACKEND_URL }/api/pet-types/${ petType }/breeds`);
 
             petBreeds = data.petBreeds.map(petBreed => {
                 return {

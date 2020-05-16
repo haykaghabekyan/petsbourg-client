@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { configs } from '../../../../server/utils/config';
 
 export class UserServiceImpl {
     static load(req, res) {
@@ -25,16 +24,12 @@ export class UserServiceImpl {
     }
 
     static async getUser(userId) {
-        const { backend } = configs();
-
-        return axios.get(`${ backend.url }/api/users/${ userId }`)
+        return axios.get(`${ process.env.BACKEND_URL }/api/users/${ userId }`)
             .then(({ data }) => data.user);
     }
 
     static async getUserPets(userId) {
-        const { backend } = configs();
-        
-        return axios.get(`${ backend.url }/api/users/${ userId }/pets`)
+        return axios.get(`${ process.env.BACKEND_URL }/api/users/${ userId }/pets`)
             .then(({ data }) => data.pets);
     }
 }

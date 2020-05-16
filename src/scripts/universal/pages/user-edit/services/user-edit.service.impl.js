@@ -1,10 +1,7 @@
 import axios from 'axios';
-import { configs } from '../../../../server/utils/config';
 
 export class UserEditServiceImpl {
     static userEditPageSave(req, res) {
-        const { backend } = configs();
-
         const { body, cookies, params, auth } = req;
 
         if (params.userId && params.userId !== auth.user._id) {
@@ -19,7 +16,7 @@ export class UserEditServiceImpl {
         }
 
         axios
-            .put(`${ backend.url }/api/users/${ auth.user._id }`, body, {
+            .put(`${ process.env.BACKEND_URL }/api/users/${ auth.user._id }`, body, {
                 headers: {
                     authorization: cookies.jwt ? cookies.jwt : ''
                 },
