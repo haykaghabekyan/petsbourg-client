@@ -108,10 +108,22 @@ app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
 
-// TODO
-// Remove in production
-setInterval(() => {
-  // axios.get(`${process.env.FRONTEND_URL}/api/health`);
-  // axios.get(`${process.env.BACKEND_URL}/api/health`);
-  // axios.get(`${process.env.STORAGE_URL}/api/health`);
-}, 10 * 1000);
+app.use('error', error => {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  let bind = (typeof port === 'string') ? 'Pipe ' + port : 'Port ' + port;
+  switch (error.code) {
+    case 'EACCES':
+      console.error(`${bind} requires elevated privileges`);
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(`${bind} is already in use`);
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+});
