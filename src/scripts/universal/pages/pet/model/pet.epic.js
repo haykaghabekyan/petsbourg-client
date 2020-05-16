@@ -12,9 +12,9 @@ export const petPageLoadEpic = action$ => {
 
       return from(promise)
         .pipe(
-          map(result => {
-            console.log('pet.epic result', result);
-            const {pet, user, pets} = result;
+          map(({ data }) => {
+            console.log('pet.epic result', data);
+            const {pet, user, pets} = data;
 
             return petPageLoadSucceededAction({pet, user, pets});
           }),
