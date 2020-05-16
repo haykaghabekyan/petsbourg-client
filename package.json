@@ -5,9 +5,9 @@
   "repository": "git@github.com:haykaghabekyan/petsbourg-client.git",
   "main": "./dist/server/scripts/bundle.js",
   "scripts": {
-    "start": "node ./dist/server/scripts/bundle.js",
+    "start": "node --require dotenv/config ./dist/server/scripts/bundle.js",
     "build": "webpack --mode=production --progress",
-    "start:dev": "nodemon --inspect ./dist/server/scripts/bundle.js",
+    "start:dev": "nodemon --require dotenv/config --inspect ./dist/server/scripts/bundle.js",
     "build:dev": "webpack --mode=development --watch --progress",
     "heroku-postbuild": "sh env.sh & npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"

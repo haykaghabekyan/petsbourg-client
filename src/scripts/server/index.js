@@ -4,8 +4,6 @@ import cors from 'cors';
 import React from 'react';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import axios from 'axios';
-import dotenv from 'dotenv';
 import {of} from 'rxjs';
 import {renderToString} from 'react-dom/server';
 import {StaticRouter, matchPath} from 'react-router-dom';
@@ -16,8 +14,6 @@ import {getRoutes} from '../universal/routes';
 import {App} from '../universal/app/app';
 import {getStore} from '../universal/app/model/app.store';
 import {setAuthAction} from '../universal/app/model/auth/auth.actions';
-
-dotenv.config();
 
 const app = express();
 // parse application/x-www-form-urlencoded
