@@ -1,0 +1,16 @@
+{
+  "backend": {
+    "url": "https://petsbourg-server.herokuapp.com"
+  },
+  "frontend": {
+    "url": "https://petsbourg-client.herokuapp.com"
+  },
+  "auth": {
+    "publicKey": "petsbourgjwttoken"
+  },
+  "tracking": {
+    "google": {
+      "trackingId": "UA-134427129-1"
+    }
+  }
+}

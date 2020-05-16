@@ -4,10 +4,12 @@ import cors from 'cors';
 import React from 'react';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
+import axios from 'axios';
 import { of } from 'rxjs';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter, matchPath } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { configs } from './utils/config';
 import { authMiddleware } from './middlewares/auth.middleware';
 import { router } from './router';
 import { getRoutes } from '../universal/routes';
@@ -95,7 +97,6 @@ app.get('*', authMiddleware, (req, res) => {
                     </body>
                 </html>
             `;
-
             res.send(html);
         }
     });
@@ -105,3 +106,10 @@ const port = process.env.PORT || 8080;
 app.listen(port, () => {
     console.log(`Server listening on port ${ port }`);
 });
+
+// TODO
+// Remove in production
+setInterval(() => {
+    axios.get(`${configs().frontend.url}`);
+    axios.get(`${configs().backend.url}`);
+}, 10 * 1000);
