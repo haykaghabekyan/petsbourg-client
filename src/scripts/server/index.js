@@ -110,7 +110,7 @@ app.listen(port, () => {
 // TODO
 // Remove in production
 setInterval(() => {
-  axios.get(`${process.env.FRONTEND_URL}/api/health`);
-  axios.get(`${process.env.BACKEND_URL}/api/health`);
-  axios.get(`${process.env.STORAGE_URL}/api/health`);
+  // axios.get(`${process.env.FRONTEND_URL}/api/health`);
+  // axios.get(`${process.env.BACKEND_URL}/api/health`);
+  // axios.get(`${process.env.STORAGE_URL}/api/health`);
 }, 10 * 1000);
