@@ -1,4 +1,3 @@
-// const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const nodeExternals = require('webpack-node-externals');
@@ -68,9 +67,6 @@ const browserConfig = {
     },
     plugins: [
         compileScss,
-        // new webpack.DefinePlugin({
-        //     'process.env.API_ENDPOINT': process.env.API_ENDPOINT ? `'${ process.env.API_ENDPOINT }'` : '"http://localhost:3003"'
-        // }),
     ],
 };
 
@@ -78,7 +74,7 @@ const serverConfig = {
     entry: './src/scripts/server/index.js',
     target: 'node',
     externals: [
-        nodeExternals()
+        nodeExternals(),
     ],
     output: {
         path: path.join(__dirname, '/dist/server'),

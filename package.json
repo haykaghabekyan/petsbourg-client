@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node ./dist/server/scripts/bundle.js",
     "build": "webpack --mode=production --progress",
-    "start:dev": "nodemon --inspect=9222 ./dist/server/scripts/bundle.js",
+    "start:dev": "nodemon --inspect ./dist/server/scripts/bundle.js",
     "build:dev": "webpack --mode=development --watch --progress",
     "heroku-postbuild": "sh env.sh & npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"

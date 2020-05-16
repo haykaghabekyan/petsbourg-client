@@ -23,7 +23,7 @@ export const authSignOutEpic = action$ => {
     .pipe(
       filter(action => action.type === REMOVE_AUTH_ACTION),
       mergeMap(() => {
-        const promise = axios.get(`${process.env.FRONTEND_URL}/api/sign-out`);
+        const promise = axios.get(`/api/sign-out`);
 
         return from(promise).pipe(
           map(() => {

@@ -17,7 +17,7 @@ export const petPageLoadEpic = action$ => {
 
             return petPageLoadSucceededAction({pet, user, pets});
           }),
-          catchError(({response}) => {;
+          catchError(({response}) => {
             const {errors} = response.data;
             return of(petPageLoadFailedAction(errors.message));
           })

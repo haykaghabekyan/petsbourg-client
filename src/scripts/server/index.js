@@ -105,7 +105,7 @@ app.get('*', authMiddleware, (req, res) => {
 const port = process.env.PORT;
 
 app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+  console.info(`Server listening on port ${port}`);
 });
 
 app.use('error', error => {
