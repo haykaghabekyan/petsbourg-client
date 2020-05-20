@@ -2,6 +2,7 @@ import 'babel-polyfill';
 import express from 'express';
 import cors from 'cors';
 import React from 'react';
+import axios from 'axios';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import {of} from 'rxjs';
@@ -123,3 +124,12 @@ app.use('error', error => {
       throw error;
   }
 });
+
+
+// TODO
+// remove
+setInterval(() => {
+  axios.get(`${process.env.FRONTEND_URL}/api/health`);
+  axios.get(`${process.env.BACKEND_URL}/api/health`);
+  axios.get(`${process.env.STORAGE_URL}/api/health`);
+}, 10 * 1000 * 6 * 10);
