@@ -1,5 +1,5 @@
-import { verify } from 'jsonwebtoken';
-import { UserServiceImpl } from '../../universal/pages/user/services/user.service.impl';
+import {verify} from 'jsonwebtoken';
+import {UserServiceImpl} from '../../universal/pages/user/services/user.service.impl';
 
 export const requireAuthMiddleware = async (req, res, next) => {
   const {jwt = ''} = req.cookies;

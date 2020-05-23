@@ -1,37 +1,37 @@
 import React from "react";
-import { connect } from "react-redux";
-import { updateUserProfile } from "../../../redux/actions/user";
+import {connect} from "react-redux";
+// import { updateUserProfile } from "../../../redux/actions/user";
 import EditUserForm from "../../../pages/user-edit/ui/components/user-edit-form";
 
 class EditUserContainer extends React.Component {
 
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-    handleSubmit(data) {
-        const { me } = this.props;
+  handleSubmit(data) {
+    const {me} = this.props;
 
-        this.props.updateUserProfile(me.profile._id, data);
-    };
+    // this.props.updateUserProfile(me.profile._id, data);
+  };
 
-    render () {
-        const { me } = this.props;
+  render() {
+    const {me} = this.props;
 
-        return <EditUserForm userProfile={ me.profile } onSubmit={ this.handleSubmit } />;
-    }
+    return <EditUserForm userProfile={me.profile} onSubmit={this.handleSubmit}/>;
+  }
 }
 
 const mapStateToProps = state => {
-    return {
-        me: state.me,
-    };
+  return {
+    me: state.me,
+  };
 };
 
 const actionCreators = {
-    updateUserProfile,
+  // updateUserProfile,
 };
 
 export default connect(mapStateToProps, actionCreators)(EditUserContainer);

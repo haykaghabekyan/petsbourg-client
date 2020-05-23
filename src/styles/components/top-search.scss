@@ -2,14 +2,10 @@
   color: #282828;
   font-weight: bold;
 
-  &-form {
-
-  }
-
   &-input {
     display: inline-block;
     font-size: 14px;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 500;
     line-height: 40px;
     color: $gray;

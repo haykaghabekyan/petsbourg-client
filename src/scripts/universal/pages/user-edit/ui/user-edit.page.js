@@ -1,98 +1,98 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { SubmissionError } from 'redux-form';
-import { MainLayout } from '../../../components/layouts/main';
-import { userEditPageLoadAction, userEditPageResetAction, userEditPageSaveAction } from '../model/user-edit.actions';
-import { ProfileLayout } from '../../../components/layouts/profile';
-import { LoadingLayout } from '../../../components/layouts/loading';
-import { UserEditForm } from './components/user-edit-form';
+import {connect} from 'react-redux';
+import {SubmissionError} from 'redux-form';
+import {MainLayout} from '../../../components/layouts/main';
+import {userEditPageLoadAction, userEditPageResetAction, userEditPageSaveAction} from '../model/user-edit.actions';
+import {ProfileLayout} from '../../../components/layouts/profile';
+import {LoadingLayout} from '../../../components/layouts/loading';
+import {UserEditForm} from './components/user-edit-form';
 
 export class UserEditPageContainer extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    const {userEditPage, match} = this.props;
+
+    if (!userEditPage.opened) {
+      this.props.userEditPageLoadAction(match.params);
     }
+  }
 
-    componentDidMount() {
-        const { userEditPage, match } = this.props;
+  // onDrop(acceptedFiles) {
+  //     const { uploadUserPicture, me } = this.props;
+  //
+  //     if (acceptedFiles.length) {
+  //         const formData = new FormData();
+  //
+  //         acceptedFiles.forEach(file => {
+  //             formData.append('picture', file);
+  //         });
+  //
+  //         uploadUserPicture(me.profile._id, formData);
+  //     } else {
+  //         console.log("onDrop error");
+  //     }
+  // }
 
-        if (!userEditPage.opened) {
-            this.props.userEditPageLoadAction(match.params);
-        }
-    }
+  async handleSubmit(data, dispatch) {
+    const promise = new Promise((resolve, reject) => {
+      dispatch(userEditPageSaveAction(data, {resolve, reject}));
+    });
 
-    // onDrop(acceptedFiles) {
-    //     const { uploadUserPicture, me } = this.props;
-    //
-    //     if (acceptedFiles.length) {
-    //         const formData = new FormData();
-    //
-    //         acceptedFiles.forEach(file => {
-    //             formData.append('picture', file);
-    //         });
-    //
-    //         uploadUserPicture(me.profile._id, formData);
-    //     } else {
-    //         console.log("onDrop error");
-    //     }
-    // }
-
-    async handleSubmit(data, dispatch) {
-        const promise = new Promise((resolve, reject) => {
-            dispatch(userEditPageSaveAction(data, { resolve, reject }));
-        });
-
-        promise
-            .then(() => {
-                // TODO
-            })
-            .catch(error => {
-                throw new SubmissionError({
-                    _error: error.message,
-                });
-            });
-    }
-
-    render() {
-        const { auth, userEditPage } = this.props;
-
+    promise
+      .then(() => {
         // TODO
-        if (userEditPage.error) {
-            return (
-                <MainLayout user={ auth.user } pets={ auth.pets }>
-                    { userEditPage.error }
-                </MainLayout>
-            );
-        }
+      })
+      .catch(error => {
+        throw new SubmissionError({
+          _error: error.message,
+        });
+      });
+  }
 
-        if (!userEditPage.opened || userEditPage.isLoading) {
-            return (
-                <MainLayout user={ auth.user } pets={ auth.pets }>
-                    <LoadingLayout />
-                </MainLayout>
-            );
-        }
+  render() {
+    const {auth, userEditPage} = this.props;
 
-        return (
-            <MainLayout user={ auth.user } pets={ auth.pets }>
-                <ProfileLayout user={ userEditPage.user } pets={ userEditPage.pets } isEditable>
-                    <UserEditForm onSubmit={ this.handleSubmit } user={ userEditPage.user } />
-                </ProfileLayout>
-            </MainLayout>
-        );
+    // TODO
+    if (userEditPage.error) {
+      return (
+        <MainLayout user={auth.user} pets={auth.pets}>
+          {userEditPage.error}
+        </MainLayout>
+      );
     }
 
-    componentWillUnmount() {
-        this.props.userEditPageResetAction();
+    if (!userEditPage.opened || userEditPage.isLoading) {
+      return (
+        <MainLayout user={auth.user} pets={auth.pets}>
+          <LoadingLayout/>
+        </MainLayout>
+      );
     }
+
+    return (
+      <MainLayout user={auth.user} pets={auth.pets}>
+        <ProfileLayout user={userEditPage.user} pets={userEditPage.pets} isEditable>
+          <UserEditForm onSubmit={this.handleSubmit} user={userEditPage.user}/>
+        </ProfileLayout>
+      </MainLayout>
+    );
+  }
+
+  componentWillUnmount() {
+    this.props.userEditPageResetAction();
+  }
 }
 
 const mapStateToProps = state => ({
-    auth: state.auth,
-    userEditPage: state.userEditPage,
+  auth: state.auth,
+  userEditPage: state.userEditPage,
 });
 const actionCreators = {
-    userEditPageLoadAction,
-    userEditPageResetAction,
+  userEditPageLoadAction,
+  userEditPageResetAction,
 };
 
 export const UserEditPage = connect(mapStateToProps, actionCreators)(UserEditPageContainer);

@@ -2,7 +2,6 @@
   margin-bottom: 20px;
 
   &.input-container-error {
-
     .input-item {
       border: 1px solid $red;
     }
@@ -38,11 +37,9 @@
       border-left: none;
       border-right: none;
     }
-
   }
 
   .input-error {
     display: none;
   }
-
 }

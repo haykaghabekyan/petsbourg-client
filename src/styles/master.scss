@@ -1,48 +1,48 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
-@import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i");
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
 
-@import "~react-image-gallery/styles/scss/image-gallery.scss";
-@import "~react-datepicker/src/stylesheets/datepicker";
+@import '~react-image-gallery/styles/scss/image-gallery.scss';
+@import '~react-datepicker/src/stylesheets/datepicker';
 
-@import "mixins/loader";
-@import "mixins/placeholder";
+@import 'mixins/loader';
+@import 'mixins/placeholder';
 
-@import "variables";
-@import "helpers";
-@import "typography";
+@import 'variables';
+@import 'helpers';
+@import 'typography';
 
-@import "form/input";
-@import "form/select";
-@import "form/datepicker";
-@import "form/button";
+@import 'form/input';
+@import 'form/select';
+@import 'form/datepicker';
+@import 'form/button';
 
-@import "layouts/main";
-@import "layouts/auth";
+@import 'layouts/main';
+@import 'layouts/auth';
 
-@import "pages/auth";
-@import "pages/pets";
-@import "pages/home";
-@import "pages/search";
+@import 'pages/auth';
+@import 'pages/pets';
+@import 'pages/home';
+@import 'pages/search';
 
-@import "components/header";
-@import "components/footer";
-@import "components/social";
-@import "components/list";
-@import "components/dropdown";
-@import "components/banners";
-@import "components/top-search";
+@import 'components/header';
+@import 'components/footer';
+@import 'components/social';
+@import 'components/list';
+@import 'components/dropdown';
+@import 'components/banners';
+@import 'components/top-search';
 
-@import "user/user-profile-card";
-@import "user/user-profile-dropdown";
-@import "user/edit-user";
+@import 'user/user-profile-card';
+@import 'user/user-profile-dropdown';
+@import 'user/edit-user';
 
-@import "pet/pet-profile";
-@import "pet/edit-pet";
+@import 'pet/pet-profile';
+@import 'pet/edit-pet';
 
 * {
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 *, :after, :before {
@@ -50,7 +50,7 @@
 }
 
 body {
-  font: 14px "Roboto", sans-serif;
+  font: 14px 'Roboto', sans-serif;
   color: $gray-dark;
 }
 
@@ -75,7 +75,7 @@ main {
 
   &:before, &:after {
     background-color: $gray-light;
-    content: "";
+    content: '';
     display: inline-block;
     height: 1px;
     position: relative;
@@ -95,11 +95,9 @@ main {
 }
 
 .brand-container {
-
   .brand {
     text-decoration: none;
     font-weight: bold;
     font-size: 24px;
   }
-
 }

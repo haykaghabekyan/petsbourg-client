@@ -9,7 +9,7 @@
   }
 
   &-popper {
-    &[data-placement^="top"] {
+    &[data-placement^='top'] {
       .react-datepicker__triangle {
         &:before {
           border-top-color: $green;
@@ -17,7 +17,7 @@
       }
     }
 
-    &[data-placement^="bottom"] {
+    &[data-placement^='bottom'] {
       .react-datepicker__triangle {
         &:before {
           border-bottom-color: $green;
